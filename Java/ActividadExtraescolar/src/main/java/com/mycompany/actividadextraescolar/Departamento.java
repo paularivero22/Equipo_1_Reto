@@ -16,12 +16,11 @@ public class Departamento {
     private int codJefe;
 
     //Constructor por parámetros
-    public Departamento(int idDepartamento, String codigoDepartamento, String nombre, int idJefe, int codJefe) {
+    public Departamento(int idDepartamento, String codigoDepartamento, String nombre, int idJefe) {
         this.idDepartamento = idDepartamento;
         this.codigoDepartamento = codigoDepartamento;
         this.nombre = nombre;
         this.idJefe = idJefe;
-        this.codJefe = codJefe;
     }
     
     //Métodos get

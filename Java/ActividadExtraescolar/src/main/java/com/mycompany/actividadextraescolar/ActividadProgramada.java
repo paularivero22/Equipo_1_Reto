@@ -8,14 +8,14 @@ package com.mycompany.actividadextraescolar;
  *
  * @author Usuario
  */
-public class ActicvidadProgramada {
+public class ActividadProgramada {
 
     private int idActividad;
     private String comentario;
     public enum Estado {
     }
 
-    public ActicvidadProgramada(int idActividad, String comentario) {
+    public ActividadProgramada(int idActividad, String comentario) {
         this.idActividad = idActividad;
         this.comentario = comentario;
     }

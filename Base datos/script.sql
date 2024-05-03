@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Profesor` (
   `nombre` VARCHAR(33) NOT NULL,
   `apellidos` VARCHAR(45) NOT NULL,
   `DNI` VARCHAR(9) NOT NULL,
-  `perfilAcceso` ENUM('') NOT NULL,
+  `perfilAcceso` ENUM('SUPERUSUARIO','ADMINISTRADOR','EQUIPO_DIRECTIVO','PROFESOR') NOT NULL,
   `fk_departamento` VARCHAR(45) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
   `activo` TINYINT NOT NULL,
@@ -65,8 +65,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`curso` (
   `idcurso` INT NOT NULL,
   `codcurso` VARCHAR(10) NOT NULL,
-  `descripcion` VARCHAR(45) NOT NULL,
-  `etapa` ENUM('') NOT NULL,
+  `descripcion` VARCHAR(60) NOT NULL,
+  `etapa` ENUM('ESO','BACHILLERATO','FPGS','FPGM','FPB','FPCE') NOT NULL,
   `activo` TINYINT NOT NULL,
   PRIMARY KEY (`idcurso`),
   UNIQUE INDEX `codcurso_UNIQUE` (`codcurso` ASC) VISIBLE)
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Solicitud` (
   `prevista` TINYINT NOT NULL,
   `Departamento` INT NOT NULL,
   `titulo` VARCHAR(45) NOT NULL,
-  `tipo` ENUM('') NOT NULL,
+  `tipo` ENUM('EXTRAESCOLAR','COMPLEMENTARIA') NOT NULL,
   `medioTransporte` TINYINT NOT NULL,
   `profesor` INT NOT NULL,
   `alojamiento` TINYINT NOT NULL,
@@ -122,14 +122,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`ActividadProgramada` (
   `idActividadProgramada` INT NOT NULL,
-  `estado` ENUM('') NOT NULL,
+  `estado` ENUM('SOLICITADA','APROBADA','DENEGADA','REALIZADA') NOT NULL,
   `comentario` VARCHAR(45) NULL,
   `horaInicio` DATETIME NOT NULL,
   `horaFin` DATETIME NOT NULL,
   `prevista` TINYINT NOT NULL,
   `Departamento` INT NOT NULL,
   `titulo` VARCHAR(45) NOT NULL,
-  `tipo` ENUM('') NOT NULL,
+  `tipo` ENUM('EXTRAESCOLAR','COMPLEMENTARIA') NOT NULL,
   `medioTransporte` TINYINT NOT NULL,
   `profesor` INT NOT NULL,
   `alojamiento` TINYINT NOT NULL,
@@ -172,7 +172,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`MedioTransporte` (
   `idTransporte` INT NOT NULL,
-  `tipo` ENUM('') NOT NULL,
+  `tipo` ENUM('ANDANDO','BICI','BUS','TAXI','TREN','BARCO','AVION') NOT NULL,
   PRIMARY KEY (`idTransporte`))
 ENGINE = InnoDB;
 
@@ -228,7 +228,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`ProfesorSolicita`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`ProfesorSolicita` (
-  `rol` ENUM('') NOT NULL,
+  `rol` ENUM('SUPERUSUARIO','ADMINISTRADOR','EQUIPO DIRECTIVO','PROFESOR') NOT NULL,
   `fk_idProfesor` INT NOT NULL,
   `fk_idActividad` INT NOT NULL,
   UNIQUE INDEX `fk_idProfesor_UNIQUE` (`fk_idProfesor` ASC) VISIBLE,

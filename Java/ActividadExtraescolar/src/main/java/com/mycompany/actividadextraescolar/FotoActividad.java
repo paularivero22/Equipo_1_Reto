@@ -9,21 +9,21 @@ package com.mycompany.actividadextraescolar;
  * @author Usuario
  */
 public class FotoActividad {
-    private Actividad actvidad;
+    private ActividadProgramada actvidad;
     private String URL;
     private String descripcion;
 
-    public FotoActividad(Actividad actvidad, String URL, String descripcion) {
+    public FotoActividad(ActividadProgramada actvidad, String URL, String descripcion) {
         this.actvidad = actvidad;
         this.URL = URL;
         this.descripcion = descripcion;
     }
 
-    public Actividad getActvidad() {
+    public ActividadProgramada getActvidad() {
         return actvidad;
     }
 
-    public void setActvidad(Actividad actvidad) {
+    public void setActvidad(ActividadProgramada actvidad) {
         this.actvidad = actvidad;
     }
 

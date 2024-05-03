@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
  */
 package com.mycompany.actividadextraescolar;
 
@@ -8,6 +8,6 @@ package com.mycompany.actividadextraescolar;
  *
  * @author atres
  */
-public enum Etapa {
-    ESO,Bachillerato,FPGS,FPGM,FPB,FPCE;
+public enum PerfilAcceso {
+    SUPERUSUARIO,ADMINISTRADOR,EQUIPO_DIRECTIVO,PROFESOR
 }

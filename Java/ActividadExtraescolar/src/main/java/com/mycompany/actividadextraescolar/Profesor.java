@@ -10,7 +10,8 @@ package com.mycompany.actividadextraescolar;
  */
 public class Profesor {
 
-    private int idProfesor;
+    public int idProfesor;
+    private int idDepartamento;
     private String nombre;
     private String apellidos;
     private String DNI;
@@ -18,12 +19,10 @@ public class Profesor {
     private boolean activo;
     private String contrasenia;
 
-    public enum perfilAcceso {
-        SUPERUSUARIO, ADMINISTRADOR, EQUIPO_DIRECTIVO, PROFESOR
-    }
 
-    public Profesor(int idProfesor, String nombre, String apellidos, String DNI, String correo, boolean activo, String contrasenia) {
+    public Profesor(int idProfesor,int idDepartamento, String nombre, String apellidos, String DNI, String correo, boolean activo, String contrasenia) {
         this.idProfesor = idProfesor;
+        this.idDepartamento=idDepartamento;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.DNI = DNI;
@@ -40,6 +39,15 @@ public class Profesor {
         this.idProfesor = idProfesor;
     }
 
+    public int getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    
     public String getNombre() {
         return nombre;
     }
@@ -90,7 +98,9 @@ public class Profesor {
 
     @Override
     public String toString() {
-        return "Profesor{" + "Identificador=" + idProfesor + ", Nombre=" + nombre + ", Apellidos=" + apellidos + ", DNI=" + DNI + ", Correo electrónico=" + correo + ", Trabajando=" + activo + ", Contraseña=" + contrasenia + '}';
+        return "Profesor{" + "idProfesor=" + idProfesor + ", idDepartamento=" + idDepartamento + ", nombre=" + nombre + ", apellidos=" + apellidos + ", DNI=" + DNI + ", correo=" + correo + ", activo=" + activo + ", contrasenia=" + contrasenia + '}';
     }
+
+    
     
 }
