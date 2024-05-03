@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color:#232936;
+    color: #fff;
+    padding: 20px;
+}
+
+.contenido-cabecera {
+    max-width: 1200px;
+    justify-content: left;
+    height: 50px;
+}
+
+.LogoImagen{
+    display: flex;
+    margin-left: 10px;
+    width: 286px;
+    height: 70px;
+    vertical-align:middle;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+#menuprincipal {
+    width: 100%;
+    height: 80px;
+    padding: 0% 2%;
+    background-color: #ffffff;
+    border-top: 1px solid #094660;
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menuprincipal > div {
+    width: 100%;
+    height: 80px;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+    
+    #listamenu {
+        display: flex;
+        margin-left: 10px;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+        height: 100%;
+    }
+    
+    #listamenu li {
+        padding: 15px 10px 0px 10px;
+        list-style: none;
+        align-items: center;
+    }
+    
+    #listamenu a {
+        font: bold 18px Arial, sans-serif;
+        color: #333333;
+        text-decoration: none;
+        align-items: center;
+        height: 80px;
+    }
+    
+    #listamenu li:hover {
+        background-color: #cacdcf;
+        transition: background-color 0.5s ease;
+    } /* Distribuye los elementos a lo largo del contenedor */
+
+#menuprincipal li { /*Pone los enlaces en linea y cuando pasas sobre ellos, cambia el color de fondo*/
+    display: flex;
+    height: 80px;
+    padding: 15px 10px 0px 10px;
+    align-items: center;
+    margin-right: 20px;
+}
+
+#menuprincipal a {
+    font: bold 18px Arial, sans-serif;
+    color: #333333;
+    text-decoration: none;
+    align-content: center;
+}
+
+.iconosMenu {
+    margin: 10px;
+    align-items: center;
+    width:35px;
+    height:35px;
+}
+main {
+    width: 100%;
+    margin: 15px auto;
+    padding: 20px;
+    background-color: #fff;
+    align-content: center;
+}
+
+.TextoActividades h1{
+    background-color: #333333;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 1.5em;
+}
+
+.Viajes{
+    position: relative;
+    margin-top: 20px;
+    justify-content: left;
+    align-items: center;
+    background-color: #333;
+    width: 13%;
+    height: 30px;
+    border-radius: 10px;
+    
+}
+
+.Viajes p{
+    color: #fff;
+    margin-left: 5%;
+    font-weight: bold;  
+}
+.ViajesMain{
+    position: relative;
+    width: 70%;
+    margin: 20px;
+    padding: 20px;
+    background-color:#f4f4f4;
+    border-radius: 10px;
+    border: #333;
+}
+
+.ViajesMain th,td{
+    padding: 20px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.Clases{
+    position: relative;
+    margin-top: 20px;
+    justify-content: left;
+    align-items: center;
+    background-color: #333;
+    width: 13%;
+    height: 30px;
+    border-radius: 10px;
+    
+}
+
+.Clases p{
+    color: #fff;
+    margin-left: 5%;
+    font-weight: bold;  
+}
+.ClasesMain{
+    position: relative;
+    width: 70%;
+    margin: 20px;
+    padding: 20px;
+    background-color:#f4f4f4;
+    border-radius: 10px;
+    border: #333;
+}
+
+.ClasesMain th,td{
+    padding: 20px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.pielogo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+footer p {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+  }
+
+.seccionpie {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.seccionpie h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.enlace-contacto {
+    color: #fff;
+    text-decoration: none;
+}
+
+.enlace-contacto:hover {
+    text-decoration: underline;
+}
+
+.iconos-sociales {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.iconos-sociales li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.iconos-sociales li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos para la imagen del icono social */
+.Facebook {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.YouTube {
+    width: 40px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.Instagram {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
