@@ -5,6 +5,7 @@
 package com.mycompany.actividadextraescolar;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  *
@@ -18,7 +19,7 @@ public class Solicitud {
     private boolean prevista;
     private Profesor profesor;
     private LocalTime horaInicio;
-    private LocaTime horaFinal;
+    private LocalTime horaFinal;
     public Estado estado;
     private String comentario;
     private boolean medioTransporte;
@@ -28,7 +29,7 @@ public class Solicitud {
     private LocalDate fechaFinal;
 
     //Constructor por parámetros
-    public Solicitud(int idSolicitud, String titulo, Tipo tipoSolicitud, Departamento departamento, boolean prevista, Profesor profesor, LocalTime horaInicio, LocaTime horaFinal, Estado estado, String comentario, boolean medioTransporte, boolean Alojamiento, String comentarioAlojamiento, LocalDate fechaInicio, LocalDate fechaFinal) {
+    public Solicitud(int idSolicitud, String titulo, Tipo tipoSolicitud, Departamento departamento, boolean prevista, Profesor profesor, LocalTime horaInicio, LocalTime horaFinal, Estado estado, String comentario, boolean medioTransporte, boolean Alojamiento, String comentarioAlojamiento, LocalDate fechaInicio, LocalDate fechaFinal) {
         this.idSolicitud = idSolicitud;
         this.titulo = titulo;
         this.tipoSolicitud = tipoSolicitud;
@@ -74,7 +75,7 @@ public class Solicitud {
         return horaInicio;
     }
 
-    public LocaTime getHoraFinal() {
+    public LocalTime getHoraFinal() {
         return horaFinal;
     }
 
