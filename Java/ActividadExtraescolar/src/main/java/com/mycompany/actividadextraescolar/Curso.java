@@ -9,21 +9,23 @@ package com.mycompany.actividadextraescolar;
  * @author atres
  */
 public class Curso {
-    private String codCurso;
     private int idCurso;
+    private String codCurso;
     private String descripcion;
     public Etapa etapa;
     public boolean activo;
     
     //Constructor por parámetros
 
-    public Curso(String codCurso, int idCurso, String descripcion, Etapa etapa, boolean activo) {
-        this.codCurso = codCurso;
+    public Curso(int idCurso, String codCurso, String descripcion, Etapa etapa, boolean activo) {
         this.idCurso = idCurso;
+        this.codCurso = codCurso;
         this.descripcion = descripcion;
         this.etapa = etapa;
         this.activo = activo;
     }
+
+    
     //Metodos get
 
     public String getCodCurso() {

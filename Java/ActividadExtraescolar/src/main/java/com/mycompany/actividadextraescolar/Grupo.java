@@ -9,27 +9,37 @@ package com.mycompany.actividadextraescolar;
  * @author atres
  */
 public class Grupo {
+    private int idGrupo;
     private String codGrupo;
-    private Curso curso;
+    private int idcurso;
     public int numeroAlumnos;
     public boolean activo;
 
     //Constructor por parámetros
-    public Grupo(String codGrupo, Curso curso, int numeroAlumnos, boolean activo) {
+
+    public Grupo(int idGrupo, String codGrupo, int idcurso, int numeroAlumnos, boolean activo) {
+        this.idGrupo = idGrupo;
         this.codGrupo = codGrupo;
-        this.curso = curso;
+        this.idcurso = idcurso;
         this.numeroAlumnos = numeroAlumnos;
         this.activo = activo;
     }
+    
     //Metodos get
+    
+    public int getIdGrupo() {
+        return idGrupo;
+    }
 
     public String getCodGrupo() {
         return codGrupo;
     }
 
-    public Curso getCurso() {
-        return curso;
+    public int getIdcurso() {
+        return idcurso;
     }
+
+   
 
     public int getNumeroAlumnos() {
         return numeroAlumnos;
@@ -40,10 +50,18 @@ public class Grupo {
     }
     
     //Metodo que muestra datos
+
     @Override
     public String toString() {
-        return "Grupo{" + "codGrupo=" + codGrupo + ", curso=" + curso + ", numeroAlumnos=" + numeroAlumnos + ", activo=" + activo + '}';
+        return "Grupo{" + "idGrupo=" + idGrupo + ", codGrupo=" + codGrupo + ", idcurso=" + idcurso + ", numeroAlumnos=" + numeroAlumnos + ", activo=" + activo + '}';
     }
+
+    
+
+    
+
+   
+    
     
     
 }

@@ -13,7 +13,6 @@ public class Departamento {
     private String codigoDepartamento;
     private String nombre;
     public int idJefe;
-    private int codJefe;
 
     //Constructor por parámetros
     public Departamento(int idDepartamento, String codigoDepartamento, String nombre, int idJefe) {
@@ -41,13 +40,10 @@ public class Departamento {
         return idJefe;
     }
 
-    public int getCodJefe() {
-        return codJefe;
-    }
 //Mostrar datos
     @Override
     public String toString() {
-        return "Departamento{" + "idDepartamento=" + idDepartamento + ", codigoDepartamento=" + codigoDepartamento + ", nombre=" + nombre + ", idJefe=" + idJefe + ", codJefe=" + codJefe + '}';
+        return "Departamento{" + "idDepartamento=" + idDepartamento + ", codigoDepartamento=" + codigoDepartamento + ", nombre=" + nombre + ", idJefe=" + idJefe + '}';
     }
     
     
