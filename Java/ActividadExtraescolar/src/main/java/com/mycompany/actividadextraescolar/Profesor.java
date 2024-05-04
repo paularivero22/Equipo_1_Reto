@@ -17,19 +17,26 @@ public class Profesor {
     private String DNI;
     private String correo;
     private boolean activo;
+    private PerfilAcceso perfil;
     private String contrasenia;
 
-
-    public Profesor(int idProfesor,int idDepartamento, String nombre, String apellidos, String DNI, String correo, boolean activo, String contrasenia) {
+    public Profesor(int idProfesor, int idDepartamento, String nombre, String apellidos, String DNI, String correo, boolean activo, PerfilAcceso perfil, String contrasenia) {
         this.idProfesor = idProfesor;
-        this.idDepartamento=idDepartamento;
+        this.idDepartamento = idDepartamento;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.DNI = DNI;
         this.correo = correo;
         this.activo = activo;
+        this.perfil = perfil;
         this.contrasenia = contrasenia;
     }
+
+    public PerfilAcceso getPerfil() {
+        return perfil;
+    }
+
+
 
     public int getIdProfesor() {
         return idProfesor;
@@ -88,18 +95,13 @@ public class Profesor {
         this.activo = activo;
     }
 
-    public String getContraseña() {
-        return contrasenia;
-    }
-
-    public void setContraseña(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
 
     @Override
     public String toString() {
-        return "Profesor{" + "idProfesor=" + idProfesor + ", idDepartamento=" + idDepartamento + ", nombre=" + nombre + ", apellidos=" + apellidos + ", DNI=" + DNI + ", correo=" + correo + ", activo=" + activo + ", contrasenia=" + contrasenia + '}';
+        return "Profesor{" + "idProfesor=" + idProfesor + ", idDepartamento=" + idDepartamento + ", nombre=" + nombre + ", apellidos=" + apellidos + ", DNI=" + DNI + ", correo=" + correo + ", activo=" + activo + ", perfil=" + perfil + ", contrasenia=" + contrasenia + '}';
     }
+
+   
 
     
     

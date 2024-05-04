@@ -12,7 +12,14 @@ import java.util.List;
  */
 public class ActividadExtaescolar {
     public static void main(String[] args) {
-       MetodosFicheros.importarCSVDepartamento();
+        List<Curso>listaCursos=MetodosFicheros.leerCSVCursos();
+        List<Departamento>listaDepartamentos=MetodosFicheros.leerCSVDepartamentos();
+        List<Profesor>listaProfesor=MetodosFicheros.leerCSVProfesores();
+        List<Grupo>listaGrupo=MetodosFicheros.leerCSVGrupoAlumnos();
+        MetodosFicheros.insertarCurso(listaCursos);
+        MetodosFicheros.insertarDepartamento(listaDepartamentos);
+        MetodosFicheros.insertarProfesores(listaProfesor);
+        MetodosFicheros.insertarGruposAlumnos(listaGrupo);
        
        
     }
