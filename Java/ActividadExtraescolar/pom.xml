@@ -8,7 +8,11 @@
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
+
+            <artifactId>mysql-conector-java</artifactId>
+
             <artifactId>mysql-connector-java</artifactId>
+
             <version>8.0.29</version>
         </dependency>
     </dependencies>
