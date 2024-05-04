@@ -9,111 +9,52 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
-import java.util.Properties;
 import java.util.ArrayList;
 
 /**
  *
  * @author Usuario
  */
-public class metodosBD {
 
-    public class AccesoBaseDatos {
+public class metodosBD{
 
-        private Connection conn = null;
-        //CONSTANTES A DEFINIR
-        private static final String BD = "";
-        private static final String USUARIO = "root";
-        private static final String CLAVE = "PisMunGim035";
-        private static final String URL = "jdbc:mysql://localhost:3306/" + BD;
+    
+    
+    /*
+    //-------------------------------------------------------------------//
+    //---    MÉTODOS PARA GESTIONAR LAS ACTIVIDADES EXRTRAESCOLARES   ---//
+    //-------------------------------------------------------------------//
+    
 
-        private AccesoBaseDatos() {
+    //Método para insertar iuna nueva actividad extraescolar
+    public void insertarActividadExtraescolar(String titulo, String descripcion, String tipo, String fechaInicio, String fechaFin, int totalParticipantes, String comentario) {
+        String sql = "INSERT INTO ActividadExtraescolar (titulo, descripcion, tipo, fechaInicio, fechaFin, totalParticipantes, comentario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement ps = getConnection().prepareStatement(sql);) {
+                stmt.setString(1, titulo);
+                stmt.setString(2, descripcion);
+                stmt.setString(3, tipo);
+                stmt.setString(4, fechaInicio);
+                stmt.setString(5, fechaFin);
+                stmt.setInt(6, totalParticipantes);
+                stmt.setString(7, comentario);
 
-            try {
-                Properties properties = new Properties();
-                properties.setProperty("user", USUARIO);
-                properties.setProperty("password", CLAVE);
-                properties.setProperty("useSSL", "false");
-                properties.setProperty("autoReconnect", "true");
-
-                conn = (Connection) DriverManager.getConnection(URL, properties);
-                if (conn == null) {
-                    System.out.println("Error en conexion");
+                int filasAfectadas = stmt.executeUpdate();
+                if (filasAfectadas > 0) {
+                    System.out.println("Actividad extraescolar insertada correctamente.");
                 } else {
-                    System.out.println("Conexion correcta a: " + URL);
+                    System.out.println("No se pudo insertar la actividad extraescolar.");
                 }
-            } catch (SQLException ex) {
-                // manejo de los errores
-                System.out.println("SQLException: " + ex.getMessage()); //nos indica la descripción del error
-                System.out.println("SQLState: " + ex.getSQLState());
-                /*devuelve un código SQL estándar definido por ISO/ANSI 
-            y el Open Group que identifica de forma unívoca el error que se ha producido.
-                 */
-
-                System.out.println("VendorError: " + ex.getErrorCode());
-                /*es un código de error que lanza la base de datos.
-            En este caso el código de error es diferente dependiendo del proveedor de base de datos que estemos utilizando.*/
-            }
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar actividad extraescolar: " + ex.getMessage());
         }
+    }
 
-        public AccesoBaseDatos getInstance() {
-            return new AccesoBaseDatos(); // Devolver una nueva instancia de AccesoBaseDatos
-        }
-
-        //otros métodos que puedan ser necesarios
-        //obtener la conexion
-        public Connection getConn() {
-            return conn;
-        }
-        // cerrar la conexión
-
-        public boolean cerrar() {
-            boolean siCerrada = false;
-            try {
-                conn.close();
-                if (conn.isClosed()) {
-                    siCerrada = true;
-                }
-            } catch (SQLException sqe) {
-                System.out.println("Se produjo un error en el cierre");
-            }
-            return siCerrada;
-        }
-
-        //-------------------------------------------------------------------//
-        //---    MÉTODOS PARA GESTIONAR LAS ACTIVIDADES EXRTRAESCOLARES   ---//
-        //-------------------------------------------------------------------//
-        
-        //Método para insertar iuna nueva actividad extraescolar
-        public void insertarActividadExtraescolar(String titulo, String descripcion, String tipo, String fechaInicio, String fechaFin, int totalParticipantes, String comentario) {
-            try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
-                String sql = "INSERT INTO ActividadExtraescolar (titulo, descripcion, tipo, fechaInicio, fechaFin, totalParticipantes, comentario) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                    stmt.setString(1, titulo);
-                    stmt.setString(2, descripcion);
-                    stmt.setString(3, tipo);
-                    stmt.setString(4, fechaInicio);
-                    stmt.setString(5, fechaFin);
-                    stmt.setInt(6, totalParticipantes);
-                    stmt.setString(7, comentario);
-
-                    int filasAfectadas = stmt.executeUpdate();
-                    if (filasAfectadas > 0) {
-                        System.out.println("Actividad extraescolar insertada correctamente.");
-                    } else {
-                        System.out.println("No se pudo insertar la actividad extraescolar.");
-                    }
-                }
-            } catch (SQLException ex) {
-                System.out.println("Error al insertar actividad extraescolar: " + ex.getMessage());
-            }
-        }
-
-        // Método para actualizar una actividad extraescolar existente
-        public void actualizarActividadExtraescolar(int idActividad, String titulo, String descripcion, String tipo, String fechaInicio, String fechaFin, int totalParticipantes, String comentario) {
-            try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
+    // Método para actualizar una actividad extraescolar existente
+    public void actualizarActividadExtraescolar(int idActividad, String titulo, String descripcion, String tipo, String fechaInicio, String fechaFin, int totalParticipantes, String comentario) {
+        try () 
+            
+                ) {
                 String sql = "UPDATE ActividadExtraescolar SET titulo=?, descripcion=?, tipo=?, fechaInicio=?, fechaFin=?, totalParticipantes=?, comentario=? WHERE idActividad=?";
                 try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                     stmt.setString(1, titulo);
@@ -132,31 +73,30 @@ public class metodosBD {
                         System.out.println("No se pudo actualizar la actividad extraescolar.");
                     }
                 }
-            } catch (SQLException ex) {
+            }catch (SQLException ex) {
                 System.out.println("Error al actualizar actividad extraescolar: " + ex.getMessage());
             }
         }
-
         // Método para eliminar una actividad extraescolar
-        public void eliminarActividadExtraescolar(int idActividad) {
-            try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
-                String sql = "DELETE FROM ActividadExtraescolar WHERE idActividad=?";
-                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                    stmt.setInt(1, idActividad);
+    public void eliminarActividadExtraescolar(int idActividad) {
+        try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
+            String sql = "DELETE FROM ActividadExtraescolar WHERE idActividad=?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, idActividad);
 
-                    int filasAfectadas = stmt.executeUpdate();
-                    if (filasAfectadas > 0) {
-                        System.out.println("Actividad extraescolar eliminada correctamente.");
-                    } else {
-                        System.out.println("No se pudo encontrar la actividad extraescolar para eliminar.");
-                    }
+                int filasAfectadas = stmt.executeUpdate();
+                if (filasAfectadas > 0) {
+                    System.out.println("Actividad extraescolar eliminada correctamente.");
+                } else {
+                    System.out.println("No se pudo encontrar la actividad extraescolar para eliminar.");
                 }
-            } catch (SQLException ex) {
-                System.out.println("Error al eliminar actividad extraescolar: " + ex.getMessage());
             }
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar actividad extraescolar: " + ex.getMessage());
         }
+    }
 
-     // Método para obtener todas las actividades extraescolares
+    // Método para obtener todas las actividades extraescolares
     public List<ActividadExtraescolar> obtenerTodasLasActividadesExtraescolares() {
         List<ActividadExtraescolar> actividades = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
@@ -182,52 +122,51 @@ public class metodosBD {
         }
         return actividades;
     }
-        
-        //-------------------------------------------------------------------//
-        //------      MÉTODOS PARA GESTIONAR LOS PARTICIPANTES        -------//
-        //-------------------------------------------------------------------//
 
-      // Método para inscribir un estudiante en una actividad extraescolar
-        public void inscribirEstudianteEnActividad(int idEstudiante, int idActividad) {
-            try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
-                String sql = "INSERT INTO EstudianteActividad (idEstudiante, idActividad) VALUES (?, ?)";
-                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                    stmt.setInt(1, idEstudiante);
-                    stmt.setInt(2, idActividad);
+    //-------------------------------------------------------------------//
+    //------      MÉTODOS PARA GESTIONAR LOS PARTICIPANTES        -------//
+    //-------------------------------------------------------------------//
+    // Método para inscribir un estudiante en una actividad extraescolar
+    public void inscribirEstudianteEnActividad(int idEstudiante, int idActividad) {
+        try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
+            String sql = "INSERT INTO EstudianteActividad (idEstudiante, idActividad) VALUES (?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, idEstudiante);
+                stmt.setInt(2, idActividad);
 
-                    int filasAfectadas = stmt.executeUpdate();
-                    if (filasAfectadas > 0) {
-                        System.out.println("Estudiante inscrito en la actividad correctamente.");
-                    } else {
-                        System.out.println("No se pudo inscribir al estudiante en la actividad.");
-                    }
+                int filasAfectadas = stmt.executeUpdate();
+                if (filasAfectadas > 0) {
+                    System.out.println("Estudiante inscrito en la actividad correctamente.");
+                } else {
+                    System.out.println("No se pudo inscribir al estudiante en la actividad.");
                 }
-            } catch (SQLException ex) {
-                System.out.println("Error al inscribir estudiante en actividad: " + ex.getMessage());
             }
+        } catch (SQLException ex) {
+            System.out.println("Error al inscribir estudiante en actividad: " + ex.getMessage());
         }
+    }
 
-        // Método para eliminar un estudiante de una actividad extraescolar
-        public void eliminarEstudianteDeActividad(int idEstudiante, int idActividad) {
-            try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
-                String sql = "DELETE FROM EstudianteActividad WHERE idEstudiante=? AND idActividad=?";
-                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                    stmt.setInt(1, idEstudiante);
-                    stmt.setInt(2, idActividad);
+    // Método para eliminar un estudiante de una actividad extraescolar
+    public void eliminarEstudianteDeActividad(int idEstudiante, int idActividad) {
+        try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
+            String sql = "DELETE FROM EstudianteActividad WHERE idEstudiante=? AND idActividad=?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, idEstudiante);
+                stmt.setInt(2, idActividad);
 
-                    int filasAfectadas = stmt.executeUpdate();
-                    if (filasAfectadas > 0) {
-                        System.out.println("Estudiante eliminado de la actividad correctamente.");
-                    } else {
-                        System.out.println("No se pudo encontrar al estudiante en la actividad para eliminar.");
-                    }
+                int filasAfectadas = stmt.executeUpdate();
+                if (filasAfectadas > 0) {
+                    System.out.println("Estudiante eliminado de la actividad correctamente.");
+                } else {
+                    System.out.println("No se pudo encontrar al estudiante en la actividad para eliminar.");
                 }
-            } catch (SQLException ex) {
-                System.out.println("Error al eliminar estudiante de actividad: " + ex.getMessage());
             }
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar estudiante de actividad: " + ex.getMessage());
         }
-        
-      // Método para obtener todos los estudiantes inscritos en una actividad extraescolar
+    }
+
+    // Método para obtener todos los estudiantes inscritos en una actividad extraescolar
     public List<Integer> obtenerEstudiantesInscritosEnActividad(int idActividad) {
         List<Integer> estudiantes = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
@@ -246,11 +185,10 @@ public class metodosBD {
         return estudiantes;
     }
 
-        //-------------------------------------------------------------------//
-        //------        MÉTODOS PARA GESTIONAR LOS PROFESORES         -------//
-        //-------------------------------------------------------------------//
-
-        // Método para agregar un nuevo profesor
+    //-------------------------------------------------------------------//
+    //------        MÉTODOS PARA GESTIONAR LOS PROFESORES         -------//
+    //-------------------------------------------------------------------//
+    // Método para agregar un nuevo profesor
     public void agregarProfesor(String nombre, String apellidos, String dni, String perfilAcceso, String departamento, String correo, boolean activo, String contraseña) {
         try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
             String sql = "INSERT INTO Profesor (nombre, apellidos, DNI, perfilAcceso, fk_departamento, correo, activo, contraseña) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -263,7 +201,7 @@ public class metodosBD {
                 stmt.setString(6, correo);
                 stmt.setBoolean(7, activo);
                 stmt.setString(8, contraseña);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Profesor agregado correctamente.");
@@ -290,7 +228,7 @@ public class metodosBD {
                 stmt.setBoolean(7, activo);
                 stmt.setString(8, contraseña);
                 stmt.setInt(9, idProfesor);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Información del profesor actualizada correctamente.");
@@ -309,7 +247,7 @@ public class metodosBD {
             String sql = "DELETE FROM Profesor WHERE idProfesor=?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, idProfesor);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Profesor eliminado correctamente.");
@@ -349,13 +287,11 @@ public class metodosBD {
         }
         return profesores;
     }
-    
-    
-        //-------------------------------------------------------------------//
-        //------          MÉTODOS PARA GESTIONAR LOS GRUPOS           -------//
-        //-------------------------------------------------------------------//
-      // Método para crear un nuevo grupo
-    
+
+    //-------------------------------------------------------------------//
+    //------          MÉTODOS PARA GESTIONAR LOS GRUPOS           -------//
+    //-------------------------------------------------------------------//
+    // Método para crear un nuevo grupo
     public void crearGrupo(String codGrupo, String codCurso, int numAlumnos, boolean activo) {
         try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
             String sql = "INSERT INTO grupoAlumnos (codGrupo, fk_curso, numAlumnos, activo) VALUES (?, ?, ?, ?)";
@@ -364,7 +300,7 @@ public class metodosBD {
                 stmt.setString(2, codCurso);
                 stmt.setInt(3, numAlumnos);
                 stmt.setBoolean(4, activo);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Grupo creado correctamente.");
@@ -384,7 +320,7 @@ public class metodosBD {
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, codGrupo);
                 stmt.setInt(2, idEstudiante);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Estudiante agregado al grupo correctamente.");
@@ -404,7 +340,7 @@ public class metodosBD {
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, codGrupo);
                 stmt.setInt(2, idEstudiante);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Estudiante eliminado del grupo correctamente.");
@@ -435,11 +371,10 @@ public class metodosBD {
         }
         return estudiantes;
     }
-    
-        //-------------------------------------------------------------------//
-        //------        MÉTODOS PARA GESTIONAR LAS SOLICITUDES        -------//
-        //-------------------------------------------------------------------//
-    
+
+    //-------------------------------------------------------------------//
+    //------        MÉTODOS PARA GESTIONAR LAS SOLICITUDES        -------//
+    //-------------------------------------------------------------------//
     // Método para realizar una solicitud de actividad extraescolar
     public void realizarSolicitudDeActividad(int idProfesor, String titulo, String tipo, String comentarios, boolean prevista, int departamento, int profesor, boolean alojamiento, String fechaInicio, String fechaFinal, int totalParticipantes, String comenAlojamiento) {
         try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE)) {
@@ -457,7 +392,7 @@ public class metodosBD {
                 stmt.setString(10, fechaFinal);
                 stmt.setInt(11, totalParticipantes);
                 stmt.setString(12, comenAlojamiento);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Solicitud realizada correctamente.");
@@ -476,7 +411,7 @@ public class metodosBD {
             String sql = "UPDATE Solicitud SET estado='Aprobada' WHERE idActividad=?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, idSolicitud);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Solicitud aprobada correctamente.");
@@ -495,7 +430,7 @@ public class metodosBD {
             String sql = "UPDATE Solicitud SET estado='Rechazada' WHERE idActividad=?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, idSolicitud);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Solicitud rechazada correctamente.");
@@ -515,7 +450,7 @@ public class metodosBD {
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, recursos);
                 stmt.setInt(2, idActividad);
-                
+
                 int filasAfectadas = stmt.executeUpdate();
                 if (filasAfectadas > 0) {
                     System.out.println("Recursos reservados correctamente.");
@@ -528,6 +463,6 @@ public class metodosBD {
         }
     }
 
-    }
-
+}
+*/
 }

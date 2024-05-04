@@ -43,13 +43,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Profesor` (
   `apellidos` VARCHAR(45) NOT NULL,
   `DNI` VARCHAR(9) NOT NULL,
   `perfilAcceso` ENUM('SUPERUSUARIO','ADMINISTRADOR','EQUIPO_DIRECTIVO','PROFESOR') NOT NULL,
-  `fk_departamento` VARCHAR(45) NOT NULL,
+  `fk_departamento` VARCHAR(30) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
   `activo` TINYINT NOT NULL,
   `contraseña` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`idProfesor`),
   UNIQUE INDEX `DNI_UNIQUE` (`DNI` ASC) VISIBLE,
-  UNIQUE INDEX `fk_departamento_UNIQUE` (`fk_departamento` ASC) VISIBLE,
   UNIQUE INDEX `correo_UNIQUE` (`correo` ASC) VISIBLE,
   CONSTRAINT `fk_departamento`
     FOREIGN KEY (`fk_departamento`)
@@ -77,12 +76,11 @@ ENGINE = InnoDB;
 -- Table `mydb`.`grupoAlumnos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`grupoAlumnos` (
-  `codGrupo` INT NOT NULL,
+  `codGrupo` VARCHAR(10) NOT NULL,
   `fk_curso` VARCHAR(10) NOT NULL,
   `numAlumnos` VARCHAR(45) NOT NULL,
   `activo` TINYINT NOT NULL,
   `idGrupo` INT NOT NULL,
-  UNIQUE INDEX `fk_curso_UNIQUE` (`fk_curso` ASC) VISIBLE,
   PRIMARY KEY (`idGrupo`),
   CONSTRAINT `fk_curso`
     FOREIGN KEY (`fk_curso`)

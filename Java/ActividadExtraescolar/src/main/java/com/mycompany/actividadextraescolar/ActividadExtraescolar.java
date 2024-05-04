@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Usuario
  */
-public class ActividadExtaescolar {
+public class ActividadExtraescolar {
     public static void main(String[] args) {
         List<Curso>listaCursos=MetodosFicheros.leerCSVCursos();
         List<Departamento>listaDepartamentos=MetodosFicheros.leerCSVDepartamentos();
