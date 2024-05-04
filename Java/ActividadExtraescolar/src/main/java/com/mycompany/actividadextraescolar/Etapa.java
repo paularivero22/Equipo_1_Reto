@@ -4,16 +4,10 @@
  */
 package com.mycompany.actividadextraescolar;
 
-import java.util.List;
-
 /**
  *
- * @author Usuario
+ * @author atres
  */
-public class ActividadExtaescolar {
-    public static void main(String[] args) {
-       MetodosFicheros.importarCSVDepartamento();
-       
-       
-    }
+public enum Etapa {
+    ESO,Bachillerato,FPGS,FPGM,FPB,FPCE;
 }
