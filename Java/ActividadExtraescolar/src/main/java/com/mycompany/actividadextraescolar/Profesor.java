@@ -4,6 +4,8 @@
  */
 package com.mycompany.actividadextraescolar;
 
+import java.util.Random;
+
 /**
  *
  * @author Usuario
@@ -36,8 +38,11 @@ public class Profesor {
         return perfil;
     }
 
-
-
+    public void setPerfil(PerfilAcceso perfil) {
+        this.perfil = perfil;
+    }
+    
+    
     public int getIdProfesor() {
         return idProfesor;
     }
@@ -49,6 +54,11 @@ public class Profesor {
     public int getIdDepartamento() {
         return idDepartamento;
     }
+
+    public void setIdDepartamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
+    }
+    
 
     public String getContrasenia() {
         return contrasenia;
@@ -101,7 +111,16 @@ public class Profesor {
         return "Profesor{" + "idProfesor=" + idProfesor + ", idDepartamento=" + idDepartamento + ", nombre=" + nombre + ", apellidos=" + apellidos + ", DNI=" + DNI + ", correo=" + correo + ", activo=" + activo + ", perfil=" + perfil + ", contrasenia=" + contrasenia + '}';
     }
 
-   
+    //Metodo que genera una contraseña aleatoria para los profesores
+    public static String generarPassword(int longitud) {
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        Random r = new Random();
+        char[] password = new char[longitud];
+        for (int i = 0; i < longitud; i++) {
+            password[i] = caracteres.charAt(r.nextInt(caracteres.length()));
+        }
+        return new String(password);
+    }
 
     
     

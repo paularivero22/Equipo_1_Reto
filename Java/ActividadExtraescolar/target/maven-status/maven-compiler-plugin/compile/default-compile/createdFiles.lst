@@ -1,6 +1,7 @@
 com\mycompany\actividadextraescolar\Curso.class
 com\mycompany\actividadextraescolar\ValidaDatos.class
 com\mycompany\actividadextraescolar\PerfilAcceso.class
+com\mycompany\actividadextraescolar\RepositorioDAO.class
 com\mycompany\actividadextraescolar\Solicitud.class
 com\mycompany\actividadextraescolar\Participantes.class
 com\mycompany\actividadextraescolar\MetodosFicheros.class
@@ -13,6 +14,7 @@ com\mycompany\actividadextraescolar\Grupo.class
 com\mycompany\actividadextraescolar\ActividadProgramada$Estado.class
 com\mycompany\actividadextraescolar\ActividadProgramada.class
 com\mycompany\actividadextraescolar\FotoActividad.class
+com\mycompany\actividadextraescolar\ProfesorDAO.class
 com\mycompany\actividadextraescolar\AccesoBaseDatos$AccesoBaseDatosHolder.class
 com\mycompany\actividadextraescolar\ActividadExtraescolar.class
 com\mycompany\actividadextraescolar\Estado.class
