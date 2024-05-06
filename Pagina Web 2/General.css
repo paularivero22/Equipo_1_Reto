@@ -8,9 +8,10 @@
 /* Estilos generales para el cuerpo de la pagina */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
+
+    line-height: 1.6;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -30,6 +31,7 @@ main {
 header {
     background-color:#333;
     color: #fff;
+
     padding: 20px;
 }
 
@@ -56,11 +58,12 @@ h1 {
     width: 100%;
     height: 80px;
     padding: 0% 2%;
-    background-color: #ffffff;
     margin: 0%;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: #ffffff;
 }
 
 #menuprincipal > div {
@@ -76,9 +79,10 @@ h1 {
         display: flex;
         margin-left: 10px;
         justify-content: center;
-        list-style-type: none;
         padding: 0;
         height: 100%;
+        align-items: center;
+        list-style-type: none;
     }
     
     #listamenu li {
@@ -86,15 +90,17 @@ h1 {
         list-style: none;
         align-items: center;
         height: 100%;
-        vertical-align: middle;
+        width: auto;
     }
     
     #listamenu a {
-        font: bold 18px Arial, sans-serif;
-        color: #333333;
-        text-decoration: none;
+        display: flex;
         align-items: center;
         height: 100%;
+
+        color: #333333;
+        font: bold 18px Arial, sans-serif;
+        text-decoration: none;
     }
 
     .iconosMenu {
@@ -119,19 +125,20 @@ h1 {
 }
 
 #menuprincipal a {
+    align-content: center;
+
     font: bold 18px Arial, sans-serif;
     color: #333333;
     text-decoration: none;
-    align-content: center;
 }
 
 
 /* Estilos para el pie de pagina */
 footer {
-    background-color: #333;
-    color: #fff;
     padding: 20px;
 
+    background-color: #333;
+    color: #fff;
 }
 
 .pielogo {
@@ -155,9 +162,10 @@ footer {
 }
 
 .enlace-contacto {
+    align-items: center;
+    
     color: #fff;
     text-decoration: none;
-    align-items: center;
 }
 
 .enlace-contacto img {
@@ -199,11 +207,6 @@ footer {
 /* Tamaños concretos para los iconos sociales */
 .Facebook {
     width: 30px;
-    height: 30px;
-}
-
-.YouTube {
-    width: 40px;
     height: 30px;
 }
 

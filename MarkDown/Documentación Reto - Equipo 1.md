@@ -243,7 +243,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 <span style="color:red">* </span>Se crea el campo idActividad con la relacion ActividadProgramada - FotoActividad
 
 ### 4. Script sql<a name="SQL"></a>
-[Enlace-al-script-sql]()
+[Enlace-al-script-sql](https://github.com/paularivero22/Equipo_1_Reto/tree/3799f667727a6506bd0801b6774985d31df1fc63/Base%20datos)
+
 
 ## PAGINA WEB<a name="PW"></a>
 ### 1. Estructura de la pagina<a name="ESTRUCT"></a>
