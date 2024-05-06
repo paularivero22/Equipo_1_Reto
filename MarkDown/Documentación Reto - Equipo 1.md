@@ -1,4 +1,4 @@
-# DOCUMENTACION DEL RETO - EQUIPO 1 
+# DOCUMENTACION DEL RETO - EQUIPO 1
 
 ## INDICE DE CONTENIDOS
 1. [Bases de datos](#bd)
@@ -22,10 +22,10 @@
 
 ---
 
-## BASES DE DATOS<a name="bd"></a>
-### 1. Descripcion de la base de datos<a name="desBD"></a>
+## **BASES DE DATOS**<a name="bd"></a>
+### **1. Descripcion de la base de datos**<a name="desBD"></a>
 
-### 2. Diagrama E/R<a name="ER"></a>
+### **2. Diagrama E/R**<a name="ER"></a>
 [![Diagrama-ER-Equipo-1-1.jpg](https://i.postimg.cc/5NGZbGsW/Diagrama-ER-Equipo-1-1.jpg)](https://postimg.cc/9rdxBx3L)
 
 **Profesor** <br>
@@ -128,7 +128,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 **Relacion tiene**<br>
 ...
 
-### 3. Diagrama relacional<a name="REL"></a>
+### **3. Diagrama relacional**<a name="REL"></a>
 [![Diagrama-relacional-Equipo-1-1.jpg](https://i.postimg.cc/L6vNS6Mb/Diagrama-relacional-Equipo-1-1.jpg)](https://postimg.cc/4m7zbGy6)
 
 **Tabla curso**<br>
@@ -246,13 +246,170 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 [Enlace-al-script-sql](https://github.com/paularivero22/Equipo_1_Reto/tree/3799f667727a6506bd0801b6774985d31df1fc63/Base%20datos)
 
 
-## PAGINA WEB<a name="PW"></a>
-### 1. Estructura de la pagina<a name="ESTRUCT"></a>
+## **PAGINA WEB**<a name="PW"></a>
+### **1. Estructura de la pagina**<a name="ESTRUCT"></a><br><br>
+### **1.1 Estructura comun de todas las paginas**<br>
+- ### **Body** <br>
+    <br>- **Header:** cabecera de la pagina <br><br>
+    [![Captura-de-pantalla-2024-05-06-172309.png](https://i.postimg.cc/bwS4bQG7/Captura-de-pantalla-2024-05-06-172309.png)](https://postimg.cc/NKYNv2kD)
 
-### 2. Tipos de estilo<a name="ESTILO"></a>
+    - div "contenido cabecera": contenedor con el logo de IES miguel herrero <br>
+
+    <br>- **Nav:** nav con un menú para navegar entre las paginas<br><br>
+    [![Captura-de-pantalla-2024-05-06-173750.png](https://i.postimg.cc/mDZSBs7b/Captura-de-pantalla-2024-05-06-173750.png)](https://postimg.cc/f3Fdf1HF)
+    - div: contendor para la los elementos del nav<br>
+        - ul "listamenu": los elementos del menú seran una lista ordenada, cada elemento li es un icono y una imagen <br><br>
+### **1.3 Pagina Inicio** <br>
+- ### **Body** <br>  
+    <br>- **Main:** contenido principal de la pagina<br><br>
+    [![main.png](https://i.postimg.cc/DwFx6Zgz/main.png)](https://postimg.cc/xcxGT9Br)
+    - div "ImagenContenedor": Contenedor con la imagen de la pagina, un texto y un recuadro<br>
+        - div "texto": texto "Bienvenido" encima de la imagen 
+        - div "botonFacebook": Un recuadro con el enlace al facecbook del insituto<br><br>
+
+    <br>- **Footer:** pie de pagina con enlaces de interes del instituto<br><br>
+    [![footer.png](https://i.postimg.cc/Vv2nh7nw/footer.png)](https://postimg.cc/QKkF9JfY)
+    - div "pielogo": contenedor con los enlaces de interes del footer
+        - div "seccionpie": seccion 1 de enlaces, contiene la ubicacion y los enlaces de contacto (telefono y email)<br>
+        Cada enlace contiene un icono y un enlace
+        - div "seccionpie": seccion 2 de enlaces, contiene las redes sociales (facebook e instagram)
+        Cada enlace es un elemento de una lista ordenada y contiene un icono y un enlace
+        - p: Texto de compyright al final del footer
+
+### **1.3 Pagina Actividades** <br>
+- ### **Body** <br>
+    <br>- **Main:** contenido principal de la pagina<br><br>
+     - **TextoActividades**<br><br>
+     [![Texto-Actividad.png](https://i.postimg.cc/28LjCZ09/Texto-Actividad.png)](https://postimg.cc/RN9xRN5w)
+        - div "TextoActividades": Texto con etiquetas h1 que sirve de titulo
+        <br><br>
+
+     - **Viajes**<br><br>
+     [![Viajes.png](https://i.postimg.cc/4d7KjNFr/Viajes.png)](https://postimg.cc/YG7qWk73)
+        - div "Viajes": Texto con etiquetas p que se utiliza a modo de titulo del apartado de Viajes Extraescolares
+        <br><br>
+
+
+     - **ViajesMain**<br><br>
+     [![Viajes-Main.png](https://i.postimg.cc/L875MMKf/Viajes-Main.png)](https://postimg.cc/fVcDxpbT)
+        - div "ViajesMain": div donde mediante el uso de la etiqueta table,thead y tr, se crea una tabla donde aparece la información de los Viajes Extraescolares
+        <br><br>
+    
+     - **Clases**<br><br>
+     [![Clases.png](https://i.postimg.cc/d1tnzfbb/Clases.png)](https://postimg.cc/B8kxFmQp)
+        - div "Clases": Texto con etiquetas p que se utiliza a modo de titulo del apartado de Clases Extraescolares
+        <br><br>
+    
+     - **ClasesMain**<br><br>
+     [![Clases-Main.png](https://i.postimg.cc/BnhHyvCC/Clases-Main.png)](https://postimg.cc/LJ1Jg2wq)
+        - div "ClasesMain": div donde mediante el uso de la etiqueta table,thead,tbody,tr y td, se crea una tabla donde aparece la información de las Clases Extraescolares
+        <br><br>
+
+### **2. Tipos de estilo**<a name="ESTILO"></a><br><br>
+### **1.1 CSS común a todas las paginas** <br>
+- ### **Toda la pagina**
+[![todalapagina.png](https://i.postimg.cc/pXZLyHD3/todalapagina.png)](https://postimg.cc/w71pbn4k)<br>
+- Margin y Padding: No tendrá margen ni margen interno
+- 
+- ### **Body**
+[![body.png](https://i.postimg.cc/rmPYfKX7/body.png)](https://postimg.cc/R6wRFC0T)<br>
+- font-family: La fuente de la letra, si el navegador no puede usar ese tipo de letra usará una secundaría
+- background-color: color del fondo
+- color: color de la letra
+- line-height: 
+- Margin y padding: no tendra margen ni margen interno
+- width: el ancho del body será del 100%
+
+- ### **Main**
+[![maincss.png](https://i.postimg.cc/t4Hsfk9N/maincss.png)](https://postimg.cc/w70xRhy1)
+- width: ancho del 100%
+- margin-top: margen por encima del body, para que se separe con el menú
+- padding: un margen interno de 20 pixeles, para que el contenido no salga pegado a los bordes de la pagina
+- align-content: el contenido (texto, imagenes etc...) estará alineado al centro
+- background-color: color del fondo
+
+- ### **Header**
+[![headercss.png](https://i.postimg.cc/qRzBgbsn/headercss.png)](https://postimg.cc/ygCCbTrY)<br>
+
+- ### **Contenido-cabecera (div)**
+[![contenidocabecera-css.png](https://i.postimg.cc/Cxkqx1hY/contenidocabecera-css.png)](https://postimg.cc/Wdp39sqf)
+- max-width: anchura maxima del contenido
+- justify-content: el contenido estará justificado (o alineado) al centro
+- height: altura del contenedor
+
+- ### **LogoImagen (img)**
+[![logoimagen-css.png](https://i.postimg.cc/KcJZ2ytz/logoimagen-css.png)](https://postimg.cc/yW3qmtQ4)
+- display:
+- margin-left: margen de 10px por la izquierda
+- width: el ancho de la imagen será de 286px
+- height: la altura de la imagen será de 70px
+- vertical-align: la imagen se alineará verticalmente al medio dentro del contenedor
+
+- ### **H1**
+[![h1-css.png](https://i.postimg.cc/xdPzV1YC/h1-css.png)](https://postimg.cc/yJkdFBD4)
+- font-size: todos los tamaños de los titulos h1 de la pagina serán de 1.5em
+
+- ### **menuprincipal (nav)**
+[![menuprincipal-css.png](https://i.postimg.cc/DwNX2MbV/menuprincipal-css.png)](https://postimg.cc/gxvJs4D4)
+- width y height: anchura y altura del menú
+- padding:
+- margin: el contenedor no tendrá margen
+- display:
+- justify-content: el contenido del nav se alineará verticalmente al centro
+- align-items: el contenido del nav se alineará al centro
+- background-color: color del fondo
+
+- ### **menuprincipal > div (div)**
+[![menuprincipaldiv-css-png.png](https://i.postimg.cc/Pq4NCVCr/menuprincipaldiv-css-png.png)](https://postimg.cc/VSJzTR93)
+- width y height: anchura y altura del contenedor
+- vertical-align: alineado verticalmente al medio
+- display: 
+- justify-content: 
+- align-items:
+
+- ### **listamenu (ul)**
+[![listamenu.png](https://i.postimg.cc/W1fq8H2W/listamenu.png)](https://postimg.cc/Xrdv7xBd)
+- display: el contenedor
+- margin-left: margen por la izquierda, para separar cada elemento
+- justify-content:
+- padding: no tendra margen interno
+- height: altura del 100%
+- align-items:
+- list-style-type: el estilo del marcador de la lista 
+
+- ### **listamenu li**
+[![listamenuli.png](https://i.postimg.cc/qBPNN31Y/listamenuli.png)](https://postimg.cc/Z0LbgCtF)
+- padding: 
+- list-style-type: el estilo del marcador de la lista 
+- align-items:
+- height: alto del elemento de la lista
+- width: el ancho de los elementos será el automatico para que se cambie segun la proporcion de la pantalla
+
+- ### **listamenu a**
+[![listamenua.png](https://i.postimg.cc/fTgMr3PC/listamenua.png)](https://postimg.cc/7f0vCLwJ)
+- display-flex:
+- align-items:
+- height: alto del elemento de la lista
+- color: color del texto de los enlaces
+- font: será negrita, tamaño de 18px y fuente arial o sans-serif
+- text-decoration: estilo del enlace (subrayado, nada etc...)
+
+- ### **iconosmenu (img)**
+[![iconosmenu.png](https://i.postimg.cc/rphmMhZ6/iconosmenu.png)](https://postimg.cc/NyHYxxwb)
+- margin: margen de 10px por todos los lados de la imagen
+- align-items:
+- width y height: anchura y altura de la imagen
+
+- ### **listamenu li:hover (hover)**
+Estilo para los elementos de la lista cuando se pase el raton por encima<br>
+[![listamenuhover.png](https://i.postimg.cc/FRsLxd8v/listamenuhover.png)](https://postimg.cc/qtSqJRpD)<br>
+- background-color: color del fondo 
+- transition: animación, en este caso el color del fondo aparecerá lentamente durante 0.6 segundos
+
+
+
 
 ### 3. Contenido de la web<a name="CONT"></a>
-
 
 ## Java<a name="JV"></a>
 ### 1. Diagrama de clases<a name="DIAG"></a>
