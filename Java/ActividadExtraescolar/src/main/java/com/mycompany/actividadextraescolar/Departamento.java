@@ -39,7 +39,21 @@ public class Departamento {
     public int getIdJefe() {
         return idJefe;
     }
+    
+    //Metodos Set
+    public void setCodigoDepartamento(String codigoDepartamento) {
+        this.codigoDepartamento = codigoDepartamento;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setIdJefe(int idJefe) {
+        this.idJefe = idJefe;
+    }
+    
+    
 //Mostrar datos
     @Override
     public String toString() {

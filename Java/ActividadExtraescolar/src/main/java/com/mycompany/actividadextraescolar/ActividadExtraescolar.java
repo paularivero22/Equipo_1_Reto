@@ -12,42 +12,41 @@ import java.util.List;
  */
 public class ActividadExtraescolar {
     public static void main(String[] args) {
-        //Pruebo los metodos ProfesorDAO
-        System.out.println("---LISTAR TODOS LOS PROFESORES---");
-        ProfesorDAO metodosProfesor=new ProfesorDAO();
+        //Pruebo los metodos DepartamentoDAO
+        System.out.println("---LISTAR TODOS LOS DEPARTAMENTOS---");
+        DepartamentoDAO metodosDepartamento=new DepartamentoDAO();
         //Listo todos los profesores
-        metodosProfesor.mostrarTodosProfesores();
-        System.out.println("");
-        
-        //Buscar un profesor por su dni
-        System.out.println("---BUSCAR POR DNI");
-        Profesor profeEncontrado=metodosProfesor.buscarPor("17394999M");
-        System.out.println(profeEncontrado.toString());
+        metodosDepartamento.mostrarTodosDepartamentos();
         System.out.println("");
       
-        //Insertar un nuevo profesor
-        System.out.println("---INSERTAR NUEVO PROFESOR---");
-        Profesor profeNuevo=new Profesor(16,7,"Juan","Gómez Pelayo","12345678Z","lucasgp@educantabria.es",true,PerfilAcceso.EQUIPO_DIRECTIVO,Profesor.generarPassword(7));
-        metodosProfesor.insertar(profeNuevo);
-        Profesor profeEncontrado1=metodosProfesor.buscarPor("12345678Z");
-        System.out.println(profeEncontrado1.toString());
-        System.out.println("");
-        
-        //Actualizar un profesor
-        System.out.println("---ACTUALIZAR DNI---");
-        metodosProfesor.actualizar("12345678Z");
-        Profesor profeEncontrado2=metodosProfesor.buscarPor("12345678Z");
-        System.out.println(profeEncontrado2.toString());
+        //Buscar un departamento por su codDepartamento
+        System.out.println("---BUSCAR POR CODDEPARTAMENTO");
+        Departamento departamentoEncontrado=metodosDepartamento.buscarPor("AG");
+        System.out.println(departamentoEncontrado.toString());
         System.out.println("");
       
-        //Borrar un profesor
-        System.out.println("---ELIMINAR PROFESOR---");
-        metodosProfesor.eliminarPor("12345678Z");
-        Profesor profeEncontrado3=metodosProfesor.buscarPor("123456789Z");
-        if(profeEncontrado==null){
-            System.out.println("No existe el profesor con dni "+profeEncontrado.getDNI());
+        //Insertar un nuevo departamento
+        System.out.println("---INSERTAR NUEVO DEPARTAMENTO---");
+        Departamento departamentoNuevo=new Departamento(20,"ALE","Alemán",35);
+        metodosDepartamento.insertar(departamentoNuevo);
+        Departamento departamentoEncontrado1=metodosDepartamento.buscarPor("ALE");
+        System.out.println(departamentoEncontrado1.toString());
+        System.out.println("");
+        
+        //Actualizar un departamento
+        System.out.println("---ACTUALIZAR DEPARTAMENTO---");
+        metodosDepartamento.actualizar("ALE");
+        Departamento departamentoEncontrado2=metodosDepartamento.buscarPor("ALE");
+        System.out.println(departamentoEncontrado2.toString());
+        System.out.println("");
+
+        //Borrar un departamento
+        System.out.println("---ELIMINAR DEPARTAMENTO---");
+        metodosDepartamento.eliminarPor("ALE");
+        Departamento departamentoEncontrado3=metodosDepartamento.buscarPor("ALE");
+        if(departamentoEncontrado3==null){
+            System.out.println("No existe el departamento "+departamentoEncontrado2.getCodigoDepartamento());
         }
-       
        
        
     }
