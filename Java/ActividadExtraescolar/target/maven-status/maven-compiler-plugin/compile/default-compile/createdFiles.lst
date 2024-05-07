@@ -3,6 +3,10 @@ com\mycompany\actividadextraescolar\Participantes.class
 com\mycompany\actividadextraescolar\MetodosFicheros.class
 com\mycompany\actividadextraescolar\Etapa.class
 com\mycompany\actividadextraescolar\ActividadProgramada$Estado.class
+
+com\mycompany\actividadextraescolar\DepartamentoDAO.class
+
+
 com\mycompany\actividadextraescolar\ActividadExtraescolar.class
 com\mycompany\actividadextraescolar\Estado.class
 Login.class
@@ -14,7 +18,10 @@ com\mycompany\actividadextraescolar\AccesoBaseDatos.class
 com\mycompany\actividadextraescolar\MedioTransporte.class
 com\mycompany\actividadextraescolar\Tipo.class
 com\mycompany\actividadextraescolar\Departamento.class
+
+
 com\mycompany\actividadextraescolar\CursosDAO.class
+
 com\mycompany\actividadextraescolar\Grupo.class
 com\mycompany\actividadextraescolar\ActividadProgramada.class
 com\mycompany\actividadextraescolar\FotoActividad.class
