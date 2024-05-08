@@ -4,7 +4,8 @@
  */
 package com.mycompany.actividadextraescolar;
 
-
+import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +16,10 @@ public class Swing extends javax.swing.JFrame {
     /**
      * Creates new form Swing
      */
+     private Connection getConnection() {
+        return AccesoBaseDatos.getInstance().getConn();
+    }
+
     public Swing() {
         initComponents();
     }
@@ -79,6 +84,9 @@ public class Swing extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
+        jButton24 = new javax.swing.JButton();
+        jLabel60 = new javax.swing.JLabel();
+        jTextField37 = new javax.swing.JTextField();
         EliminarCurso = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -382,6 +390,12 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel17.setText("Descripción:");
         CrearCurso.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 70, -1));
+
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
         CrearCurso.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 100, -1));
 
         jLabel18.setText("Etapa:");
@@ -390,6 +404,24 @@ public class Swing extends javax.swing.JFrame {
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO", "BACHILLERATO", "FPGS", "FPGM", "FPB", "FPCE" }));
         CrearCurso.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
         CrearCurso.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 420, 50));
+
+        jButton24.setText("Crear");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+        CrearCurso.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
+
+        jLabel60.setText("CodCurso");
+        CrearCurso.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+
+        jTextField37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField37ActionPerformed(evt);
+            }
+        });
+        CrearCurso.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 100, -1));
 
         getContentPane().add(CrearCurso, "card7");
 
@@ -773,6 +805,11 @@ public class Swing extends javax.swing.JFrame {
         Cursos.setText("Cursos");
 
         CrearCursoMenu.setText("Crear Curso");
+        CrearCursoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearCursoMenuActionPerformed(evt);
+            }
+        });
         Cursos.add(CrearCursoMenu);
 
         EliminarCursoMenu.setText("Eliminar Curso");
@@ -867,6 +904,32 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        String descripcion = jTextField9.getText();
+        String codCurso = jTextField37.getText();
+        Etapa etapa = (Etapa) Etapa.valueOf(jComboBox4.getSelectedItem().toString());
+        JOptionPane nombre = new JOptionPane();
+        JOptionPane.showMessageDialog(null, etapa, "mensaje", JOptionPane.PLAIN_MESSAGE);
+        CursosDAO cursos = new CursosDAO();
+        Curso curso1 = new Curso(codCurso, descripcion, etapa, true);
+
+        cursos.insertar(curso1);
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jTextField37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField37ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField37ActionPerformed
+
+    private void CrearCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCursoMenuActionPerformed
+        // TODO add your handling code here:
+        CrearCurso.setVisible(rootPaneCheckingEnabled);
+        CambiarContraseña.setVisible(false);
+    }//GEN-LAST:event_CrearCursoMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -901,7 +964,7 @@ public class Swing extends javax.swing.JFrame {
             }
         });
     }
-     
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AprobarDenegarSolicitudes;
@@ -959,6 +1022,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1029,6 +1093,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1084,6 +1149,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField34;
     private javax.swing.JTextField jTextField35;
     private javax.swing.JTextField jTextField36;
+    private javax.swing.JTextField jTextField37;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;

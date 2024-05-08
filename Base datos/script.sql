@@ -62,7 +62,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`curso`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`curso` (
-  `idcurso` INT NOT NULL,
+  `idcurso` INT NOT NULL auto_increment,
   `codcurso` VARCHAR(10) NOT NULL,
   `descripcion` VARCHAR(60) NOT NULL,
   `etapa` ENUM('ESO','BACHILLERATO','FPGS','FPGM','FPB','FPCE') NOT NULL,

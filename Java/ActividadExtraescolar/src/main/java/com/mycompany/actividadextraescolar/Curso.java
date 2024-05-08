@@ -16,14 +16,24 @@ public class Curso {
     public boolean activo;
     
     //Constructor por parámetros
-
-    public Curso(int idCurso, String codCurso, String descripcion, Etapa etapa, boolean activo) {
+    //Quito parametro id curso
+    public Curso(int idCurso,String codCurso, String descripcion, Etapa etapa, boolean activo) {
         this.idCurso = idCurso;
         this.codCurso = codCurso;
         this.descripcion = descripcion;
         this.etapa = etapa;
         this.activo = activo;
     }
+
+    public Curso(String codCurso, String descripcion, Etapa etapa, boolean activo) {
+        this.codCurso = codCurso;
+        this.descripcion = descripcion;
+        this.etapa = etapa;
+        this.activo = activo;
+    }
+
+  
+    
 
     
     //Metodos get
