@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -24,28 +23,12 @@ public class Swing extends javax.swing.JFrame {
     /**
      * Creates new form Swing
      */
-<<<<<<< HEAD
-    private SolicitudesDAO solicitud=new SolicitudesDAO();
-    private DepartamentoDAO metodosdepartamento=new DepartamentoDAO();
-    
      private Connection getConnection() {
-=======
-    private Connection getConnection() {
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         return AccesoBaseDatos.getInstance().getConn();
     }
 
     public Swing() {
         initComponents();
-        cargarItemsDepartamento();
-    }
-    private void cargarItemsDepartamento(){
-       String solicitudes="";
-       List<Departamento>lista=metodosdepartamento.listar();
-       for(Departamento d:lista){
-           jComboBox8.addItem(d.getNombre());
-       }
-       
     }
 
     /**
@@ -57,8 +40,6 @@ public class Swing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane19 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         Login = new javax.swing.JPanel();
         txtEmail = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
@@ -67,7 +48,6 @@ public class Swing extends javax.swing.JFrame {
         botonLogin = new javax.swing.JButton();
         restablecerBoton = new javax.swing.JButton();
         jLabel62 = new javax.swing.JLabel();
-        jLabel63 = new javax.swing.JLabel();
         CambiarContraseña = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -164,26 +144,22 @@ public class Swing extends javax.swing.JFrame {
         jTextField17 = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         ModificarDepartamento = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
+        jTextField18 = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jComboBox5 = new javax.swing.JComboBox<>();
         jTextField19 = new javax.swing.JTextField();
         jButton14 = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        jComboBox8 = new javax.swing.JComboBox<>();
         DeshabilitarDepartamento = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jTextField20 = new javax.swing.JTextField();
         jButton15 = new javax.swing.JButton();
         jScrollPane13 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton16 = new javax.swing.JButton();
         CrearSolicitud = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
@@ -192,6 +168,7 @@ public class Swing extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         jComboBox6 = new javax.swing.JComboBox<>();
         jLabel38 = new javax.swing.JLabel();
+        jTextField22 = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         jTextField23 = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
@@ -202,12 +179,13 @@ public class Swing extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jTextField28 = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        jRadioButton2 = new javax.swing.JRadioButton();
         jButton17 = new javax.swing.JButton();
+        jLabel61 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
         jTextField26 = new javax.swing.JTextField();
         jTextField27 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jComboBox8 = new javax.swing.JComboBox<>();
         ConsultarSolicitudes = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -264,18 +242,11 @@ public class Swing extends javax.swing.JFrame {
         aprobarDenegarSolicitudMenu = new javax.swing.JMenuItem();
         fasedepreparacionMenu = new javax.swing.JMenuItem();
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane19.setViewportView(jTextArea2);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        Login.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtEmail.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         txtEmail.setText("Email");
 
         txtemail.addActionListener(new java.awt.event.ActionListener() {
@@ -284,14 +255,10 @@ public class Swing extends javax.swing.JFrame {
             }
         });
 
-        txtcontrasen.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         txtcontrasen.setText("Contraseña");
 
         txtcontrasenia.setText("jPasswordField2");
 
-        botonLogin.setBackground(new java.awt.Color(0, 0, 0));
-        botonLogin.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
-        botonLogin.setForeground(new java.awt.Color(255, 255, 255));
         botonLogin.setText("Iniciar sesión");
         botonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,9 +266,6 @@ public class Swing extends javax.swing.JFrame {
             }
         });
 
-        restablecerBoton.setBackground(new java.awt.Color(0, 0, 0));
-        restablecerBoton.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        restablecerBoton.setForeground(new java.awt.Color(255, 255, 255));
         restablecerBoton.setText("Restablecer Contraseña");
         restablecerBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,11 +273,8 @@ public class Swing extends javax.swing.JFrame {
             }
         });
 
-        jLabel62.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
+        jLabel62.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel62.setText("INICIAR SESIÓN");
-
-        jLabel63.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 12)); // NOI18N
-        jLabel63.setText("¿Olvidaste tu contraseña?");
 
         javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
         Login.setLayout(LoginLayout);
@@ -322,99 +283,72 @@ public class Swing extends javax.swing.JFrame {
             .addGroup(LoginLayout.createSequentialGroup()
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(325, 325, 325)
-                        .addComponent(restablecerBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(221, 221, 221)
+                        .addComponent(botonLogin))
                     .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(362, 362, 362)
-                        .addComponent(jLabel62)))
-                .addContainerGap(307, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail)
-                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcontrasen)
-                            .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(319, 319, 319))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel63)
-                            .addComponent(botonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(344, 344, 344))))
+                        .addGap(195, 195, 195)
+                        .addComponent(restablecerBoton))
+                    .addGroup(LoginLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel62)
+                            .addGroup(LoginLayout.createSequentialGroup()
+                                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtcontrasen))
+                                .addGap(25, 25, 25)
+                                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtcontrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                    .addComponent(txtemail))))))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         LoginLayout.setVerticalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel62)
-                .addGap(18, 18, 18)
-                .addComponent(txtEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(txtcontrasen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
+                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail)
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtcontrasen)
+                    .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
                 .addComponent(botonLogin)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel63)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(27, 27, 27)
                 .addComponent(restablecerBoton)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         getContentPane().add(Login, "card19");
 
-        CambiarContraseña.setBackground(new java.awt.Color(255, 255, 255));
         CambiarContraseña.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setLabelFor(jLabel1);
         jLabel1.setText("REESTABLECER CONTRASEÑA");
-        CambiarContraseña.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 330, 33));
+        CambiarContraseña.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 6, 237, 33));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         jLabel2.setText("Correo Profesor:");
-        CambiarContraseña.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 140, 20));
+        CambiarContraseña.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 83, 99, -1));
 
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         jLabel3.setText("Nueva Contraseña:");
-        CambiarContraseña.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, 20));
+        CambiarContraseña.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 148, -1, -1));
+        CambiarContraseña.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 180, -1));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        CambiarContraseña.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 180, -1));
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setLabel("Cambiar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        CambiarContraseña.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
+        CambiarContraseña.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 228, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setLabel("Volver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        CambiarContraseña.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
-        CambiarContraseña.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 180, -1));
+        CambiarContraseña.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 228, -1, -1));
+        CambiarContraseña.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 180, -1));
 
         getContentPane().add(CambiarContraseña, "card2");
 
@@ -489,11 +423,6 @@ public class Swing extends javax.swing.JFrame {
         CrearProfesor.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 520, 50));
 
         Crear.setText("Crear");
-        Crear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearActionPerformed(evt);
-            }
-        });
         CrearProfesor.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
 
         getContentPane().add(CrearProfesor, "card4");
@@ -715,22 +644,10 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel28.setText("Nombre:");
         CrearDepartamento.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 70, 59, -1));
-
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
-            }
-        });
         CrearDepartamento.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 67, 84, -1));
 
         jLabel29.setText("Código de Departamento:");
         CrearDepartamento.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 70, 149, -1));
-
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
-            }
-        });
         CrearDepartamento.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 67, 110, -1));
 
         jLabel30.setText("Correo de Jefe de Departamento:");
@@ -738,27 +655,8 @@ public class Swing extends javax.swing.JFrame {
         CrearDepartamento.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 121, 161, -1));
 
         jButton12.setText("Crear");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
         CrearDepartamento.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 121, -1, -1));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane10.setViewportView(jTable2);
-
-        CrearDepartamento.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 522, 61));
+        CrearDepartamento.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 162, 522, 61));
 
         getContentPane().add(CrearDepartamento, "card11");
 
@@ -769,64 +667,19 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel32.setText("Nombre de Departamento:");
         ModificarDepartamento.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 67, -1, -1));
+        ModificarDepartamento.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 64, 115, -1));
 
         jButton13.setText("Buscar");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-        ModificarDepartamento.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane11.setViewportView(jTable3);
-
-        ModificarDepartamento.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 528, 35));
+        ModificarDepartamento.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 64, -1, -1));
+        ModificarDepartamento.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 93, 528, 35));
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Codigo", "Nombre Jefe" }));
-        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox5ActionPerformed(evt);
-            }
-        });
-        ModificarDepartamento.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
-        ModificarDepartamento.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 123, -1));
+        ModificarDepartamento.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 146, -1, -1));
+        ModificarDepartamento.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 146, 123, -1));
 
         jButton14.setText("Cambiar");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
-        ModificarDepartamento.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
-
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane12.setViewportView(jTable4);
-
-        ModificarDepartamento.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 514, 42));
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
-        ModificarDepartamento.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 210, -1));
+        ModificarDepartamento.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 146, -1, -1));
+        ModificarDepartamento.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 187, 514, 42));
 
         getContentPane().add(ModificarDepartamento, "card12");
 
@@ -840,35 +693,11 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarDepartamento.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 140, -1));
 
         jButton15.setText("Buscar");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
         DeshabilitarDepartamento.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane13.setViewportView(jTable1);
-
-        DeshabilitarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 500, 50));
+        DeshabilitarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 500, 50));
 
         jButton16.setText("Deshabilitar");
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
-            }
-        });
-        DeshabilitarDepartamento.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
+        DeshabilitarDepartamento.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
         getContentPane().add(DeshabilitarDepartamento, "card13");
 
@@ -889,15 +718,10 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel38.setText("Departamento:");
         CrearSolicitud.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
+        CrearSolicitud.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 114, -1));
 
         jLabel39.setText("Hora Inicio:");
         CrearSolicitud.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
-
-        jTextField23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField23ActionPerformed(evt);
-            }
-        });
         CrearSolicitud.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 77, -1));
 
         jLabel40.setText("Hora Final:");
@@ -918,23 +742,23 @@ public class Swing extends javax.swing.JFrame {
         CrearSolicitud.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
         CrearSolicitud.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 77, -1));
 
+        jLabel46.setText("Alojamiento:");
+        CrearSolicitud.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        CrearSolicitud.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 98, -1));
+
         jButton17.setText("Crear");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
             }
         });
-        CrearSolicitud.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
+        CrearSolicitud.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
+
+        jLabel61.setText("Prevista:");
+        CrearSolicitud.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
+        CrearSolicitud.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
         CrearSolicitud.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 100, -1));
         CrearSolicitud.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 120, -1));
-
-        jCheckBox1.setText("Alojamiento");
-        CrearSolicitud.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
-
-        jCheckBox2.setText("Prevista");
-        CrearSolicitud.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
-
-        CrearSolicitud.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
 
         getContentPane().add(CrearSolicitud, "card14");
 
@@ -1216,7 +1040,6 @@ public class Swing extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1279,7 +1102,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void CrearCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCursoMenuActionPerformed
         // TODO add your handling code here:
-        //Asigno que sea visible cuando clickemos encima del menu
+         //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1303,7 +1126,6 @@ public class Swing extends javax.swing.JFrame {
     private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
         // TODO add your handling code here:
         //Asigno que sea visible cuando clickemos encima del menu
-        Login.setVisible(false);
         CambiarContraseña.setVisible(rootPaneCheckingEnabled);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1321,18 +1143,13 @@ public class Swing extends javax.swing.JFrame {
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(false);
-
-
+        
+        
     }//GEN-LAST:event_ContraseñaActionPerformed
 
     private void crearProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfesorMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
          //Asigno que sea visible cuando clickemos encima del menu
-        Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(rootPaneCheckingEnabled);
@@ -1354,12 +1171,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void modificarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProfesorMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
          //Asigno que sea visible cuando clickemos encima del menu
-         Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1381,12 +1193,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void deshabilitarEliminarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarEliminarProfesorMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1408,12 +1215,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void EliminarCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCursoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1435,12 +1237,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearGrupoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1462,12 +1259,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void modificarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrupoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1489,12 +1281,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void deshabilitarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarGrupoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1516,12 +1303,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1543,12 +1325,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void modificarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1570,12 +1347,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void deshabilitarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1597,12 +1369,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearSolicitudMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1624,12 +1391,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void consutarSolicitudesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consutarSolicitudesMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1651,12 +1413,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void aprobarDenegarSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aprobarDenegarSolicitudMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-         Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1678,12 +1435,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void fasedepreparacionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fasedepreparacionMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
            //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
-        //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1705,49 +1457,24 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
         SolicitudesDAO metodosSolicitudes=new SolicitudesDAO();
         DepartamentoDAO metodosDepartamento=new DepartamentoDAO();
         ProfesorDAO metodosProfesor=new ProfesorDAO();
         String titulo=jTextField21.getText();
         Tipo tipo=Tipo.valueOf(jComboBox6.getSelectedItem().toString());
-        int departamento=metodosdepartamento.buscarPor(jComboBox8.getSelectedItem().toString()).getIdDepartamento();
+        int departamento=metodosDepartamento.buscarPor(jTextField22.getText()).getIdDepartamento();
         LocalTime horaInicio=LocalTime.parse(jTextField23.getText());
         LocalTime horaFin=LocalTime.parse(jTextField24.getText());
         int profesor=metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
         LocalDate fechaInicio=LocalDate.parse(jTextField26.getText());
         LocalDate fechaFin=LocalDate.parse(jTextField27.getText());
         int participantes=Integer.parseInt(jTextField28.getText());
-        boolean prevista=jCheckBox2.isSelected();
-        boolean medioTransporte=false;
-        boolean alojamiento=jCheckBox1.isSelected();
-        String comentAlojamiento="";
-        Estado estado=Estado.SOLICITADA;
-        
-        Solicitud s=new Solicitud(horaInicio,horaFin,"",prevista,departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFin,participantes,"",estado);
-        metodosSolicitudes.insertar(s);
         
         
        
         
-=======
-        SolicitudesDAO metodosSolicitudes = new SolicitudesDAO();
-        DepartamentoDAO metodosDepartamento = new DepartamentoDAO();
-        ProfesorDAO metodosProfesor = new ProfesorDAO();
-        String titulo = jTextField21.getText();
-        Tipo tipo = Tipo.valueOf(jComboBox6.getSelectedItem().toString());
-        int departamento = metodosDepartamento.buscarPor(jTextField22.getText()).getIdDepartamento();
-        LocalTime horaInicio = LocalTime.parse(jTextField23.getText());
-        LocalTime horaFin = LocalTime.parse(jTextField24.getText());
-        int profesor = metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
-        LocalDate fechaInicio = LocalDate.parse(jTextField26.getText());
-        LocalDate fechaFin = LocalDate.parse(jTextField27.getText());
-        int participantes = Integer.parseInt(jTextField28.getText());
-
-
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
     }//GEN-LAST:event_jButton17ActionPerformed
-
+=======
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1ComponentAdded
@@ -1757,102 +1484,26 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_txtemailActionPerformed
 
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
-          
+        String username = txtemail.getText();
+        String password = new String(txtcontrasenia.getPassword());
 
-//        String username = txtemail.getText();
-//        String password = new String(txtcontrasenia.getPassword());
-//
-//        // Aquí iría la lógica para verificar el usuario y contraseña
-//        // Por simplicidad, aquí simplemente compararemos con valores fijos
-//        if (username.equals("usuario") && password.equals("contraseña")) {
-//            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
-//            // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
-//            // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
-//            Swing login = new Swing();
-//            login.setVisible(true);
-//            dispose(); // Cierra la ventana de inicio de sesión
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-
+    // Aquí iría la lógica para verificar el usuario y contraseña
+    // Por simplicidad, aquí simplemente compararemos con valores fijos
+    if (username.equals("usuario") && password.equals("contraseña")) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
+        // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
+        // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
+        Swing login = new Swing();
+        login.setVisible(true);
+        dispose(); // Cierra la ventana de inicio de sesión
+    } else {
+        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.","Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonLoginActionPerformed
 
     private void restablecerBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerBotonActionPerformed
         // TODO add your handling code here:
-        Login.setVisible(false);
-        CambiarContraseña.setVisible(true);
     }//GEN-LAST:event_restablecerBotonActionPerformed
-
-    private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField23ActionPerformed
-
-    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CrearActionPerformed
-
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String nombre = jTextField15.getText();
-        String codDepartamento = jTextField16.getText();
-        String correo = jTextField17.getText();
-        Departamento departamento = new Departamento(codDepartamento,nombre,6);
-        dep.insertar(departamento); 
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
-
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String nombre = jTextField20.getText();
-        Departamento departamentoEncontrado = dep.buscarPor(nombre);
-        System.out.println(departamentoEncontrado.toString());
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String nombre = jTextField20.getText();
-        dep.eliminarPor(nombre);
-    }//GEN-LAST:event_jButton16ActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String nombre = jComboBox8.getSelectedItem().toString();
-        dep.buscarPor(nombre);
-    }//GEN-LAST:event_jButton13ActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String cambio = jTextField19.getText();
-        
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox5ActionPerformed
-
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Login.setVisible(true);
-        CambiarContraseña.setVisible(false);
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CrearActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
 
     /**
@@ -1957,8 +1608,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -1966,7 +1615,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2007,6 +1655,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -2023,21 +1672,18 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
-<<<<<<< HEAD
-    private javax.swing.JLabel jLabel62;
-=======
+
     private javax.swing.JLabel jLabel61;
+
     private javax.swing.JLabel jLabel62;
 
-
-    private javax.swing.JLabel jLabel63;
-
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -2049,7 +1695,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
-    private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2058,14 +1703,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-
-    private javax.swing.JTextArea jTextArea2;
-
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -2075,10 +1712,12 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
