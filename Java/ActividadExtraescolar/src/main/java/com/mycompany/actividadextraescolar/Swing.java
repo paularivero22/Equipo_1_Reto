@@ -12,6 +12,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -39,6 +40,14 @@ public class Swing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Login = new javax.swing.JPanel();
+        txtEmail = new javax.swing.JLabel();
+        txtemail = new javax.swing.JTextField();
+        txtcontrasen = new javax.swing.JLabel();
+        txtcontrasenia = new javax.swing.JPasswordField();
+        botonLogin = new javax.swing.JButton();
+        restablecerBoton = new javax.swing.JButton();
+        jLabel62 = new javax.swing.JLabel();
         CambiarContraseña = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -237,6 +246,83 @@ public class Swing extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         getContentPane().setLayout(new java.awt.CardLayout());
+
+        txtEmail.setText("Email");
+
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtemailActionPerformed(evt);
+            }
+        });
+
+        txtcontrasen.setText("Contraseña");
+
+        txtcontrasenia.setText("jPasswordField2");
+
+        botonLogin.setText("Iniciar sesión");
+        botonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLoginActionPerformed(evt);
+            }
+        });
+
+        restablecerBoton.setText("Restablecer Contraseña");
+        restablecerBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restablecerBotonActionPerformed(evt);
+            }
+        });
+
+        jLabel62.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel62.setText("INICIAR SESIÓN");
+
+        javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
+        Login.setLayout(LoginLayout);
+        LoginLayout.setHorizontalGroup(
+            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginLayout.createSequentialGroup()
+                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(LoginLayout.createSequentialGroup()
+                        .addGap(221, 221, 221)
+                        .addComponent(botonLogin))
+                    .addGroup(LoginLayout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(restablecerBoton))
+                    .addGroup(LoginLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel62)
+                            .addGroup(LoginLayout.createSequentialGroup()
+                                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtcontrasen))
+                                .addGap(25, 25, 25)
+                                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtcontrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                    .addComponent(txtemail))))))
+                .addContainerGap(249, Short.MAX_VALUE))
+        );
+        LoginLayout.setVerticalGroup(
+            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel62)
+                .addGap(29, 29, 29)
+                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail)
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtcontrasen)
+                    .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(botonLogin)
+                .addGap(27, 27, 27)
+                .addComponent(restablecerBoton)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(Login, "card19");
 
         CambiarContraseña.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -797,6 +883,12 @@ public class Swing extends javax.swing.JFrame {
 
         getContentPane().add(FasePreparacion, "card17");
 
+        jMenuBar1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jMenuBar1ComponentAdded(evt);
+            }
+        });
+
         Contraseña.setText("Contraseña");
         Contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1029,6 +1121,7 @@ public class Swing extends javax.swing.JFrame {
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(false);
     }//GEN-LAST:event_CrearCursoMenuActionPerformed
+
 
     private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
         // TODO add your handling code here:
@@ -1381,6 +1474,37 @@ public class Swing extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jButton17ActionPerformed
+=======
+    private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuBar1ComponentAdded
+
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
+
+    private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
+        String username = txtemail.getText();
+        String password = new String(txtcontrasenia.getPassword());
+
+    // Aquí iría la lógica para verificar el usuario y contraseña
+    // Por simplicidad, aquí simplemente compararemos con valores fijos
+    if (username.equals("usuario") && password.equals("contraseña")) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
+        // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
+        // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
+        Swing login = new Swing();
+        login.setVisible(true);
+        dispose(); // Cierra la ventana de inicio de sesión
+    } else {
+        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.","Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botonLoginActionPerformed
+
+    private void restablecerBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_restablecerBotonActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -1440,6 +1564,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JPanel EliminarDeshabilitarProfesor;
     private javax.swing.JPanel FasePreparacion;
     private javax.swing.JMenu Grupo;
+    private javax.swing.JPanel Login;
     private javax.swing.JPanel MedioTransporte;
     private javax.swing.JPanel MenuInicio;
     private javax.swing.JButton Modificar;
@@ -1449,6 +1574,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JMenu Profesores;
     private javax.swing.JMenu Solicitudes;
     private javax.swing.JMenuItem aprobarDenegarSolicitudMenu;
+    private javax.swing.JButton botonLogin;
     private javax.swing.JMenuItem consutarSolicitudesMenu;
     private javax.swing.JMenuItem crearDepartamentoMenu;
     private javax.swing.JMenuItem crearGrupoMenu;
@@ -1546,7 +1672,11 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
+
     private javax.swing.JLabel jLabel61;
+
+    private javax.swing.JLabel jLabel62;
+
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1612,5 +1742,10 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JMenuItem modificarDepartamentoMenu;
     private javax.swing.JMenuItem modificarGrupoMenu;
     private javax.swing.JMenuItem modificarProfesorMenu;
+    private javax.swing.JButton restablecerBoton;
+    private javax.swing.JLabel txtEmail;
+    private javax.swing.JLabel txtcontrasen;
+    private javax.swing.JPasswordField txtcontrasenia;
+    private javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
 }
