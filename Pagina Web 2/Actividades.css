@@ -28,11 +28,11 @@
 
 .Viajes p,
 .Clases p {
+    display:flex;
     margin:0%;
     padding: 0 20px;
     font-size: 0.99em;
     text-align: left;
-    height: 15%;
 }
 
 .ViajesMain,
@@ -50,12 +50,13 @@
 .ViajesMain td,
 .ClasesMain th,
 .ClasesMain td {
+    display: flexbox;
     padding: 20px;
     text-align: left;
     max-width: 10%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1500px) {
 
     .TextoActividades h1 {
         font-size: 1.2em;
@@ -69,8 +70,11 @@
 
     .Viajes p,
     .Clases p {
-        max-width: 13%;
-        max-height: 15%;
+        font-size: 0.9em;
+        padding: 0 10px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .ViajesMain,
@@ -84,7 +88,45 @@
     .ViajesMain td,
     .ClasesMain th,
     .ClasesMain td {
-        transform: scale(0.8);
-        transform-origin: left;
+        padding: 10px; 
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .TextoActividades h1 {
+        font-size: 1.2em;
+    }
+
+    .Viajes,
+    .Clases {
+        max-width: 13%;
+        max-height: 15%;
+        margin:auto;
+    }
+
+    .Viajes p,
+    .Clases p {
+        font-size: 0.9em;
+        padding: 0 10px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .ViajesMain,
+    .ClasesMain {
+        width: 95%;
+        margin: 5px auto;
+        padding: 5px;
+    }
+
+    .ViajesMain th,
+    .ViajesMain td,
+    .ClasesMain th,
+    .ClasesMain td {
+        padding: 10px; 
+        font-size: 0.9em;
     }
 }

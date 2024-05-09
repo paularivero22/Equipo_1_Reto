@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -24,28 +23,12 @@ public class Swing extends javax.swing.JFrame {
     /**
      * Creates new form Swing
      */
-<<<<<<< HEAD
-    private SolicitudesDAO solicitud=new SolicitudesDAO();
-    private DepartamentoDAO metodosdepartamento=new DepartamentoDAO();
-    
-     private Connection getConnection() {
-=======
     private Connection getConnection() {
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         return AccesoBaseDatos.getInstance().getConn();
     }
 
     public Swing() {
         initComponents();
-        cargarItemsDepartamento();
-    }
-    private void cargarItemsDepartamento(){
-       String solicitudes="";
-       List<Departamento>lista=metodosdepartamento.listar();
-       for(Departamento d:lista){
-           jComboBox8.addItem(d.getNombre());
-       }
-       
     }
 
     /**
@@ -192,6 +175,7 @@ public class Swing extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         jComboBox6 = new javax.swing.JComboBox<>();
         jLabel38 = new javax.swing.JLabel();
+        jTextField22 = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         jTextField23 = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
@@ -202,12 +186,13 @@ public class Swing extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jTextField28 = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        jRadioButton2 = new javax.swing.JRadioButton();
         jButton17 = new javax.swing.JButton();
+        jLabel61 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
         jTextField26 = new javax.swing.JTextField();
         jTextField27 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jComboBox8 = new javax.swing.JComboBox<>();
         ConsultarSolicitudes = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -889,15 +874,10 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel38.setText("Departamento:");
         CrearSolicitud.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
+        CrearSolicitud.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 114, -1));
 
         jLabel39.setText("Hora Inicio:");
         CrearSolicitud.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
-
-        jTextField23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField23ActionPerformed(evt);
-            }
-        });
         CrearSolicitud.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 77, -1));
 
         jLabel40.setText("Hora Final:");
@@ -918,23 +898,23 @@ public class Swing extends javax.swing.JFrame {
         CrearSolicitud.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
         CrearSolicitud.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 77, -1));
 
+        jLabel46.setText("Alojamiento:");
+        CrearSolicitud.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        CrearSolicitud.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 98, -1));
+
         jButton17.setText("Crear");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
             }
         });
-        CrearSolicitud.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
+        CrearSolicitud.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
+
+        jLabel61.setText("Prevista:");
+        CrearSolicitud.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
+        CrearSolicitud.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
         CrearSolicitud.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 100, -1));
         CrearSolicitud.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 120, -1));
-
-        jCheckBox1.setText("Alojamiento");
-        CrearSolicitud.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
-
-        jCheckBox2.setText("Prevista");
-        CrearSolicitud.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
-
-        CrearSolicitud.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
 
         getContentPane().add(CrearSolicitud, "card14");
 
@@ -1303,7 +1283,6 @@ public class Swing extends javax.swing.JFrame {
     private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
         // TODO add your handling code here:
         //Asigno que sea visible cuando clickemos encima del menu
-        Login.setVisible(false);
         CambiarContraseña.setVisible(rootPaneCheckingEnabled);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1327,12 +1306,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfesorMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-         //Asigno que sea visible cuando clickemos encima del menu
-        Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(rootPaneCheckingEnabled);
@@ -1354,12 +1328,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void modificarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProfesorMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-         //Asigno que sea visible cuando clickemos encima del menu
-         Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1381,12 +1350,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void deshabilitarEliminarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarEliminarProfesorMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1408,12 +1372,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void EliminarCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCursoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1435,12 +1394,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearGrupoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1462,12 +1416,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void modificarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrupoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1489,12 +1438,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void deshabilitarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarGrupoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1516,12 +1460,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1543,12 +1482,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void modificarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1570,12 +1504,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void deshabilitarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1597,12 +1526,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearSolicitudMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1624,12 +1548,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void consutarSolicitudesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consutarSolicitudesMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1651,12 +1570,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void aprobarDenegarSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aprobarDenegarSolicitudMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-         Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1678,12 +1592,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void fasedepreparacionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fasedepreparacionMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1705,32 +1614,6 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-        SolicitudesDAO metodosSolicitudes=new SolicitudesDAO();
-        DepartamentoDAO metodosDepartamento=new DepartamentoDAO();
-        ProfesorDAO metodosProfesor=new ProfesorDAO();
-        String titulo=jTextField21.getText();
-        Tipo tipo=Tipo.valueOf(jComboBox6.getSelectedItem().toString());
-        int departamento=metodosdepartamento.buscarPor(jComboBox8.getSelectedItem().toString()).getIdDepartamento();
-        LocalTime horaInicio=LocalTime.parse(jTextField23.getText());
-        LocalTime horaFin=LocalTime.parse(jTextField24.getText());
-        int profesor=metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
-        LocalDate fechaInicio=LocalDate.parse(jTextField26.getText());
-        LocalDate fechaFin=LocalDate.parse(jTextField27.getText());
-        int participantes=Integer.parseInt(jTextField28.getText());
-        boolean prevista=jCheckBox2.isSelected();
-        boolean medioTransporte=false;
-        boolean alojamiento=jCheckBox1.isSelected();
-        String comentAlojamiento="";
-        Estado estado=Estado.SOLICITADA;
-        
-        Solicitud s=new Solicitud(horaInicio,horaFin,"",prevista,departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFin,participantes,"",estado);
-        metodosSolicitudes.insertar(s);
-        
-        
-       
-        
-=======
         SolicitudesDAO metodosSolicitudes = new SolicitudesDAO();
         DepartamentoDAO metodosDepartamento = new DepartamentoDAO();
         ProfesorDAO metodosProfesor = new ProfesorDAO();
@@ -1745,7 +1628,6 @@ public class Swing extends javax.swing.JFrame {
         int participantes = Integer.parseInt(jTextField28.getText());
 
 
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
@@ -1782,14 +1664,6 @@ public class Swing extends javax.swing.JFrame {
         Login.setVisible(false);
         CambiarContraseña.setVisible(true);
     }//GEN-LAST:event_restablecerBotonActionPerformed
-
-    private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField23ActionPerformed
-
-    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CrearActionPerformed
 
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -1957,8 +1831,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -2007,6 +1879,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -2023,21 +1896,19 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
-<<<<<<< HEAD
-    private javax.swing.JLabel jLabel62;
-=======
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
 
 
     private javax.swing.JLabel jLabel63;
 
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -2079,6 +1950,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
