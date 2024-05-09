@@ -34,7 +34,11 @@ public class MetodosFicheros {
     //Metodo que lee cursos.csv y los inserta en una lista
     public static List<Curso> leerCSVCursos() {
         List<Curso> lista = new ArrayList<>();
+<<<<<<< HEAD
         File fichero = new File("D:\\Usuarios\\daw124\\Documents\\RetoLocal\\Equipo_1_Reto\\Java\\Ficheros\\cursos.csv");
+=======
+        File fichero = new File("D:\\Usuarios\\daw128\\Downloads\\Reto\\RepositorioLocal\\Java\\Ficheros\\cursos.csv");
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
         FileReader fr;
         String linea = "";
         try {
@@ -69,7 +73,11 @@ public class MetodosFicheros {
 
     public static List<Departamento> leerCSVDepartamentos() {
         List<Departamento> lista = new ArrayList<>();
+<<<<<<< HEAD
         File fichero = new File("D:\\Usuarios\\daw124\\Documents\\RetoLocal\\Equipo_1_Reto\\Java\\Ficheros\\departamentos.csv");
+=======
+        File fichero = new File("D:\\Usuarios\\daw128\\Downloads\\Reto\\RepositorioLocal\\Java\\Ficheros\\departamentos.csv");
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
         FileReader fr;
         String linea = "";
         int idJefe = 15;
@@ -104,7 +112,11 @@ public class MetodosFicheros {
     //Metodo que lee profesores.csv y los inserta en una lista
     public static List<Profesor> leerCSVProfesores() {
         List<Profesor> lista = new ArrayList<>();
+<<<<<<< HEAD
         File fichero = new File("D:\\Usuarios\\daw124\\Documents\\RetoLocal\\Equipo_1_Reto\\Java\\Ficheros\\profesores.csv");
+=======
+        File fichero = new File("D:\\Usuarios\\daw128\\Downloads\\Reto\\RepositorioLocal\\Java\\Ficheros\\profesores.csv");
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
         FileReader fr;
         String linea = "";
         int idProfesor = 0;
@@ -141,7 +153,7 @@ public class MetodosFicheros {
     //Metodo que lee grupos.csv y los inserta en una lista
     public static List<Grupo> leerCSVGrupoAlumnos() {
         List<Grupo> lista = new ArrayList<>();
-        File fichero = new File("C:\\Users\\atres\\Documents\\Equipo_1_Reto\\Java\\Ficheros\\grupos.csv");
+        File fichero = new File("D:\\Usuarios\\daw128\\Downloads\\Reto\\RepositorioLocal\\Java\\Ficheros\\grupos.csv");
         FileReader fr;
         String linea = "";
         try {

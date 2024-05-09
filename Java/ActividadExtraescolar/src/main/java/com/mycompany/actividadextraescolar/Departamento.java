@@ -21,6 +21,14 @@ public class Departamento {
         this.nombre = nombre;
         this.idJefe = idJefe;
     }
+
+    public Departamento(String codigoDepartamento, String nombre, int idJefe) {
+        this.codigoDepartamento = codigoDepartamento;
+        this.nombre = nombre;
+        this.idJefe = idJefe;
+    }
+    
+    
     
     //Métodos get
 

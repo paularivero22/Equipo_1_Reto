@@ -15,14 +15,17 @@ import java.util.List;
 public class ActividadExtraescolar {
     public static void main(String[] args) {
         cargarArchivos();
+<<<<<<< HEAD
         /*SolicitudesDAO s=new SolicitudesDAO();
        Solicitud solicitud=new Solicitud(LocalTime.of(10, 30),LocalTime.of(15, 40),"",true,5,"Museo",Tipo.ExtraEscolar,true,5,false,LocalDate.of(2024, 5, 9),LocalDate.of(2024, 5, 9),100,"",Estado.SOLICITADA);
         s.insertar(solicitud);*/
+=======
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
     }
     
     //Metodo estatico para cargar los csv a bd
     public static void cargarArchivos(){
-         List<Curso>listaCursos=MetodosFicheros.leerCSVCursos();
+        List<Curso>listaCursos=MetodosFicheros.leerCSVCursos();
         List<Departamento>listaDepartamentos=MetodosFicheros.leerCSVDepartamentos();
         List<Profesor>listaProfesor=MetodosFicheros.leerCSVProfesores();
         List<Grupo>listaGrupo=MetodosFicheros.leerCSVGrupoAlumnos();
