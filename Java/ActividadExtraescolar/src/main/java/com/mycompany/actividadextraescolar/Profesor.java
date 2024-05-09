@@ -34,6 +34,16 @@ public class Profesor {
         this.contrasenia = contrasenia;
     }
 
+    public Profesor(int idDepartamento, String nombre, String apellidos, String DNI, String correo, PerfilAcceso perfil) {
+        this.idDepartamento = idDepartamento;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.DNI = DNI;
+        this.correo = correo;
+        this.perfil = perfil;
+    }
+
+    
     public PerfilAcceso getPerfil() {
         return perfil;
     }

@@ -56,6 +56,16 @@ public class Swing extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         MenuInicio = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        ModificarProfesor = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextField7 = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        Buscar = new javax.swing.JButton();
+        Modificar = new javax.swing.JButton();
         CrearProfesor = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -72,16 +82,6 @@ public class Swing extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Crear = new javax.swing.JButton();
-        ModificarProfesor = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextField7 = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        Buscar = new javax.swing.JButton();
-        Modificar = new javax.swing.JButton();
         EliminarDeshabilitarProfesor = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -389,6 +389,29 @@ public class Swing extends javax.swing.JFrame {
 
         getContentPane().add(MenuInicio, "card3");
 
+        ModificarProfesor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setText("MODIFICAR PROFESOR");
+        ModificarProfesor.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+
+        jLabel13.setText("DNI Profesor:");
+        ModificarProfesor.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        ModificarProfesor.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 111, -1));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellidos", "Perfil", "Correo", "Departamento" }));
+        ModificarProfesor.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 111, -1));
+        ModificarProfesor.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 461, 53));
+        ModificarProfesor.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 109, -1));
+        ModificarProfesor.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 460, 40));
+
+        Buscar.setText("Buscar");
+        ModificarProfesor.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
+
+        Modificar.setText("Modificar");
+        ModificarProfesor.add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
+
+        getContentPane().add(ModificarProfesor, "card5");
+
         CrearProfesor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setText("CREAR PROFESOR");
@@ -429,7 +452,7 @@ public class Swing extends javax.swing.JFrame {
         });
         CrearProfesor.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 90, -1));
 
-        jLabel10.setText("Departamento:");
+        jLabel10.setText("Nombre departamento");
         CrearProfesor.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geología e Historia", "Inglés", "Latín", "Lengua Castellana", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
@@ -438,10 +461,10 @@ public class Swing extends javax.swing.JFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
-        CrearProfesor.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 100, -1));
+        CrearProfesor.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 100, -1));
 
         jLabel11.setText("Correo:");
-        CrearProfesor.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
+        CrearProfesor.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
 
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -449,36 +472,18 @@ public class Swing extends javax.swing.JFrame {
                 jTextField5ActionPerformed(evt);
             }
         });
-        CrearProfesor.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 120, -1));
+        CrearProfesor.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 120, -1));
         CrearProfesor.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 520, 50));
 
         Crear.setText("Crear");
+        Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearActionPerformed(evt);
+            }
+        });
         CrearProfesor.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
 
         getContentPane().add(CrearProfesor, "card4");
-
-        ModificarProfesor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel12.setText("MODIFICAR PROFESOR");
-        ModificarProfesor.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
-
-        jLabel13.setText("DNI Profesor:");
-        ModificarProfesor.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
-        ModificarProfesor.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 111, -1));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellidos", "Perfil", "Correo", "Departamento" }));
-        ModificarProfesor.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 111, -1));
-        ModificarProfesor.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 461, 53));
-        ModificarProfesor.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 109, -1));
-        ModificarProfesor.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 460, 40));
-
-        Buscar.setText("Buscar");
-        ModificarProfesor.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
-
-        Modificar.setText("Modificar");
-        ModificarProfesor.add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
-
-        getContentPane().add(ModificarProfesor, "card5");
 
         EliminarDeshabilitarProfesor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1074,6 +1079,28 @@ public class Swing extends javax.swing.JFrame {
         CambiarContraseña.setVisible(false);
         Login.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
+        // TODO add your handling code here:
+        String nombre = jTextField1.getText();
+        String apellidos = jTextField3.getText();
+        String DNI = jTextField4.getText();
+        String correo = jTextField5.getText();
+        PerfilAcceso perfilacceso = (PerfilAcceso) PerfilAcceso.valueOf(jComboBox1.getSelectedItem().toString());
+        //Revisar si funciona
+        String nombreDepar = jComboBox2.getSelectedItem().toString();
+        JOptionPane pane = new JOptionPane();
+        JOptionPane.showMessageDialog(null, perfilacceso,"Mensaje",JOptionPane.PLAIN_MESSAGE);
+        
+        
+        DepartamentoDAO departametnto = new DepartamentoDAO ();
+        Departamento depar = new Departamento (nombreDepar);
+        int idDepar = depar.getIdDepartamento();
+        ProfesorDAO profesor = new ProfesorDAO();
+        Profesor profesor1 = new Profesor (idDepar, nombre, apellidos, DNI, correo, perfilacceso);
+        profesor.insertar(profesor1);
+        
+    }//GEN-LAST:event_CrearActionPerformed
 
     /**
      * @param args the command line arguments
