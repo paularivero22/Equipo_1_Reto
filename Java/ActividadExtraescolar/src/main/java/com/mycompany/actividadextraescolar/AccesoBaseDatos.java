@@ -21,7 +21,7 @@ public class AccesoBaseDatos {
     private static final String CLAVE = "mysql";
     private static final String URL = "jdbc:mysql://localhost:3306/" + BD;
 
-    private AccesoBaseDatos() {
+    AccesoBaseDatos() {
 
         try {
             Properties properties = new Properties();
@@ -70,4 +70,5 @@ public class AccesoBaseDatos {
         }
         return siCerrada;
     }
+    
 }

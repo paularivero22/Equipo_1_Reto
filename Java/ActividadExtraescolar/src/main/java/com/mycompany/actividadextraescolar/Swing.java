@@ -23,7 +23,7 @@ public class Swing extends javax.swing.JFrame {
     /**
      * Creates new form Swing
      */
-     private Connection getConnection() {
+    private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
 
@@ -40,6 +40,8 @@ public class Swing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane19 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         Login = new javax.swing.JPanel();
         txtEmail = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
@@ -48,6 +50,7 @@ public class Swing extends javax.swing.JFrame {
         botonLogin = new javax.swing.JButton();
         restablecerBoton = new javax.swing.JButton();
         jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
         CambiarContraseña = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -242,11 +245,18 @@ public class Swing extends javax.swing.JFrame {
         aprobarDenegarSolicitudMenu = new javax.swing.JMenuItem();
         fasedepreparacionMenu = new javax.swing.JMenuItem();
 
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane19.setViewportView(jTextArea2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         getContentPane().setLayout(new java.awt.CardLayout());
 
+        Login.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtEmail.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         txtEmail.setText("Email");
 
         txtemail.addActionListener(new java.awt.event.ActionListener() {
@@ -255,10 +265,14 @@ public class Swing extends javax.swing.JFrame {
             }
         });
 
+        txtcontrasen.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         txtcontrasen.setText("Contraseña");
 
         txtcontrasenia.setText("jPasswordField2");
 
+        botonLogin.setBackground(new java.awt.Color(0, 0, 0));
+        botonLogin.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
+        botonLogin.setForeground(new java.awt.Color(255, 255, 255));
         botonLogin.setText("Iniciar sesión");
         botonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,6 +280,9 @@ public class Swing extends javax.swing.JFrame {
             }
         });
 
+        restablecerBoton.setBackground(new java.awt.Color(0, 0, 0));
+        restablecerBoton.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
+        restablecerBoton.setForeground(new java.awt.Color(255, 255, 255));
         restablecerBoton.setText("Restablecer Contraseña");
         restablecerBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,8 +290,11 @@ public class Swing extends javax.swing.JFrame {
             }
         });
 
-        jLabel62.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel62.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         jLabel62.setText("INICIAR SESIÓN");
+
+        jLabel63.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 12)); // NOI18N
+        jLabel63.setText("¿Olvidaste tu contraseña?");
 
         javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
         Login.setLayout(LoginLayout);
@@ -283,72 +303,99 @@ public class Swing extends javax.swing.JFrame {
             .addGroup(LoginLayout.createSequentialGroup()
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(botonLogin))
+                        .addGap(325, 325, 325)
+                        .addComponent(restablecerBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(restablecerBoton))
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel62)
-                            .addGroup(LoginLayout.createSequentialGroup()
-                                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmail)
-                                    .addComponent(txtcontrasen))
-                                .addGap(25, 25, 25)
-                                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtcontrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                                    .addComponent(txtemail))))))
-                .addContainerGap(249, Short.MAX_VALUE))
+                        .addGap(362, 362, 362)
+                        .addComponent(jLabel62)))
+                .addContainerGap(307, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
+                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmail)
+                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtcontrasen)
+                            .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(319, 319, 319))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
+                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel63)
+                            .addComponent(botonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(344, 344, 344))))
         );
         LoginLayout.setVerticalGroup(
             LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel62)
-                .addGap(29, 29, 29)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail)
-                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcontrasen)
-                    .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                .addGap(18, 18, 18)
+                .addComponent(txtEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(txtcontrasen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(botonLogin)
-                .addGap(27, 27, 27)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel63)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(restablecerBoton)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         getContentPane().add(Login, "card19");
 
+        CambiarContraseña.setBackground(new java.awt.Color(255, 255, 255));
         CambiarContraseña.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setLabelFor(jLabel1);
         jLabel1.setText("REESTABLECER CONTRASEÑA");
-        CambiarContraseña.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 6, 237, 33));
+        CambiarContraseña.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 330, 33));
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         jLabel2.setText("Correo Profesor:");
-        CambiarContraseña.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 83, 99, -1));
+        CambiarContraseña.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 140, 20));
 
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         jLabel3.setText("Nueva Contraseña:");
-        CambiarContraseña.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 148, -1, -1));
-        CambiarContraseña.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 180, -1));
+        CambiarContraseña.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, 20));
 
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        CambiarContraseña.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 180, -1));
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setLabel("Cambiar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        CambiarContraseña.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 228, -1, -1));
+        CambiarContraseña.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setLabel("Volver");
-        CambiarContraseña.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 228, -1, -1));
-        CambiarContraseña.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 180, -1));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        CambiarContraseña.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
+        CambiarContraseña.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 180, -1));
 
         getContentPane().add(CambiarContraseña, "card2");
 
@@ -423,6 +470,11 @@ public class Swing extends javax.swing.JFrame {
         CrearProfesor.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 520, 50));
 
         Crear.setText("Crear");
+        Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearActionPerformed(evt);
+            }
+        });
         CrearProfesor.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
 
         getContentPane().add(CrearProfesor, "card4");
@@ -1040,6 +1092,7 @@ public class Swing extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1102,7 +1155,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void CrearCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCursoMenuActionPerformed
         // TODO add your handling code here:
-         //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1143,13 +1196,13 @@ public class Swing extends javax.swing.JFrame {
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(false);
-        
-        
+
+
     }//GEN-LAST:event_ContraseñaActionPerformed
 
     private void crearProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfesorMenuActionPerformed
         // TODO add your handling code here:
-         //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(rootPaneCheckingEnabled);
@@ -1171,7 +1224,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void modificarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProfesorMenuActionPerformed
         // TODO add your handling code here:
-         //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1193,7 +1246,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void deshabilitarEliminarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarEliminarProfesorMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1215,7 +1268,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void EliminarCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCursoMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1237,7 +1290,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearGrupoMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1259,7 +1312,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void modificarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrupoMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1281,7 +1334,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void deshabilitarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarGrupoMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1303,7 +1356,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1325,7 +1378,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void modificarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1347,7 +1400,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void deshabilitarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1369,7 +1422,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void crearSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearSolicitudMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1391,7 +1444,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void consutarSolicitudesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consutarSolicitudesMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1413,7 +1466,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void aprobarDenegarSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aprobarDenegarSolicitudMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1435,7 +1488,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void fasedepreparacionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fasedepreparacionMenuActionPerformed
         // TODO add your handling code here:
-           //Asigno que sea visible cuando clickemos encima del menu
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1457,24 +1510,22 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-        SolicitudesDAO metodosSolicitudes=new SolicitudesDAO();
-        DepartamentoDAO metodosDepartamento=new DepartamentoDAO();
-        ProfesorDAO metodosProfesor=new ProfesorDAO();
-        String titulo=jTextField21.getText();
-        Tipo tipo=Tipo.valueOf(jComboBox6.getSelectedItem().toString());
-        int departamento=metodosDepartamento.buscarPor(jTextField22.getText()).getIdDepartamento();
-        LocalTime horaInicio=LocalTime.parse(jTextField23.getText());
-        LocalTime horaFin=LocalTime.parse(jTextField24.getText());
-        int profesor=metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
-        LocalDate fechaInicio=LocalDate.parse(jTextField26.getText());
-        LocalDate fechaFin=LocalDate.parse(jTextField27.getText());
-        int participantes=Integer.parseInt(jTextField28.getText());
-        
-        
-       
-        
+        SolicitudesDAO metodosSolicitudes = new SolicitudesDAO();
+        DepartamentoDAO metodosDepartamento = new DepartamentoDAO();
+        ProfesorDAO metodosProfesor = new ProfesorDAO();
+        String titulo = jTextField21.getText();
+        Tipo tipo = Tipo.valueOf(jComboBox6.getSelectedItem().toString());
+        int departamento = metodosDepartamento.buscarPor(jTextField22.getText()).getIdDepartamento();
+        LocalTime horaInicio = LocalTime.parse(jTextField23.getText());
+        LocalTime horaFin = LocalTime.parse(jTextField24.getText());
+        int profesor = metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
+        LocalDate fechaInicio = LocalDate.parse(jTextField26.getText());
+        LocalDate fechaFin = LocalDate.parse(jTextField27.getText());
+        int participantes = Integer.parseInt(jTextField28.getText());
+
+
     }//GEN-LAST:event_jButton17ActionPerformed
-=======
+
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1ComponentAdded
@@ -1484,27 +1535,46 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_txtemailActionPerformed
 
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
-        String username = txtemail.getText();
-        String password = new String(txtcontrasenia.getPassword());
+          
 
-    // Aquí iría la lógica para verificar el usuario y contraseña
-    // Por simplicidad, aquí simplemente compararemos con valores fijos
-    if (username.equals("usuario") && password.equals("contraseña")) {
-        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
-        // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
-        // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
-        Swing login = new Swing();
-        login.setVisible(true);
-        dispose(); // Cierra la ventana de inicio de sesión
-    } else {
-        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.","Error", JOptionPane.ERROR_MESSAGE);
-        }
+//        String username = txtemail.getText();
+//        String password = new String(txtcontrasenia.getPassword());
+//
+//        // Aquí iría la lógica para verificar el usuario y contraseña
+//        // Por simplicidad, aquí simplemente compararemos con valores fijos
+//        if (username.equals("usuario") && password.equals("contraseña")) {
+//            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
+//            // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
+//            // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
+//            Swing login = new Swing();
+//            login.setVisible(true);
+//            dispose(); // Cierra la ventana de inicio de sesión
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+//        }
+
     }//GEN-LAST:event_botonLoginActionPerformed
 
     private void restablecerBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerBotonActionPerformed
         // TODO add your handling code here:
+        Login.setVisible(false);
+        CambiarContraseña.setVisible(true);
     }//GEN-LAST:event_restablecerBotonActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Login.setVisible(true);
+        CambiarContraseña.setVisible(false);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1672,11 +1742,9 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
-
     private javax.swing.JLabel jLabel61;
-
     private javax.swing.JLabel jLabel62;
-
+    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1695,6 +1763,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1703,6 +1772,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
