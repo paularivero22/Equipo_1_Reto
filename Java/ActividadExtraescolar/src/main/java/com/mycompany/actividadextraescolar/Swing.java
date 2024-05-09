@@ -144,22 +144,26 @@ public class Swing extends javax.swing.JFrame {
         jTextField17 = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jScrollPane10 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         ModificarDepartamento = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jTextField18 = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jScrollPane11 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         jComboBox5 = new javax.swing.JComboBox<>();
         jTextField19 = new javax.swing.JTextField();
         jButton14 = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jComboBox8 = new javax.swing.JComboBox<>();
         DeshabilitarDepartamento = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jTextField20 = new javax.swing.JTextField();
         jButton15 = new javax.swing.JButton();
         jScrollPane13 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButton16 = new javax.swing.JButton();
         CrearSolicitud = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
@@ -644,10 +648,22 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel28.setText("Nombre:");
         CrearDepartamento.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 70, 59, -1));
+
+        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField15ActionPerformed(evt);
+            }
+        });
         CrearDepartamento.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 67, 84, -1));
 
         jLabel29.setText("Código de Departamento:");
         CrearDepartamento.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 70, 149, -1));
+
+        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField16ActionPerformed(evt);
+            }
+        });
         CrearDepartamento.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 67, 110, -1));
 
         jLabel30.setText("Correo de Jefe de Departamento:");
@@ -655,8 +671,27 @@ public class Swing extends javax.swing.JFrame {
         CrearDepartamento.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 121, 161, -1));
 
         jButton12.setText("Crear");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
         CrearDepartamento.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 121, -1, -1));
-        CrearDepartamento.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 162, 522, 61));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane10.setViewportView(jTable2);
+
+        CrearDepartamento.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 522, 61));
 
         getContentPane().add(CrearDepartamento, "card11");
 
@@ -667,19 +702,64 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel32.setText("Nombre de Departamento:");
         ModificarDepartamento.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 67, -1, -1));
-        ModificarDepartamento.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 64, 115, -1));
 
         jButton13.setText("Buscar");
-        ModificarDepartamento.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 64, -1, -1));
-        ModificarDepartamento.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 93, 528, 35));
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        ModificarDepartamento.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane11.setViewportView(jTable3);
+
+        ModificarDepartamento.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 528, 35));
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Codigo", "Nombre Jefe" }));
-        ModificarDepartamento.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 146, -1, -1));
-        ModificarDepartamento.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 146, 123, -1));
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
+        ModificarDepartamento.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        ModificarDepartamento.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 123, -1));
 
         jButton14.setText("Cambiar");
-        ModificarDepartamento.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 146, -1, -1));
-        ModificarDepartamento.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 187, 514, 42));
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        ModificarDepartamento.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane12.setViewportView(jTable4);
+
+        ModificarDepartamento.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 514, 42));
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
+        ModificarDepartamento.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 210, -1));
 
         getContentPane().add(ModificarDepartamento, "card12");
 
@@ -693,11 +773,35 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarDepartamento.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 140, -1));
 
         jButton15.setText("Buscar");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
         DeshabilitarDepartamento.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
-        DeshabilitarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 500, 50));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane13.setViewportView(jTable1);
+
+        DeshabilitarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 500, 50));
 
         jButton16.setText("Deshabilitar");
-        DeshabilitarDepartamento.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        DeshabilitarDepartamento.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
 
         getContentPane().add(DeshabilitarDepartamento, "card13");
 
@@ -1474,7 +1578,7 @@ public class Swing extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jButton17ActionPerformed
-=======
+
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1ComponentAdded
@@ -1504,6 +1608,52 @@ public class Swing extends javax.swing.JFrame {
     private void restablecerBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerBotonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_restablecerBotonActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        DepartamentoDAO dep = new DepartamentoDAO();
+        String nombre = jTextField15.getText();
+        String codDepartamento = jTextField16.getText();
+        String correo = jTextField17.getText();
+        Departamento departamento = new Departamento(codDepartamento,nombre,6);
+        dep.insertar(departamento); 
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField15ActionPerformed
+
+    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField16ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        DepartamentoDAO dep = new DepartamentoDAO();
+        String nombre = jTextField20.getText();
+        Departamento departamentoEncontrado = dep.buscarPor(nombre);
+        System.out.println(departamentoEncontrado.toString());
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        DepartamentoDAO dep = new DepartamentoDAO();
+        String nombre = jTextField20.getText();
+        dep.eliminarPor(nombre);
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        DepartamentoDAO dep = new DepartamentoDAO();
+        String nombre = jComboBox8.getSelectedItem().toString();
+        dep.buscarPor(nombre);
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        DepartamentoDAO dep = new DepartamentoDAO();
+        String cambio = jTextField19.getText();
+        
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox5ActionPerformed
 
 
     /**
@@ -1615,6 +1765,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1672,11 +1823,8 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
-
     private javax.swing.JLabel jLabel61;
-
     private javax.swing.JLabel jLabel62;
-
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1703,6 +1851,10 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -1712,7 +1864,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
