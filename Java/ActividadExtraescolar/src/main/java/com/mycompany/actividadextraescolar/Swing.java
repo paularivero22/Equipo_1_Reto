@@ -4,7 +4,13 @@
  */
 package com.mycompany.actividadextraescolar;
 
+import static java.awt.PageAttributes.MediaType.D;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -170,18 +176,19 @@ public class Swing extends javax.swing.JFrame {
         jLabel41 = new javax.swing.JLabel();
         jTextField25 = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
-        jTextField26 = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
-        jTextField27 = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         jTextField28 = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jRadioButton2 = new javax.swing.JRadioButton();
         jButton17 = new javax.swing.JButton();
+        jLabel61 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jTextField26 = new javax.swing.JTextField();
+        jTextField27 = new javax.swing.JTextField();
         ConsultarSolicitudes = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        jTextField29 = new javax.swing.JTextField();
         jScrollPane14 = new javax.swing.JScrollPane();
         jButton18 = new javax.swing.JButton();
         AprobarDenegarSolicitudes = new javax.swing.JPanel();
@@ -489,7 +496,7 @@ public class Swing extends javax.swing.JFrame {
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO", "BACHILLERATO", "FPGS", "FPGM", "FPB", "FPCE" }));
         CrearCurso.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
-        CrearCurso.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 420, 50));
+        CrearCurso.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 420, 50));
 
         jButton24.setText("Crear");
         jButton24.addActionListener(new java.awt.event.ActionListener() {
@@ -625,7 +632,7 @@ public class Swing extends javax.swing.JFrame {
                 .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(jButton23)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         getContentPane().add(DeshabilitarGrupo, "card18");
@@ -700,51 +707,58 @@ public class Swing extends javax.swing.JFrame {
         CrearSolicitud.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 16, -1, -1));
 
         jLabel36.setText("Título:");
-        CrearSolicitud.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 41, 43, -1));
-        CrearSolicitud.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 38, 77, -1));
+        CrearSolicitud.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 43, -1));
+        CrearSolicitud.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 77, -1));
 
         jLabel37.setText("Tipo:");
-        CrearSolicitud.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 41, 43, -1));
+        CrearSolicitud.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 43, -1));
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ExtraOrdinaria", "Complementaria" }));
-        CrearSolicitud.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 38, -1, -1));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ExtraEscolar", "Complementaria" }));
+        CrearSolicitud.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
-        jLabel38.setText("Nombre Departamento:");
-        CrearSolicitud.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 41, -1, -1));
-        CrearSolicitud.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(461, 38, 114, -1));
+        jLabel38.setText("Departamento:");
+        CrearSolicitud.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
+        CrearSolicitud.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 114, -1));
 
         jLabel39.setText("Hora Inicio:");
-        CrearSolicitud.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 95, -1, -1));
-        CrearSolicitud.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 92, 77, -1));
+        CrearSolicitud.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        CrearSolicitud.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 77, -1));
 
         jLabel40.setText("Hora Final:");
-        CrearSolicitud.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 95, -1, -1));
-        CrearSolicitud.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 92, 77, -1));
+        CrearSolicitud.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
+        CrearSolicitud.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 120, -1));
 
-        jLabel41.setText("Nombre Profesor:");
-        CrearSolicitud.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 95, 97, -1));
-        CrearSolicitud.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 92, 112, -1));
+        jLabel41.setText("DNI Profesor:");
+        CrearSolicitud.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 97, -1));
+        CrearSolicitud.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 112, -1));
 
         jLabel42.setText("Fecha inicio:");
         CrearSolicitud.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 135, -1, -1));
-        CrearSolicitud.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 132, 77, -1));
 
         jLabel43.setText("Fecha Final:");
-        CrearSolicitud.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 135, -1, -1));
-        CrearSolicitud.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 132, 77, -1));
+        CrearSolicitud.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
 
-        jLabel44.setText("Total Participantes:");
-        CrearSolicitud.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 135, -1, -1));
-        CrearSolicitud.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 132, 77, -1));
+        jLabel44.setText("Participantes:");
+        CrearSolicitud.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
+        CrearSolicitud.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 77, -1));
 
         jLabel46.setText("Alojamiento:");
         CrearSolicitud.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
-
-        jRadioButton2.setText("Sí");
         CrearSolicitud.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 98, -1));
 
         jButton17.setText("Crear");
-        CrearSolicitud.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        CrearSolicitud.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
+
+        jLabel61.setText("Prevista:");
+        CrearSolicitud.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
+        CrearSolicitud.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
+        CrearSolicitud.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 100, -1));
+        CrearSolicitud.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 120, -1));
 
         getContentPane().add(CrearSolicitud, "card14");
 
@@ -752,14 +766,11 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel47.setText("CONSULTAR SOLICITUDES");
         ConsultarSolicitudes.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
-
-        jLabel48.setText("DNI Profesor:");
         ConsultarSolicitudes.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 65, -1, -1));
-        ConsultarSolicitudes.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 62, 124, -1));
         ConsultarSolicitudes.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 97, 558, 170));
 
         jButton18.setText("Buscar");
-        ConsultarSolicitudes.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 62, -1, -1));
+        ConsultarSolicitudes.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
 
         getContentPane().add(ConsultarSolicitudes, "card15");
 
@@ -879,17 +890,37 @@ public class Swing extends javax.swing.JFrame {
         });
 
         Contraseña.setText("Contraseña");
+        Contraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContraseñaActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(Contraseña);
 
         Profesores.setText("Profesores");
 
         crearProfesorMenu.setText("Crear Profesor");
+        crearProfesorMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearProfesorMenuActionPerformed(evt);
+            }
+        });
         Profesores.add(crearProfesorMenu);
 
         modificarProfesorMenu.setText("Modificar Profesor");
+        modificarProfesorMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarProfesorMenuActionPerformed(evt);
+            }
+        });
         Profesores.add(modificarProfesorMenu);
 
         deshabilitarEliminarProfesorMenu.setText("Eliminar/Deshabilitar Profesor");
+        deshabilitarEliminarProfesorMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deshabilitarEliminarProfesorMenuActionPerformed(evt);
+            }
+        });
         Profesores.add(deshabilitarEliminarProfesorMenu);
 
         jMenuBar1.add(Profesores);
@@ -905,6 +936,11 @@ public class Swing extends javax.swing.JFrame {
         Cursos.add(CrearCursoMenu);
 
         EliminarCursoMenu.setText("Eliminar Curso");
+        EliminarCursoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarCursoMenuActionPerformed(evt);
+            }
+        });
         Cursos.add(EliminarCursoMenu);
 
         jMenuBar1.add(Cursos);
@@ -912,12 +948,27 @@ public class Swing extends javax.swing.JFrame {
         Grupo.setText("Grupo");
 
         crearGrupoMenu.setText("Crear Grupo");
+        crearGrupoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearGrupoMenuActionPerformed(evt);
+            }
+        });
         Grupo.add(crearGrupoMenu);
 
         modificarGrupoMenu.setText("Modificar Grupo");
+        modificarGrupoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarGrupoMenuActionPerformed(evt);
+            }
+        });
         Grupo.add(modificarGrupoMenu);
 
         deshabilitarGrupoMenu.setText("Deshabilitar Grupo");
+        deshabilitarGrupoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deshabilitarGrupoMenuActionPerformed(evt);
+            }
+        });
         Grupo.add(deshabilitarGrupoMenu);
 
         jMenuBar1.add(Grupo);
@@ -925,12 +976,27 @@ public class Swing extends javax.swing.JFrame {
         Departamento.setText("Departamento");
 
         crearDepartamentoMenu.setText("Crear Departamento");
+        crearDepartamentoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearDepartamentoMenuActionPerformed(evt);
+            }
+        });
         Departamento.add(crearDepartamentoMenu);
 
         modificarDepartamentoMenu.setText("Modificar Departamento");
+        modificarDepartamentoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarDepartamentoMenuActionPerformed(evt);
+            }
+        });
         Departamento.add(modificarDepartamentoMenu);
 
         deshabilitarDepartamentoMenu.setText("Deshabilitar Departametnto");
+        deshabilitarDepartamentoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deshabilitarDepartamentoMenuActionPerformed(evt);
+            }
+        });
         Departamento.add(deshabilitarDepartamentoMenu);
 
         jMenuBar1.add(Departamento);
@@ -938,15 +1004,35 @@ public class Swing extends javax.swing.JFrame {
         Solicitudes.setText("Solicitudes");
 
         crearSolicitudMenu.setText("Crear Solicitud");
+        crearSolicitudMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearSolicitudMenuActionPerformed(evt);
+            }
+        });
         Solicitudes.add(crearSolicitudMenu);
 
         consutarSolicitudesMenu.setText("Consultar Solicitudes");
+        consutarSolicitudesMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consutarSolicitudesMenuActionPerformed(evt);
+            }
+        });
         Solicitudes.add(consutarSolicitudesMenu);
 
         aprobarDenegarSolicitudMenu.setText("Aprobar/Denegar Solicitud");
+        aprobarDenegarSolicitudMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aprobarDenegarSolicitudMenuActionPerformed(evt);
+            }
+        });
         Solicitudes.add(aprobarDenegarSolicitudMenu);
 
         fasedepreparacionMenu.setText("Fase de Preparación");
+        fasedepreparacionMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fasedepreparacionMenuActionPerformed(evt);
+            }
+        });
         Solicitudes.add(fasedepreparacionMenu);
 
         jMenuBar1.add(Solicitudes);
@@ -1004,8 +1090,6 @@ public class Swing extends javax.swing.JFrame {
         String descripcion = jTextField9.getText();
         String codCurso = jTextField37.getText();
         Etapa etapa = (Etapa) Etapa.valueOf(jComboBox4.getSelectedItem().toString());
-        JOptionPane nombre = new JOptionPane();
-        JOptionPane.showMessageDialog(null, etapa, "mensaje", JOptionPane.PLAIN_MESSAGE);
         CursosDAO cursos = new CursosDAO();
         Curso curso1 = new Curso(codCurso, descripcion, etapa, true);
 
@@ -1018,10 +1102,379 @@ public class Swing extends javax.swing.JFrame {
 
     private void CrearCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCursoMenuActionPerformed
         // TODO add your handling code here:
-        CrearCurso.setVisible(rootPaneCheckingEnabled);
+         //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(rootPaneCheckingEnabled);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
     }//GEN-LAST:event_CrearCursoMenuActionPerformed
 
+
+    private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
+        // TODO add your handling code here:
+        //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(rootPaneCheckingEnabled);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+        
+        
+    }//GEN-LAST:event_ContraseñaActionPerformed
+
+    private void crearProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfesorMenuActionPerformed
+        // TODO add your handling code here:
+         //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(rootPaneCheckingEnabled);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_crearProfesorMenuActionPerformed
+
+    private void modificarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProfesorMenuActionPerformed
+        // TODO add your handling code here:
+         //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(rootPaneCheckingEnabled);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_modificarProfesorMenuActionPerformed
+
+    private void deshabilitarEliminarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarEliminarProfesorMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(rootPaneCheckingEnabled);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_deshabilitarEliminarProfesorMenuActionPerformed
+
+    private void EliminarCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCursoMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(rootPaneCheckingEnabled);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_EliminarCursoMenuActionPerformed
+
+    private void crearGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearGrupoMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(rootPaneCheckingEnabled);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_crearGrupoMenuActionPerformed
+
+    private void modificarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrupoMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(rootPaneCheckingEnabled);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_modificarGrupoMenuActionPerformed
+
+    private void deshabilitarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarGrupoMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(rootPaneCheckingEnabled);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_deshabilitarGrupoMenuActionPerformed
+
+    private void crearDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDepartamentoMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(rootPaneCheckingEnabled);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_crearDepartamentoMenuActionPerformed
+
+    private void modificarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDepartamentoMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(rootPaneCheckingEnabled);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_modificarDepartamentoMenuActionPerformed
+
+    private void deshabilitarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarDepartamentoMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(rootPaneCheckingEnabled);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_deshabilitarDepartamentoMenuActionPerformed
+
+    private void crearSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearSolicitudMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(rootPaneCheckingEnabled);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_crearSolicitudMenuActionPerformed
+
+    private void consutarSolicitudesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consutarSolicitudesMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(rootPaneCheckingEnabled);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_consutarSolicitudesMenuActionPerformed
+
+    private void aprobarDenegarSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aprobarDenegarSolicitudMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(rootPaneCheckingEnabled);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_aprobarDenegarSolicitudMenuActionPerformed
+
+    private void fasedepreparacionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fasedepreparacionMenuActionPerformed
+        // TODO add your handling code here:
+           //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_fasedepreparacionMenuActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+        SolicitudesDAO metodosSolicitudes=new SolicitudesDAO();
+        DepartamentoDAO metodosDepartamento=new DepartamentoDAO();
+        ProfesorDAO metodosProfesor=new ProfesorDAO();
+        String titulo=jTextField21.getText();
+        Tipo tipo=Tipo.valueOf(jComboBox6.getSelectedItem().toString());
+        int departamento=metodosDepartamento.buscarPor(jTextField22.getText()).getIdDepartamento();
+        LocalTime horaInicio=LocalTime.parse(jTextField23.getText());
+        LocalTime horaFin=LocalTime.parse(jTextField24.getText());
+        int profesor=metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
+        LocalDate fechaInicio=LocalDate.parse(jTextField26.getText());
+        LocalDate fechaFin=LocalDate.parse(jTextField27.getText());
+        int participantes=Integer.parseInt(jTextField28.getText());
+        
+        
+       
+        
+    }//GEN-LAST:event_jButton17ActionPerformed
+=======
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1ComponentAdded
@@ -1051,6 +1504,7 @@ public class Swing extends javax.swing.JFrame {
     private void restablecerBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerBotonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_restablecerBotonActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -1218,12 +1672,17 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
+
+    private javax.swing.JLabel jLabel61;
+
     private javax.swing.JLabel jLabel62;
+
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1265,7 +1724,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;

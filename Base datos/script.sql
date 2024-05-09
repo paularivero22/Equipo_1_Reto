@@ -19,7 +19,7 @@ USE `mydb` ;
 -- Table `mydb`.`departamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`departamento` (
-  `iddepartamento` INT NOT NULL,
+  `iddepartamento` INT NOT NULL auto_increment,
   `codDepartamento` VARCHAR(45) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `idJefe` INT NOT NULL,
@@ -38,7 +38,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Profesor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Profesor` (
-  `idProfesor` INT NOT NULL,
+  `idProfesor` INT NOT NULL auto_increment,
   `nombre` VARCHAR(33) NOT NULL,
   `apellidos` VARCHAR(45) NOT NULL,
   `DNI` VARCHAR(9) NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`grupoAlumnos` (
   `fk_curso` VARCHAR(10) NOT NULL,
   `numAlumnos` VARCHAR(45) NOT NULL,
   `activo` TINYINT NOT NULL,
-  `idGrupo` INT NOT NULL,
+  `idGrupo` INT NOT NULL auto_increment,
   PRIMARY KEY (`idGrupo`),
   CONSTRAINT `fk_curso`
     FOREIGN KEY (`fk_curso`)
@@ -94,9 +94,9 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Solicitud`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Solicitud` (
-  `idActividad` INT NOT NULL,
-  `horaInicio` DATETIME NOT NULL,
-  `horaFin` DATETIME NOT NULL,
+  `idActividad` INT NOT NULL auto_increment,
+  `horaInicio` TIME NOT NULL,
+  `horaFin` TIME NOT NULL,
   `comentarios` VARCHAR(50) NULL,
   `prevista` TINYINT NOT NULL,
   `Departamento` INT NOT NULL,

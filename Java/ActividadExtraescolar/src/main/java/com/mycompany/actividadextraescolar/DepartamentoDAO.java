@@ -44,7 +44,7 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
     @Override
     public Departamento buscarPor(String filtro) {
         Departamento departamento = null;
-        String sql = "SELECT * FROM departamento WHERE codDepartamento=?";
+        String sql = "SELECT * FROM departamento WHERE nombre=?";
         try (PreparedStatement pst = getConnection().prepareStatement(sql);) {
             pst.setString(1, filtro);
             try (ResultSet rs = pst.executeQuery();) {
