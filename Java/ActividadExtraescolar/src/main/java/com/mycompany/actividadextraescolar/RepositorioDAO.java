@@ -17,7 +17,7 @@ public interface RepositorioDAO<T> {
     // para listar todos los registros de una tabla
     public List<T> listar();
     // método para recuperar un objeto por una filtro de tipo cadena
-    public T buscarPor( String filtro);
+    public T buscarPor(String filtro);
     // método para borrar un objeto por su filtro
     public void eliminarPor( String filtro);
     

@@ -4,6 +4,8 @@
  */
 package com.mycompany.actividadextraescolar;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 /**
@@ -12,8 +14,9 @@ import java.util.List;
  */
 public class ActividadExtraescolar {
     public static void main(String[] args) {
-
-     
+        SolicitudesDAO s=new SolicitudesDAO();
+        Solicitud solicitud=new Solicitud(LocalTime.of(10, 30),LocalTime.of(15, 40),"",true,5,"Museo",Tipo.ExtraEscolar,true,5,false,LocalDate.of(2024, 5, 9),LocalDate.of(2024, 5, 9),100,"",Estado.SOLICITADA);
+        s.insertar(solicitud);
     }
     
     //Metodo estatico para cargar los csv a bd

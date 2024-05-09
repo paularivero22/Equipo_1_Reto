@@ -50,8 +50,8 @@ public class MetodosFicheros {
                     Etapa etapa = Etapa.valueOf(datoslinea[3]);
                     boolean activo = formateoBoolean(datoslinea[4]);
 
-                    //Curso c = new Curso(idCurso, codCurso, descripcion, etapa, activo);
-                    //lista.add(c);
+                    Curso c = new Curso(idCurso, codCurso, descripcion, etapa, activo);
+                    lista.add(c);
                 }
                 fr.close();
             }
