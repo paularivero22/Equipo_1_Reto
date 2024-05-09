@@ -275,6 +275,11 @@ public class Swing extends javax.swing.JFrame {
         });
 
         restablecerBoton.setText("Restablecer contraseña");
+        restablecerBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restablecerBotonMouseClicked(evt);
+            }
+        });
         restablecerBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 restablecerBotonActionPerformed(evt);
@@ -367,6 +372,11 @@ public class Swing extends javax.swing.JFrame {
         CambiarContraseña.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 228, -1, -1));
 
         jButton2.setLabel("Volver");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         CambiarContraseña.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 228, -1, -1));
         CambiarContraseña.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 180, -1));
 
@@ -949,6 +959,7 @@ public class Swing extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -993,6 +1004,10 @@ public class Swing extends javax.swing.JFrame {
 
     private void restablecerBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerBotonActionPerformed
         // TODO add your handling code here:
+    // Cierra la ventana de inicio de sesión
+    Login.setVisible(false);
+    // Abre la ventana de cambio de contraseña
+    CambiarContraseña.setVisible(true);
         
     }//GEN-LAST:event_restablecerBotonActionPerformed
 
@@ -1049,6 +1064,16 @@ public class Swing extends javax.swing.JFrame {
     private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtemailActionPerformed
+
+    private void restablecerBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBotonMouseClicked
+
+    }//GEN-LAST:event_restablecerBotonMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        CambiarContraseña.setVisible(false);
+        Login.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
