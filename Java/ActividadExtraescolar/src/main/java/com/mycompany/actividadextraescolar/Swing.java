@@ -7,16 +7,28 @@ package com.mycompany.actividadextraescolar;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
+<<<<<<< HEAD
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+=======
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+<<<<<<< HEAD
+import javax.swing.DefaultListModel;
+=======
+import java.util.List;
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+>>>>>>> ed5f310f29d84ea5840709970dfe3afc330f7461
 
 /**
  *
  * @author atres
  */
 public class Swing extends javax.swing.JFrame {
-
+private DefaultListModel<Curso> modeloLista;
     /**
      * Creates new form Swing
      */
@@ -120,11 +132,12 @@ public class Swing extends javax.swing.JFrame {
         EliminarCurso = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jComboBox8 = new javax.swing.JComboBox<>();
         CrearGrupo = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -493,7 +506,15 @@ public class Swing extends javax.swing.JFrame {
                 jButton25ActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         CrearProfesor.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+=======
+<<<<<<< HEAD
+        CrearProfesor.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+=======
+        CrearProfesor.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
+>>>>>>> ed5f310f29d84ea5840709970dfe3afc330f7461
 
         getContentPane().add(CrearProfesor, "card4");
 
@@ -595,7 +616,6 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel20.setText("Descripción del Curso:");
         EliminarCurso.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
-        EliminarCurso.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 140, -1));
 
         jButton6.setText("Buscar");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -604,9 +624,36 @@ public class Swing extends javax.swing.JFrame {
             }
         });
         EliminarCurso.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
-        EliminarCurso.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 480, 50));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "idCurso", "codCurso", "descripcion", "etapa", "activo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(jTable1);
+
+        EliminarCurso.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 470, 90));
 
         jButton7.setText("Eliminar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         EliminarCurso.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
 
         jButton8.setText("Deshabilitar");
@@ -616,6 +663,9 @@ public class Swing extends javax.swing.JFrame {
             }
         });
         EliminarCurso.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
+        EliminarCurso.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 70, 130, -1));
 
         getContentPane().add(EliminarCurso, "card8");
 
@@ -1312,11 +1362,25 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        //Metodo buscar Curso
+        modeloLista.clear();
+        String descripcion=jComboBox8.getSelectedItem().toString();
+        CursosDAO cursos= new CursosDAO();
+        Curso buscarCurso=cursos.buscarPor(descripcion);
+        if(buscarCurso!=null){
+         
+         
+        }else{
+            
+        }
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        String descripcion= jComboBox8.getSelectedItem().toString();
+        CursosDAO cursos=new CursosDAO();
+        cursos.actualizar(descripcion);
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
@@ -1739,7 +1803,38 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         cargarItemsDepartamento();
+=======
+<<<<<<< HEAD
+        SolicitudesDAO metodosSolicitudes=new SolicitudesDAO();
+        DepartamentoDAO metodosDepartamento=new DepartamentoDAO();
+        ProfesorDAO metodosProfesor=new ProfesorDAO();
+        String titulo=jTextField21.getText();
+        Tipo tipo=Tipo.valueOf(jComboBox6.getSelectedItem().toString());
+        int departamento=metodosdepartamento.buscarPor(jComboBox8.getSelectedItem().toString()).getIdDepartamento();
+        LocalTime horaInicio=LocalTime.parse(jTextField23.getText());
+        LocalTime horaFin=LocalTime.parse(jTextField24.getText());
+        int profesor=metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
+        LocalDate fechaInicio=LocalDate.parse(jTextField26.getText());
+        LocalDate fechaFin=LocalDate.parse(jTextField27.getText());
+        int participantes=Integer.parseInt(jTextField28.getText());
+        boolean prevista=jCheckBox2.isSelected();
+        boolean medioTransporte=false;
+        boolean alojamiento=jCheckBox1.isSelected();
+        String comentAlojamiento="";
+        Estado estado=Estado.SOLICITADA;
+        
+        Solicitud s=new Solicitud(horaInicio,horaFin,"",prevista,departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFin,participantes,"",estado);
+        metodosSolicitudes.insertar(s);
+        
+        
+       
+        
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ed5f310f29d84ea5840709970dfe3afc330f7461
         SolicitudesDAO metodosSolicitudes = new SolicitudesDAO();
         DepartamentoDAO metodosDepartamento = new DepartamentoDAO();
         ProfesorDAO metodosProfesor = new ProfesorDAO();
@@ -1767,8 +1862,14 @@ public class Swing extends javax.swing.JFrame {
         String comentAlojamiento = "";
         Estado estado = Estado.SOLICITADA;
 
+<<<<<<< HEAD
         Solicitud s = new Solicitud(horaInicio, horaFin, "", prevista, departamento, titulo, tipo, medioTransporte, profesor, alojamiento, fechaInicio, fechaFin, participantes, "", estado);
         metodosSolicitudes.insertar(s);
+=======
+
+>>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
+>>>>>>> ed5f310f29d84ea5840709970dfe3afc330f7461
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
@@ -1805,14 +1906,24 @@ public class Swing extends javax.swing.JFrame {
         CambiarContraseña.setVisible(true);
     }//GEN-LAST:event_restablecerBotonActionPerformed
 
+<<<<<<< HEAD
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String descripcion = jComboBox8.getSelectedItem().toString();
+        CursosDAO cursos = new CursosDAO();
+        cursos.eliminarPor(descripcion);
+    }//GEN-LAST:event_jButton7ActionPerformed
+=======
     private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField23ActionPerformed
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
     }                                     
 
+<<<<<<< HEAD
+=======
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         DepartamentoDAO dep = new DepartamentoDAO();
@@ -1871,6 +1982,7 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+<<<<<<< HEAD
     private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
         // TODO add your handling code here:
         Login.setVisible(rootPaneCheckingEnabled);
@@ -1951,6 +2063,9 @@ public class Swing extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButton18ActionPerformed
+=======
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
+>>>>>>> ed5f310f29d84ea5840709970dfe3afc330f7461
 
     /**
      * @param args the command line arguments
@@ -2132,8 +2247,22 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+=======
+<<<<<<< HEAD
+>>>>>>> ed5f310f29d84ea5840709970dfe3afc330f7461
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
+>>>>>>> ed5f310f29d84ea5840709970dfe3afc330f7461
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2159,14 +2288,25 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    private javax.swing.JTable jTable1;
+=======
+
+>>>>>>> ed5f310f29d84ea5840709970dfe3afc330f7461
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTextArea jTextArea2;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
+>>>>>>> ed5f310f29d84ea5840709970dfe3afc330f7461
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;

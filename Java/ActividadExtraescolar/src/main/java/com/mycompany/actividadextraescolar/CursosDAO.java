@@ -41,7 +41,7 @@ public class CursosDAO implements RepositorioDAO<Curso> {
     @Override
     public Curso buscarPor(String filtro) {
         Curso curso = null;
-        String sql = "SELECT * FROM curso WHERE codcurso=?";
+        String sql = "SELECT * FROM curso WHERE descripcion=?";
         try (PreparedStatement pst = getConnection().prepareStatement(sql);) {
             pst.setString(1, filtro);
             try (ResultSet rs = pst.executeQuery();) {
@@ -57,7 +57,7 @@ public class CursosDAO implements RepositorioDAO<Curso> {
 
     @Override
     public void eliminarPor(String filtro) {
-        String sql = "DELETE FROM curso WHERE codcurso=?";
+        String sql = "DELETE FROM curso WHERE descripcion=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setString(1, filtro);
             int salida = stmt.executeUpdate();
@@ -98,7 +98,7 @@ public class CursosDAO implements RepositorioDAO<Curso> {
        // Implementación para deshabilitar curso
         Curso curso = buscarPor(filtro);
         if (curso != null) {
-            String sql = "UPDATE curso SET activo=false WHERE idcurso=?";
+            String sql = "UPDATE curso SET activo=false WHERE descripcion=?";
             try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
                 stmt.setInt(1, curso.getIdCurso());
                 int salida = stmt.executeUpdate();
