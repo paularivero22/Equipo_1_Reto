@@ -11,7 +11,7 @@ import java.time.LocalTime;
  *
  * @author atres
  */
-public class Solicitud {
+public class Solicitud implements Comparable<Solicitud>{
 
     private int idSolicitud;
     private String titulo;
@@ -206,5 +206,20 @@ public class Solicitud {
     public String toString() {
         return "Solicitud{" + "idSolicitud=" + idSolicitud + ", titulo=" + titulo + ", tipoSolicitud=" + tipoSolicitud + ", iddepartamento=" + iddepartamento + ", prevista=" + prevista + ", idprofesor=" + idprofesor + ", horaInicio=" + horaInicio + ", horaFinal=" + horaFinal + ", estado=" + estado + ", comentario=" + comentario + ", medioTransporte=" + medioTransporte + ", Alojamiento=" + Alojamiento + ", comentarioAlojamiento=" + comentarioAlojamiento + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", totalParticipantes=" + totalParticipantes + '}';
     }
+
+
+    @Override
+    public int compareTo(Solicitud o) {
+        if(this.getFechaInicio().isAfter(o.getFechaInicio())){
+            return -1;
+        }else if(this.getFechaInicio().isBefore(o.getFechaFinal())){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+   
+   
 
 }

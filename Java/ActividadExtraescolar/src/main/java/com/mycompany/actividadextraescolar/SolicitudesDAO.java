@@ -11,8 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  *
@@ -26,8 +26,8 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
 //Lista las solicitudes solicitadas
 
     @Override
-    public List<Solicitud> listar() {
-        List<Solicitud> listaSolicitudes = new ArrayList<>();
+    public SortedSet<Solicitud> listar() {
+        SortedSet<Solicitud> listaSolicitudes = new TreeSet<>();
         try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM solicitud;");) {
             while (rs.next()) {
                 Solicitud solicitud = crearSolicitud(rs);

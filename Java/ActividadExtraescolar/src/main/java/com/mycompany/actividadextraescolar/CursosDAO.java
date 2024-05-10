@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Clase que implementa la interfaz RepositorioDAO para la clase Curso.
@@ -21,8 +23,8 @@ public class CursosDAO implements RepositorioDAO<Curso> {
     }
 
     @Override
-    public List<Curso> listar() {
-        List<Curso> listaCursos = new ArrayList<>();
+    public SortedSet<Curso> listar() {
+        SortedSet<Curso> listaCursos = new TreeSet<>();
         try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM curso;");) {
             while (rs.next()) {
                 Curso curso = crearCurso(rs);
@@ -118,7 +120,7 @@ public class CursosDAO implements RepositorioDAO<Curso> {
     
     // Método para mostrar todos los cursos
     public void mostrarTodosCursos() {
-        List<Curso> listaCursos = listar();
+        SortedSet<Curso> listaCursos = listar();
         for (Curso c : listaCursos) {
             System.out.println(c.toString());
         }
