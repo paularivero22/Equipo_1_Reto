@@ -26,4 +26,10 @@ public interface RepositorioDAO<T> {
     
     //Metodo para actualizar datos de una tabla ;
     public void actualizar(String filtro);
+    
+    //Metodo para verificar credenciales
+    public boolean verificarCredenciales(String contrasenia,String email);
+    
+    //Metodo para cambiar contraseña
+    public boolean actualizarContrasenia (String dni, String nuevaContrasenia);
 }

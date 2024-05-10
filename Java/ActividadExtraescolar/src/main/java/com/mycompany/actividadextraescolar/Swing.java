@@ -44,21 +44,28 @@ public class Swing extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         Login = new javax.swing.JPanel();
         txtEmail = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         txtcontrasen = new javax.swing.JLabel();
         txtcontrasenia = new javax.swing.JPasswordField();
         botonLogin = new javax.swing.JButton();
         restablecerBoton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
+        jLabel68 = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
         CambiarContraseña = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtDNI = new javax.swing.JTextField();
+        txtcambiarContrasenia = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtnuevaContrasenia = new javax.swing.JPasswordField();
         MenuInicio = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         CrearProfesor = new javax.swing.JPanel();
@@ -255,97 +262,84 @@ public class Swing extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.CardLayout());
 
         Login.setBackground(new java.awt.Color(255, 255, 255));
+        Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtEmail.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 20)); // NOI18N
         txtEmail.setText("Email");
+        Login.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
 
+        jLabel66.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/logo_usuario.png"))); // NOI18N
+        Login.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, -1, 40));
+
+        txtemail.setBackground(new java.awt.Color(65, 174, 181));
+        txtemail.setBorder(null);
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
             }
         });
+        Login.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 350, 40));
 
-        txtcontrasen.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
+        txtcontrasen.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 20)); // NOI18N
         txtcontrasen.setText("Contraseña");
+        Login.add(txtcontrasen, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
 
+        txtcontrasenia.setBackground(new java.awt.Color(65, 174, 181));
+        txtcontrasenia.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         txtcontrasenia.setText("jPasswordField2");
+        txtcontrasenia.setBorder(null);
+        Login.add(txtcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 350, 40));
 
         botonLogin.setBackground(new java.awt.Color(0, 0, 0));
         botonLogin.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         botonLogin.setForeground(new java.awt.Color(255, 255, 255));
         botonLogin.setText("Iniciar sesión");
+        botonLogin.setBorder(null);
         botonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonLoginActionPerformed(evt);
             }
         });
+        Login.add(botonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 250, 40));
 
-        restablecerBoton.setBackground(new java.awt.Color(0, 0, 0));
-        restablecerBoton.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        restablecerBoton.setForeground(new java.awt.Color(255, 255, 255));
+        restablecerBoton.setBackground(new java.awt.Color(254, 251, 251));
+        restablecerBoton.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 16)); // NOI18N
         restablecerBoton.setText("Restablecer Contraseña");
+        restablecerBoton.setBorder(null);
         restablecerBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 restablecerBotonActionPerformed(evt);
             }
         });
+        Login.add(restablecerBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 550, 224, -1));
 
-        jLabel62.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
-        jLabel62.setText("INICIAR SESIÓN");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 9.png"))); // NOI18N
+        jButton1.setBorder(null);
+        Login.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, -1, 80));
+
+        jButton25.setBackground(new java.awt.Color(65, 174, 181));
+        jButton25.setForeground(new java.awt.Color(65, 174, 181));
+        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/ojo.png"))); // NOI18N
+        jButton25.setBorder(null);
+        Login.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
+
+        jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 5.png"))); // NOI18N
+        Login.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, -1, -1));
+
+        jLabel62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 5.png"))); // NOI18N
+        Login.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, -1));
+
+        jLabel65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/logo2_redminesionado.png"))); // NOI18N
+        Login.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel63.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 12)); // NOI18N
         jLabel63.setText("¿Olvidaste tu contraseña?");
+        Login.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, -1, -1));
 
-        javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
-        Login.setLayout(LoginLayout);
-        LoginLayout.setHorizontalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(325, 325, 325)
-                        .addComponent(restablecerBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(362, 362, 362)
-                        .addComponent(jLabel62)))
-                .addContainerGap(307, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail)
-                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcontrasen)
-                            .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(319, 319, 319))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel63)
-                            .addComponent(botonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(344, 344, 344))))
-        );
-        LoginLayout.setVerticalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel62)
-                .addGap(18, 18, 18)
-                .addComponent(txtEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(txtcontrasen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonLogin)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel63)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(restablecerBoton)
-                .addContainerGap(167, Short.MAX_VALUE))
-        );
+        jLabel67.setBackground(new java.awt.Color(254, 251, 251));
+        jLabel67.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 3.png"))); // NOI18N
+        Login.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
+        Login.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 103, -1, -1));
 
         getContentPane().add(Login, "card19");
 
@@ -356,34 +350,34 @@ public class Swing extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setLabelFor(jLabel1);
         jLabel1.setText("REESTABLECER CONTRASEÑA");
-        CambiarContraseña.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 330, 33));
+        CambiarContraseña.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 330, 33));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        jLabel2.setText("Correo Profesor:");
-        CambiarContraseña.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 140, 20));
+        jLabel2.setText("DNI:");
+        CambiarContraseña.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, 140, 20));
 
         jLabel3.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         jLabel3.setText("Nueva Contraseña:");
-        CambiarContraseña.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, 20));
+        CambiarContraseña.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, 20));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtDNIActionPerformed(evt);
             }
         });
-        CambiarContraseña.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 180, -1));
+        CambiarContraseña.add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 180, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setLabel("Cambiar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtcambiarContrasenia.setBackground(new java.awt.Color(0, 0, 0));
+        txtcambiarContrasenia.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
+        txtcambiarContrasenia.setForeground(new java.awt.Color(255, 255, 255));
+        txtcambiarContrasenia.setLabel("Cambiar");
+        txtcambiarContrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                txtcambiarContraseniaActionPerformed(evt);
             }
         });
-        CambiarContraseña.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
+        CambiarContraseña.add(txtcambiarContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
@@ -394,8 +388,8 @@ public class Swing extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        CambiarContraseña.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
-        CambiarContraseña.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 180, -1));
+        CambiarContraseña.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, -1, -1));
+        CambiarContraseña.add(txtnuevaContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 180, -1));
 
         getContentPane().add(CambiarContraseña, "card2");
 
@@ -669,7 +663,7 @@ public class Swing extends javax.swing.JFrame {
                     .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
                         .addGap(213, 213, 213)
                         .addComponent(jButton23)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(339, Short.MAX_VALUE))
         );
         DeshabilitarGrupoLayout.setVerticalGroup(
             DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -684,7 +678,7 @@ public class Swing extends javax.swing.JFrame {
                 .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(jButton23)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         getContentPane().add(DeshabilitarGrupo, "card18");
@@ -1095,9 +1089,38 @@ public class Swing extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void txtcambiarContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcambiarContraseniaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        // Obtener el DNI y la nueva contraseña ingresados por el usuario
+    // Obtener el DNI y la nueva contraseña ingresados por el usuario
+    String dni = txtDNI.getText();
+    String nuevaContrasenia = new String(txtnuevaContrasenia.getPassword());
+    
+    // Verificar si se han ingresado valores en los campos DNI y Nueva Contraseña
+    if (dni.isEmpty() || nuevaContrasenia.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe rellenar los campos solicitados", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Salir del método si falta algún dato
+    }
+    
+    // Mostrar un mensaje de confirmación
+    int confirmacion = JOptionPane.showConfirmDialog(this, "¿Está seguro que quiere cambiar su contraseña?", "Confirmar Cambio de Contraseña", JOptionPane.YES_NO_OPTION);
+    
+    if (confirmacion == JOptionPane.YES_OPTION) {
+        // El usuario confirmó el cambio de contraseña
+        
+        // Acceder a la base de datos y actualizar la contraseña del profesor correspondiente
+        ProfesorDAO profesorDAO = new ProfesorDAO(); // Reemplaza 'conexion' con tu conexión a la base de datos
+        boolean cambioExitoso = profesorDAO.actualizarContrasenia(dni, nuevaContrasenia);
+        
+        if (cambioExitoso) {
+            // Mostrar un mensaje de éxito
+            JOptionPane.showMessageDialog(this, "Contraseña cambiada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Mostrar un mensaje de error si no se encontró ningún profesor con el DNI proporcionado
+            JOptionPane.showMessageDialog(this, "Ningún profesor encontrado con el DNI proporcionado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_txtcambiarContraseniaActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -1536,7 +1559,26 @@ public class Swing extends javax.swing.JFrame {
 
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
           
-
+// Obtener el correo electrónico y la contraseña ingresados por el usuario
+    String correo = txtemail.getText();
+    String contrasenia = new String(txtcontrasenia.getPassword());
+    
+    // Crear una instancia de tu RepositorioDAO (por ejemplo, ProfesorDAO)
+    RepositorioDAO<Profesor> profesorDAO = new ProfesorDAO(); // Reemplaza 'conexion' con tu conexión a la base de datos
+    
+    // Verificar las credenciales
+    boolean credencialesValidas = profesorDAO.verificarCredenciales(contrasenia, correo);
+    
+    // Si las credenciales son válidas, mostrar un mensaje de inicio de sesión completado
+    if (credencialesValidas) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión completado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        // Aquí puedes agregar el código para abrir la nueva ventana o realizar cualquier otra acción necesaria después del inicio de sesión exitoso
+    } else {
+        // Si las credenciales no son válidas, mostrar un mensaje de error
+        JOptionPane.showMessageDialog(this, "Correo electrónico o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    
 //        String username = txtemail.getText();
 //        String password = new String(txtcontrasenia.getPassword());
 //
@@ -1559,6 +1601,7 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
         Login.setVisible(false);
         CambiarContraseña.setVisible(true);
+        
     }//GEN-LAST:event_restablecerBotonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1572,9 +1615,9 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CrearActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtDNIActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1671,6 +1714,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1745,11 +1789,15 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
@@ -1784,7 +1832,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
@@ -1813,9 +1860,12 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JMenuItem modificarGrupoMenu;
     private javax.swing.JMenuItem modificarProfesorMenu;
     private javax.swing.JButton restablecerBoton;
+    private javax.swing.JTextField txtDNI;
     private javax.swing.JLabel txtEmail;
+    private javax.swing.JButton txtcambiarContrasenia;
     private javax.swing.JLabel txtcontrasen;
     private javax.swing.JPasswordField txtcontrasenia;
     private javax.swing.JTextField txtemail;
+    private javax.swing.JPasswordField txtnuevaContrasenia;
     // End of variables declaration//GEN-END:variables
 }

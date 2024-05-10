@@ -132,4 +132,16 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
     private Solicitud crearSolicitud(final ResultSet rs) throws SQLException {
         return new Solicitud(rs.getInt("idActividad"), rs.getTime("horaInicio").toLocalTime(), rs.getTime("horaFin").toLocalTime(), rs.getString("comentarios"), rs.getBoolean("prevista"), rs.getInt("Departamento"), rs.getString("titulo"), Tipo.valueOf(rs.getString("tipo")), rs.getBoolean("medioTransporte"), rs.getInt("profesor"), rs.getBoolean("alojamiento"), rs.getDate("fechaInicio").toLocalDate(), rs.getDate("fechaFinal").toLocalDate(), rs.getInt("totalParticipantes"), rs.getString("comenAlojamiento"), Estado.SOLICITADA);
     }
+
+    @Override
+    public boolean verificarCredenciales(String contrasenia, String email) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean actualizarContrasenia(String dni, String nuevaContrasenia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+   
 }
