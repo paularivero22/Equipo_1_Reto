@@ -4,52 +4,45 @@
  */
 package com.mycompany.actividadextraescolar;
 
-import static java.awt.PageAttributes.MediaType.D;
 import java.sql.Connection;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-<<<<<<< HEAD
-import javax.swing.DefaultListModel;
-=======
 import java.util.List;
->>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author atres
  */
 public class Swing extends javax.swing.JFrame {
-private DefaultListModel<Curso> modeloLista;
+
+    private DefaultListModel<Curso> modeloLista;
     /**
      * Creates new form Swing
      */
-<<<<<<< HEAD
-    private SolicitudesDAO solicitud=new SolicitudesDAO();
-    private DepartamentoDAO metodosdepartamento=new DepartamentoDAO();
-    
-     private Connection getConnection() {
-=======
+    private SolicitudesDAO solicitud = new SolicitudesDAO();
+    private DepartamentoDAO metodosdepartamento = new DepartamentoDAO();
+
     private Connection getConnection() {
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
         return AccesoBaseDatos.getInstance().getConn();
     }
-
+    /**
+     * Creates new form Swing
+     */
     public Swing() {
         initComponents();
         cargarItemsDepartamento();
     }
-    private void cargarItemsDepartamento(){
-       String solicitudes="";
-       List<Departamento>lista=metodosdepartamento.listar();
-       for(Departamento d:lista){
-           jComboBox8.addItem(d.getNombre());
-       }
-       
+    private void cargarItemsDepartamento() {
+        String solicitudes = "";
+        List<Departamento> lista = metodosdepartamento.listar();
+        for (Departamento d : lista) {
+            jComboBox9.addItem(d.getNombre());
+            jComboBox8.addItem(d.getNombre());
+            jComboBox10.addItem(d.getNombre());
+        }
+
     }
 
     /**
@@ -61,8 +54,6 @@ private DefaultListModel<Curso> modeloLista;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane19 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         Login = new javax.swing.JPanel();
         txtEmail = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
@@ -181,14 +172,14 @@ private DefaultListModel<Curso> modeloLista;
         jButton14 = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        jComboBox9 = new javax.swing.JComboBox<>();
         DeshabilitarDepartamento = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jTextField20 = new javax.swing.JTextField();
         jButton15 = new javax.swing.JButton();
         jScrollPane13 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable5 = new javax.swing.JTable();
         jButton16 = new javax.swing.JButton();
         CrearSolicitud = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
@@ -212,12 +203,14 @@ private DefaultListModel<Curso> modeloLista;
         jTextField27 = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        jComboBox10 = new javax.swing.JComboBox<>();
+        jCheckBox3 = new javax.swing.JCheckBox();
         ConsultarSolicitudes = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        jScrollPane14 = new javax.swing.JScrollPane();
         jButton18 = new javax.swing.JButton();
+        jScrollPane19 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
         AprobarDenegarSolicitudes = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
@@ -269,13 +262,7 @@ private DefaultListModel<Curso> modeloLista;
         aprobarDenegarSolicitudMenu = new javax.swing.JMenuItem();
         fasedepreparacionMenu = new javax.swing.JMenuItem();
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane19.setViewportView(jTextArea2);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setIconImage(getIconImage());
         getContentPane().setLayout(new java.awt.CardLayout());
 
         Login.setBackground(new java.awt.Color(255, 255, 255));
@@ -332,7 +319,7 @@ private DefaultListModel<Curso> modeloLista;
                     .addGroup(LoginLayout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(jLabel62)))
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,7 +355,7 @@ private DefaultListModel<Curso> modeloLista;
                 .addComponent(jLabel63)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(restablecerBoton)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(Login, "card19");
@@ -378,7 +365,6 @@ private DefaultListModel<Curso> modeloLista;
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setLabelFor(jLabel1);
         jLabel1.setText("REESTABLECER CONTRASEÑA");
         CambiarContraseña.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 330, 33));
 
@@ -499,11 +485,7 @@ private DefaultListModel<Curso> modeloLista;
                 CrearActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
         CrearProfesor.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
-=======
-        CrearProfesor.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
->>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
 
         getContentPane().add(CrearProfesor, "card4");
 
@@ -726,7 +708,7 @@ private DefaultListModel<Curso> modeloLista;
                     .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
                         .addGap(213, 213, 213)
                         .addComponent(jButton23)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         DeshabilitarGrupoLayout.setVerticalGroup(
             DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -741,7 +723,7 @@ private DefaultListModel<Curso> modeloLista;
                 .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(jButton23)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         getContentPane().add(DeshabilitarGrupo, "card18");
@@ -863,8 +845,8 @@ private DefaultListModel<Curso> modeloLista;
 
         ModificarDepartamento.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 514, 42));
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
-        ModificarDepartamento.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 210, -1));
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
+        ModificarDepartamento.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 210, -1));
 
         getContentPane().add(ModificarDepartamento, "card12");
 
@@ -885,7 +867,7 @@ private DefaultListModel<Curso> modeloLista;
         });
         DeshabilitarDepartamento.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -896,7 +878,7 @@ private DefaultListModel<Curso> modeloLista;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane13.setViewportView(jTable1);
+        jScrollPane13.setViewportView(jTable5);
 
         DeshabilitarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 500, 50));
 
@@ -916,45 +898,45 @@ private DefaultListModel<Curso> modeloLista;
         CrearSolicitud.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 16, -1, -1));
 
         jLabel36.setText("Título:");
-        CrearSolicitud.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 43, -1));
-        CrearSolicitud.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 77, -1));
+        CrearSolicitud.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 43, -1));
+        CrearSolicitud.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 190, -1));
 
         jLabel37.setText("Tipo:");
-        CrearSolicitud.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 43, -1));
+        CrearSolicitud.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 43, -1));
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ExtraEscolar", "Complementaria" }));
-        CrearSolicitud.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EXTRAESCOLAR", "COMPLEMENTARIA" }));
+        CrearSolicitud.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 210, -1));
 
         jLabel38.setText("Departamento:");
-        CrearSolicitud.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
+        CrearSolicitud.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
 
         jLabel39.setText("Hora Inicio:");
-        CrearSolicitud.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        CrearSolicitud.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
 
         jTextField23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField23ActionPerformed(evt);
             }
         });
-        CrearSolicitud.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 77, -1));
+        CrearSolicitud.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 190, -1));
 
         jLabel40.setText("Hora Final:");
-        CrearSolicitud.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
-        CrearSolicitud.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 120, -1));
+        CrearSolicitud.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        CrearSolicitud.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 190, -1));
 
         jLabel41.setText("DNI Profesor:");
-        CrearSolicitud.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 97, -1));
-        CrearSolicitud.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 112, -1));
+        CrearSolicitud.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 97, -1));
+        CrearSolicitud.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 210, -1));
 
         jLabel42.setText("Fecha inicio:");
-        CrearSolicitud.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 135, -1, -1));
+        CrearSolicitud.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, 30));
 
         jLabel43.setText("Fecha Final:");
-        CrearSolicitud.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+        CrearSolicitud.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         jLabel44.setText("Participantes:");
-        CrearSolicitud.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
-        CrearSolicitud.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 77, -1));
+        CrearSolicitud.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
+        CrearSolicitud.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 210, -1));
 
         jButton17.setText("Crear");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
@@ -962,17 +944,20 @@ private DefaultListModel<Curso> modeloLista;
                 jButton17ActionPerformed(evt);
             }
         });
-        CrearSolicitud.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
-        CrearSolicitud.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 100, -1));
-        CrearSolicitud.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 120, -1));
+        CrearSolicitud.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
+        CrearSolicitud.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 180, -1));
+        CrearSolicitud.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 180, -1));
 
         jCheckBox1.setText("Alojamiento");
-        CrearSolicitud.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        CrearSolicitud.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         jCheckBox2.setText("Prevista");
-        CrearSolicitud.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
+        CrearSolicitud.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
 
-        CrearSolicitud.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
+        CrearSolicitud.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 200, -1));
+
+        jCheckBox3.setText("MedioTransporte");
+        CrearSolicitud.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
 
         getContentPane().add(CrearSolicitud, "card14");
 
@@ -981,10 +966,34 @@ private DefaultListModel<Curso> modeloLista;
         jLabel47.setText("CONSULTAR SOLICITUDES");
         ConsultarSolicitudes.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
         ConsultarSolicitudes.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 65, -1, -1));
-        ConsultarSolicitudes.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 97, 558, 170));
 
         jButton18.setText("Buscar");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
         ConsultarSolicitudes.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "medioTransporte", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "comenAlojamiento", "Estado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane19.setViewportView(jTable6);
+
+        ConsultarSolicitudes.add(jScrollPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 590, 330));
 
         getContentPane().add(ConsultarSolicitudes, "card15");
 
@@ -1254,103 +1263,7 @@ private DefaultListModel<Curso> modeloLista;
         setJMenuBar(jMenuBar1);
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        //Metodo buscar Curso
-        modeloLista.clear();
-        String descripcion=jComboBox8.getSelectedItem().toString();
-        CursosDAO cursos= new CursosDAO();
-        Curso buscarCurso=cursos.buscarPor(descripcion);
-        if(buscarCurso!=null){
-         
-         
-        }else{
-            
-        }
-        
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        String descripcion= jComboBox8.getSelectedItem().toString();
-        CursosDAO cursos=new CursosDAO();
-        cursos.actualizar(descripcion);
-
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        String descripcion = jTextField9.getText();
-        String codCurso = jTextField37.getText();
-        Etapa etapa = (Etapa) Etapa.valueOf(jComboBox4.getSelectedItem().toString());
-        CursosDAO cursos = new CursosDAO();
-        Curso curso1 = new Curso(codCurso, descripcion, etapa, true);
-
-        cursos.insertar(curso1);
-    }//GEN-LAST:event_jButton24ActionPerformed
-
-    private void jTextField37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField37ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField37ActionPerformed
-
-    private void CrearCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCursoMenuActionPerformed
-        // TODO add your handling code here:
-        //Asigno que sea visible cuando clickemos encima del menu
-        CambiarContraseña.setVisible(false);
-        MenuInicio.setVisible(false);
-        CrearProfesor.setVisible(false);
-        ModificarProfesor.setVisible(false);
-        EliminarDeshabilitarProfesor.setVisible(false);
-        CrearCurso.setVisible(rootPaneCheckingEnabled);
-        EliminarCurso.setVisible(false);
-        CrearGrupo.setVisible(false);
-        ModificarGrupo.setVisible(false);
-        DeshabilitarGrupo.setVisible(false);
-        CrearDepartamento.setVisible(false);
-        ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
-        CrearSolicitud.setVisible(false);
-        ConsultarSolicitudes.setVisible(false);
-        AprobarDenegarSolicitudes.setVisible(false);
-        FasePreparacion.setVisible(false);
-    }//GEN-LAST:event_CrearCursoMenuActionPerformed
-
 
     private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
         // TODO add your handling code here:
@@ -1374,17 +1287,13 @@ private DefaultListModel<Curso> modeloLista;
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(false);
 
-
     }//GEN-LAST:event_ContraseñaActionPerformed
 
     private void crearProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfesorMenuActionPerformed
-        // TODO add your handling code here:
-<<<<<<< HEAD
-         //Asigno que sea visible cuando clickemos encima del menu
-        Login.setVisible(false);
-=======
+        // TODO add your handling code here
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(rootPaneCheckingEnabled);
@@ -1406,12 +1315,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void modificarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProfesorMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-         //Asigno que sea visible cuando clickemos encima del menu
-         Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1433,12 +1339,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void deshabilitarEliminarProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarEliminarProfesorMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1458,14 +1361,33 @@ private DefaultListModel<Curso> modeloLista;
         FasePreparacion.setVisible(false);
     }//GEN-LAST:event_deshabilitarEliminarProfesorMenuActionPerformed
 
+    private void CrearCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCursoMenuActionPerformed
+        // TODO add your handling code here:
+        //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(rootPaneCheckingEnabled);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        DeshabilitarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_CrearCursoMenuActionPerformed
+
     private void EliminarCursoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCursoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1487,12 +1409,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void crearGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearGrupoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1514,12 +1433,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void modificarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrupoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1541,12 +1457,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void deshabilitarGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarGrupoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1568,12 +1481,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void crearDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1595,12 +1505,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void modificarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1622,12 +1529,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void deshabilitarDepartamentoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deshabilitarDepartamentoMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1648,13 +1552,10 @@ private DefaultListModel<Curso> modeloLista;
     }//GEN-LAST:event_deshabilitarDepartamentoMenuActionPerformed
 
     private void crearSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearSolicitudMenuActionPerformed
-        // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
+        // TODO add your handling code here
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1676,12 +1577,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void consutarSolicitudesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consutarSolicitudesMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1703,12 +1601,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void aprobarDenegarSolicitudMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aprobarDenegarSolicitudMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-         Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1730,12 +1625,9 @@ private DefaultListModel<Curso> modeloLista;
 
     private void fasedepreparacionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fasedepreparacionMenuActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-           //Asigno que sea visible cuando clickemos encima del menu
-           Login.setVisible(false);
-=======
         //Asigno que sea visible cuando clickemos encima del menu
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
+        Login.setVisible(false);
+        //Asigno que sea visible cuando clickemos encima del menu
         CambiarContraseña.setVisible(false);
         MenuInicio.setVisible(false);
         CrearProfesor.setVisible(false);
@@ -1755,54 +1647,6 @@ private DefaultListModel<Curso> modeloLista;
         FasePreparacion.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_fasedepreparacionMenuActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        // TODO add your handling code here:
-<<<<<<< HEAD
-        SolicitudesDAO metodosSolicitudes=new SolicitudesDAO();
-        DepartamentoDAO metodosDepartamento=new DepartamentoDAO();
-        ProfesorDAO metodosProfesor=new ProfesorDAO();
-        String titulo=jTextField21.getText();
-        Tipo tipo=Tipo.valueOf(jComboBox6.getSelectedItem().toString());
-        int departamento=metodosdepartamento.buscarPor(jComboBox8.getSelectedItem().toString()).getIdDepartamento();
-        LocalTime horaInicio=LocalTime.parse(jTextField23.getText());
-        LocalTime horaFin=LocalTime.parse(jTextField24.getText());
-        int profesor=metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
-        LocalDate fechaInicio=LocalDate.parse(jTextField26.getText());
-        LocalDate fechaFin=LocalDate.parse(jTextField27.getText());
-        int participantes=Integer.parseInt(jTextField28.getText());
-        boolean prevista=jCheckBox2.isSelected();
-        boolean medioTransporte=false;
-        boolean alojamiento=jCheckBox1.isSelected();
-        String comentAlojamiento="";
-        Estado estado=Estado.SOLICITADA;
-        
-        Solicitud s=new Solicitud(horaInicio,horaFin,"",prevista,departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFin,participantes,"",estado);
-        metodosSolicitudes.insertar(s);
-        
-        
-       
-        
-<<<<<<< HEAD
-=======
-=======
-        SolicitudesDAO metodosSolicitudes = new SolicitudesDAO();
-        DepartamentoDAO metodosDepartamento = new DepartamentoDAO();
-        ProfesorDAO metodosProfesor = new ProfesorDAO();
-        String titulo = jTextField21.getText();
-        Tipo tipo = Tipo.valueOf(jComboBox6.getSelectedItem().toString());
-        int departamento = metodosDepartamento.buscarPor(jTextField22.getText()).getIdDepartamento();
-        LocalTime horaInicio = LocalTime.parse(jTextField23.getText());
-        LocalTime horaFin = LocalTime.parse(jTextField24.getText());
-        int profesor = metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
-        LocalDate fechaInicio = LocalDate.parse(jTextField26.getText());
-        LocalDate fechaFin = LocalDate.parse(jTextField27.getText());
-        int participantes = Integer.parseInt(jTextField28.getText());
-
-
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
->>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
-    }//GEN-LAST:event_jButton17ActionPerformed
-
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1ComponentAdded
@@ -1812,24 +1656,22 @@ private DefaultListModel<Curso> modeloLista;
     }//GEN-LAST:event_txtemailActionPerformed
 
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
-          
 
-//        String username = txtemail.getText();
-//        String password = new String(txtcontrasenia.getPassword());
-//
-//        // Aquí iría la lógica para verificar el usuario y contraseña
-//        // Por simplicidad, aquí simplemente compararemos con valores fijos
-//        if (username.equals("usuario") && password.equals("contraseña")) {
-//            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
-//            // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
-//            // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
-//            Swing login = new Swing();
-//            login.setVisible(true);
-//            dispose(); // Cierra la ventana de inicio de sesión
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-
+        //        String username = txtemail.getText();
+        //        String password = new String(txtcontrasenia.getPassword());
+        //
+        //        // Aquí iría la lógica para verificar el usuario y contraseña
+        //        // Por simplicidad, aquí simplemente compararemos con valores fijos
+        //        if (username.equals("usuario") && password.equals("contraseña")) {
+            //            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
+            //            // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
+            //            // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
+            //            Swing login = new Swing();
+            //            login.setVisible(true);
+            //            dispose(); // Cierra la ventana de inicio de sesión
+            //        } else {
+            //            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+            //        }
     }//GEN-LAST:event_botonLoginActionPerformed
 
     private void restablecerBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerBotonActionPerformed
@@ -1838,33 +1680,91 @@ private DefaultListModel<Curso> modeloLista;
         CambiarContraseña.setVisible(true);
     }//GEN-LAST:event_restablecerBotonActionPerformed
 
-<<<<<<< HEAD
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        String descripcion = jComboBox8.getSelectedItem().toString();
-        CursosDAO cursos = new CursosDAO();
-        cursos.eliminarPor(descripcion);
-    }//GEN-LAST:event_jButton7ActionPerformed
-=======
-    private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField23ActionPerformed
->>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Login.setVisible(true);
+        CambiarContraseña.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CrearActionPerformed
 
-<<<<<<< HEAD
-=======
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String nombre = jTextField15.getText();
-        String codDepartamento = jTextField16.getText();
-        String correo = jTextField17.getText();
-        Departamento departamento = new Departamento(codDepartamento,nombre,6);
-        dep.insertar(departamento); 
-    }//GEN-LAST:event_jButton12ActionPerformed
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        String descripcion = jTextField9.getText();
+        String codCurso = jTextField37.getText();
+        Etapa etapa = (Etapa) Etapa.valueOf(jComboBox4.getSelectedItem().toString());
+        CursosDAO cursos = new CursosDAO();
+        Curso curso1 = new Curso(codCurso, descripcion, etapa, true);
+
+        cursos.insertar(curso1);
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jTextField37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField37ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField37ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        //Metodo buscar Curso
+        modeloLista.clear();
+        String descripcion=jComboBox8.getSelectedItem().toString();
+        CursosDAO cursos= new CursosDAO();
+        Curso buscarCurso=cursos.buscarPor(descripcion);
+        if(buscarCurso!=null){
+
+        }else{
+
+        }
+
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String descripcion = jComboBox8.getSelectedItem().toString();
+        CursosDAO cursos = new CursosDAO();
+        cursos.eliminarPor(descripcion);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        String descripcion= jComboBox8.getSelectedItem().toString();
+        CursosDAO cursos=new CursosDAO();
+        cursos.actualizar(descripcion);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
         // TODO add your handling code here:
@@ -1873,6 +1773,31 @@ private DefaultListModel<Curso> modeloLista;
     private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField16ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        DepartamentoDAO dep = new DepartamentoDAO();
+        String nombre = jTextField15.getText();
+        String codDepartamento = jTextField16.getText();
+        String correo = jTextField17.getText();
+        Departamento departamento = new Departamento(codDepartamento,nombre,6);
+        dep.insertar(departamento);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        DepartamentoDAO dep = new DepartamentoDAO();
+        String nombre = jComboBox8.getSelectedItem().toString();
+        dep.buscarPor(nombre);
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        DepartamentoDAO dep = new DepartamentoDAO();
+        String cambio = jTextField19.getText();
+
+    }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         DepartamentoDAO dep = new DepartamentoDAO();
@@ -1887,39 +1812,75 @@ private DefaultListModel<Curso> modeloLista;
         dep.eliminarPor(nombre);
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String nombre = jComboBox8.getSelectedItem().toString();
-        dep.buscarPor(nombre);
-    }//GEN-LAST:event_jButton13ActionPerformed
+    private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField23ActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String cambio = jTextField19.getText();
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+        SolicitudesDAO metodosSolicitudes=new SolicitudesDAO();
+        DepartamentoDAO metodosDepartamento=new DepartamentoDAO();
+        ProfesorDAO metodosProfesor=new ProfesorDAO();
+        String titulo=jTextField21.getText();
+        Tipo tipo=Tipo.valueOf(jComboBox6.getSelectedItem().toString());
+        int departamento=metodosdepartamento.buscarPor(jComboBox10.getSelectedItem().toString()).getIdDepartamento();
+        LocalTime horaInicio=LocalTime.parse(jTextField23.getText());
+        LocalTime horaFin=LocalTime.parse(jTextField24.getText());
+        int profesor=metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
+        LocalDate fechaInicio=LocalDate.parse(jTextField26.getText());
+        LocalDate fechaFin=LocalDate.parse(jTextField27.getText());
+        int participantes=Integer.parseInt(jTextField28.getText());
+        boolean prevista=false;
+        boolean medioTransporte=false;
+        boolean alojamiento=false;
+        if(jCheckBox2.isSelected()){
+            prevista=true;
+        }
+        if(jCheckBox1.isSelected()){
+            alojamiento=true;
+        }
+        if(jCheckBox3.isSelected()){
+            medioTransporte=true;
+        }
         
-    }//GEN-LAST:event_jButton14ActionPerformed
+        String comentAlojamiento="";
+        Estado estado=Estado.SOLICITADA;
 
-    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        Solicitud s=new Solicitud(horaInicio,horaFin,"",prevista,departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFin,participantes,"",estado);
+        metodosSolicitudes.insertar(s);
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox5ActionPerformed
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-        Login.setVisible(true);
-        CambiarContraseña.setVisible(false);
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CrearActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
->>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
+        DefaultTableModel tabla= (DefaultTableModel) jTable6.getModel();
+        List<Solicitud> listar = solicitud.listar();
+        String datos[] = new String[16];
+        for (Solicitud s : listar) {
+            datos[0] = String.valueOf(s.getIdSolicitud());
+            datos[1] = String.valueOf(s.getHoraInicio());
+            datos[2] = String.valueOf(s.getHoraFinal());
+            datos[3] = s.getComentario();
+            datos[4] = String.valueOf(s.isPrevista());
+            datos[5] = String.valueOf(s.getIddepartamento());
+            datos[6] = s.getTitulo();
+            datos[7] = s.getTipoSolicitud().name();
+            datos[8] = String.valueOf(s.isMedioTransporte());
+            datos[9] = String.valueOf(s.getIdprofesor());
+            datos[10] = String.valueOf(s.isAlojamiento());
+            datos[11] =String.valueOf(s.getFechaInicio());
+            datos[12] = String.valueOf(s.getFechaFinal());
+            datos[13] = String.valueOf(s.getTotalParticipantes());
+            datos[14] = s.getComentarioAlojamiento();
+            datos[15]=s.getEstado().name();
+            
+            tabla.addRow(datos);
+        }
+        jTable6.setModel(tabla);
+    }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1955,7 +1916,6 @@ private DefaultListModel<Curso> modeloLista;
             }
         });
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AprobarDenegarSolicitudes;
@@ -2025,7 +1985,9 @@ private DefaultListModel<Curso> modeloLista;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
@@ -2033,6 +1995,7 @@ private DefaultListModel<Curso> modeloLista;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2089,21 +2052,8 @@ private DefaultListModel<Curso> modeloLista;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
-<<<<<<< HEAD
-    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
-=======
-<<<<<<< HEAD
-    private javax.swing.JLabel jLabel62;
-=======
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-
-
     private javax.swing.JLabel jLabel63;
-
->>>>>>> 4a862703e7a5f851a6f1c0fc716ae0d935c88ce6
->>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2115,7 +2065,6 @@ private DefaultListModel<Curso> modeloLista;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
@@ -2129,18 +2078,12 @@ private DefaultListModel<Curso> modeloLista;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-<<<<<<< HEAD
-    private javax.swing.JTable jTable1;
-=======
-
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-
-    private javax.swing.JTextArea jTextArea2;
-
->>>>>>> 4c3d31d47d081ad9c41340ed64789cf4530b0bdb
+    private javax.swing.JTable jTable5;
+    private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
