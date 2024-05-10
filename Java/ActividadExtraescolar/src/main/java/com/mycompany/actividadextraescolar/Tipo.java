@@ -9,5 +9,5 @@ package com.mycompany.actividadextraescolar;
  * @author atres
  */
 public enum Tipo {
-    ExtraEscolar,Complementaria
+    EXTRAESCOLAR,COMPLEMENTARIA
 }
