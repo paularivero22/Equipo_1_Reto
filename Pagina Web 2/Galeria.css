@@ -1,0 +1,32 @@
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    justify-content: space-around;
+    background-color: #fff;  
+}
+
+.imagenes {
+    width: 300px;
+    height: 340px;
+    margin: 2px;
+    margin-bottom: 8px;
+    padding: 5px;
+    border: solid black;
+
+    text-align: center;
+}
+
+.imagenes img {
+    max-width: 100%;
+    max-height: 90%;
+}
+
+.imagenes p {
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
