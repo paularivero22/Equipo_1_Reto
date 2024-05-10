@@ -9,8 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 
 /**
  *
@@ -23,8 +24,8 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
     }
     //Lista todos los departamentos
     @Override
-    public List<Departamento> listar() {
-        List<Departamento> listaDepartamento = new ArrayList<>();
+    public SortedSet<Departamento> listar() {
+        SortedSet<Departamento> listaDepartamento = new TreeSet<>();
         try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM departamento;");) {
             while (rs.next()) {
                 Departamento departamento = crearDepartamento(rs);
@@ -122,7 +123,7 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
 
     //Metodo que recorre y muestra los datos todos los profesores;
     public void mostrarTodosDepartamentos() {
-        List<Departamento> listaDepartamento = listar();
+        SortedSet<Departamento> listaDepartamento = listar();
         for (Departamento d : listaDepartamento) {
             System.out.println(d.toString());
         }

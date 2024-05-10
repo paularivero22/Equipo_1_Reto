@@ -7,8 +7,9 @@ package com.mycompany.actividadextraescolar;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
-import javax.swing.DefaultListModel;
+import java.util.SortedSet;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,11 +17,9 @@ import javax.swing.table.DefaultTableModel;
  * @author atres
  */
 public class Swing extends javax.swing.JFrame {
-
-    private DefaultListModel<Curso> modeloLista;
-    /**
-     * Creates new form Swing
-     */
+    
+//Creo un atributo del tipo defaultTableModel para las tablas
+    private DefaultTableModel tabla;
     private SolicitudesDAO solicitud = new SolicitudesDAO();
     private DepartamentoDAO metodosdepartamento = new DepartamentoDAO();
 
@@ -36,13 +35,42 @@ public class Swing extends javax.swing.JFrame {
     }
     private void cargarItemsDepartamento() {
         String solicitudes = "";
-        List<Departamento> lista = metodosdepartamento.listar();
+        SortedSet<Departamento> lista = metodosdepartamento.listar();
         for (Departamento d : lista) {
             jComboBox9.addItem(d.getNombre());
             jComboBox8.addItem(d.getNombre());
-            jComboBox10.addItem(d.getNombre());
+            jComboBox11.addItem(d.getNombre());
         }
-
+    }
+    
+    private void insertarTablaSolicitudes(SortedSet<Solicitud>lista,JTable tabla1){
+        tabla= (DefaultTableModel) tabla1.getModel();
+        //Llamo al metodo de listar de SolicitudesDAO
+        SortedSet<Solicitud> listar = solicitud.listar();
+        //Creo un array del tipo String para guardar los datos de la lista con la cantidad de columnas que tiene nuestra tabla
+        
+        String datos[] = new String[16];
+        for (Solicitud s : listar) {
+            datos[0] = String.valueOf(s.getIdSolicitud());
+            datos[1] = String.valueOf(s.getHoraInicio());
+            datos[2] = String.valueOf(s.getHoraFinal());
+            datos[3] = s.getComentario();
+            datos[4] = String.valueOf(s.isPrevista());
+            datos[5] = String.valueOf(s.getIddepartamento());
+            datos[6] = s.getTitulo();
+            datos[7] = s.getTipoSolicitud().name();
+            datos[8] = String.valueOf(s.isMedioTransporte());
+            datos[9] = String.valueOf(s.getIdprofesor());
+            datos[10] = String.valueOf(s.isAlojamiento());
+            datos[11] =String.valueOf(s.getFechaInicio());
+            datos[12] = String.valueOf(s.getFechaFinal().toString());
+            datos[13] = String.valueOf(s.getTotalParticipantes());
+            datos[14] = s.getComentarioAlojamiento();
+            datos[15]=s.getEstado().name();
+            
+            //Añado los datos a la tabla
+            tabla.addRow(datos);
+        }
     }
 
     /**
@@ -203,8 +231,8 @@ public class Swing extends javax.swing.JFrame {
         jTextField27 = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jComboBox10 = new javax.swing.JComboBox<>();
         jCheckBox3 = new javax.swing.JCheckBox();
+        jComboBox11 = new javax.swing.JComboBox<>();
         ConsultarSolicitudes = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -214,11 +242,14 @@ public class Swing extends javax.swing.JFrame {
         AprobarDenegarSolicitudes = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
-        jScrollPane16 = new javax.swing.JScrollPane();
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         jLabel51 = new javax.swing.JLabel();
         jTextField31 = new javax.swing.JTextField();
+        jButton25 = new javax.swing.JButton();
+        jScrollPane20 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
+        Insertar = new javax.swing.JButton();
         FasePreparacion = new javax.swing.JPanel();
         jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
@@ -319,7 +350,7 @@ public class Swing extends javax.swing.JFrame {
                     .addGroup(LoginLayout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(jLabel62)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -708,7 +739,7 @@ public class Swing extends javax.swing.JFrame {
                     .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
                         .addGap(213, 213, 213)
                         .addComponent(jButton23)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         DeshabilitarGrupoLayout.setVerticalGroup(
             DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -954,10 +985,11 @@ public class Swing extends javax.swing.JFrame {
         jCheckBox2.setText("Prevista");
         CrearSolicitud.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
 
-        CrearSolicitud.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 200, -1));
-
         jCheckBox3.setText("MedioTransporte");
         CrearSolicitud.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
+
+        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
+        CrearSolicitud.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 190, -1));
 
         getContentPane().add(CrearSolicitud, "card14");
 
@@ -1003,18 +1035,58 @@ public class Swing extends javax.swing.JFrame {
         AprobarDenegarSolicitudes.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 31, 205, -1));
 
         jLabel50.setText("Solicitudes Asignadas");
-        AprobarDenegarSolicitudes.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 59, -1, -1));
-        AprobarDenegarSolicitudes.add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 87, 523, 68));
+        AprobarDenegarSolicitudes.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         jButton20.setText("Aprobar");
-        AprobarDenegarSolicitudes.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 251, -1, -1));
+        AprobarDenegarSolicitudes.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
         jButton21.setText("Denegar");
-        AprobarDenegarSolicitudes.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 251, -1, -1));
+        AprobarDenegarSolicitudes.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, -1, -1));
 
         jLabel51.setText("Comentario:");
-        AprobarDenegarSolicitudes.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 184, 74, -1));
-        AprobarDenegarSolicitudes.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 181, 207, -1));
+        AprobarDenegarSolicitudes.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 74, -1));
+        AprobarDenegarSolicitudes.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 207, -1));
+
+        jButton25.setText("Buscar");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+        AprobarDenegarSolicitudes.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, -1, -1));
+
+        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "medioTransporte", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "comenAlojamiento", "Estado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable7MouseClicked(evt);
+            }
+        });
+        jScrollPane20.setViewportView(jTable7);
+
+        AprobarDenegarSolicitudes.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 590, 130));
+
+        Insertar.setText("Insertar");
+        Insertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarActionPerformed(evt);
+            }
+        });
+        AprobarDenegarSolicitudes.add(Insertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
 
         getContentPane().add(AprobarDenegarSolicitudes, "card16");
 
@@ -1573,6 +1645,8 @@ public class Swing extends javax.swing.JFrame {
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(false);
+        
+        cargarItemsDepartamento();
     }//GEN-LAST:event_crearSolicitudMenuActionPerformed
 
     private void consutarSolicitudesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consutarSolicitudesMenuActionPerformed
@@ -1742,7 +1816,6 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         //Metodo buscar Curso
-        modeloLista.clear();
         String descripcion=jComboBox8.getSelectedItem().toString();
         CursosDAO cursos= new CursosDAO();
         Curso buscarCurso=cursos.buscarPor(descripcion);
@@ -1823,7 +1896,7 @@ public class Swing extends javax.swing.JFrame {
         ProfesorDAO metodosProfesor=new ProfesorDAO();
         String titulo=jTextField21.getText();
         Tipo tipo=Tipo.valueOf(jComboBox6.getSelectedItem().toString());
-        int departamento=metodosdepartamento.buscarPor(jComboBox10.getSelectedItem().toString()).getIdDepartamento();
+        int departamento=metodosdepartamento.buscarPor(jComboBox11.getSelectedItem().toString()).getIdDepartamento();
         LocalTime horaInicio=LocalTime.parse(jTextField23.getText());
         LocalTime horaFin=LocalTime.parse(jTextField24.getText());
         int profesor=metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
@@ -1856,31 +1929,37 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tabla= (DefaultTableModel) jTable6.getModel();
-        List<Solicitud> listar = solicitud.listar();
-        String datos[] = new String[16];
-        for (Solicitud s : listar) {
-            datos[0] = String.valueOf(s.getIdSolicitud());
-            datos[1] = String.valueOf(s.getHoraInicio());
-            datos[2] = String.valueOf(s.getHoraFinal());
-            datos[3] = s.getComentario();
-            datos[4] = String.valueOf(s.isPrevista());
-            datos[5] = String.valueOf(s.getIddepartamento());
-            datos[6] = s.getTitulo();
-            datos[7] = s.getTipoSolicitud().name();
-            datos[8] = String.valueOf(s.isMedioTransporte());
-            datos[9] = String.valueOf(s.getIdprofesor());
-            datos[10] = String.valueOf(s.isAlojamiento());
-            datos[11] =String.valueOf(s.getFechaInicio());
-            datos[12] = String.valueOf(s.getFechaFinal());
-            datos[13] = String.valueOf(s.getTotalParticipantes());
-            datos[14] = s.getComentarioAlojamiento();
-            datos[15]=s.getEstado().name();
-            
-            tabla.addRow(datos);
-        }
+       insertarTablaSolicitudes(solicitud.listar(),jTable6);
+        //Y asigno el jTable al atributo tabla
         jTable6.setModel(tabla);
     }//GEN-LAST:event_jButton18ActionPerformed
+
+    
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        // TODO add your handling code here:
+        insertarTablaSolicitudes(solicitud.listar(),jTable7);
+         //Y asigno el jTable al atributo tabla
+        jTable7.setModel(tabla);
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_InsertarActionPerformed
+
+    private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
+        // TODO add your handling code here:
+        //Obtengo el índice de la fila que selecciono
+        int filaSeleccionada=jTable7.getSelectedRow();
+        //Cargo la tabla
+        DefaultTableModel tablaF=(DefaultTableModel) jTable7.getModel();
+        //Obtengo el valor del indice que utilizo para buscar una solicitud
+        String valor1=tablaF.getValueAt(filaSeleccionada, 6).toString();
+        Solicitud s=solicitud.buscarPor(valor1);
+        JOptionPane.showMessageDialog(null, s.toString(), "Mensaje", JOptionPane.PLAIN_MESSAGE);
+        
+        
+    }//GEN-LAST:event_jTable7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1939,6 +2018,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JPanel EliminarDeshabilitarProfesor;
     private javax.swing.JPanel FasePreparacion;
     private javax.swing.JMenu Grupo;
+    private javax.swing.JButton Insertar;
     private javax.swing.JPanel Login;
     private javax.swing.JPanel MedioTransporte;
     private javax.swing.JPanel MenuInicio;
@@ -1976,6 +2056,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1987,7 +2068,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox10;
+    private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
@@ -2066,11 +2147,11 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane15;
-    private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -2084,6 +2165,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
+    private javax.swing.JTable jTable7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;

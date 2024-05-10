@@ -9,8 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class GruposDAO implements RepositorioDAO<Grupo> {
 
@@ -19,8 +19,8 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
     }
 
     @Override
-    public List<Grupo> listar() {
-        List<Grupo> listaGrupos = new ArrayList<>();
+    public SortedSet<Grupo> listar() {
+        SortedSet<Grupo> listaGrupos = new TreeSet<>();
         try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM grupoAlumnos;")) {
             while (rs.next()) {
                 Grupo grupo = crearGrupo(rs);
@@ -111,7 +111,7 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
     
     // Método para mostrar todos los cursos
     public void mostrarTodosGrupos() {
-        List<Grupo> listaGrupos = listar();
+        SortedSet<Grupo> listaGrupos = listar();
         for (Grupo c : listaGrupos) {
             System.out.println(c.toString());
         }

@@ -5,6 +5,9 @@
 package com.mycompany.actividadextraescolar;
 
 import java.util.List;
+import java.util.SortedSet;
+
+
 
 /**
  *
@@ -15,7 +18,7 @@ import java.util.List;
 //Interfaz que creará métodos con el aptrón dao
 public interface RepositorioDAO<T> {
     // para listar todos los registros de una tabla
-    public List<T> listar();
+    public SortedSet<T> listar();
     // método para recuperar un objeto por una filtro de tipo cadena
     public T buscarPor(String filtro);
     // método para borrar un objeto por su filtro
