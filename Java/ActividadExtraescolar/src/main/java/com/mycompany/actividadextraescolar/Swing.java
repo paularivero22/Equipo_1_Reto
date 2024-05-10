@@ -4,6 +4,7 @@
  */
 package com.mycompany.actividadextraescolar;
 
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -1944,6 +1945,14 @@ public class Swing extends javax.swing.JFrame {
 
     private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
         // TODO add your handling code here:
+        int filaSeleccionada=jTable7.getSelectedRow();
+        //Cargo la tabla
+        DefaultTableModel tablaF=(DefaultTableModel) jTable7.getModel();
+        //Obtengo el valor del indice que utilizo para buscar una solicitud
+        String valor1=tablaF.getValueAt(filaSeleccionada, 6).toString();
+        Solicitud s=solicitud.buscarPor(valor1);
+        JOptionPane.showMessageDialog(null, s.toString(),"mensaje",JOptionPane.PLAIN_MESSAGE);
+        
          
     }//GEN-LAST:event_InsertarActionPerformed
 
@@ -1956,8 +1965,6 @@ public class Swing extends javax.swing.JFrame {
         //Obtengo el valor del indice que utilizo para buscar una solicitud
         String valor1=tablaF.getValueAt(filaSeleccionada, 6).toString();
         Solicitud s=solicitud.buscarPor(valor1);
-        JOptionPane.showMessageDialog(null, s.toString(), "Mensaje", JOptionPane.PLAIN_MESSAGE);
-        
         
     }//GEN-LAST:event_jTable7MouseClicked
 
