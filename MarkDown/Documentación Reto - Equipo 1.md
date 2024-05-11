@@ -251,24 +251,126 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 ### **1.1 Estructura comun de todas las paginas**<br>
 - ### **Body** <br>
     <br>- **Header:** cabecera de la pagina <br><br>
-    [![Captura-de-pantalla-2024-05-06-172309.png](https://i.postimg.cc/bwS4bQG7/Captura-de-pantalla-2024-05-06-172309.png)](https://postimg.cc/NKYNv2kD)
-
+    ```html
+    <header>
+        <div class="contenido-cabecera">
+            <a href="./Inicio.html">
+                <img src="./Imagenes./logo.png" class="LogoImagen">
+            </a>
+        </div>
+    </header>
+    ```
+ 
     - div "contenido cabecera": contenedor con el logo de IES miguel herrero <br>
 
     <br>- **Nav:** nav con un menú para navegar entre las paginas<br><br>
-    [![Captura-de-pantalla-2024-05-06-173750.png](https://i.postimg.cc/mDZSBs7b/Captura-de-pantalla-2024-05-06-173750.png)](https://postimg.cc/f3Fdf1HF)
+    ```html
+      <nav id="menuprincipal">
+        <div>
+            <ul id="listamenu">
+                <li>
+                    <a href="./Inicio.html">
+                        <img src="./Iconos./casa.png" alt="Inicio" class="iconosMenu">
+                    </a>
+                    <a href="./Inicio.html">INICIO</a>
+                </li>
+
+                <li>
+                    <a href="./Actividades.html">
+                        <img src="./Iconos./actividad.png" alt="Actividades" class="iconosMenu">
+                    </a>
+                    <a href="./Actividades.html">ACTIVIDADES</a>
+                </li>
+                <li>
+                    <a href="./SobreNosotros.html">
+                        <img src="./Iconos./info.png" alt="Sobre nosotros" class="iconosMenu">
+                    </a>
+                    <a href="./SobreNosotros.html">SOBRE NOSOTROS</a>
+                </li>
+                <li>
+                    <a href="./GaleriaDeFotos.html">
+                        <img src="./Iconos./foto.png" alt="Inicio" class="iconosMenu">
+                    </a>
+                    <a href="./GaleriaDeFotos.html">GALERIA</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    ```
     - div: contendor para la los elementos del nav<br>
         - ul "listamenu": los elementos del menú seran una lista ordenada, cada elemento li es un icono y una imagen <br><br>
+
 ### **1.3 Pagina Inicio** <br>
 - ### **Body** <br>  
     <br>- **Main:** contenido principal de la pagina<br><br>
-    [![main.png](https://i.postimg.cc/DwFx6Zgz/main.png)](https://postimg.cc/xcxGT9Br)
+    ```html
+    <main>
+        <div class="ImagenContenedor">
+            <img src="./Imagenes./IES_MIGUEL_HERRERO_PEREDA.jpg" alt="IES MIGUEL HERRERO" class="ImagenPrincipal">
+            <div class="texto">BIENVENIDO</div>
+            <div class="botonFacebook">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100087928148760" target="_blank">
+                            <img src="./Iconos./facebookIcono.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100087928148760"
+                            target="_blank"><span>Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+    ```
     - div "ImagenContenedor": Contenedor con la imagen de la pagina, un texto y un recuadro<br>
         - div "texto": texto "Bienvenido" encima de la imagen 
         - div "botonFacebook": Un recuadro con el enlace al facecbook del insituto<br><br>
 
     <br>- **Footer:** pie de pagina con enlaces de interes del instituto<br><br>
-    [![footer.png](https://i.postimg.cc/Vv2nh7nw/footer.png)](https://postimg.cc/QKkF9JfY)
+    ```html
+    <footer>
+        <div class="pielogo">
+            <div class="seccionpie">
+                <h2>Contacto</h2>
+                <a href="https://www.google.com/maps/place/Torrelavega+Cantabria" target="_blank"
+                    class="enlace-contacto">
+                    <img src="./Iconos./IconoMaps.png" alt="Mapa" width="20px" height="20px">
+                    <span>P.º de Julio Hauzeur, 59, 39300, Torrelavega, Cantabria</span>
+                </a><br><br>
+                <a href="tel:+123456789" class="enlace-contacto">
+                    <img src="./Iconos./telefonoIcono.png" alt="Teléfono" width="20px" height="20px">
+                    <span>942 88 24 98</span>
+                </a><br><br>
+                <a href="mailto:ies.miguel.herrero.pereda@educantabria.es" class="enlace-contacto">
+                    <img src="./Iconos./correo.png" alt="Correo electrónico" width="25px" height="25px">
+                    <span>ies.miguel.herrero.pereda@educantabria.es</span>
+                </a>
+            </div>
+            <div class="seccionpie">
+                <h2>Redes sociales</h2>
+                <ul class="iconos-sociales">
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100087928148760" target="_blank">
+                            <img src="./Iconos./facebookIcono.png" alt="Facebook" class="Facebook">
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100087928148760"
+                            target="_blank"><span>Facebook</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/ies.miguelherrero/" target="_blank">
+                            <img src="./Iconos./InstagramIcono.png" alt="Instagram" class="Instagram">
+                        </a>
+                        <a href="https://www.instagram.com/ies.miguelherrero/"
+                            target="_blank"><span>Instagram</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p> © Copyright 2024. Todos los derechos reservados. </p>
+    </footer>
+    ```
     - div "pielogo": contenedor con los enlaces de interes del footer
         - div "seccionpie": seccion 1 de enlaces, contiene la ubicacion y los enlaces de contacto (telefono y email)<br>
         Cada enlace contiene un icono y un enlace
@@ -279,29 +381,178 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 ### **1.3 Pagina Actividades** <br>
 - ### **Body** <br>
     <br>- **Main:** contenido principal de la pagina<br><br>
-     - **TextoActividades**<br><br>
-     [![Texto-Actividad.png](https://i.postimg.cc/28LjCZ09/Texto-Actividad.png)](https://postimg.cc/RN9xRN5w)
+     - **TextoActividades**<br><br> 
+       ```html
+         <div class="TextoActividades">
+            <h1>Actividades Extraescolares</h1>
+        </div>
+         ```
         - div "TextoActividades": Texto con etiquetas h1 que sirve de titulo
         <br><br>
 
      - **Viajes**<br><br>
-     [![Viajes.png](https://i.postimg.cc/4d7KjNFr/Viajes.png)](https://postimg.cc/YG7qWk73)
+       ```html
+         <div class="Viajes">
+            <p>Viajes Extraescolares</p>
+        </div>
+         ```
         - div "Viajes": Texto con etiquetas p que se utiliza a modo de titulo del apartado de Viajes Extraescolares
         <br><br>
 
 
      - **ViajesMain**<br><br>
-     [![Viajes-Main.png](https://i.postimg.cc/L875MMKf/Viajes-Main.png)](https://postimg.cc/fVcDxpbT)
+       ```html
+         <div class="ViajesMain">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Estado de Gestión</th>
+                        <th>Personas Involucradas</th>
+                        <th>Profesor responsable</th>
+                        <th>Profesores participantes</th>
+                        <th> Fecha </th>
+                        <th> Horario </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Excursión al Museo de Historia Natural</td>
+                        <td>En proceso</td>
+                        <td>25 estudiantes,<br>3 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
+                    </tr>
+                    <tr>
+                        <td>Visita al Acuario</td>
+                        <td>Confirmado</td>
+                        <td>20 estudiantes,<br>2 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
+                    </tr>
+                    <tr>
+                        <td>Excursión al Parque Nacional</td>
+                        <td>Pendiente</td>
+                        <td>30 estudiantes,<br>4 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
+                    </tr>
+                    <tr>
+                        <td>Visita a la Granja Educativa</td>
+                        <td>Confirmado</td>
+                        <td>15 estudiantes,<br>2 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
+                    </tr>
+                    <tr>
+                        <td>Excursión al Planetario</td>
+                        <td>Cancelado</td>
+                        <td>10 estudiantes,<br>1 profesor</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
+                    </tr>
+                    <tr>
+                        <td>Salida al Zoológico</td>
+                        <td>En proceso</td>
+                        <td>22 estudiantes,<br>3 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+         ```
         - div "ViajesMain": div donde mediante el uso de la etiqueta table,thead y tr, se crea una tabla donde aparece la información de los Viajes Extraescolares
         <br><br>
     
      - **Clases**<br><br>
-     [![Clases.png](https://i.postimg.cc/d1tnzfbb/Clases.png)](https://postimg.cc/B8kxFmQp)
+       ```html
+         <div class="Clases">
+            <p>Clases Extraescolares</p>
+        </div>
+         ```
         - div "Clases": Texto con etiquetas p que se utiliza a modo de titulo del apartado de Clases Extraescolares
         <br><br>
     
      - **ClasesMain**<br><br>
-     [![Clases-Main.png](https://i.postimg.cc/BnhHyvCC/Clases-Main.png)](https://postimg.cc/LJ1Jg2wq)
+       ```html
+         <div class="ClasesMain">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Estado de Gestión</th>
+                        <th>Personas Involucradas</th>
+                        <th>Profesor responsable</th>
+                        <th>Profesores participantes</th>
+                        <th>Horario y Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Informática</td>
+                        <td>En proceso</td>
+                        <td>25 estudiantes, 3 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>9:30-13:30 09/05/2024</td>
+                    </tr>
+                    <tr>
+                        <td>Biologia</td>
+                        <td>Confirmado</td>
+                        <td>10 estudiantes, 1 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>9:30-13:30 09/05/2024</td>
+                    </tr>
+                    <tr>
+                        <td>Robotica</td>
+                        <td>Pendiente</td>
+                        <td>30 estudiantes, 4 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>9:30-13:30 09/05/2024</td>
+                    </tr>
+                    <tr>
+                        <td>Deportes</td>
+                        <td>Confirmado</td>
+                        <td>15 estudiantes, 2 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>9:30-13:30 09/05/2024</td>
+                    </tr>
+                    <tr>
+                        <td>Historia</td>
+                        <td>Cancelado</td>
+                        <td>10 estudiantes, 1 profesor</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>9:30-13:30 09/05/2024</td>
+                    </tr>
+                    <tr>
+                        <td>Economia</td>
+                        <td>En proceso</td>
+                        <td>22 estudiantes, 3 profesores</td>
+                        <td>Pedro Perez</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
+                        <td>9:30-13:30 09/05/2024</td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+         ```
         - div "ClasesMain": div donde mediante el uso de la etiqueta table,thead,tbody,tr y td, se crea una tabla donde aparece la información de las Clases Extraescolares
         <br><br>
 
@@ -309,37 +560,129 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 - ### **Body** <br>
     <br>- **Main:** contenido principal de la pagina<br><br>
      - **InformaciónTexto**<br><br>
-     [![Informacion-Texto.png](https://i.postimg.cc/PxtNK4kV/Informacion-Texto.png)](https://postimg.cc/94nWQy0y)
+       ```html
+         <div class="InformacionTexto">
+            <h1>Informacion</h1>
+        </div>
+         ```
         - div "InformacionTexto": Texto con etiquetas h1 que sirve de titulo del apartado donde queda reflejada la información del centro por escrito
         <br><br>
     
      - **Información**<br><br>
-     [![Informaci-n.png](https://i.postimg.cc/Hx0F2wtx/Informaci-n.png)](https://postimg.cc/BL6hZ1k9)
+       ```html
+         <div class="Informacion">
+            <p>El IES Miguel Herrero Pereda se encuentra ubicado en Torrelavega, Cantabria. Es un instituto público de educación secundaria, bachillerato y formación profesional que ofrece una amplia variedad de programas educativos para sus estudiantes.
+                <br>
+                Oferta educativa:
+                <br>
+                <br><strong>Educación Secundaria Obligatoria (ESO)</strong>: El centro imparte la ESO con un enfoque en la preparación de los estudiantes para el bachillerato o la formación profesional.
+                  <br>Bachillerato: Se ofrecen las siguientes modalidades de bachillerato:
+                  <br>Ciencias y Tecnología.
+                  <br>Humanidades y Ciencias Sociales.
+                  <br>Artes.
+                  <br>General.
+                <br><strong>Formación Profesional (FP)</strong>: El IES Miguel Herrero Pereda ofrece ciclos de FP de grado medio en las siguientes áreas:
+                  <br>Administración y Finanzas.
+                  <br>Electricidad y Electrónica.
+                  <br>Hostelería y Turismo.
+                  <br>Informática.
+                  <br>Instalaciones Eléctricas y Automáticas.</p>
+        </div>
+         ```
         - div "Información": Este div es utilizado para mostrar la informacion del centro entre etiquetas p
         <br><br>
     
      - **InstalacionTexto**<br><br>
-     [![Instalaciones.png](https://i.postimg.cc/Prb0Ys4j/Instalaciones.png)](https://postimg.cc/1ftW1d2C)
+       ```html
+         <div class="Instalaciontexto">
+            <h1>Instalaciones</h1>
+        </div>
+         ```
         - div "InstalacionTexto": Texto con etiquetas h1 que sirve de titulo del apartado donde quedan reflejadas las distintas instalaciones del centro junto con sus respectivas fotos
         <br><br>
 
      - **Instalaciones**<br><br>
-     [![instalaciones-Main.png](https://i.postimg.cc/DwYZkYMt/instalaciones-Main.png)](https://postimg.cc/rDxc5gcJ)
+       ```html
+          <div class="instalaciones">
+        <section class="secciones">
+            <h2>Jefatura de Estudios</h2>
+            <img src="./Imagenes./Jefatura de Estudios.jpg" alt="Jefatura de Estudios">
+          </section>
+      
+          <section class="secciones">
+            <h2>Secretaría</h2>
+            <img src="./Imagenes./Secretaria.jpg" alt="Secretaría">
+          </section>
+      
+          <section class="secciones">
+            <h2>Hall centro</h2>
+            <img src="./Imagenes./Hall.jpg" alt="Hall centro">
+          </section>
+      
+          <section class="secciones">
+            <h2>Informática</h2>
+            <img src="./Imagenes./Informatica.jpeg" alt="Acceso a Conserjería">
+          </section>
+
+          <section class="secciones">
+            <h2>Biblioteca</h2>
+            <img src="./Imagenes./Biblioteca.jpg" alt="Acceso a Conserjería">
+          </section>
+
+          <section class="secciones">
+            <h2>Gimnasio</h2>
+            <img src="./Imagenes./Gimnasio.jpg" alt="Acceso a Conserjería">
+          </section>
+
+          <section class="secciones">
+            <h2>Taller Mecanico</h2>
+            <img src="./Imagenes./mecanizado.jpg" alt="Acceso a Conserjería">
+          </section>
+
+          <section class="secciones">
+            <h2>Robótica</h2>
+            <img src="./Imagenes./Robotica.jpg" alt="Acceso a Conserjería">
+          </section>
+
+          <section class="secciones">
+            <h2>Salón de Actos</h2>
+            <img src="./Imagenes./Salon_actos.jpg" alt="Acceso a Conserjería">
+          </section>
+
+          <section class="secciones">
+            <h2>Administrativo</h2>
+            <img src="./Imagenes./administrativo.jpg" alt="Acceso a Conserjería">
+          </section>
+        </div>
+         ```
         - div "Instalaciones": Este div se utiliza para mostrar las distintantas secciones que aparecen en el codigo,donde estan las imagenes de las instalaciones
         <br><br>
 
     - **Secciones:**<br><br>
-    [![Secciones.png](https://i.postimg.cc/KYXQZF4T/Secciones.png)](https://postimg.cc/18HDHkGR)
-        - div "Secciones": En el div secciones, se muestra el nombre de la instalacion junto con su imagen, en este caso el ejemplo es de "Jefatura de estudios"
+       ```html
+         <section class="secciones">
+            <h2>Jefatura de Estudios</h2>
+            <img src="./Imagenes./Jefatura de Estudios.jpg" alt="Jefatura de Estudios">
+          </section>
+         ```
+        - section "Secciones": En el div secciones, se muestra el nombre de la instalacion junto con su imagen, en este caso el ejemplo es de "Jefatura de estudios"
         <br><br>
 
      - **UbicacionTexto**<br><br>
-     [![Ubicacion-Texto.png](https://i.postimg.cc/YCzW7hZh/Ubicacion-Texto.png)](https://postimg.cc/2136F8zD)
+       ```html
+         <div class="Ubicaciontexto">
+            <h1>Ubicación del Centro</h1>
+        </div>
+         ```
         - div "UbicacionTexto": Texto con etiquetas h1 que sirve de titulo del apartado donde se encuentra un mapa con la ubicación del centro
         <br><br>
     
      - **Ubicacion**<br><br>
-     [![Ubicacion.png](https://i.postimg.cc/LsZBpHt7/Ubicacion.png)](https://postimg.cc/2qrBdNXF)
+       ```html
+         <div class="Ubicacion">
+            <iframe allowfullscreen="1" loading="lazy" src="https://maps.google.com/maps?q=43.35200359821082,-4.062908597564259&amp;hl=es;z=14&amp;output=embed" style="border:0;" width="60%" height="400"></iframe>  
+        </div>
+         ```
         - div "Ubicación": Este div se utiliza para mostrar un mapa que muestra donde se encuentra el instituto mediante la etiqueta iframe
         <br>
         <br>
@@ -347,214 +690,472 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 ### **2. Tipos de estilo**<a name="ESTILO"></a><br><br>
 ### **1.1 CSS común a todas las paginas** <br>
 - ### **Toda la pagina**
-[![todalapagina.png](https://i.postimg.cc/pXZLyHD3/todalapagina.png)](https://postimg.cc/w71pbn4k)<br>
-- margin y padding 0px : No tendrá margen ni margen interno
-- box-sizing border-box: indica que el tamaño total del ancho se calcula contando el margen y el margen interno (margin y padding)
+   ```css
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+   ```
+   - margin y padding 0px : No tendrá margen ni margen interno
+   - box-sizing border-box: indica que el tamaño total del ancho se calcula contando el margen y el margen interno (margin y padding)
 
 - ### **Body**
-[![body.png](https://i.postimg.cc/rmPYfKX7/body.png)](https://postimg.cc/R6wRFC0T)<br>
-- font-family Arial, sanss-serif: La fuente de la letra, si el navegador no puede usar ese tipo de letra usará una secundaría
-- background-color: color del fondo
-- color: color de la letra
-- line-height 1.6: la altura de línea (altura vertical entre las líneas de texto) será de 1.6
-- margin y padding 0px: no tendra margen ni margen interno
-- width 100%: ancho del body 
+   ```css
+   body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+   }
+   ```
+
+   - font-family Arial, sanss-serif: La fuente de la letra, si el navegador no puede usar ese tipo de letra usará una secundaría
+   - background-color: color del fondo
+   - color: color de la letra
+   - line-height 1.6: la altura de línea (altura vertical entre las líneas de texto) será de 1.6
+   - margin y padding 0px: no tendra margen ni margen interno
+   - width 100%: ancho del body 
 
 - ### **Main**
-[![maincss.png](https://i.postimg.cc/t4Hsfk9N/maincss.png)](https://postimg.cc/w70xRhy1)
-- width 100%: ancho del main
-- margin-top 15px: margen por encima del body, para que se separe con el menú
-- padding 20px : margen interno, para que el contenido no salga pegado a los bordes de la pagina
-- align-content center: alinea verticalmente el contenido flexible dentro del main
-- background-color: color del fondo
+   ```css
+   main {
+    width: 100%;
+    margin-top: 15px;
+    padding: 20px;
+
+    align-content: center;
+
+    background-color: #fff;
+   }
+   ```
+   - width 100%: ancho del main
+   - margin-top 15px: margen por encima del body, para que se separe con el menú
+   - padding 20px : margen interno, para que el contenido no salga pegado a los bordes de la pagina
+   - align-content center: alinea verticalmente el contenido flexible dentro del main
+   - background-color: color del fondo
 
 - ### **Header**
-[![headercss.png](https://i.postimg.cc/qRzBgbsn/headercss.png)](https://postimg.cc/ygCCbTrY)<br>
-- background-color: color del fondo
-- color: color del texto
-- padding 20px: margin interno
+   ```css
+   header {
+    background-color:#333;
+    color: #fff;
+
+    padding: 20px;
+   }
+   ```
+
+   - background-color: color del fondo
+   - color: color del texto
+   - padding 20px: margin interno
 
 - ### **Contenido-cabecera (div)**
-[![contenidocabecera-css.png](https://i.postimg.cc/Cxkqx1hY/contenidocabecera-css.png)](https://postimg.cc/Wdp39sqf)
-- max-width 1200px: anchura maxima del div
-- justify-content left: alinea horizontalmente el contnido flexible a la izquierda
-- height 50px: altura del contenedor
+   ```css
+   .contenido-cabecera {
+    max-width: 100%;
+    justify-content: left;
+    height: 50px;
+   }
+   ```
+
+   - max-width 1200px: anchura maxima del div
+   - justify-content left: alinea horizontalmente el contnido flexible a la izquierda
+   - height 50px: altura del contenedor
 
 - ### **LogoImagen (img)**
-[![logoimagen-css.png](https://i.postimg.cc/KcJZ2ytz/logoimagen-css.png)](https://postimg.cc/yW3qmtQ4)
-- display flex: el contenedor de la imagen será flexible
-- margin-left 10px: margen de 10px por la izquierda
-- width 286px: el ancho de la imagen será de 286px
-- height 70px: la altura de la imagen será de 70px
-- vertical-align middle: alinea el contenido en linea al medio
+   ```css
+   .LogoImagen{
+    display: flex;
+    margin-left: 10px;
+    width: 286px;
+    height: 70px;
+    vertical-align:middle;
+   }
+   ```
+
+   - display flex: el contenedor de la imagen será flexible
+   - margin-left 10px: margen de 10px por la izquierda
+   - width 286px: el ancho de la imagen será de 286px
+   - height 70px: la altura de la imagen será de 70px
+   - vertical-align middle: alinea el contenido en linea al medio
 
 - ### **H1**
-[![h1-css.png](https://i.postimg.cc/xdPzV1YC/h1-css.png)](https://postimg.cc/yJkdFBD4)
-- font-size 1.5em: todos los tamaños de los titulos h1 de la pagina serán de 1.5em, la unidad utilizada (em) quiere decir que el tamaño será 1.5 veces el tamaño de fuente del elemento padre, usamos esto para que sea escalable si se cambia el tamaño de la ventana
+   ```css
+   h1 {
+    font-size: 1.5em;
+   }
+   ```
+
+   - font-size 1.5em: todos los tamaños de los titulos h1 de la pagina serán de 1.5em, la unidad utilizada (em) quiere decir que el tamaño será 1.5 veces el tamaño de fuente del elemento padre, usamos esto para que sea escalable si se cambia el tamaño de la ventana
 
 - ### **menuprincipal (nav)**
-[![menuprincipal-css.png](https://i.postimg.cc/DwNX2MbV/menuprincipal-css.png)](https://postimg.cc/gxvJs4D4)
-- width 100%: anchura del nav
-- height 80px: altura del nav
-- padding 0% 2%: el margen interno por encima y por debajo será de 0% y por la izquierda y derecha será de 2%
-- margin 0px: no tendrá margen
-- display flex: los elementos del nav serán flexibles
-- justify-content center: los elementos flexibles se alinean horizontalmente al centro
-- align-items center: los elementos flexibles se alinean verticalemente al medio
-- background-color: color del fondo
+   ```css
+   #menuprincipal {
+    width: 100%;
+    height: 80px;
+    padding: 0% 2%;
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ffffff;
+   }   
+   ```
+
+   - width 100%: anchura del nav
+   - height 80px: altura del nav
+   - padding 0% 2%: el margen interno por encima y por debajo será de 0% y por la izquierda y derecha será de 2%
+   - margin 0px: no tendrá margen
+   - display flex: los elementos del nav serán flexibles
+   - justify-content center: los elementos flexibles se alinean horizontalmente al centro
+   - align-items center: los elementos flexibles se alinean verticalemente al medio
+   - background-color: color del fondo
 
 - ### **menuprincipal > div (div)**
-[![menuprincipaldiv-css-png.png](https://i.postimg.cc/4xCnz7xd/menuprincipaldiv-css-png.png)](https://postimg.cc/tY5XbgPQ)
-- width y height 100%: anchura y altura del contenedor
-- vertical-align middle: los elementos en linea se alinean verticalmente al medio
-- display flex: los elementos del div serán flexibles
-- justify-content center: los elementos flexibles se alinean horizontalmente al centro
-- align-items center: los elementos flexibles se alinean verticalemente al medio
+   ```css
+   #menuprincipal > div {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+   }
+   ```
+   
+   - width y height 100%: anchura y altura del contenedor
+   - vertical-align middle: los elementos en linea se alinean verticalmente al medio
+   - display flex: los elementos del div serán flexibles
+   - justify-content center: los elementos flexibles se alinean horizontalmente al centro
+   - align-items center: los elementos flexibles se alinean verticalemente al medio
 
 - ### **listamenu (ul)**
-[![listamenu2.png](https://i.postimg.cc/9QRZ2RLt/listamenu2.png)](https://postimg.cc/RWmNQF5N)
-- display flex: la lista ordenada será flexible
-- margin-left 10px: margen por la izquierda, para separar cada elemento
-- justify-content center: los elementos flexibles se alinean horizontalmente al centro
-- padding 0px: no tendra margen interno
-- height 100%: altura de la lista
-- align-items center: los elementos flexibles se alinean verticalemente al medio
-- list-style-type none: el estilo del marcador de la lista  
+   ```css
+   #listamenu {
+    display: flex;
+    margin-left: 10px;
+    justify-content: center;
+    padding: 0px;
+    height: 100%;
+    align-items: center;
+    list-style-type: none;
+   }
+   ```
+
+   - display flex: la lista ordenada será flexible
+   - margin-left 10px: margen por la izquierda, para separar cada elemento
+   - justify-content center: los elementos flexibles se alinean horizontalmente al centro
+   - padding 0px: no tendra margen interno
+   - height 100%: altura de la lista
+   - align-items center: los elementos flexibles se alinean verticalemente al medio
+   - list-style-type none: el estilo del marcador de la lista  
 
 - ### **listamenu li**
-[![listamenuli.png](https://i.postimg.cc/qBPNN31Y/listamenuli.png)](https://postimg.cc/Z0LbgCtF)
-- padding 15px 10px 0px 10px: el margen interno por arriba será de 12px, por la derecha de 10px, por abajo 0px y por la izquierda 10px
-- list-style-type none: el estilo del marcador de la lista 
-- align-items center: los elementos flexibles se alinean verticalemente al medio
-- height 100%: alto del elemento de la lista
-- width auto: el ancho de los elementos será el automatico para que se cambie segun la proporcion de la pantalla
+   ```css
+   #listamenu li {
+    padding: 15px 10px 0px 10px;
+    list-style: none;
+    align-items: center;
+    height: 100%;
+    width: auto;
+   }
+   ```
+
+   - padding 15px 10px 0px 10px: el margen interno por arriba será de 12px, por la derecha de 10px, por abajo 0px y por la izquierda 10px
+   - list-style-type none: el estilo del marcador de la lista 
+   - align-items center: los elementos flexibles se alinean verticalemente al medio
+   - height 100%: alto del elemento de la lista
+   - width auto: el ancho de los elementos será el automatico para que se cambie segun la proporcion de la pantalla
 
 - ### **listamenu a**
-[![listamenua.png](https://i.postimg.cc/fTgMr3PC/listamenua.png)](https://postimg.cc/7f0vCLwJ)
-- display flex: los enlaces serán flexibles
-- align-items center: los elementos flexibles se alinean verticalemente al medio
-- height 100%: alto del elemento de la lista
-- color: color del texto de los enlaces
-- font bold 18px Arial, sans-serif: será negrita, tamaño de 18px y fuente arial o sans-serif
-- text-decoration none: estilo del enlace (subrayado, negrita, ninguna etc...)
+   ```css
+   #listamenu a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    color: #333333;
+    font: bold 18px Arial, sans-serif;
+    text-decoration: none;
+   }
+   ```
+
+   - display flex: los enlaces serán flexibles
+   - align-items center: los elementos flexibles se alinean verticalemente al medio
+   - height 100%: alto del elemento de la lista
+   - color: color del texto de los enlaces
+   - font bold 18px Arial, sans-serif: será negrita, tamaño de 18px y fuente arial o sans-serif
+   - text-decoration none: estilo del enlace (subrayado, negrita, ninguna etc...)
 
 - ### **iconosmenu (img)**
-[![iconosmenu.png](https://i.postimg.cc/rphmMhZ6/iconosmenu.png)](https://postimg.cc/NyHYxxwb)
-- margin 10px: margen de las imagenes
-- align-items center: los elementos flexibles se alinean verticalemente al medio
-- width y height 35px: anchura y altura de las imagenes
+   ```css
+   .iconosMenu {
+    margin: 10px;
+    align-items: center;
+    width:35px;
+    height:35px;
+   }
+   ```
+
+   - margin 10px: margen de las imagenes
+   - align-items center: los elementos flexibles se alinean verticalemente al medio
+   - width y height 35px: anchura y altura de las imagenes
 
 - ### **listamenu li:hover (hover)**
 Estilo para los elementos de la lista cuando se pase el raton por encima<br>
-[![listamenuhover.png](https://i.postimg.cc/FRsLxd8v/listamenuhover.png)](https://postimg.cc/qtSqJRpD)<br>
-- background-color: color del fondo 
-- transition background-color 0.6s ease: animación, en este caso el color del fondo aparecerá lentamente durante 0.6 segundos
+   ```css
+   #listamenu li:hover {
+    background-color: #dbdbdb;
+    transition: background-color 0.6s ease;
+   }
+   ```
+
+   - background-color: color del fondo 
+   - transition background-color 0.6s ease: animación, en este caso el color del fondo aparecerá lentamente durante 0.6 segundos
 
 - ### **menuprincipal li**
-[![menuprincipal-Li.png](https://i.postimg.cc/Kj8wp7dG/menuprincipal-Li.png)](https://postimg.cc/R62gNtSy)<br>
-- display flex: los elementos de la lista se colocarán de forma flexible
-- height 80px : altura de los elementos
-- padding 15px 10px 0px 10px: el margen interno por arriba será de 15px, por la derecha de 10px, por abajo 0px y por la izquierda 10px
-- align-items center: los elementos flexibles se alinean verticalemente al medio
-- margin-right 20px: margen por la derecha para separar los elementos
+   ```css
+   #menuprincipal li { 
+    display: flex;
+    height: 80px;
+    padding: 15px 10px 0px 10px;
+    align-items: center;
+    margin-right: 20px;
+   }
+   ```
+
+   - display flex: los elementos de la lista se colocarán de forma flexible
+   - height 80px : altura de los elementos
+   - padding 15px 10px 0px 10px: el margen interno por arriba será de 15px, por la derecha de 10px, por abajo 0px y por la izquierda 10px
+   - align-items center: los elementos flexibles se alinean verticalemente al medio
+   - margin-right 20px: margen por la derecha para separar los elementos
 
 - ### **menuprincipal a**
-[![menuprincipal-a.png](https://i.postimg.cc/kgNpFhHr/menuprincipal-a.png)](https://postimg.cc/216GCTmT)<br>
-- align-content center: alinea verticalmente las lineas de los elementos flexibles al centro
-- font bold 18px Arial, sans-serif: estilo negrita, tamaño 18 pixeles y fuente arial o sans-serif
-- color: color del texto
-- text-decoration none: estilo del enlace (subrayado, negrita, nada etc...)
+   ```css
+   #menuprincipal a {
+    align-content: center;
+
+    font: bold 18px Arial, sans-serif;
+    color: #333333;
+    text-decoration: none;
+   }
+   ```
+
+   - align-content center: alinea verticalmente las lineas de los elementos flexibles al centro
+   - font bold 18px Arial, sans-serif: estilo negrita, tamaño 18 pixeles y fuente arial o sans-serif
+   - color: color del texto
+   - text-decoration none: estilo del enlace (subrayado, negrita, nada etc...)
 
 - ### **footer**
-[![footer-css.png](https://i.postimg.cc/9QZQPTZR/footer-css.png)](https://postimg.cc/87kGN7yN)<br>
-- padding 20px: margen interno 
-- background-color: color del fondo
-- color: color del texto
+   ```css
+   footer {
+    padding: 20px;
+
+    background-color: #333;
+    color: #fff;
+   }
+   ```
+
+   - padding 20px: margen interno 
+   - background-color: color del fondo
+   - color: color del texto
 
 - ### **pielogo (div)**
-[![pielogo-css.png](https://i.postimg.cc/mZmjR1cH/pielogo-css.png)](https://postimg.cc/t7VWNTNq)<br>
-- display flex: los elementos del div serán flexibles
-- justify-content space-around: los elementos flexibles se colocan de manera que el espacio entre ellos sea uniforme
-- margin 20px: margen del div
-- padding 15px: margen interno 
-- margin-top 5px: el margen por arriba será de 5 pixeles en vez de 20px 
-- padding-top 5px: el margen interno por arriba será de 5 pixeles en vez de 15px
+   ```css
+   .pielogo {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 15px;
+    margin-top:5px;
+    padding-top: 5px;
+   }
+   ```
+
+   - display flex: los elementos del div serán flexibles
+   - justify-content space-around: los elementos flexibles se colocan de manera que el espacio entre ellos sea uniforme
+   - margin 20px: margen del div
+   - padding 15px: margen interno 
+   - margin-top 5px: el margen por arriba será de 5 pixeles en vez de 20px 
+   - padding-top 5px: el margen interno por arriba será de 5 pixeles en vez de 15px
 
 - ### **seccionpie (div)**
-[![seccionpie-css.png](https://i.postimg.cc/1zdzSQx6/seccionpie-css.png)](https://postimg.cc/VSjw92kL)<br>
-- flex 1: abreviacion de flex-grow 1, el elemento flexible puede ocupar todo el espacio disponible dentro del contenedor 
-- margin-right 20px: margen por la derecha de 20 pixeles
+   ```css
+   .seccionpie {
+    flex: 1;
+    margin-right: 20px;
+   }
+   ```
+
+   - flex 1: abreviacion de flex-grow 1, el elemento flexible puede ocupar todo el espacio disponible dentro del contenedor 
+   - margin-right 20px: margen por la derecha de 20 pixeles
 
 - ### **seccionpie h2**
 Estilo para los titulos h2 en el contenedor seccion pie<br>
-[![seccionpie-H2-css.png](https://i.postimg.cc/KYxVJ90M/seccionpie-H2-css.png)](https://postimg.cc/68bYQhJW)<br>
-- font-size 1.2em: el tamaño del texto será de 1.2em 
-- margin-bottom 15px: margen por debajo del titulo
-- text-align left: el texto se alineará a la izquierda
+   ```css
+   .seccionpie h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: left;
+   }
+   ```
+
+   - font-size 1.2em: el tamaño del texto será de 1.2em 
+   - margin-bottom 15px: margen por debajo del titulo
+   - text-align left: el texto se alineará a la izquierda
 
 - ### **enlace-contacto (a)**
-[![enlacecontacto.png](https://i.postimg.cc/cHndNkNL/enlacecontacto.png)](https://postimg.cc/jwtpHX5p)<br>
-- align-items center: los elementos flexibles se alinean verticalemente al medio
-- color: color del texto
-- text-decoration none: estilo del enlace (subrayado, negrita, nada etc...)
+   ```css
+   .enlace-contacto {
+    align-items: center;
+    
+    color: #fff;
+    text-decoration: none;
+   }
+   ```
+
+   - align-items center: los elementos flexibles se alinean verticalemente al medio
+   - color: color del texto
+   - text-decoration none: estilo del enlace (subrayado, negrita, nada etc...)
 
 - ### **enlace-contacto img**
-[![enlacecontactoimg.png](https://i.postimg.cc/Bbv9nmrF/enlacecontactoimg.png)](https://postimg.cc/2bgXH78j)<br>
-- max-width y max-height 20px: la anchura y la altura maxima de las imagenes, para que no se deformen
-- vertical-align middle: alinea el contenido en linea al medio
+   ```css
+   .enlace-contacto img {
+    max-width: 30px ;
+    max-height: 30px;
+    vertical-align: middle;
+   }
+   ```
+
+   - max-width y max-height 20px: la anchura y la altura maxima de las imagenes, para que no se deformen
+   - vertical-align middle: alinea el contenido en linea al medio
 
 - ### **enlace-contacto:hover**
 Estilo para los enlaces de contacto cuando se pase el raton por encima<br>
-[![enlacecontacto-hover.png](https://i.postimg.cc/NMCDcbBL/enlacecontacto-hover.png)](https://postimg.cc/9RTZPd4j)<br>
-- text-decoration underline: los enlaces se subrayarán
+   ```css
+   .enlace-contacto:hover {
+    text-decoration: underline;
+   }
+   ```
+
+   - text-decoration underline: los enlaces se subrayarán
 
 - ### **iconos-sociales (ul)**
-[![iconossociales-css.png](https://i.postimg.cc/8Pf7w4Yw/iconossociales-css.png)](https://postimg.cc/mtRZgYBF)<br>
-- list-style none: el estilo del marcador de la lista 
--  margin y padding 0px: no tendrá margen ni margen interno
+   ```css
+   .iconos-sociales {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+   } 
+   ```
+
+   - list-style none: el estilo del marcador de la lista 
+   -  margin y padding 0px: no tendrá margen ni margen interno
 
 - ### **iconos-sociales li**
-[![iconossociales-Li.png](https://i.postimg.cc/63g8NbbH/iconossociales-Li.png)](https://postimg.cc/Q9g8Qm35)<br>
-- display inline-block: el elemento se mostrará en la misma linea que los otros elementos
-- margin-right 10px: margen por la derecha 
-- height 35px: la altura de los elementos  
+   ```css
+   .iconos-sociales li {
+    display: inline-block;
+    margin-right: 10px;
+    height: 35px;
+   }
+   ```
+   
+   - display inline-block: el elemento se mostrará en la misma linea que los otros elementos
+   - margin-right 10px: margen por la derecha 
+   - height 35px: la altura de los elementos  
 
 - ### **iconos-sociales li img**
-[![iconossociales-Li-img.png](https://i.postimg.cc/TwxvZVfz/iconossociales-Li-img.png)](https://postimg.cc/3ytqGDy1)<br>
-- vertical-align middle: alinea el contenido en linea al medio
+   ```css
+   .iconos-sociales li img {
+    vertical-align: middle;
+   }
+   ```
+
+   - vertical-align middle: alinea el contenido en linea al medio
 
 - ### **iconos-sociales li a**
-[![iconossociales-Li-a-png.png](https://i.postimg.cc/C5HGcVmy/iconossociales-Li-a-png.png)](https://postimg.cc/YL0LSZ58)<br>
-- color: color del texto
-- text-decoration none: estilo del enlace (subrayado, negrita, nada etc...)
+   ```css
+   .iconos-sociales li a {
+    color: #fff;
+    text-decoration: none;
+   }
+   ```
+
+   - color: color del texto
+   - text-decoration none: estilo del enlace (subrayado, negrita, nada etc...)
 
 - ### **iconos-sociales li:hover**
 Estilo para los elementos de la lista iconos-sociales para cuando se pase **el raton por encima**
-- text-decoration underline: los enlaces se subrayarán
+   ```css
+   .iconos-sociales li:hover {
+    text-decoration: underline;
+   }
+   ```
+   - text-decoration underline: los enlaces se subrayarán
 
 - ### **Facebook (img)**
-[![facebook.png](https://i.postimg.cc/pXKXrJL6/facebook.png)](https://postimg.cc/KRvysLLP)<br>
-- width y heigth 30px: anchura y altura 
+   ```css
+   .Facebook {
+    width: 30px;
+    height: 30px;
+   }
+   ```
+
+   - width y heigth 30px: anchura y altura 
 
 - ### **Instagram (img)**
-[![instagram.png](https://i.postimg.cc/LXs36skx/instagram.png)](https://postimg.cc/kVkbTqpS)<br>
-- max-width y max-heigth 30px: anchura y altura maxima, para que la imagen no se deforme 
+   ```css
+   .Instagram {
+    max-width: 30px;
+    max-height: 30px;
+   }
+   ```
+   
+   - max-width y max-heigth 30px: anchura y altura maxima, para que la imagen no se deforme 
 
 - ### **footer p**
-[![footerp.png](https://i.postimg.cc/QdWPCrhL/footerp.png)](https://postimg.cc/zy8p26yp)<br>
-- margin-top 15px: margen por encima, para separarlo del resto de contenido
-- text-align center: el texto se alineará al centro
-- font-size 13px: tamaño de la letra 
+   ```css
+   footer p {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+   }
+   ```
+   
+   - margin-top 15px: margen por encima, para separarlo del resto de contenido
+   - text-align center: el texto se alineará al centro
+   - font-size 13px: tamaño de la letra 
 
 ### **1.2 CSS: Pagina Inicio**
 - ### **main**
-[![Main.png](https://i.postimg.cc/TYjbvfk7/Main.png)](https://postimg.cc/N5MF1qvm)
+   ```css
+   main {
+    position: relative;
+    padding: 0%;
+   }
+   ```
    - position-relative: El elemento se mantiene en el flujo normal del documento
    - padding 0%: no tendrá margen interno
    <br><br>
 
 - ### **ImagenContenedor**
-[![Imagen-Contenedor.png](https://i.postimg.cc/Fz2rqdSW/Imagen-Contenedor.png)](https://postimg.cc/rRN2RpQx)
+   ```css
+   .ImagenContendor{
+    display: flex;
+    position: relative;
+    justify-content: center; 
+    align-items: center;
+
+    width: 100%; 
+    height: 100%; 
+   }
+   ```
    - display flex: El contenedor es flexible
    - position relative: El elemento se mantiene en el flujo normal del documento
    - justify-content center: Los elementos flexibles se alinean horizontalmente al centro
@@ -563,7 +1164,15 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    <br><br>
 
 - ### **ImagenPrincipal**
-[![Imagen-Principal.png](https://i.postimg.cc/XN1Fg42t/Imagen-Principal.png)](https://postimg.cc/w3J7q8Yk)
+   ```css
+   .ImagenPrincipal{
+    width: 100%;
+    max-width: 100%; 
+    max-height: auto;
+    
+    filter: opacity(60%);
+   }
+   ```
    - width 100%: ancho de la imagen 
    - max-width 100%: ancho maximo de la imagen 
    - max-height auto: altura maxima de la imagen puesto a automatico
@@ -571,7 +1180,20 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    <br><br>
 
 - ### **texto**
-[![texto.png](https://i.postimg.cc/xjm5qkjt/texto.png)](https://postimg.cc/V5YnVkCC)
+   ```css
+   .texto {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    color: white;
+    font-weight: bold;
+    font-size: 3.7vw;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+   }
+   ```
    - position-absolute: hace que un elemento se posicione con respecto a su contenedor mas cercano
    - top 32%: pone el texto a una altura de 32% con respecto de la parte mas alta
    - left 50%: pone el texto en el centro de la pantalla horizontalmente
@@ -584,7 +1206,28 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    <br><br>
 
 - ### **botonFacebook**
-[![boton-Facebook.png](https://i.postimg.cc/cHDJS76T/boton-Facebook.png)](https://postimg.cc/Q9TDgTQW)
+   ```css
+   .botonFacebook {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    height: 55px;
+    line-height: 55px;
+
+    text-align: center;
+    align-items: center;
+    list-style: none;
+
+    border-radius: 30px;
+    background-color: #eaeaeb;
+   }  
+   ```
    - position-absolute: hace que un elemento se posicione con respecto a su contenedor posicionado mas cercano
    - top 42%: altura de 42%
    - left 50%: posicion al 50 % con respecto a la parte izquierda
@@ -603,25 +1246,45 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    <br><br>
 
 - ### **botonFacebook img**
-[![Boton-Facebook-Img.png](https://i.postimg.cc/76PbR3gP/Boton-Facebook-Img.png)](https://postimg.cc/jW9swJgB)
+   ```css
+   .botonFacebook img {
+    width:50px;
+    height:50px;
+    vertical-align: middle;
+   }
+   ```
    - width 50px: Anchura del icono
    - height 50px: Altura del icono
    - vertical-align middle: alinea el contenido en linea al medio
    <br><br>
 
 - ### **botonFacebook li**
-[![boton-Facebookli.png](https://i.postimg.cc/26vBpQ6P/boton-Facebookli.png)](https://postimg.cc/mzLrCF7w)
+   ```css
+   .botonFacebook li {
+    display: inline-block;
+   }
+   ```
    - display inline-block: el elemento se mostrará en la misma linea que los otros elementos
    <br><br>
 
 - ### **botonFacebook li a**
-[![boton-Facebooklia.png](https://i.postimg.cc/yNjbmRsC/boton-Facebooklia.png)](https://postimg.cc/CZZ7YzRc)
+   ```css
+   .botonFacebook li a {
+    color: #000000;
+    text-decoration: none;
+   }
+   ```
    - color: color del texto
    - text-decoration: estilo del enlace (subrayado, negrita, ninguna etc...)
    <br><br>
 
 - ### **botonFacebook:hover**
-[![boton-Facebook-Hover.png](https://i.postimg.cc/ZRRvRGwz/boton-Facebook-Hover.png)](https://postimg.cc/McCp3Fk9)
+   ```css
+   .botonFacebook:hover {
+    background-color: #cfcfd1;
+    transition: background-color 0.2s ease;
+   }
+   ```
    - background-color: color del fondo diferente al anterior
    - transition background-color 0.2s ease: animación, en este caso el nuevo color del fondo aparecerá lentamente durante 0.2 segundos
    <br><br>
@@ -629,7 +1292,18 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
 
 ### **1.3 CSS: Pagina Actividades**
 - ### **TextoActividades h1**
-[![textoactividades-h1.png](https://i.postimg.cc/QtbpkDRn/textoactividades-h1.png)](https://postimg.cc/47Y7sD4z)
+   ```css
+   .TextoActividades h1 {
+    width: 100%;
+
+    text-align: center;
+    color: #fff;
+    font-size: 1.5em;
+
+    background-color: #333333;
+    border-radius: 10px;
+   }
+   ```
 - width 100%: anchura del 100% dentro del contnedor
 - text-align center: los titulos estarán alineados al centro
 - font-size 1.5em: el tamaño de fuente
@@ -637,7 +1311,24 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
 - border-radius: hace redondos los bordes del contenedor
 
 - ### **Viajes y Clases (div)**
-[![viajes-y-clases.png](https://i.postimg.cc/JncmKrcJ/viajes-y-clases.png)](https://postimg.cc/Vr63kchL)
+   ```css
+   .Viajes,
+   .Clases {
+    display:flex;
+    margin-top: 20px;
+
+    justify-content: left;
+    align-items: center;
+
+    background-color: #333;
+    width: 13%;
+    height: 15%;
+    border-radius: 10px;
+
+    color: #fff;
+    font-weight: bold;
+   }
+   ```
 - position relative: El elemento se mantiene en el flujo normal del documento
 - margin-top 20px: margen por encima 
 - justify-content left: los elementos flexibles se alinean horizontalmente a la izquierda
@@ -650,11 +1341,31 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
 - font-weight bold: estilo del texto, en este caso negrita
 
 - ### **Viajes p y Clases p (texto)**
-[![vijesp-y-clasesp.png](https://i.postimg.cc/3N2FqqfP/vijesp-y-clasesp.png)](https://postimg.cc/sGDWQTrc)
+   ```css
+   .Viajes p,
+   .Clases p {
+    display:flex;
+    margin:0%;
+    padding: 0 20px;
+    font-size: 0.99em;
+    text-align: left;
+   }
+   ```
 - margin-left 5%: margen por la izquierda para separarlo del borde del contenedor
 
 - ### **Viajes main y Clases main**
-[![viajesmain-y-clasesmain.png](https://i.postimg.cc/TP8YdHtk/viajesmain-y-clasesmain.png)](https://postimg.cc/0zfqZZRm)
+   ```css
+   .ViajesMain,
+   .ClasesMain {
+    display: flex;
+    width: 70%;
+    margin: 20px;
+    padding: 20px;
+
+    background-color: #f4f4f4;
+    border-radius: 10px;
+   }
+   ```
 - position relative: El elemento se mantiene en el flujo normal del documento
 - width 70%: anchura de los main
 - margin 20px: margen de los main
@@ -664,18 +1375,85 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
 
 - ### **ViajesMain th, ViajesMain td, ClasesMain th y ClasesMain th**<br>
 Estilo para los titulos y texto de las tablas<br>
-[![th-y-td.png](https://i.postimg.cc/J7cs0mX9/th-y-td.png)](https://postimg.cc/c6CxkpXm)
+   ```css
+   .ViajesMain th,
+   .ViajesMain td,
+   .ClasesMain th,
+   .ClasesMain td {
+    display: flexbox;
+    padding: 20px;
+    text-align: left;
+    max-width: 10%;
+   }
+   ```
 - padding 20px: margen interno
 - text-align left: el texto se alinea a la izquierda
 
+- ### **@media screen and (max-width: 1500px)**<br>
+Estilo para cuando la ventana ocupe 1500 pixeless<br>
+```css
+   @media screen and (max-width: 1500px) {
+
+    .TextoActividades h1 {
+        font-size: 1.2em;
+    }
+
+    .Viajes,
+    .Clases {
+        max-width: 13%;
+        max-height: 15%;
+    }
+
+    .Viajes p,
+    .Clases p {
+        font-size: 0.9em;
+        padding: 0 10px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .ViajesMain,
+    .ClasesMain {
+        width: 95%;
+        margin: 5px auto;
+        padding: 5px;
+    }
+
+    .ViajesMain th,
+    .ViajesMain td,
+    .ClasesMain th,
+    .ClasesMain td {
+        padding: 10px; 
+        font-size: 0.9em;
+    }
+}
+   ```
+
 ### **1.3 CSS: Pagina Sobre Nosotros**
 - ### **InformacionTexto (div)**
-[![informaciontexto.png](https://i.postimg.cc/5t8ZMfKt/informaciontexto.png)](https://postimg.cc/rdFh12k6)
+   ```css
+   .InformacionTexto {
+    position: relative;
+    width: 100%; 
+   }
+   ```
 - position relative: El elemento se mantiene en el flujo normal del documento
 - width 100%: ancho del 100%
 
 - ### **InformacionTexto h1,Instalaciontexto h1,Ubicaciontexto h1**
-[![instalaciones-h1.png](https://i.postimg.cc/t4vMQYzy/instalaciones-h1.png)](https://postimg.cc/ZW3c6YgD) 
+   ```css
+   .InformacionTexto h1,
+   .Instalaciontexto h1,
+   .Ubicaciontexto h1 {
+    width: 100%;
+    border-radius: 10px;
+
+    text-align: center;
+    color: #fff;
+    background-color: #333333;
+   }
+   ```
 - width 100%: ancho del 100%
 - border-radius 10px: hace redondos los bordes del contenedor
 - text-align center: alinea el texto al centro
@@ -683,7 +1461,19 @@ Estilo para los titulos y texto de las tablas<br>
 - background-color: color del fondo
 
 - ### **Informacion,instalaciones,Ubicacion (div)**
-[![informacion-instalacion-ubicacion.png](https://i.postimg.cc/50Jz0m4V/informacion-instalacion-ubicacion.png)](https://postimg.cc/CZv5rknP)
+   ```css
+   .Informacion,
+   .instalaciones,
+   .Ubicacion {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 15px;
+
+    justify-content: space-around;
+    background-color: #fff;  
+   }
+   ```
 - display flex: 
 - flex-wrap wrap: 
 - width: ancho del 100%
@@ -692,27 +1482,53 @@ Estilo para los titulos y texto de las tablas<br>
 - backgournd-color: color del fondo
 
 - ### **Informacion p (texto)**
-[![informacionp.png](https://i.postimg.cc/D00MzNKW/informacionp.png)](https://postimg.cc/GT0Q7qtr)
+   ```css
+   .Informacion p{
+    padding: 10px;
+   }
+   ```
 - padding 10px: margen interno de 10px
 
 - ### **secciones (section)**
-[![secciones.png](https://i.postimg.cc/JnDTVk3J/secciones.png)](https://postimg.cc/ygKh0WbY)
+   ```css
+   .secciones {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+
+    text-align: center;
+   }
+   ```
 - width 250px: ancho de las secciones
 - height 250px: alto de las secciones
 -  margin-bottom 20px: margen por abajo 
 - text-align center: el texto se alinea al centro 
 
 - ### **secciones h2**
-[![secciones-h2.png](https://i.postimg.cc/nVw3VTSm/secciones-h2.png)](https://postimg.cc/s17YwPrf)
+   ```css
+   .secciones h2 {
+    margin-bottom: 10px;
+   }
+   ```
 - margin-bottom 10px: margen por abajo
 
 - ### **secciones img**
-[![secciones-img.png](https://i.postimg.cc/T2ZHqCj6/secciones-img.png)](https://postimg.cc/xq3R9GFx)
+   ```css
+   .secciones img {
+    max-width: 100%;
+    max-height: 50%;
+   }
+   ```
 - max-width 100%: ancho maximo de las imagenes
 - max-height 50%: alto maximo de las imagenes
 
 - ### **Ubicacion iframe**
-[![ubicacion-iframe.png](https://i.postimg.cc/VLK0PH7y/ubicacion-iframe.png)](https://postimg.cc/Mvjpyt2t)
+   ```css
+   .Ubicacion iframe {
+    padding-top:15px;
+    justify-content: center;
+   }
+   ```
 - padding-top 15px: margen interno por arriba
 - justify-content center: justifica los elementos flexibles al centro
 
@@ -730,8 +1546,15 @@ Estilo para los titulos y texto de las tablas<br>
 
 - ### **Pagina "Sobre Nosotros"**<br>
 [![Sobre-Nosotros.png](https://i.postimg.cc/9F257K4v/Sobre-Nosotros.png)](https://postimg.cc/4nWSC8Q5)
-   - Por último, tenemos la pagina "Sobre Nosotros", donde ponemos información sobre el centro, ademas de las instalaciones de las que dispone el centro y un mapa con la localizacion del instituto.A parte de esto el encabezado y el pie de pagina son comunes al resto de Paginas.
+   - Tambien tenemos la pagina "Sobre Nosotros", donde ponemos información sobre el centro, ademas de las instalaciones de las que dispone el centro y un mapa con la localizacion del instituto.A parte de esto el encabezado y el pie de pagina son comunes al resto de Paginas.
    <br><br>
+
+
+- ### **Pagina "Galeria"**<br>
+[![Galeria.png](https://i.postimg.cc/GtzDQHvg/Galeria.png)](https://postimg.cc/fStkWW2Y)
+   - Por último, tenemos la pagina Galeria, donde aparecerán todas las imagenes de las actividades y una descripción sobre ellas, tambien tendrán un icono para poder abrirlas en una pestaña nueva y verlas con su tamaño original 
+   <br><br>
+
 ## Java<a name="JV"></a>
 ### 1. Diagrama de clases<a name="DIAG"></a>
 

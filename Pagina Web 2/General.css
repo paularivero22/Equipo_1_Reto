@@ -36,7 +36,7 @@ header {
 }
 
 .contenido-cabecera {
-    max-width: 1200px;
+    max-width: 100%;
     justify-content: left;
     height: 50px;
 }
@@ -75,48 +75,48 @@ h1 {
     align-items: center; 
 }
     
-    #listamenu {
-        display: flex;
-        margin-left: 10px;
-        justify-content: center;
-        padding: 0px;
-        height: 100%;
-        align-items: center;
-        list-style-type: none;
-    }
-    
-    #listamenu li {
-        padding: 15px 10px 0px 10px;
-        list-style: none;
-        align-items: center;
-        height: 100%;
-        width: auto;
-    }
-    
-    #listamenu a {
-        display: flex;
-        align-items: center;
-        height: 100%;
+#listamenu {
+    display: flex;
+    margin-left: 10px;
+    justify-content: center;
+    padding: 0px;
+    height: 100%;
+    align-items: center;
+    list-style-type: none;
+}
 
-        color: #333333;
-        font: bold 18px Arial, sans-serif;
-        text-decoration: none;
-    }
+#listamenu li {
+    padding: 15px 10px 0px 10px;
+    list-style: none;
+    align-items: center;
+    height: 100%;
+    width: auto;
+}
 
-    .iconosMenu {
-        margin: 10px;
-        align-items: center;
-        width:35px;
-        height:35px;
-    }
+#listamenu a {
+    display: flex;
+    align-items: center;
+    height: 100%;
 
-    #listamenu li:hover {
-        background-color: #dbdbdb;
-        transition: background-color 0.6s ease;
-    }
+    color: #333333;
+    font: bold 18px Arial, sans-serif;
+    text-decoration: none;
+}
+
+.iconosMenu {
+    margin: 10px;
+    align-items: center;
+    width:35px;
+    height:35px;
+}
+
+#listamenu li:hover {
+    background-color: #dbdbdb;
+    transition: background-color 0.6s ease;
+}
 
 
-#menuprincipal li { /*Pone los enlaces en linea y cuando pasas sobre ellos, cambia el color de fondo*/
+#menuprincipal li { 
     display: flex;
     height: 80px;
     padding: 15px 10px 0px 10px;
