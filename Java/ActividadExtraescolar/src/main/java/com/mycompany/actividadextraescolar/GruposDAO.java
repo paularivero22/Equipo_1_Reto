@@ -9,15 +9,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import javax.swing.JTextField;
 
 public class GruposDAO implements RepositorioDAO<Grupo> {
-
+/**
+ * 
+ * @return 
+ */
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
-
+/**
+ * METODO QUE LISTA LOS DATOS DE LA TABLA GRUPO
+ * @return 
+ */
     @Override
     public SortedSet<Grupo> listar() {
         SortedSet<Grupo> listaGrupos = new TreeSet<>();
@@ -31,13 +40,17 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
         }
         return listaGrupos;
     }
-
+/**
+ * METODO QUE BUSCA UN GRUPO POR CODGRUPO
+ * @param codGrupo
+ * @return 
+ */
     @Override
-    public Grupo buscarPor(String filtro) {
+    public Grupo buscarPor(String codGrupo) {
         Grupo grupo = null;
         String sql = "SELECT * FROM grupoAlumnos WHERE codGrupo=?";
         try (PreparedStatement pst = getConnection().prepareStatement(sql)) {
-            pst.setInt(1, Integer.parseInt(filtro));
+            pst.setString(1,codGrupo);
             try (ResultSet rs = pst.executeQuery()) {
                 if (rs.next()) {
                     grupo = crearGrupo(rs);
@@ -48,7 +61,10 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
         }
         return grupo;
     }
-
+/**
+ * METODO QUE ELIMINA SEGUN CODGRUPO
+ * @param filtro 
+ */
     @Override
     public void eliminarPor(String filtro) {
         String sql = "DELETE FROM grupoAlumnos WHERE codGrupo=?";
@@ -67,6 +83,10 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
         }
     }
 
+    /**
+     * METODO QUE INSERTA EL GRUPO A MYSQL
+     * @param g 
+     */
     @Override
     public void insertar(Grupo g) {
         String sql = "INSERT INTO grupoAlumnos(codGrupo, idGrupo, numAlumnos, activo) VALUES (?, ?, ?, ?)";
@@ -86,14 +106,21 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
         }
     }
 
+    /**
+     *
+     * @param atributo
+     * @param valorABuscar
+     * @param valorNuevo
+     */
     @Override
-    public void actualizar(String filtro) {
+    public void actualizar(String atributo,String valorABuscar,JTextField valorNuevo) {
         // Implementación para deshabilitar grupo
-        Grupo grupo = buscarPor(filtro);
+        Grupo grupo = buscarPor(valorABuscar);
         if (grupo != null) {
-            String sql = "UPDATE grupoAlumnos SET activo=false WHERE codGrupo=?";
+            String sql = "UPDATE grupoAlumnos SET "+atributo+"=? WHERE codGrupo=?";
             try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
-                stmt.setString(1, grupo.getCodGrupo());
+                stmt.setObject(1,valorNuevo.getText());
+                stmt.setString(2, valorABuscar);
                 int salida = stmt.executeUpdate();
                 if (salida != 1) {
                     throw new Exception("No se ha modificado el registro");
@@ -109,7 +136,9 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
         }
     }
     
-    // Método para mostrar todos los cursos
+    /**
+     * METODO QUE LISTA TODOS LOS GRUPOS
+     */
     public void mostrarTodosGrupos() {
         SortedSet<Grupo> listaGrupos = listar();
         for (Grupo c : listaGrupos) {
@@ -117,6 +146,12 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
         }
     }
 
+    /**
+     * METODO QUE CREA EL GRUPO A PARTIR DE LOS DATOS DE MYSQL
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     private Grupo crearGrupo(ResultSet rs) throws SQLException {
         return new Grupo(rs.getInt("codGrupo"), rs.getString("fk_curso"), rs.getInt("numAlumnos"), rs.getInt("idGrupo"), rs.getBoolean("activo"));
     }

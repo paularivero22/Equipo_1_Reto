@@ -3,36 +3,44 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.actividadextraescolar;
-
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import java.util.SortedSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author atres
  */
 public class Swing extends javax.swing.JFrame {
-    
+
 //Creo un atributo del tipo defaultTableModel para las tablas
     private DefaultTableModel tabla;
-    private SolicitudesDAO solicitud = new SolicitudesDAO();
-    private DepartamentoDAO metodosdepartamento = new DepartamentoDAO();
-
+    private SolicitudesDAO solicitud;
+    private DepartamentoDAO metodosdepartamento;
+    private Solicitud solicitudAux;
+    
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
+
     /**
      * Creates new form Swing
      */
     public Swing() {
         initComponents();
-        cargarItemsDepartamento();
+        tabla = new DefaultTableModel();
+        solicitud = new SolicitudesDAO();
+        metodosdepartamento = new DepartamentoDAO();
     }
+
     private void cargarItemsDepartamento() {
         String solicitudes = "";
         SortedSet<Departamento> lista = metodosdepartamento.listar();
@@ -42,35 +50,63 @@ public class Swing extends javax.swing.JFrame {
             jComboBox11.addItem(d.getNombre());
         }
     }
-    
-    private void insertarTablaSolicitudes(SortedSet<Solicitud>lista,JTable tabla1){
-        tabla= (DefaultTableModel) tabla1.getModel();
-        //Llamo al metodo de listar de SolicitudesDAO
-        SortedSet<Solicitud> listar = solicitud.listar();
-        //Creo un array del tipo String para guardar los datos de la lista con la cantidad de columnas que tiene nuestra tabla
-        
-        String datos[] = new String[16];
-        for (Solicitud s : listar) {
-            datos[0] = String.valueOf(s.getIdSolicitud());
-            datos[1] = String.valueOf(s.getHoraInicio());
-            datos[2] = String.valueOf(s.getHoraFinal());
-            datos[3] = s.getComentario();
-            datos[4] = String.valueOf(s.isPrevista());
-            datos[5] = String.valueOf(s.getIddepartamento());
-            datos[6] = s.getTitulo();
-            datos[7] = s.getTipoSolicitud().name();
-            datos[8] = String.valueOf(s.isMedioTransporte());
-            datos[9] = String.valueOf(s.getIdprofesor());
-            datos[10] = String.valueOf(s.isAlojamiento());
-            datos[11] =String.valueOf(s.getFechaInicio());
-            datos[12] = String.valueOf(s.getFechaFinal().toString());
-            datos[13] = String.valueOf(s.getTotalParticipantes());
-            datos[14] = s.getComentarioAlojamiento();
-            datos[15]=s.getEstado().name();
-            
-            //Añado los datos a la tabla
-            tabla.addRow(datos);
+
+    /**
+     * Metodo que inserta los datos de la lista en un jTable
+     *
+     * @param lista
+     * @param tabla1
+     */
+    private void insertarTablaSolicitudes(SortedSet<Solicitud> lista, JTable tabla1) {
+        tabla = (DefaultTableModel) tabla1.getModel();
+        Object[] ob = new Object[16];
+        Iterator<Solicitud> it = lista.iterator();
+        while (it.hasNext()) {
+            Solicitud soli = it.next();
+            ob[0] = soli.getIdSolicitud();
+            ob[1] = soli.getHoraInicio();
+            ob[2] = soli.getHoraFinal();
+            ob[3] = soli.getComentario();
+            ob[4] = soli.isPrevista();
+            ob[5] = soli.getIddepartamento();
+            ob[6] = soli.getTitulo();
+            ob[7] = soli.getTipoSolicitud();
+            ob[8] = soli.isMedioTransporte();
+            ob[9] = soli.getIdprofesor();
+            ob[10] = soli.isAlojamiento();
+            ob[11] = soli.getFechaInicio();
+            ob[12] = soli.getFechaFinal();
+            ob[13] = soli.getTotalParticipantes();
+            ob[14] = soli.getComentarioAlojamiento();
+            ob[15] = soli.getEstado();
+            tabla.addRow(ob);
         }
+        tabla1.setModel(tabla);
+    }
+
+    /**
+     * Metodo que limpia la tabla
+     */
+    public void limpiarTabla() {
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+            tabla.removeRow(i);
+            i = i - 1;
+        }
+    }
+    /**
+     * Metodo que limpia las casillas de crear solicitud;
+     */
+    public void limpiarCrearSolicitud(){
+        jTextField21.setText("");
+        jTextField23.setText("");
+        jTextField24.setText("");
+        jTextField26.setText("");
+        jTextField27.setText("");
+        jTextField28.setText("");
+        jTextField25.setText("");
+        jCheckBox3.setSelected(false);
+        jCheckBox2.setSelected(false);
+        jCheckBox1.setSelected(false);
     }
 
     /**
@@ -1016,13 +1052,15 @@ public class Swing extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, true, true, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable6.setDoubleBuffered(true);
+        jTable6.setDropMode(javax.swing.DropMode.ON);
         jScrollPane19.setViewportView(jTable6);
 
         ConsultarSolicitudes.add(jScrollPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 590, 330));
@@ -1038,9 +1076,19 @@ public class Swing extends javax.swing.JFrame {
         AprobarDenegarSolicitudes.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         jButton20.setText("Aprobar");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
         AprobarDenegarSolicitudes.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
         jButton21.setText("Denegar");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
         AprobarDenegarSolicitudes.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, -1, -1));
 
         jLabel51.setText("Comentario:");
@@ -1064,7 +1112,7 @@ public class Swing extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1081,6 +1129,11 @@ public class Swing extends javax.swing.JFrame {
         AprobarDenegarSolicitudes.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 590, 130));
 
         Insertar.setText("Insertar");
+        Insertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                InsertarMouseClicked(evt);
+            }
+        });
         Insertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InsertarActionPerformed(evt);
@@ -1645,7 +1698,7 @@ public class Swing extends javax.swing.JFrame {
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(false);
-        
+
         cargarItemsDepartamento();
     }//GEN-LAST:event_crearSolicitudMenuActionPerformed
 
@@ -1737,15 +1790,15 @@ public class Swing extends javax.swing.JFrame {
         //        // Aquí iría la lógica para verificar el usuario y contraseña
         //        // Por simplicidad, aquí simplemente compararemos con valores fijos
         //        if (username.equals("usuario") && password.equals("contraseña")) {
-            //            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
-            //            // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
-            //            // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
-            //            Swing login = new Swing();
-            //            login.setVisible(true);
-            //            dispose(); // Cierra la ventana de inicio de sesión
-            //        } else {
-            //            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-            //        }
+        //            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
+        //            // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
+        //            // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
+        //            Swing login = new Swing();
+        //            login.setVisible(true);
+        //            dispose(); // Cierra la ventana de inicio de sesión
+        //        } else {
+        //            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+        //        }
     }//GEN-LAST:event_botonLoginActionPerformed
 
     private void restablecerBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerBotonActionPerformed
@@ -1816,12 +1869,12 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         //Metodo buscar Curso
-        String descripcion=jComboBox8.getSelectedItem().toString();
-        CursosDAO cursos= new CursosDAO();
-        Curso buscarCurso=cursos.buscarPor(descripcion);
-        if(buscarCurso!=null){
+        String descripcion = jComboBox8.getSelectedItem().toString();
+        CursosDAO cursos = new CursosDAO();
+        Curso buscarCurso = cursos.buscarPor(descripcion);
+        if (buscarCurso != null) {
 
-        }else{
+        } else {
 
         }
 
@@ -1834,9 +1887,9 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        String descripcion= jComboBox8.getSelectedItem().toString();
-        CursosDAO cursos=new CursosDAO();
-        cursos.actualizar(descripcion);
+        String descripcion = jComboBox8.getSelectedItem().toString();
+        CursosDAO cursos = new CursosDAO();
+        //cursos.actualizar(descripcion);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
@@ -1852,7 +1905,7 @@ public class Swing extends javax.swing.JFrame {
         String nombre = jTextField15.getText();
         String codDepartamento = jTextField16.getText();
         String correo = jTextField17.getText();
-        Departamento departamento = new Departamento(codDepartamento,nombre,6);
+        Departamento departamento = new Departamento(codDepartamento, nombre, 6);
         dep.insertar(departamento);
     }//GEN-LAST:event_jButton12ActionPerformed
 
@@ -1891,36 +1944,38 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-        SolicitudesDAO metodosSolicitudes=new SolicitudesDAO();
-        DepartamentoDAO metodosDepartamento=new DepartamentoDAO();
-        ProfesorDAO metodosProfesor=new ProfesorDAO();
-        String titulo=jTextField21.getText();
-        Tipo tipo=Tipo.valueOf(jComboBox6.getSelectedItem().toString());
-        int departamento=metodosdepartamento.buscarPor(jComboBox11.getSelectedItem().toString()).getIdDepartamento();
-        LocalTime horaInicio=LocalTime.parse(jTextField23.getText());
-        LocalTime horaFin=LocalTime.parse(jTextField24.getText());
-        int profesor=metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
-        LocalDate fechaInicio=LocalDate.parse(jTextField26.getText());
-        LocalDate fechaFin=LocalDate.parse(jTextField27.getText());
-        int participantes=Integer.parseInt(jTextField28.getText());
-        boolean prevista=false;
-        boolean medioTransporte=false;
-        boolean alojamiento=false;
-        if(jCheckBox2.isSelected()){
-            prevista=true;
+        SolicitudesDAO metodosSolicitudes = new SolicitudesDAO();
+        DepartamentoDAO metodosDepartamento = new DepartamentoDAO();
+        ProfesorDAO metodosProfesor = new ProfesorDAO();
+        String titulo = jTextField21.getText();
+        Tipo tipo = Tipo.valueOf(jComboBox6.getSelectedItem().toString());
+        int departamento = metodosdepartamento.buscarPor(jComboBox11.getSelectedItem().toString()).getIdDepartamento();
+        LocalTime horaInicio = LocalTime.parse(jTextField23.getText());
+        LocalTime horaFin = LocalTime.parse(jTextField24.getText());
+        int profesor = metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
+        LocalDate fechaInicio = LocalDate.parse(jTextField26.getText());
+        LocalDate fechaFin = LocalDate.parse(jTextField27.getText());
+        int participantes = Integer.parseInt(jTextField28.getText());
+        boolean prevista = false;
+        boolean medioTransporte = false;
+        boolean alojamiento = false;
+        if (jCheckBox2.isSelected()) {
+            prevista = true;
         }
-        if(jCheckBox1.isSelected()){
-            alojamiento=true;
+        if (jCheckBox1.isSelected()) {
+            alojamiento = true;
         }
-        if(jCheckBox3.isSelected()){
-            medioTransporte=true;
+        if (jCheckBox3.isSelected()) {
+            medioTransporte = true;
         }
-        
-        String comentAlojamiento="";
-        Estado estado=Estado.SOLICITADA;
 
-        Solicitud s=new Solicitud(horaInicio,horaFin,"",prevista,departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFin,participantes,"",estado);
+        String comentAlojamiento = "";
+        Estado estado = Estado.SOLICITADA;
+
+        Solicitud s = new Solicitud(horaInicio, horaFin, "", prevista, departamento, titulo, tipo, medioTransporte, profesor, alojamiento, fechaInicio, fechaFin, participantes, "", estado);
         metodosSolicitudes.insertar(s);
+        limpiarCrearSolicitud();
+        
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
@@ -1929,37 +1984,60 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-       insertarTablaSolicitudes(solicitud.listar(),jTable6);
+        SortedSet<Solicitud>listaSolicitud=solicitud.listar();
+        limpiarTabla();
+        insertarTablaSolicitudes(listaSolicitud, jTable6);
         //Y asigno el jTable al atributo tabla
         jTable6.setModel(tabla);
     }//GEN-LAST:event_jButton18ActionPerformed
 
-    
+    /**
+     *
+     * @param evt
+     */
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         // TODO add your handling code here:
-        insertarTablaSolicitudes(solicitud.listar(),jTable7);
-         //Y asigno el jTable al atributo tabla
+        SortedSet<Solicitud>listaSolicitud=solicitud.listar();
+        jTextField31.setText("");
+        limpiarTabla();
+        insertarTablaSolicitudes(listaSolicitud, jTable7);
+        //Y asigno el jTable al atributo tabla
         jTable7.setModel(tabla);
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
         // TODO add your handling code here:
-         
+        String titulo = solicitudAux.getTitulo();
+        String atributo="comentarios";
+        solicitud.actualizar(atributo, titulo, jTextField31);
     }//GEN-LAST:event_InsertarActionPerformed
 
     private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
         // TODO add your handling code here:
         //Obtengo el índice de la fila que selecciono
-        int filaSeleccionada=jTable7.getSelectedRow();
+        int filaSeleccionada = jTable7.getSelectedRow();
         //Cargo la tabla
-        DefaultTableModel tablaF=(DefaultTableModel) jTable7.getModel();
+        DefaultTableModel tablaF = (DefaultTableModel) jTable7.getModel();
         //Obtengo el valor del indice que utilizo para buscar una solicitud
-        String valor1=tablaF.getValueAt(filaSeleccionada, 6).toString();
-        Solicitud s=solicitud.buscarPor(valor1);
-        JOptionPane.showMessageDialog(null, s.toString(), "Mensaje", JOptionPane.PLAIN_MESSAGE);
-        
-        
+        String valor1 = tablaF.getValueAt(filaSeleccionada, 6).toString();
+        solicitudAux = solicitud.buscarPor(valor1);
     }//GEN-LAST:event_jTable7MouseClicked
+
+    private void InsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsertarMouseClicked
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+        String titulo = solicitudAux.getTitulo();
+        solicitud.actualizarEstado(titulo, "APROBADA");
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        // TODO add your handling code here:
+         String titulo = solicitudAux.getTitulo();
+        solicitud.actualizarEstado(titulo, "DENEGADA");
+    }//GEN-LAST:event_jButton21ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -9,8 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import javax.swing.JTextField;
 
 
 /**
@@ -22,7 +25,10 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
-    //Lista todos los departamentos
+    /**
+     * METODO QUE LISTA LA TABLA DEPARTAMENTO
+     * @return 
+     */
     @Override
     public SortedSet<Departamento> listar() {
         SortedSet<Departamento> listaDepartamento = new TreeSet<>();
@@ -41,7 +47,11 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
         return listaDepartamento;
     }
 
-    //Metodo que busca un departamento mediante su codDepartamento
+    /**
+     * METODO QUE BUSCA UN DEPARTAMENTO MEDIANTE nombre
+     * @param filtro
+     * @return 
+     */
     @Override
     public Departamento buscarPor(String filtro) {
         Departamento departamento = null;
@@ -59,7 +69,10 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
         return departamento;
     }
 
-    //Metodo elimina un departamento por su codDepartamento
+    /**
+     * METODO QUE ELIMINA UN DEPARTAMENTO POR codDepartamento
+     * @param filtro 
+     */
     @Override
     public void eliminarPor(String filtro) {
         String sql = "DELETE FROM departamento WHERE codDepartamento=?";
@@ -78,7 +91,10 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
         }
     }
 
-    //Metodo que inserta un departamento a la bd
+    /**
+     * METODO QUE INSERTA UN DEPARTAMENTO A LA TABLA DEPARTAMENTO
+     * @param d 
+     */
     @Override
     public void insertar(Departamento d) {
         String sql = "INSERT into departamento(iddepartamento,codDepartamento,nombre,idJefe) VALUES(?,?,?,?)";
@@ -98,18 +114,19 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
         }
     }
 
+    /**
+     * METODO QUE ACTUALIZA MEDIANTE UN ATRIBUTO A UN VALOR NUEVO
+     * @param atributo
+     * @param valorABuscar
+     * @param valorNuevo
+     */
     @Override
-    public void actualizar(String filtro) {
-        Departamento d = buscarPor(filtro);
-        String sql = "UPDATE departamento SET codDepartamento=?,nombre=?,idJefe=? WHERE codDepartamento=?";
+    public void actualizar(String atributo,String valorABuscar,JTextField valorNuevo) {
+        Departamento d = buscarPor(valorABuscar);
+        String sql = "UPDATE departamento SET "+atributo+"=? WHERE codDepartamento=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            d.setCodigoDepartamento("JAP");
-            d.setNombre("Japonés");
-            d.setIdJefe(50);
-            stmt.setString(4, d.getCodigoDepartamento());
-            stmt.setString(1, d.getCodigoDepartamento());
-            stmt.setString(2, d.getNombre());
-            stmt.setInt(3, d.getIdJefe());
+            stmt.setObject(1, valorNuevo.getText());
+            stmt.setString(2, valorABuscar);
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha modificado el registro");
@@ -121,7 +138,9 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
         }
     }
 
-    //Metodo que recorre y muestra los datos todos los profesores;
+    /**
+     * METODO QUE LISTA TODOS LOS DEPARTAMENTOS
+     */
     public void mostrarTodosDepartamentos() {
         SortedSet<Departamento> listaDepartamento = listar();
         for (Departamento d : listaDepartamento) {
@@ -129,7 +148,12 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
         }
     }
 
-    //Metodo que crea un departamento a partir de los datos en mysql
+    /**
+     * METODO QUE CREA UN DEPARTAMENTO A PARTIR DE LOS DATOS DE MYSQL
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     private Departamento crearDepartamento(final ResultSet rs) throws SQLException {
        return new Departamento(rs.getInt("iddepartamento"),rs.getString("codDepartamento"),rs.getString("nombre"),rs.getInt("idJefe"));
     }

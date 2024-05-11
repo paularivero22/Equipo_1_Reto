@@ -2081,8 +2081,8 @@
                     <Column editable="false" title="idSolicitud" type="java.lang.Object"/>
                     <Column editable="false" title="horaInicio" type="java.lang.Object"/>
                     <Column editable="false" title="horaFin" type="java.lang.Object"/>
-                    <Column editable="false" title="comentarios" type="java.lang.Object"/>
-                    <Column editable="false" title="prevista" type="java.lang.Object"/>
+                    <Column editable="true" title="comentarios" type="java.lang.Object"/>
+                    <Column editable="true" title="prevista" type="java.lang.Object"/>
                     <Column editable="false" title="Departamento" type="java.lang.Object"/>
                     <Column editable="false" title="titulo" type="java.lang.Object"/>
                     <Column editable="false" title="tipo" type="java.lang.Object"/>
@@ -2180,6 +2180,10 @@
                     </Column>
                   </TableColumnModel>
                 </Property>
+                <Property name="doubleBuffered" type="boolean" value="true"/>
+                <Property name="dropMode" type="javax.swing.DropMode" editor="org.netbeans.modules.form.editors.EnumEditor">
+                  <Value id="ON"/>
+                </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
@@ -2224,6 +2228,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Aprobar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton20ActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="40" y="350" width="-1" height="-1"/>
@@ -2234,6 +2241,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Denegar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton21ActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="390" y="360" width="-1" height="-1"/>
@@ -2301,7 +2311,7 @@
                     <Column editable="false" title="fechaFinal" type="java.lang.Object"/>
                     <Column editable="false" title="Participantes" type="java.lang.Object"/>
                     <Column editable="false" title="comenAlojamiento" type="java.lang.Object"/>
-                    <Column editable="false" title="Estado" type="java.lang.Object"/>
+                    <Column editable="true" title="Estado" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -2403,6 +2413,7 @@
             <Property name="text" type="java.lang.String" value="Insertar"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="InsertarMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InsertarActionPerformed"/>
           </Events>
           <Constraints>

@@ -5,7 +5,7 @@
 package com.mycompany.actividadextraescolar;
 
 /**
- *
+ * ENUMERADO QUE CONTIENE LOS TIPOS DE USUARIO
  * @author atres
  */
 public enum PerfilAcceso {

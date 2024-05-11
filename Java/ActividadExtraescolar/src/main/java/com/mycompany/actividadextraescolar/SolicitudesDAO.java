@@ -14,6 +14,9 @@ import java.sql.Time;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import javax.swing.JTextField;
+
+
 /**
  *
  * @author atres
@@ -23,8 +26,11 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
-//Lista las solicitudes solicitadas
 
+    /**
+     * Lista las solicitudes solicitadas
+     * @return 
+     */
     @Override
     public SortedSet<Solicitud> listar() {
         SortedSet<Solicitud> listaSolicitudes = new TreeSet<>();
@@ -43,10 +49,15 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
         return listaSolicitudes;
     }
 
+    /**
+     * METODO QUE BUSCA UNA SOLICITUD POR TITULO
+     * @param filtro
+     * @return 
+     */
     @Override
     public Solicitud buscarPor(String filtro) {
         Solicitud solicitud = null;
-        String sql = "SELECT * FROM Solicitud WHERE titulo=?";
+        String sql = "select * from solicitud where titulo=?;";
         try (PreparedStatement pst = getConnection().prepareStatement(sql);) {
             pst.setString(1, filtro);
             try (ResultSet rs = pst.executeQuery();) {
@@ -60,6 +71,10 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
         return solicitud;
     }
 
+    /**
+     * METODO QUE ELIMINA POR TITULO
+     * @param filtro 
+     */
     @Override
     public void eliminarPor(String filtro) {
         String sql = "DELETE FROM solicitud WHERE titulo=?";
@@ -78,9 +93,13 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
         }
     }
 
+    /**
+     * METODO QUE INSERTA UNA SOLICITUD A LA BASE DE DATOS
+     * @param t 
+     */
     @Override
     public void insertar(Solicitud t) {
-        String sql = "INSERT into Solicitud(idActividad,horaInicio,horaFin,comentarios,prevista,Departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFinal,totalParticipantes,comenAlojamiento)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT into Solicitud(idActividad,horaInicio,horaFin,comentarios,prevista,Departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFinal,totalParticipantes,comenAlojamiento,estado)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, t.getIdSolicitud());
             stmt.setTime(2, Time.valueOf(t.getHoraInicio()));
@@ -97,6 +116,7 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
             stmt.setDate(13, Date.valueOf(t.getFechaFinal()));
             stmt.setInt(14, t.getTotalParticipantes());
             stmt.setString(15, t.getComentarioAlojamiento());
+            stmt.setString(16, t.getEstado().name());
 
             int salida = stmt.executeUpdate();
             if (salida != 1) {
@@ -109,14 +129,20 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
         }
     }
 
+    /**
+     *METODO QUE ACTUALIZA UN ATRIBUTO A UN VALOR NUEVO
+     * @param atributo
+     * @param valorABuscar
+     * @param valorNuevo
+     */
     @Override
-    public void actualizar(String filtro) {
-        Solicitud so = buscarPor(filtro);
-        String sql = "UPDATE totalPartcipantes=? WHERE titulo=?";
+    public void actualizar(String atributo, String valorABuscar, JTextField valorNuevo) {
+        Solicitud so = buscarPor(valorABuscar);
+        String sql = "UPDATE solicitud SET " + atributo + "=? WHERE titulo=?;";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            so.setTotalParticipantes(200);
-            stmt.setString(2, filtro);
-            stmt.setInt(1, so.getTotalParticipantes());
+            so.setComentario(valorNuevo.getText());
+            stmt.setObject(1, so.getComentario());
+            stmt.setString(2, valorABuscar);
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha modificado el registro");
@@ -127,9 +153,45 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
             System.out.println(e.getMessage());
         }
     }
-//Metodo que crea una solicituf a partir de los datos en mysql
+
+    /**
+     * Metodo que actualiza el estado de una solicitud
+     *
+     * @param valorABuscar
+     * @param estado
+     */
+    public void actualizarEstado(String valorABuscar, String estado) {
+        Solicitud so = buscarPor(valorABuscar);
+        String sql = "UPDATE solicitud SET estado=? WHERE titulo=?;";
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            
+            if(estado.equalsIgnoreCase("APROBADA")){
+                so.setEstado(Estado.APROBADA);
+            }else if(estado.equalsIgnoreCase("DENEGADA")){
+                so.setEstado(Estado.DENEGADA);
+            }
+            stmt.setString(1, estado);
+            stmt.setString(2, valorABuscar);
+            int salida = stmt.executeUpdate();
+            if (salida != 1) {
+                throw new Exception(" No se ha modificado el registro");
+            }
+        } catch (SQLException s) {
+            System.out.println(s.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Metodo que crea una solicitud a partir de los datos en mysql
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
 
     private Solicitud crearSolicitud(final ResultSet rs) throws SQLException {
-        return new Solicitud(rs.getInt("idActividad"), rs.getTime("horaInicio").toLocalTime(), rs.getTime("horaFin").toLocalTime(), rs.getString("comentarios"), rs.getBoolean("prevista"), rs.getInt("Departamento"), rs.getString("titulo"), Tipo.valueOf(rs.getString("tipo")), rs.getBoolean("medioTransporte"), rs.getInt("profesor"), rs.getBoolean("alojamiento"), rs.getDate("fechaInicio").toLocalDate(), rs.getDate("fechaFinal").toLocalDate(), rs.getInt("totalParticipantes"), rs.getString("comenAlojamiento"), Estado.SOLICITADA);
+        return new Solicitud(rs.getInt("idActividad"), rs.getTime("horaInicio").toLocalTime(), rs.getTime("horaFin").toLocalTime(), rs.getString("comentarios"), rs.getBoolean("prevista"), rs.getInt("Departamento"), rs.getString("titulo"), Tipo.valueOf(rs.getString("tipo")), rs.getBoolean("medioTransporte"), rs.getInt("profesor"), rs.getBoolean("alojamiento"), rs.getDate("fechaInicio").toLocalDate(), rs.getDate("fechaFinal").toLocalDate(), rs.getInt("totalParticipantes"), rs.getString("comenAlojamiento"), Estado.valueOf(rs.getString("estado")));
     }
+
 }

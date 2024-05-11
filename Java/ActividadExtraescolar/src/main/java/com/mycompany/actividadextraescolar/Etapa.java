@@ -5,7 +5,7 @@
 package com.mycompany.actividadextraescolar;
 
 /**
- *
+ * ENUMERADO QUE CONTIENE TODAS LAS ETAPAS DE UN CURSO
  * @author atres
  */
 public enum Etapa {

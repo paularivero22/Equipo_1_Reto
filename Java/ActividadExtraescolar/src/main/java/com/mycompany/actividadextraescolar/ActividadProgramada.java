@@ -12,8 +12,7 @@ public class ActividadProgramada {
 
     private int idActividad;
     private String comentario;
-    public enum Estado {
-    }
+    
 
     public ActividadProgramada(int idActividad, String comentario) {
         this.idActividad = idActividad;

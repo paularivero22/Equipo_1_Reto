@@ -6,12 +6,14 @@ package com.mycompany.actividadextraescolar;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Objects;
 
 /**
+ * IMPLEMENTA COMPARABLE PARA ORDENAR
  *
  * @author atres
  */
-public class Solicitud implements Comparable<Solicitud>{
+public class Solicitud implements Comparable<Solicitud> {
 
     private int idSolicitud;
     private String titulo;
@@ -30,8 +32,25 @@ public class Solicitud implements Comparable<Solicitud>{
     private LocalDate fechaFinal;
     private int totalParticipantes;
 
-    //Constructor por parámetros
-
+    /**
+     * CONSTRUCTOR POR PARÁMETOS QUE NO PASA LA IDSOLICITUD
+     *
+     * @param horaInicio
+     * @param horaFinal
+     * @param comentario
+     * @param prevista
+     * @param iddepartamento
+     * @param titulo
+     * @param tipoSolicitud
+     * @param medioTransporte
+     * @param idprofesor
+     * @param Alojamiento
+     * @param fechaInicio
+     * @param fechaFinal
+     * @param totalParticipantes
+     * @param comentarioAlojamiento
+     * @param estado
+     */
     public Solicitud(LocalTime horaInicio, LocalTime horaFinal, String comentario, boolean prevista, int iddepartamento, String titulo, Tipo tipoSolicitud, boolean medioTransporte, int idprofesor, boolean Alojamiento, LocalDate fechaInicio, LocalDate fechaFinal, int totalParticipantes, String comentarioAlojamiento, Estado estado) {
         this.titulo = titulo;
         this.tipoSolicitud = tipoSolicitud;
@@ -49,8 +68,26 @@ public class Solicitud implements Comparable<Solicitud>{
         this.fechaFinal = fechaFinal;
         this.totalParticipantes = totalParticipantes;
     }
-    
-    
+
+    /**
+     * CONSTRUCTOR POR PARÁMETROS QUE PASA LA IDSOLICITUD
+     *
+     * @param horaInicio
+     * @param horaFinal
+     * @param comentario
+     * @param prevista
+     * @param iddepartamento
+     * @param titulo
+     * @param tipoSolicitud
+     * @param medioTransporte
+     * @param idprofesor
+     * @param Alojamiento
+     * @param fechaInicio
+     * @param fechaFinal
+     * @param totalParticipantes
+     * @param comentarioAlojamiento
+     * @param estado
+     */
     public Solicitud(int idSolicitud, LocalTime horaInicio, LocalTime horaFinal, String comentario, boolean prevista, int iddepartamento, String titulo, Tipo tipoSolicitud, boolean medioTransporte, int idprofesor, boolean Alojamiento, LocalDate fechaInicio, LocalDate fechaFinal, int totalParticipantes, String comentarioAlojamiento, Estado estado) {
         this.idSolicitud = idSolicitud;
         this.titulo = titulo;
@@ -70,8 +107,11 @@ public class Solicitud implements Comparable<Solicitud>{
         this.totalParticipantes = totalParticipantes;
     }
 
-
-//Metodos get
+    /**
+     * METODOS GET Y SET
+     *
+     * @return
+     */
     public int getIdSolicitud() {
         return idSolicitud;
     }
@@ -201,25 +241,69 @@ public class Solicitud implements Comparable<Solicitud>{
         this.totalParticipantes = totalParticipantes;
     }
 
-    //Mostrar datos
+    /**
+     * HASHCODE
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + this.idSolicitud;
+        hash = 41 * hash + Objects.hashCode(this.titulo);
+        return hash;
+    }
+
+    /**
+     * METODO EQUALS
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Solicitud other = (Solicitud) obj;
+        if (this.idSolicitud != other.idSolicitud) {
+            return false;
+        }
+        return Objects.equals(this.titulo, other.titulo);
+    }
+
+    /**
+     * METODO TO STRING PARA MOSTRAR DATOS
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Solicitud{" + "idSolicitud=" + idSolicitud + ", titulo=" + titulo + ", tipoSolicitud=" + tipoSolicitud + ", iddepartamento=" + iddepartamento + ", prevista=" + prevista + ", idprofesor=" + idprofesor + ", horaInicio=" + horaInicio + ", horaFinal=" + horaFinal + ", estado=" + estado + ", comentario=" + comentario + ", medioTransporte=" + medioTransporte + ", Alojamiento=" + Alojamiento + ", comentarioAlojamiento=" + comentarioAlojamiento + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", totalParticipantes=" + totalParticipantes + '}';
     }
 
-
+    /**
+     * METODO QUE ORDENA LAS SOLICITUDES POR FECHAiNICIO DE MÁS RECIENTE A MENOS
+     *
+     * @param o
+     * @return
+     */
     @Override
     public int compareTo(Solicitud o) {
-        if(this.getFechaInicio().isAfter(o.getFechaInicio())){
+
+        if (this.getFechaInicio().isAfter(o.getFechaInicio())) {
             return -1;
-        }else if(this.getFechaInicio().isBefore(o.getFechaFinal())){
+        } else if (this.getFechaInicio().isBefore(o.getFechaFinal())) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
-
-   
-   
 
 }

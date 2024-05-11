@@ -7,7 +7,7 @@ package com.mycompany.actividadextraescolar;
 import java.util.Random;
 
 /**
- *
+ * 
  * @author Usuario
  */
 public class Profesor {
@@ -22,6 +22,19 @@ public class Profesor {
     private PerfilAcceso perfil;
     private String contrasenia;
 
+    /**
+     * CONSTRUCTOR POR PARÁMETROS QUE PIDE IDPROFESOR
+     * @param idProfesor
+     * @param idDepartamento
+     * @param nombre
+     * @param apellidos
+     * @param DNI
+     * @param correo
+     * @param activo
+     * @param perfil
+     * @param contrasenia 
+     */
+    
     public Profesor(int idProfesor, int idDepartamento, String nombre, String apellidos, String DNI, String correo, boolean activo, PerfilAcceso perfil, String contrasenia) {
         this.idProfesor = idProfesor;
         this.idDepartamento = idDepartamento;
@@ -34,6 +47,33 @@ public class Profesor {
         this.contrasenia = contrasenia;
     }
 
+    /**
+     * CONTRUCTOR POR PARÁMETROS SIN IDPROFESOR
+     * @param idDepartamento
+     * @param nombre
+     * @param apellidos
+     * @param DNI
+     * @param correo
+     * @param activo
+     * @param perfil
+     * @param contrasenia 
+     */
+    public Profesor(int idDepartamento, String nombre, String apellidos, String DNI, String correo, boolean activo, PerfilAcceso perfil, String contrasenia) {
+        this.idDepartamento = idDepartamento;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.DNI = DNI;
+        this.correo = correo;
+        this.activo = activo;
+        this.perfil = perfil;
+        this.contrasenia = contrasenia;
+    }
+    
+
+    /**
+     * METODOS GET Y SET
+     * @return 
+     */
     public PerfilAcceso getPerfil() {
         return perfil;
     }
@@ -106,12 +146,20 @@ public class Profesor {
     }
 
 
+    /**
+     * METODO QUE MUESTRA INFORMACIÓN DEL PROFESOR
+     * @return 
+     */
     @Override
     public String toString() {
         return "Profesor{" + "idProfesor=" + idProfesor + ", idDepartamento=" + idDepartamento + ", nombre=" + nombre + ", apellidos=" + apellidos + ", DNI=" + DNI + ", correo=" + correo + ", activo=" + activo + ", perfil=" + perfil + ", contrasenia=" + contrasenia + '}';
     }
 
-    //Metodo que genera una contraseña aleatoria para los profesores
+    /**
+     * METODO QUE GENERAR ALEATORIAMENTE UNA CONTRASEÑA PARA EL PROFESOR
+     * @param longitud
+     * @return 
+     */
     public static String generarPassword(int longitud) {
         String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random r = new Random();

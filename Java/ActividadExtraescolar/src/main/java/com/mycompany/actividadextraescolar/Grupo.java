@@ -15,8 +15,14 @@ public class Grupo {
     public int numeroAlumnos;
     public boolean activo;
 
-    //Constructor por parámetros
-
+   /**
+    * CONSTRUCTOR POR PARÁMETROS QUE PIDE IDGRUPO
+    * @param idGrupo
+    * @param codGrupo
+    * @param idcurso
+    * @param numeroAlumnos
+    * @param activo 
+    */
     public Grupo(int idGrupo, String codGrupo, int idcurso, int numeroAlumnos, boolean activo) {
         this.idGrupo = idGrupo;
         this.codGrupo = codGrupo;
@@ -25,7 +31,25 @@ public class Grupo {
         this.activo = activo;
     }
     
-    //Metodos get
+    /**
+     * CONSTRUCTOR POR PARÁMETROS QUE NO PIDE IDGRUPO
+     * @param codGrupo
+     * @param idcurso
+     * @param numeroAlumnos
+     * @param activo 
+     */
+
+    public Grupo(String codGrupo, int idcurso, int numeroAlumnos, boolean activo) {
+        this.codGrupo = codGrupo;
+        this.idcurso = idcurso;
+        this.numeroAlumnos = numeroAlumnos;
+        this.activo = activo;
+    }
+    
+    /**
+     * METODOS GET Y SET
+     * @return 
+     */
     
     public int getIdGrupo() {
         return idGrupo;
@@ -39,8 +63,6 @@ public class Grupo {
         return idcurso;
     }
 
-   
-
     public int getNumeroAlumnos() {
         return numeroAlumnos;
     }
@@ -49,8 +71,10 @@ public class Grupo {
         return activo;
     }
     
-    //Metodo que muestra datos
-
+    /**
+     * METODO QUE DEVUELVE LA INFORMACIÓN DE UN GRUPO
+     * @return 
+     */
     @Override
     public String toString() {
         return "Grupo{" + "idGrupo=" + idGrupo + ", codGrupo=" + codGrupo + ", idcurso=" + idcurso + ", numeroAlumnos=" + numeroAlumnos + ", activo=" + activo + '}';

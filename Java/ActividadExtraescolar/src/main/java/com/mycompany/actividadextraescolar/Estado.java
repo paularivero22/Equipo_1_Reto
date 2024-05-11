@@ -5,7 +5,7 @@
 package com.mycompany.actividadextraescolar;
 
 /**
- *
+ * ENUMERADO CON LOS ESTADO DE UNA ACTIVIDAD
  * @author atres
  */
 public enum Estado {

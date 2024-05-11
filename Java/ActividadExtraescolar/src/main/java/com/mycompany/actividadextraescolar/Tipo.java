@@ -5,7 +5,7 @@
 package com.mycompany.actividadextraescolar;
 
 /**
- *
+ * ENUMERADO QUE CONTIENE LOS TIPOS DE ACTIVIDADES
  * @author atres
  */
 public enum Tipo {
