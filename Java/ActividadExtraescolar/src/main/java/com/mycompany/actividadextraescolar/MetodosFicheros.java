@@ -34,7 +34,6 @@ public class MetodosFicheros {
     //Metodo que lee cursos.csv y los inserta en una lista
     public static List<Curso> leerCSVCursos() {
         List<Curso> lista = new ArrayList<>();
-
         File fichero = new File("Ficheros\\cursos.csv");
         FileReader fr;
         String linea = "";

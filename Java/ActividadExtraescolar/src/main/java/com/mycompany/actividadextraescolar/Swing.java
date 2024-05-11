@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.actividadextraescolar;
+
+
+
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.SortedSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+
 
 /**
  *
@@ -2009,7 +2010,7 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
         String titulo = solicitudAux.getTitulo();
         String atributo="comentarios";
-        solicitud.actualizar(atributo, titulo, jTextField31);
+        solicitud.actualizar(atributo, titulo, jTextField31);       
     }//GEN-LAST:event_InsertarActionPerformed
 
     private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
@@ -2019,6 +2020,7 @@ public class Swing extends javax.swing.JFrame {
         //Cargo la tabla
         DefaultTableModel tablaF = (DefaultTableModel) jTable7.getModel();
         //Obtengo el valor del indice que utilizo para buscar una solicitud
+
         String valor1 = tablaF.getValueAt(filaSeleccionada, 6).toString();
         solicitudAux = solicitud.buscarPor(valor1);
     }//GEN-LAST:event_jTable7MouseClicked
