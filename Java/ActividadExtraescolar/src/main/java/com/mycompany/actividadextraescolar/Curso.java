@@ -15,8 +15,14 @@ public class Curso {
     public Etapa etapa;
     public boolean activo;
     
-    //Constructor por parámetros
-    //Quito parametro id curso
+    /**
+     * CONSTRUCTOR POR PARAMETROS CON IDCURSO
+     * @param idCurso
+     * @param codCurso
+     * @param descripcion
+     * @param etapa
+     * @param activo 
+     */
     public Curso(int idCurso,String codCurso, String descripcion, Etapa etapa, boolean activo) {
         this.idCurso = idCurso;
         this.codCurso = codCurso;
@@ -24,20 +30,24 @@ public class Curso {
         this.etapa = etapa;
         this.activo = activo;
     }
-
+    /**
+     * CONSTRUCTOR POR PARÁMETROS SIN IDCURSO
+     * @param codCurso
+     * @param descripcion
+     * @param etapa
+     * @param activo 
+     */
     public Curso(String codCurso, String descripcion, Etapa etapa, boolean activo) {
         this.codCurso = codCurso;
         this.descripcion = descripcion;
         this.etapa = etapa;
         this.activo = activo;
     }
-
-  
     
-
-    
-    //Metodos get
-
+    /**
+     * METODOS GET Y SET
+     * @return 
+     */
     public String getCodCurso() {
         return codCurso;
     }
@@ -58,7 +68,10 @@ public class Curso {
         return activo;
     }
     
-    //Metodo que muestra datos
+    /**
+     * METODO QUE MUESTRA LOS DATOS DE CURSO
+     * @return 
+     */
 
     @Override
     public String toString() {

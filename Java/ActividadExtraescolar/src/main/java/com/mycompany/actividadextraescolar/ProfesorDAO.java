@@ -9,8 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.util.SortedSet;
 import java.util.TreeSet;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,11 +21,19 @@ import java.util.TreeSet;
 //Clase que implementará la interfaz repositorioDAO para la clase profesor
 public class ProfesorDAO implements RepositorioDAO<Profesor> {
 
+    /**
+     * 
+     * @return 
+     */
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
+    
+    /**
+     * Lista todos los profesores
+     * @return 
+     */
 
-    //Lista todos los profesores
     @Override
     public SortedSet<Profesor> listar() {
         SortedSet<Profesor> listaProfesor = new TreeSet<>();
@@ -42,7 +52,12 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         return listaProfesor;
     }
 
-    //Metodo que busca un profesor mediante su DNI
+    /**
+     * Metodo que busca un profesor mediante su DNI
+     * @param filtro
+     * @return 
+     */
+    
     @Override
     public Profesor buscarPor(String filtro) {
         Profesor profesor = null;
@@ -59,8 +74,10 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
         return profesor;
     }
-
-    //Metodo que elimina un profesor por su dni
+    /**
+    * Metodo que elimina un profesor por su dni
+    * @param filtro 
+     */
     @Override
     public void eliminarPor(String filtro) {
         String sql = "DELETE FROM profesor WHERE DNI=?";
@@ -79,7 +96,11 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
     }
 
-    //Metodo que inserta un profesor a la bd
+    /** Metodo que inserta un profesor a la bd
+     * 
+     * @param p
+     */
+ 
     @Override
     public void insertar(Profesor p) {
         String sql = "INSERT into profesor(idProfesor,nombre,apellidos,DNI,perfilAcceso,fk_departamento,correo,activo,contraseña)VALUES(?,?,?,?,?,?,?,?,?)";
@@ -104,22 +125,19 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
     }
 
+    /**
+     *METODO QUE ACTUALIZA UN DATO ESPECIFICO A UN NUEVO VALOR
+     * @param atributo
+     * @param dni
+     * @param valorNuevo
+     */
     @Override
-    public void actualizar(String dni) {
+    public void actualizar(String atributo,String dni,JTextField valorNuevo) {
         Profesor p = buscarPor(dni);
-        String sql = "UPDATE profesor SET nombre=?, apellidos=?, perfilAcceso=?,fk_departamento=?,correo=? WHERE DNI=?";
+        String sql = "UPDATE profesor SET "+atributo+"=? WHERE DNI=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            p.setNombre("Adrian");
-            p.setApellidos("Tresgallo Arozamena");
-            p.setPerfil(PerfilAcceso.ADMINISTRADOR);
-            p.setIdDepartamento(5);
-            p.setCorreo("adrian.tresgallo@educantabria.es");
-            stmt.setString(6, p.getDNI());
-            stmt.setString(1, p.getNombre());
-            stmt.setString(2, p.getApellidos());
-            stmt.setString(3, p.getPerfil().name());
-            stmt.setInt(4, p.getIdDepartamento());
-            stmt.setString(5, p.getCorreo());
+           stmt.setObject(1, valorNuevo.getText());
+           stmt.setString(2, dni);
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha modificado el registro");
@@ -131,7 +149,9 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
     }
 
-    //Metodo que recorre y muestra los datos todos los profesores;
+    /**Metodo que recorre y muestra los datos todos los profesores;
+     * 
+     */
     public void mostrarTodosProfesores() {
         SortedSet<Profesor> listaProfesor = listar();
         for (Profesor p : listaProfesor) {
@@ -139,7 +159,12 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
     }
 
-    //Metodo que crea un profesor a partir de los datos en mysql
+    /**
+     * METODO QUE CREA UN PROFESOR RECOGIENDO LOS DATOS DE MYSQL
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     private Profesor crearProfesor(final ResultSet rs) throws SQLException {
         return new Profesor(rs.getInt("idProfesor"), rs.getInt("fk_departamento"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("DNI"), rs.getString("correo"), rs.getBoolean("activo"), PerfilAcceso.valueOf(rs.getString("perfilAcceso")), rs.getString("contraseña"));
     }

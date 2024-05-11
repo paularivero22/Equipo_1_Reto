@@ -14,7 +14,13 @@ public class Departamento {
     private String nombre;
     public int idJefe;
 
-    //Constructor por parámetros
+    /**
+     * CONSTRUCTOR POR PARÁMETROS PASANDO EL IDDEPARTAMENTO
+     * @param idDepartamento
+     * @param codigoDepartamento
+     * @param nombre
+     * @param idJefe 
+     */
     public Departamento(int idDepartamento, String codigoDepartamento, String nombre, int idJefe) {
         this.idDepartamento = idDepartamento;
         this.codigoDepartamento = codigoDepartamento;
@@ -22,6 +28,12 @@ public class Departamento {
         this.idJefe = idJefe;
     }
 
+    /**
+     * CONSTRUCTOR POR PARÁMETROS SIN PASAR EL IDDEPARTAMENTO
+     * @param codigoDepartamento
+     * @param nombre
+     * @param idJefe 
+     */
     public Departamento(String codigoDepartamento, String nombre, int idJefe) {
         this.codigoDepartamento = codigoDepartamento;
         this.nombre = nombre;
@@ -30,7 +42,10 @@ public class Departamento {
     
     
     
-    //Métodos get
+ /**
+  * METODOS GET Y SET
+  * @return 
+  */
 
     public int getIdDepartamento() {
         return idDepartamento;
@@ -62,7 +77,10 @@ public class Departamento {
     }
     
     
-//Mostrar datos
+/**
+ * METODO TO STRING PARA MOSTRAR DATOS
+ * @return 
+ */
     @Override
     public String toString() {
         return "Departamento{" + "idDepartamento=" + idDepartamento + ", codigoDepartamento=" + codigoDepartamento + ", nombre=" + nombre + ", idJefe=" + idJefe + '}';

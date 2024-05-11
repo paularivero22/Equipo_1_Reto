@@ -34,8 +34,7 @@ public class MetodosFicheros {
     //Metodo que lee cursos.csv y los inserta en una lista
     public static List<Curso> leerCSVCursos() {
         List<Curso> lista = new ArrayList<>();
-
-        File fichero = new File("D:\\Usuarios\\daw128\\Downloads\\Reto\\RepositorioLocal\\Java\\Ficheros\\cursos.csv");
+        File fichero = new File("Ficheros\\cursos.csv");
         FileReader fr;
         String linea = "";
         try {
@@ -70,7 +69,7 @@ public class MetodosFicheros {
 
     public static List<Departamento> leerCSVDepartamentos() {
         List<Departamento> lista = new ArrayList<>();
-        File fichero = new File("D:\\Usuarios\\daw128\\Downloads\\Reto\\RepositorioLocal\\Java\\Ficheros\\departamentos.csv");
+        File fichero = new File("Ficheros\\departamentos.csv");
         FileReader fr;
         String linea = "";
         int idJefe = 15;
@@ -105,7 +104,7 @@ public class MetodosFicheros {
     //Metodo que lee profesores.csv y los inserta en una lista
     public static List<Profesor> leerCSVProfesores() {
         List<Profesor> lista = new ArrayList<>();
-        File fichero = new File("D:\\Usuarios\\daw128\\Downloads\\Reto\\RepositorioLocal\\Java\\Ficheros\\profesores.csv");
+        File fichero = new File("Ficheros\\profesores.csv");
         FileReader fr;
         String linea = "";
         int idProfesor = 0;
@@ -142,7 +141,7 @@ public class MetodosFicheros {
     //Metodo que lee grupos.csv y los inserta en una lista
     public static List<Grupo> leerCSVGrupoAlumnos() {
         List<Grupo> lista = new ArrayList<>();
-        File fichero = new File("D:\\Usuarios\\daw128\\Downloads\\Reto\\RepositorioLocal\\Java\\Ficheros\\grupos.csv");
+        File fichero = new File("Ficheros\\grupos.csv");
         FileReader fr;
         String linea = "";
         try {
