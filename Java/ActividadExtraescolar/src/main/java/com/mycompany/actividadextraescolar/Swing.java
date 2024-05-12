@@ -4,16 +4,14 @@
  */
 package com.mycompany.actividadextraescolar;
 
-
-
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Iterator;
 import java.util.SortedSet;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -28,7 +26,7 @@ public class Swing extends javax.swing.JFrame {
     private Curso cursoAux;
     private DepartamentoDAO metodosdepartamento;
     private Solicitud solicitudAux;
-    
+
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
@@ -85,11 +83,12 @@ public class Swing extends javax.swing.JFrame {
         }
         tabla1.setModel(tabla);
     }
-    
+
     /**
      * Metodo que inserta los datos de los cursos en un jTable
+     *
      * @param lista
-     * @param tabla1 
+     * @param tabla1
      */
     private void insertarTablaCursos(SortedSet<Curso> lista, JTable tabla1) {
         tabla = (DefaultTableModel) tabla1.getModel();
@@ -115,10 +114,11 @@ public class Swing extends javax.swing.JFrame {
             i = i - 1;
         }
     }
+
     /**
      * Metodo que limpia las casillas de crear solicitud;
      */
-    public void limpiarCrearSolicitud(){
+    public void limpiarCrearSolicitud() {
         jTextField21.setText("");
         jTextField23.setText("");
         jTextField24.setText("");
@@ -853,12 +853,20 @@ public class Swing extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "idDepartamento", "codDepartamento", "nombre", "idJefe"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane10.setViewportView(jTable2);
 
-        CrearDepartamento.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 522, 61));
+        CrearDepartamento.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 522, 61));
 
         getContentPane().add(CrearDepartamento, "card11");
 
@@ -923,9 +931,14 @@ public class Swing extends javax.swing.JFrame {
         ));
         jScrollPane12.setViewportView(jTable4);
 
-        ModificarDepartamento.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 514, 42));
+        ModificarDepartamento.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 514, 42));
 
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
+        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox9ActionPerformed(evt);
+            }
+        });
         ModificarDepartamento.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 210, -1));
 
         getContentPane().add(ModificarDepartamento, "card12");
@@ -955,12 +968,20 @@ public class Swing extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "idDepartamento", "codDepartamento", "nombre", "idJefe"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane13.setViewportView(jTable5);
 
-        DeshabilitarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 500, 50));
+        DeshabilitarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 500, 50));
 
         jButton16.setText("Deshabilitar");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -968,7 +989,7 @@ public class Swing extends javax.swing.JFrame {
                 jButton16ActionPerformed(evt);
             }
         });
-        DeshabilitarDepartamento.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
+        DeshabilitarDepartamento.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
         getContentPane().add(DeshabilitarDepartamento, "card13");
 
@@ -1872,11 +1893,11 @@ public class Swing extends javax.swing.JFrame {
         Etapa etapa = (Etapa) Etapa.valueOf(jComboBox4.getSelectedItem().toString());
         Curso curso1 = new Curso(descripcion, etapa, true);
 
-        cursos.insertar(curso1);  
+        cursos.insertar(curso1);
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       SortedSet<Curso>listaCurso=cursos.listar();
+        SortedSet<Curso> listaCurso = cursos.listar();
         limpiarTabla();
         insertarTablaCursos(listaCurso, jTable1);
         //Y asigno el jTable al atributo tabla
@@ -1915,12 +1936,18 @@ public class Swing extends javax.swing.JFrame {
         String correo = jTextField17.getText();
         Departamento departamento = new Departamento(codDepartamento, nombre, 6);
         dep.insertar(departamento);
+
+        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        modelo.addRow(new Object[]{departamento.getIdDepartamento(), departamento.getNombre(), departamento.getCodigoDepartamento(), departamento.getIdJefe()});
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         DepartamentoDAO dep = new DepartamentoDAO();
         String nombre = jComboBox8.getSelectedItem().toString();
-        dep.buscarPor(nombre);
+        Departamento departamentoEncontrado = dep.buscarPor(nombre);
+
+        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        modelo.addRow(new Object[]{departamentoEncontrado.getIdDepartamento(), departamentoEncontrado.getNombre(), departamentoEncontrado.getCodigoDepartamento(), departamentoEncontrado.getIdJefe()});
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
@@ -1929,8 +1956,16 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         DepartamentoDAO dep = new DepartamentoDAO();
-        String cambio = jTextField19.getText();
+        JTextField valorNuevo = jTextField19;
+        String atributo = jComboBox5.getSelectedItem().toString();
+        String valorABuscar = jComboBox9.getSelectedItem().toString();
+        dep.actualizar(atributo, valorABuscar, valorNuevo);
 
+        String valorNuevoSt = jTextField19.getText();
+        Departamento departamentoActualizado = dep.buscarPor(valorNuevoSt);
+
+        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        modelo.addRow(new Object[]{departamentoActualizado.getIdDepartamento(), departamentoActualizado.getNombre(), departamentoActualizado.getCodigoDepartamento(), departamentoActualizado.getIdJefe()});
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -1938,6 +1973,9 @@ public class Swing extends javax.swing.JFrame {
         String nombre = jTextField20.getText();
         Departamento departamentoEncontrado = dep.buscarPor(nombre);
         System.out.println(departamentoEncontrado.toString());
+
+        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        modelo.addRow(new Object[]{departamentoEncontrado.getIdDepartamento(), departamentoEncontrado.getNombre(), departamentoEncontrado.getCodigoDepartamento(), departamentoEncontrado.getIdJefe()});
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -1983,7 +2021,7 @@ public class Swing extends javax.swing.JFrame {
         Solicitud s = new Solicitud(horaInicio, horaFin, "", prevista, departamento, titulo, tipo, medioTransporte, profesor, alojamiento, fechaInicio, fechaFin, participantes, "", estado);
         metodosSolicitudes.insertar(s);
         limpiarCrearSolicitud();
-        
+
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
@@ -1992,7 +2030,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-        SortedSet<Solicitud>listaSolicitud=solicitud.listar();
+        SortedSet<Solicitud> listaSolicitud = solicitud.listar();
         limpiarTabla();
         insertarTablaSolicitudes(listaSolicitud, jTable6);
         //Y asigno el jTable al atributo tabla
@@ -2005,7 +2043,7 @@ public class Swing extends javax.swing.JFrame {
      */
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         // TODO add your handling code here:
-        SortedSet<Solicitud>listaSolicitud=solicitud.listar();
+        SortedSet<Solicitud> listaSolicitud = solicitud.listar();
         jTextField31.setText("");
         limpiarTabla();
         insertarTablaSolicitudes(listaSolicitud, jTable7);
@@ -2016,8 +2054,8 @@ public class Swing extends javax.swing.JFrame {
     private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
         // TODO add your handling code here:
         String titulo = solicitudAux.getTitulo();
-        String atributo="comentarios";
-        solicitud.actualizar(atributo, titulo, jTextField31);       
+        String atributo = "comentarios";
+        solicitud.actualizar(atributo, titulo, jTextField31);
     }//GEN-LAST:event_InsertarActionPerformed
 
     private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
@@ -2044,7 +2082,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         // TODO add your handling code here:
-         String titulo = solicitudAux.getTitulo();
+        String titulo = solicitudAux.getTitulo();
         solicitud.actualizarEstado(titulo, "DENEGADA");
     }//GEN-LAST:event_jButton21ActionPerformed
 
@@ -2058,6 +2096,10 @@ public class Swing extends javax.swing.JFrame {
         String valor1 = tablaF.getValueAt(filaSeleccionada, 1).toString();
         cursoAux = cursos.buscarPor(valor1);
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox9ActionPerformed
 
     /**
      * @param args the command line arguments
