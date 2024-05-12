@@ -4,11 +4,13 @@
  */
 package com.mycompany.actividadextraescolar;
 
+import java.util.Objects;
+
 /**
  *
  * @author atres
  */
-public class Curso {
+public class Curso implements Comparable<Curso> {
     private int idCurso;
     private String codCurso;
     private String descripcion;
@@ -30,19 +32,22 @@ public class Curso {
         this.etapa = etapa;
         this.activo = activo;
     }
-    /**
-     * CONSTRUCTOR POR PARÁMETROS SIN IDCURSO NI CODCURSO
+
+     /**
+     * CONSTRUCTOR POR PARÁMETROS SIN IDCURSO 
      *
+     * @param codCurso
      * @param descripcion
      * @param etapa
      * @param activo 
      */
-    public Curso(String descripcion, Etapa etapa, boolean activo) {
+    public Curso(String codCurso, String descripcion, Etapa etapa, boolean activo) {
         this.codCurso = codCurso;
         this.descripcion = descripcion;
         this.etapa = etapa;
         this.activo = activo;
     }
+    
     
     /**
      * METODOS GET Y SET
@@ -79,6 +84,32 @@ public class Curso {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + this.idCurso;
+        hash = 41 * hash + Objects.hashCode(this.codCurso);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Curso other = (Curso) obj;
+        if (this.idCurso != other.idCurso) {
+            return false;
+        }
+        return Objects.equals(this.codCurso, other.codCurso);
+    }
     
     
     /**
@@ -89,6 +120,16 @@ public class Curso {
     @Override
     public String toString() {
         return "Curso{" + "codCurso=" + codCurso + ", idCurso=" + idCurso + ", descripcion=" + descripcion + ", etapa=" + etapa + ", activo=" + activo + '}';
+    }
+
+    /**
+     * 
+     * @param o
+     * @return 
+     */
+    @Override
+    public int compareTo(Curso o) {
+        return Integer.compare(this.getIdCurso(), o.getIdCurso());
     }
     
 }
