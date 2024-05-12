@@ -1,6 +1,6 @@
-# DOCUMENTACION DEL RETO - EQUIPO 1
+# DOCUMENTACIÓN DEL RETO - EQUIPO 1
 
-## INDICE DE CONTENIDOS
+## ÍNDICE DE CONTENIDOS
 1. [Bases de datos](#bd)
     - [Descripcion de la base de datos](#desBD)
     - [Diagrama E/R](#ER)
@@ -8,7 +8,7 @@
     - [Script sql](#SQL)
 
 2. [Pagina web](#PW) 
-    - [Estructura de la pagina](#ESTRUCT)
+    - [Estructura de la página](#ESTRUCT)
     - [Tipos de estilo](#ESTILO)
     - [Contenido de la web](#CONT)
 
@@ -23,27 +23,27 @@
 ---
 
 ## **BASES DE DATOS**<a name="bd"></a>
-### **1. Descripcion de la base de datos**<a name="desBD"></a>
+### **1. Descripción de la base de datos**<a name="desBD"></a>
 
 ### **2. Diagrama E/R**<a name="ER"></a>
 [![Diagrama-ER-Equipo-1-1.jpg](https://i.postimg.cc/5NGZbGsW/Diagrama-ER-Equipo-1-1.jpg)](https://postimg.cc/9rdxBx3L)
 
 **Profesor** <br>
-- idProf: identificador numerico, es clave primaria
+- idProf: identificador numérico, es clave primaria
 - nombre
 - apellidos
 - dni
 - Perfil de acceso: Podrá tomar los valores "superusuario", "administrador", "equipo directivo" o "profesor"
 - CorreoInstitucional: correo propio del profesor, será UNIQUE
-- Contraseña: Contraseña de acceso a la aplicacion
+- Contraseña: contraseña de acceso a la aplicación
 - Activo: registra si el profesor está activo o no, será de tipo boolean (TINYINT)
 
 **Relacion pertenece**<br>
 Un profesor puede pertenecer solo a un departamento y un departamento puede tener de 1 a muchos profesores
 
 **Departamento**<br>
-- idDep: identificador numerico, será clave primaria
-- codDepartamento: codigo de departamento, estará formado por tres letras mayúsculas que no admite repeticiones
+- idDep: identificador numérico, será clave primaria
+- codDepartamento: código de departamento, estará formado por tres letras mayúsculas que no admite repeticiones
 - nombre: nombre del departamento
 
 **Relacion es_jefe**<br>
@@ -51,11 +51,11 @@ Un profesor puede ser jefe de departamento para ello creamos esta relación<br>
 Un departamento puede tener solo un jefe y un profesor puede ser jefe de ninguno o de solo un departamento
 
 **Solicitud**<br>
-- id: Identificador numerico de la solicitud, será clave primaria
-- Profesor: participacion de un profesor, solicitante, reponsable y participante
+- id: Identificador numérico de la solicitud, será clave primaria
+- Profesor: participación de un profesor: solicitante, reponsable y participante
 - Tipo: Tipo de actividad, podrá ser extraescolar o complementaria
 - Departamento: Departamento al que pertenece el profesor solicitante
-- Prevista: Si estaba o no prevista la activiada, será de tipo boolean (TINYINT)
+- Prevista: Si estaba o no prevista la activiadad, será de tipo boolean (TINYINT)
 - MedioTransporte: Si requiere medio de transporte, será de tipo booean (TINYINY)
 - FechaInicio y FechaFinal: Fecha de comienzo y fin de la actividad
 - HoraInicio y HoraFin: Horario de la actividad
@@ -67,14 +67,14 @@ Un departamento puede tener solo un jefe y un profesor puede ser jefe de ninguno
 Un profesor puede solicitar desde 1 a muchas actividades y una actividad puede ser solicitada de 1 a muchos profesores, dentro de la actividad el profesor tendrá un rol, que podrá ser solicitante, participante o responsable de la actividad 
 
 **Curso**<br>
-- idCurso: Identificador numerico del curso, será clave primaria
+- idCurso: Identificador numérico del curso, será clave primaria
 - codCurso: Código del curso, será de hasta 5 caracteres 
-- descripcion: Texto descriptor del curso
+- descripción: Texto descriptivo del curso
 - etapa: podrá ser ESO, Bachillerato, FPGS, FPGM, FPB, FPCE
 - activod: si el curso esta activo es decir, si existe durante este año
 
 **Grupo**<br>
-- idGrupo: Idenificador numerico, será clave primaria
+- idGrupo: Idenificador numérico, será clave primaria
 - codCurso: Codigo de grupo, será de hasta 8 caracteres
 - numAlumnos: Numero de alumnos que forman el grupo
 - activo: si el grupo esta activo es decir, si existe durante este año
@@ -89,7 +89,7 @@ De cada grupo o curso participante se registrán cuantos alumnos participan de c
 
 **Actividad programada**<br>
 Si la solicitud de una actividad es aprobada, se hará una copia en la tabla de Actividades programadas (aprobadas), esta tabla tendrá los mismos campos que la tabla solicitud, que son:
-- id: Identificador numerico de la actividad, será clave primaria
+- id: Identificador numérico de la actividad, será clave primaria
 - Profesor: participacion de un profesor, solicitante, reponsable y participante
 - Tipo: Tipo de actividad, podrá ser extraescolar o complementaria
 - Departamento: Departamento al que pertenece el profesor solicitante
@@ -109,7 +109,7 @@ Una solicitud puede ser aprobada 1 sola vez, una actividad programada tiene que 
 
 **MedioTransporte**<br>
 Si la actividad requiere medio de transporte necesitaremos registrar varias carácteristicas del mismo, por eso creamos esta tabla
-- idTransporte: Identificador numerico del transporte, será clave primaria
+- idTransporte: Identificador numérico del transporte, será clave primaria
 - tipo: Tipo del transporte, podrá ser Andando, en bici, bus, taxi, tren, barco, avión.
 
 **Relación utiliza**<br>
@@ -121,9 +121,9 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 * Todos estos campos dependen de la actividad, por eso van en la relacion y no en la entidad (tabla)
 
 **Foto actividad**<br>
-- idFoto: Identificador numerico de la foto, será clave primaria
+- idFoto: Identificador numérico de la foto, será clave primaria
 - url: Url a el archivo de la foto
-- descripción: breve descripcion de la foto
+- descripción: breve descripción de la foto
 
 **Relacion tiene**<br>
 ...
@@ -134,7 +134,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 **Tabla curso**<br>
 - idCurso(Primary Key)
 - codCurso(UNIQUE)
-- descripcion
+- descripción
 - etapa
 - activo 
 
@@ -238,19 +238,19 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 - idFoto(PrimaryKey)
 - url
 - idActividad(Foreign Key) <span style="color:red">* </span>
-- descripcion
+- descripción
 
 <span style="color:red">* </span>Se crea el campo idActividad con la relacion ActividadProgramada - FotoActividad
 
 ### 4. Script sql<a name="SQL"></a>
 [Enlace-al-script-sql](https://github.com/paularivero22/Equipo_1_Reto/tree/3799f667727a6506bd0801b6774985d31df1fc63/Base%20datos)
+<br><br>
 
-
-## **PAGINA WEB**<a name="PW"></a>
-### **1. Estructura de la pagina**<a name="ESTRUCT"></a><br><br>
-### **1.1 Estructura comun de todas las paginas**<br>
+## **PÁGINA WEB**<a name="PW"></a>
+### **1. Estructura de la página**<a name="ESTRUCT"></a><br><br>
+### **1.1 Estructura comun de todas las páginas**<br>
 - ### **Body** <br>
-    <br>- **Header:** cabecera de la pagina <br><br>
+    <br>- **Header:** cabecera de la página <br><br>
     ```html
     <header>
         <div class="contenido-cabecera">
@@ -263,7 +263,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
  
     - div "contenido cabecera": contenedor con el logo de IES miguel herrero <br>
 
-    <br>- **Nav:** nav con un menú para navegar entre las paginas<br><br>
+    <br>- **Nav:** nav con un menú para navegar entre las páginas<br><br>
     ```html
       <nav id="menuprincipal">
         <div>
@@ -300,9 +300,9 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
     - div: contendor para la los elementos del nav<br>
         - ul "listamenu": los elementos del menú seran una lista ordenada, cada elemento li es un icono y una imagen <br><br>
 
-### **1.3 Pagina Inicio** <br>
+### **1.3 Página Inicio** <br>
 - ### **Body** <br>  
-    <br>- **Main:** contenido principal de la pagina<br><br>
+    <br>- **Main:** contenido principal de la página<br><br>
     ```html
     <main>
         <div class="ImagenContenedor">
@@ -323,11 +323,11 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
     </main>
     ```
-    - div "ImagenContenedor": Contenedor con la imagen de la pagina, un texto y un recuadro<br>
+    - div "ImagenContenedor": Contenedor con la imagen de la página, un texto y un recuadro<br>
         - div "texto": texto "Bienvenido" encima de la imagen 
         - div "botonFacebook": Un recuadro con el enlace al facecbook del insituto<br><br>
 
-    <br>- **Footer:** pie de pagina con enlaces de interes del instituto<br><br>
+    <br>- **Footer:** pie de página con enlaces de interes del instituto<br><br>
     ```html
     <footer>
         <div class="pielogo">
@@ -378,9 +378,9 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
         Cada enlace es un elemento de una lista ordenada y contiene un icono y un enlace
         - p: Texto de compyright al final del footer
 
-### **1.3 Pagina Actividades** <br>
+### **1.3 Página Actividades** <br>
 - ### **Body** <br>
-    <br>- **Main:** contenido principal de la pagina<br><br>
+    <br>- **Main:** contenido principal de la página<br><br>
      - **TextoActividades**<br><br> 
        ```html
          <div class="TextoActividades">
@@ -556,9 +556,9 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
         - div "ClasesMain": div donde mediante el uso de la etiqueta table,thead,tbody,tr y td, se crea una tabla donde aparece la información de las Clases Extraescolares
         <br><br>
 
-### **1.4 Pagina "Sobre Nosotros"**<br>
+### **1.4 Página "Sobre Nosotros"**<br>
 - ### **Body** <br>
-    <br>- **Main:** contenido principal de la pagina<br><br>
+    <br>- **Main:** contenido principal de la página<br><br>
      - **InformaciónTexto**<br><br>
        ```html
          <div class="InformacionTexto">
@@ -687,9 +687,51 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
         <br>
         <br>
 
+### **1.3 Página Actividades** <br>
+- ### **Body** <br>
+    <br>- **Main:** contenido principal de la página<br><br>
+     - **Galería (div)**<br><br> 
+        Contenedor con todas las imagenes de la galeria separadas por secciones<br><br>
+        - **imagenes (section)**
+       ```html
+            <section class="imagenes">
+                <img src="./Imagenes/imagen (1).jpg" alt="Jefatura de Estudios">
+                <div class="texto">Esta semana hemos tenido en nuestro centro a los
+                    compañeros de @stjohasparren. Durante dos intensos días,
+                    hemos compartido experiencias y aprendido mutuamente. Muchas
+                    gracias a todos los profesores y estudiantes que colaboraron
+                    explicando su trabajo y la oferta formativa de nuestro instituto.
+                    Seguro que podremos seguir colaborando y aprendiendo juntos.
+                    <div class="abrir-imagen">
+                        <a href="./Imagenes/imagen (1).jpg" target="_blank">
+                            <img src="./Iconos./abrir.png" alt="abrir_en_otra_pestaña">
+                        </a>
+                    </div>
+                </div>
+            </section>
+         ```
+
+       ```html
+            <section class="imagenes">
+                <img src="./Imagenes/imagen (2).jpg" alt="Secretaría">
+                <div class="texto">Con @anniehurtadoc súper bien!!! Gracias por
+                    cuidarnos!! Los alumnos y alumnas del @ies.miguelherrero
+                    <div class="abrir-imagen">
+                        <a href="./Imagenes/imagen (2).jpg" target="_blank">
+                            <img src="./Iconos./abrir.png" alt="abrir_en_otra_pestaña">
+                        </a>
+                    </div>
+                </div>
+            </section>
+         ```
+
+        - section "imagenes": Secciones para cada imagen de la galeria
+        - div "texto": Contenedor para el texto descriptivo
+        - div "abrir-imagen": Contenedor para el icono que abre la imagen en una pestaña<br><br>
+
 ### **2. Tipos de estilo**<a name="ESTILO"></a><br><br>
-### **1.1 CSS común a todas las paginas** <br>
-- ### **Toda la pagina**
+### **1.1 CSS común a todas las páginas** <br>
+- ### **Toda la página**
    ```css
    * {
     margin: 0;
@@ -697,7 +739,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
     box-sizing: border-box;
    }
    ```
-   - margin y padding 0px : No tendrá margen ni margen interno
+   - margin y padding 0px : No tendrá margen ni margen interno, el contenido ocupará todo el tamaño de la página
    - box-sizing border-box: indica que el tamaño total del ancho se calcula contando el margen y el margen interno (margin y padding)
 
 - ### **Body**
@@ -714,11 +756,11 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    }
    ```
 
-   - font-family Arial, sanss-serif: La fuente de la letra, si el navegador no puede usar ese tipo de letra usará una secundaría
+   - font-family Arial, sans-serif: La fuente de la letra será arial, si el navegador no puede usar ese tipo de letra usará una secundaría, sans-serif
    - background-color: color del fondo
    - color: color de la letra
-   - line-height 1.6: la altura de línea (altura vertical entre las líneas de texto) será de 1.6
-   - margin y padding 0px: no tendra margen ni margen interno
+   - line-height 1.6: altura entre lineas de 1.6 para que se lea bien el texto
+   - margin y padding 0px: no tendra margen ni margen interno, ocupará todo el tamaño de la página
    - width 100%: ancho del body 
 
 - ### **Main**
@@ -735,8 +777,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    ```
    - width 100%: ancho del main
    - margin-top 15px: margen por encima del body, para que se separe con el menú
-   - padding 20px : margen interno, para que el contenido no salga pegado a los bordes de la pagina
-   - align-content center: alinea verticalmente el contenido flexible dentro del main
+   - padding 20px : margen interno, para que el contenido no salga pegado a los bordes de la página
+   - align-content center: alinea verticalmente el contenido flexible al centro
    - background-color: color del fondo
 
 - ### **Header**
@@ -751,9 +793,9 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
    - background-color: color del fondo
    - color: color del texto
-   - padding 20px: margin interno
+   - padding 20px: margin interno para que el contenido no salga pegado a los bordes del header
 
-- ### **Contenido-cabecera (div)**
+- ### **Contenido-cabecera (div)** 
    ```css
    .contenido-cabecera {
     max-width: 100%;
@@ -763,7 +805,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    ```
 
    - max-width 1200px: anchura maxima del div
-   - justify-content left: alinea horizontalmente el contnido flexible a la izquierda
+   - justify-content left: alinea horizontalmente el contenido flexible (la imagen) a la izquierda
    - height 50px: altura del contenedor
 
 - ### **LogoImagen (img)**
@@ -773,15 +815,13 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
     margin-left: 10px;
     width: 286px;
     height: 70px;
-    vertical-align:middle;
    }
    ```
 
    - display flex: el contenedor de la imagen será flexible
-   - margin-left 10px: margen de 10px por la izquierda
+   - margin-left 10px: margen de 10px por la izquierda, para que la imagen salga despegada del borde izquierdo
    - width 286px: el ancho de la imagen será de 286px
    - height 70px: la altura de la imagen será de 70px
-   - vertical-align middle: alinea el contenido en linea al medio
 
 - ### **H1**
    ```css
@@ -790,7 +830,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    }
    ```
 
-   - font-size 1.5em: todos los tamaños de los titulos h1 de la pagina serán de 1.5em, la unidad utilizada (em) quiere decir que el tamaño será 1.5 veces el tamaño de fuente del elemento padre, usamos esto para que sea escalable si se cambia el tamaño de la ventana
+   - font-size 1.5em: todos los tamaños de los titulos h1 de la página serán de 1.5em, la unidad utilizada (em) quiere decir que el tamaño será 1.5 veces el tamaño de fuente del elemento padre, usamos esto para que sea escalable si se cambia el tamaño de la ventana
 
 - ### **menuprincipal (nav)**
    ```css
@@ -809,11 +849,11 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
    - width 100%: anchura del nav
    - height 80px: altura del nav
-   - padding 0% 2%: el margen interno por encima y por debajo será de 0% y por la izquierda y derecha será de 2%
+   - padding 0% 2%: el margen interno por encima y por debajo será de 0%, por la izquierda y derecha será de 2%
    - margin 0px: no tendrá margen
-   - display flex: los elementos del nav serán flexibles
-   - justify-content center: los elementos flexibles se alinean horizontalmente al centro
-   - align-items center: los elementos flexibles se alinean verticalemente al medio
+   - display flex: el nav será flexible
+   - justify-content center: los elementos flexibles dentro del nav se alinean horizontalmente al centro
+   - align-items center: los elementos flexibles se alinean verticalemente al centro
    - background-color: color del fondo
 
 - ### **menuprincipal > div (div)**
@@ -829,31 +869,27 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    ```
    
    - width y height 100%: anchura y altura del contenedor
-   - vertical-align middle: los elementos en linea se alinean verticalmente al medio
-   - display flex: los elementos del div serán flexibles
-   - justify-content center: los elementos flexibles se alinean horizontalmente al centro
-   - align-items center: los elementos flexibles se alinean verticalemente al medio
+   - vertical-align middle: nos aseguramos de que los elementos en linea se alineen verticalmente al medio
+   - display flex: el div será flexible
+   - justify-content center: los elementos flexibles dentro del div se alinean horizontalmente al centro
+   - align-items center: los elementos flexibles se alinean verticalemente al centro
 
 - ### **listamenu (ul)**
    ```css
    #listamenu {
     display: flex;
-    margin-left: 10px;
     justify-content: center;
     padding: 0px;
     height: 100%;
     align-items: center;
-    list-style-type: none;
    }
    ```
 
    - display flex: la lista ordenada será flexible
-   - margin-left 10px: margen por la izquierda, para separar cada elemento
    - justify-content center: los elementos flexibles se alinean horizontalmente al centro
    - padding 0px: no tendra margen interno
-   - height 100%: altura de la lista
+   - height 100%: la altura ocupará todo el contendor menuprincipal
    - align-items center: los elementos flexibles se alinean verticalemente al medio
-   - list-style-type none: el estilo del marcador de la lista  
 
 - ### **listamenu li**
    ```css
@@ -867,10 +903,10 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    ```
 
    - padding 15px 10px 0px 10px: el margen interno por arriba será de 12px, por la derecha de 10px, por abajo 0px y por la izquierda 10px
-   - list-style-type none: el estilo del marcador de la lista 
+   - list-style-type none: el estilo del marcador de la lista, en este caso no tendrá
    - align-items center: los elementos flexibles se alinean verticalemente al medio
    - height 100%: alto del elemento de la lista
-   - width auto: el ancho de los elementos será el automatico para que se cambie segun la proporcion de la pantalla
+   - width auto: el ancho de los elementos será el automatico para que se cambie segun la proporcion de la ventana
 
 - ### **listamenu a**
    ```css
@@ -907,7 +943,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    - width y height 35px: anchura y altura de las imagenes
 
 - ### **listamenu li:hover (hover)**
-Estilo para los elementos de la lista cuando se pase el raton por encima<br>
+    Estilo para los elementos de la lista cuando se pase el raton por encima<br>
    ```css
    #listamenu li:hover {
     background-color: #dbdbdb;
@@ -933,7 +969,7 @@ Estilo para los elementos de la lista cuando se pase el raton por encima<br>
    - height 80px : altura de los elementos
    - padding 15px 10px 0px 10px: el margen interno por arriba será de 15px, por la derecha de 10px, por abajo 0px y por la izquierda 10px
    - align-items center: los elementos flexibles se alinean verticalemente al medio
-   - margin-right 20px: margen por la derecha para separar los elementos
+   - margin-right 20px: margen por la derecha para separar los elementos entre ellos
 
 - ### **menuprincipal a**
    ```css
@@ -946,10 +982,10 @@ Estilo para los elementos de la lista cuando se pase el raton por encima<br>
    }
    ```
 
-   - align-content center: alinea verticalmente las lineas de los elementos flexibles al centro
+   - align-content center: alinea verticalmente los elementos flexibles al centro
    - font bold 18px Arial, sans-serif: estilo negrita, tamaño 18 pixeles y fuente arial o sans-serif
    - color: color del texto
-   - text-decoration none: estilo del enlace (subrayado, negrita, nada etc...)
+   - text-decoration none: estilo del enlace, en este caso ninguno
 
 - ### **footer**
    ```css
@@ -977,10 +1013,10 @@ Estilo para los elementos de la lista cuando se pase el raton por encima<br>
    }
    ```
 
-   - display flex: los elementos del div serán flexibles
+   - display flex: el div será flexible
    - justify-content space-around: los elementos flexibles se colocan de manera que el espacio entre ellos sea uniforme
    - margin 20px: margen del div
-   - padding 15px: margen interno 
+   - padding 15px: margen interno del div
    - margin-top 5px: el margen por arriba será de 5 pixeles en vez de 20px 
    - padding-top 5px: el margen interno por arriba será de 5 pixeles en vez de 15px
 
@@ -996,7 +1032,6 @@ Estilo para los elementos de la lista cuando se pase el raton por encima<br>
    - margin-right 20px: margen por la derecha de 20 pixeles
 
 - ### **seccionpie h2**
-Estilo para los titulos h2 en el contenedor seccion pie<br>
    ```css
    .seccionpie h2 {
     font-size: 1.2em;
@@ -1005,8 +1040,8 @@ Estilo para los titulos h2 en el contenedor seccion pie<br>
    }
    ```
 
-   - font-size 1.2em: el tamaño del texto será de 1.2em 
-   - margin-bottom 15px: margen por debajo del titulo
+   - font-size 1.2em: el tamaño de los titulos será de 1.2em 
+   - margin-bottom 15px: margen por debajo 
    - text-align left: el texto se alineará a la izquierda
 
 - ### **enlace-contacto (a)**
@@ -1021,7 +1056,7 @@ Estilo para los titulos h2 en el contenedor seccion pie<br>
 
    - align-items center: los elementos flexibles se alinean verticalemente al medio
    - color: color del texto
-   - text-decoration none: estilo del enlace (subrayado, negrita, nada etc...)
+   - text-decoration none: estilo del enlace, en este caso ninguno
 
 - ### **enlace-contacto img**
    ```css
@@ -1036,7 +1071,7 @@ Estilo para los titulos h2 en el contenedor seccion pie<br>
    - vertical-align middle: alinea el contenido en linea al medio
 
 - ### **enlace-contacto:hover**
-Estilo para los enlaces de contacto cuando se pase el raton por encima<br>
+    Estilo para los enlaces de contacto cuando se pase el raton por encima<br>
    ```css
    .enlace-contacto:hover {
     text-decoration: underline;
@@ -1054,7 +1089,7 @@ Estilo para los enlaces de contacto cuando se pase el raton por encima<br>
    } 
    ```
 
-   - list-style none: el estilo del marcador de la lista 
+   - list-style none: el estilo del marcador de la lista, en este caso ninguno
    -  margin y padding 0px: no tendrá margen ni margen interno
 
 - ### **iconos-sociales li**
@@ -1088,10 +1123,10 @@ Estilo para los enlaces de contacto cuando se pase el raton por encima<br>
    ```
 
    - color: color del texto
-   - text-decoration none: estilo del enlace (subrayado, negrita, nada etc...)
+   - text-decoration none: estilo del enlace, en este caso ninguno
 
 - ### **iconos-sociales li:hover**
-Estilo para los elementos de la lista iconos-sociales para cuando se pase **el raton por encima**
+    Estilo para los elementos de la lista iconos-sociales para cuando se pase el raton por encima
    ```css
    .iconos-sociales li:hover {
     text-decoration: underline;
@@ -1132,7 +1167,7 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    - text-align center: el texto se alineará al centro
    - font-size 13px: tamaño de la letra 
 
-### **1.2 CSS: Pagina Inicio**
+### **1.2 CSS: Página Inicio**
 - ### **main**
    ```css
    main {
@@ -1142,11 +1177,10 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    ```
    - position-relative: El elemento se mantiene en el flujo normal del documento
    - padding 0%: no tendrá margen interno
-   <br><br>
 
-- ### **ImagenContenedor**
+- ### **ImagenContenedor (div)**
    ```css
-   .ImagenContendor{
+   .ImagenContenedor{
     display: flex;
     position: relative;
     justify-content: center; 
@@ -1159,11 +1193,10 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    - display flex: El contenedor es flexible
    - position relative: El elemento se mantiene en el flujo normal del documento
    - justify-content center: Los elementos flexibles se alinean horizontalmente al centro
-   - align-items center: Los elementos flexibles se alinean verticalemente al medio
+   - align-items center: Los elementos flexibles se alinean verticalemente al centro
    - width y height 100%: anchura y altura del contenedor 
-   <br><br>
 
-- ### **ImagenPrincipal**
+- ### **ImagenPrincipal (img)**
    ```css
    .ImagenPrincipal{
     width: 100%;
@@ -1175,11 +1208,10 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    ```
    - width 100%: ancho de la imagen 
    - max-width 100%: ancho maximo de la imagen 
-   - max-height auto: altura maxima de la imagen puesto a automatico
+   - max-height auto: la altura maxima de la imagen será automatica segun la proporcion de la ventana
    - filter opacity 60%: Filtro que pone la imagen opaca al 60%
-   <br><br>
 
-- ### **texto**
+- ### **texto (div)**
    ```css
    .texto {
     position: absolute;
@@ -1194,16 +1226,15 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
    }
    ```
-   - position-absolute: hace que un elemento se posicione con respecto a su contenedor mas cercano
+   - position-absolute: el elemento se posiciona con respecto a su contenedor padre
    - top 32%: pone el texto a una altura de 32% con respecto de la parte mas alta
    - left 50%: pone el texto en el centro de la pantalla horizontalmente
-   - transfrom translateX(-50%, -50%): sirve para poner el texto en el centro, tanto horizontal como verticalmente
+   - transfrom translateX(-50%, -50%): para alinear el texto al centro, tanto horizontal como verticalmente
    - z-index 1: para asegurarse de que el texto se queda dentro del contenedor
-   - color: pone el color de las letras del texto a blanco
-   - font-weight bold: Estilo del texto, en este caso negrita 
-   - font-size 3.7: tamaño del texto a 3.7 de ancho de la ventana gráfica
-   - text-shadow 2px 2px 4px: sombra para el texto 
-   <br><br>
+   - color: color del texto
+   - font-weight bold: estilo del texto, en este caso negrita 
+   - font-size 3.7: tamaño del texto a 3.7 de ancho de la ventana 
+   - text-shadow 2px 2px 4px: sombra para el texto, 2px hacia la derecha, 2px hacia abajo y 4px de desenfoque de sombra
 
 - ### **botonFacebook**
    ```css
@@ -1228,22 +1259,20 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
     background-color: #eaeaeb;
    }  
    ```
-   - position-absolute: hace que un elemento se posicione con respecto a su contenedor posicionado mas cercano
+   - position-absolute: hace que un elemento se posicione con respecto a su contenedor padre
    - top 42%: altura de 42%
    - left 50%: posicion al 50 % con respecto a la parte izquierda
    - transform-translateX(-50%): posicion a -50% en el eje x (horizontal)
    - z-index 1: para asegurarse de que el texto se queda dentro del contenedor
-   - padding 0px: no tendrá margen interno
-   - margin 0px: no tendrá margen
+   - margin y padding 0px: no tendrá margen ni margen interno
    - width 200px: anchura del botón
    - height 55px: altura del botón
-   - line-height 55px: Establece la altura de linea a 55 px
-   - text-align center: Alinea el texto en el centro
+   - line-height 55px: establece la altura de linea a 55 px
+   - text-align center: alinea el texto en el centro
    - align-items center: los elementos flexibles se alinean verticalemente al medio
-   - list-style-none: el estilo del marcador de la lista 
+   - list-style-none: el estilo del marcador de la lista, en este caso ninguno
    - border-radius 30px: hace redondos los bordes del contenedor
    - background-color: color del fondo 
-   <br><br>
 
 - ### **botonFacebook img**
    ```css
@@ -1253,10 +1282,9 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
     vertical-align: middle;
    }
    ```
-   - width 50px: Anchura del icono
-   - height 50px: Altura del icono
+   - width 50px: anchura del icono
+   - height 50px: altura del icono
    - vertical-align middle: alinea el contenido en linea al medio
-   <br><br>
 
 - ### **botonFacebook li**
    ```css
@@ -1265,7 +1293,6 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    }
    ```
    - display inline-block: el elemento se mostrará en la misma linea que los otros elementos
-   <br><br>
 
 - ### **botonFacebook li a**
    ```css
@@ -1275,8 +1302,7 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    }
    ```
    - color: color del texto
-   - text-decoration: estilo del enlace (subrayado, negrita, ninguna etc...)
-   <br><br>
+   - text-decoration: estilo del enlace, en este caso ninguno
 
 - ### **botonFacebook:hover**
    ```css
@@ -1287,10 +1313,9 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
    ```
    - background-color: color del fondo diferente al anterior
    - transition background-color 0.2s ease: animación, en este caso el nuevo color del fondo aparecerá lentamente durante 0.2 segundos
-   <br><br>
+    <br><br>
 
-
-### **1.3 CSS: Pagina Actividades**
+### **1.3 CSS: Página Actividades**
 - ### **TextoActividades h1**
    ```css
    .TextoActividades h1 {
@@ -1304,11 +1329,12 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
     border-radius: 10px;
    }
    ```
-- width 100%: anchura del 100% dentro del contnedor
-- text-align center: los titulos estarán alineados al centro
-- font-size 1.5em: el tamaño de fuente
-- background-color: color del fondo 
-- border-radius: hace redondos los bordes del contenedor
+  - width 100%: anchura del 100% dentro del contenedor
+  - text-align center: los titulos estarán alineados al centro
+  - color: color del texto
+  - font-size 1.5em: el tamaño de fuente será de 1.5 em
+  - background-color: color del fondo 
+  - border-radius: hace redondos los bordes del contenedor
 
 - ### **Viajes y Clases (div)**
    ```css
@@ -1329,16 +1355,16 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
     font-weight: bold;
    }
    ```
-- position relative: El elemento se mantiene en el flujo normal del documento
-- margin-top 20px: margen por encima 
-- justify-content left: los elementos flexibles se alinean horizontalmente a la izquierda
-- align-items center: alinea verticalmente los elementos flexibles al centro
-- background-color: color del fondo
-- width 13%: anchura de los div
-- height 30px: altura de los div
-- border-radius 10px: hace redondos los bordes del contenedor
-- color: color del texto
-- font-weight bold: estilo del texto, en este caso negrita
+  - display flex: los contenedores serán flexibles 
+  - margin-top 20px: margen por encima 
+  - justify-content left: los elementos flexibles se alinean horizontalmente a la izquierda
+  - align-items center: alinea verticalmente los elementos flexibles al centro
+  - background-color: color del fondo
+  - width 13%: anchura de los div
+  - height 15%: altura de los div
+  - border-radius 10px: hace redondos los bordes del contenedor
+  - color: color del texto
+  - font-weight bold: estilo del texto, en este caso negrita
 
 - ### **Viajes p y Clases p (texto)**
    ```css
@@ -1351,7 +1377,11 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
     text-align: left;
    }
    ```
-- margin-left 5%: margen por la izquierda para separarlo del borde del contenedor
+  - display flex: el texto será felxible
+  - margin 0%: no tendrá margen
+  - padding 0 20px: 0px de margen interno por arriba y por abajo, 20px por la izquierda y derecha
+  - font-size 0.99em: tamaño de la letra, esta unidad se utiliza para que se escale segun el tamao de la ventana
+  - text-align left: el texto se alinea a la izquierda
 
 - ### **Viajes main y Clases main**
    ```css
@@ -1366,15 +1396,15 @@ Estilo para los elementos de la lista iconos-sociales para cuando se pase **el r
     border-radius: 10px;
    }
    ```
-- position relative: El elemento se mantiene en el flujo normal del documento
-- width 70%: anchura de los main
-- margin 20px: margen de los main
-- padding 20px: margen interno de los main
-- background-color: color del fondo
-- border-radius 10px: hace redondos los bordes de los main
+  - position relative: El elemento se mantiene en el flujo normal del documento
+  - width 70%: anchura de los main
+  - margin 20px: margen de los main
+  - padding 20px: margen interno de los main
+  - background-color: color del fondo
+  - border-radius 10px: hace redondos los bordes de los main
 
 - ### **ViajesMain th, ViajesMain td, ClasesMain th y ClasesMain th**<br>
-Estilo para los titulos y texto de las tablas<br>
+    Estilo para los titulos y texto de las tablas<br>
    ```css
    .ViajesMain th,
    .ViajesMain td,
@@ -1386,13 +1416,74 @@ Estilo para los titulos y texto de las tablas<br>
     max-width: 10%;
    }
    ```
-- padding 20px: margen interno
-- text-align left: el texto se alinea a la izquierda
+  - display flexbox: los elementos de la tabla serán cajas flexibles
+  - padding 20px: margen interno
+  - text-align left: el texto se alinea a la izquierda
+  - max-width: anchura maxima 
 
 - ### **@media screen and (max-width: 1500px)**<br>
-Estilo para cuando la ventana ocupe 1500 pixeless<br>
-```css
-   @media screen and (max-width: 1500px) {
+    Estilo para cuando la ventana ocupe 1500 pixeles<br>
+    ```css
+    @media screen and (max-width: 1500px) {
+
+        .TextoActividades h1 {
+            font-size: 1.2em;
+        }
+
+        .Viajes,
+        .Clases {
+            max-width: 13%;
+            max-height: 15%;
+        }
+
+        .Viajes p,
+        .Clases p {
+            font-size: 0.9em;
+            padding: 0 10px;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .ViajesMain,
+        .ClasesMain {
+            width: 95%;
+            margin: 5px auto;
+            padding: 5px;
+        }
+
+        .ViajesMain th,
+        .ViajesMain td,
+        .ClasesMain th,
+        .ClasesMain td {
+            padding: 10px; 
+            font-size: 0.9em;
+        }
+    }
+    ```
+    - texto actividades h1
+      - font size 1.2em: tamaño de la fuente, se usa esta unidad para que se esclae segun el tamaño de la ventana
+    - viajes, clases
+      - max-with 13%: anchura maxima del contenedor
+      - max-height 15%: altura maxima del cotenedor
+    - viajes p, clases p
+      - font-size 0.9em: tamaño de la fuente, se usa esta unidad para que se esclae segun el tamaño de la ventana
+      - padding 0 10px: margen interno de 0px por arriba y por abajo y 10px por la izquierda y la derecha
+      - max-width 100%: anchura maxima del texto
+      - overflow hidden: el contenido que se desborda del contenedor se recorta y no se muestra
+      - text-overflow ellipsis: cuando el contenido se desborda y no se muestra, se remplaza por un caracter "(...)"
+    - ViajesMain y ClasesMain
+      - width 95%: anchura de los contenedores
+      - margin 5px auto: margen de 5px por arriba y por abajo y automatico por la derecha y por la izquierda, para que el espacio entre los elementos se pueda cambiar con el tamaño de la ventana
+      - padding 5px: margen interno 
+    - ViajesMain th, ViajesMain td, ClasesMain th, ClasesMain td
+      - padding 10px: margen interno
+      - font-size 0.9em: tamaño de la fuente, se usa esta unidad para que se esclae segun el tamaño de la ventana
+  
+- ### **@media screen and (max-width: 500px)**<br>
+    Estilo para cuando la ventana ocupe 1500 pixeless<br>
+    ```css
+    @media screen and (max-width: 500px) {
 
     .TextoActividades h1 {
         font-size: 1.2em;
@@ -1402,6 +1493,7 @@ Estilo para cuando la ventana ocupe 1500 pixeless<br>
     .Clases {
         max-width: 13%;
         max-height: 15%;
+        margin:auto;
     }
 
     .Viajes p,
@@ -1426,11 +1518,12 @@ Estilo para cuando la ventana ocupe 1500 pixeless<br>
     .ClasesMain td {
         padding: 10px; 
         font-size: 0.9em;
-    }
-}
-   ```
+      }
+    } 
+    ```
+<br><br>
 
-### **1.3 CSS: Pagina Sobre Nosotros**
+### **1.3 CSS: Página Sobre Nosotros**
 - ### **InformacionTexto (div)**
    ```css
    .InformacionTexto {
@@ -1438,8 +1531,8 @@ Estilo para cuando la ventana ocupe 1500 pixeless<br>
     width: 100%; 
    }
    ```
-- position relative: El elemento se mantiene en el flujo normal del documento
-- width 100%: ancho del 100%
+  - position relative: El elemento se mantiene en el flujo normal del documento
+  - width 100%: ancho del div
 
 - ### **InformacionTexto h1,Instalaciontexto h1,Ubicaciontexto h1**
    ```css
@@ -1454,11 +1547,11 @@ Estilo para cuando la ventana ocupe 1500 pixeless<br>
     background-color: #333333;
    }
    ```
-- width 100%: ancho del 100%
-- border-radius 10px: hace redondos los bordes del contenedor
-- text-align center: alinea el texto al centro
-- color: color del texto
-- background-color: color del fondo
+  - width 100%: ancho del 100%
+  - border-radius 10px: hace redondos los bordes del contenedor
+  - text-align center: alinea el texto al centro
+  - color: color del texto
+  - background-color: color del fondo
 
 - ### **Informacion,instalaciones,Ubicacion (div)**
    ```css
@@ -1474,20 +1567,20 @@ Estilo para cuando la ventana ocupe 1500 pixeless<br>
     background-color: #fff;  
    }
    ```
-- display flex: 
-- flex-wrap wrap: 
-- width: ancho del 100%
-- padding-top 15px: margen interno por arriba
-- justify-content: los elementos flexibles se colocan de manera que el espacio entre ellos sea uniforme
-- backgournd-color: color del fondo
+  - display flex: los contenedores son flexibles 
+  - flex-wrap wrap: si no hay suficiente espacio para un elemento flex, pasará a la siguiente linea
+  - width: ancho del div
+  - padding-top 15px: margen interno por arriba
+  - justify-content: los elementos flexibles se colocan de manera que el espacio entre ellos sea uniforme
+  - backgournd-color: color del fondo
 
-- ### **Informacion p (texto)**
+- ### **Informacion p**
    ```css
    .Informacion p{
     padding: 10px;
    }
    ```
-- padding 10px: margen interno de 10px
+  - padding 10px: margen interno 
 
 - ### **secciones (section)**
    ```css
@@ -1499,10 +1592,10 @@ Estilo para cuando la ventana ocupe 1500 pixeless<br>
     text-align: center;
    }
    ```
-- width 250px: ancho de las secciones
-- height 250px: alto de las secciones
--  margin-bottom 20px: margen por abajo 
-- text-align center: el texto se alinea al centro 
+  - width 250px: ancho de las secciones
+  - height 250px: alto de las secciones
+  - margin-bottom 20px: margen por abajo 
+  - text-align center: el texto se alinea al centro 
 
 - ### **secciones h2**
    ```css
@@ -1510,7 +1603,7 @@ Estilo para cuando la ventana ocupe 1500 pixeless<br>
     margin-bottom: 10px;
    }
    ```
-- margin-bottom 10px: margen por abajo
+  - margin-bottom 10px: margen por abajo
 
 - ### **secciones img**
    ```css
@@ -1519,8 +1612,8 @@ Estilo para cuando la ventana ocupe 1500 pixeless<br>
     max-height: 50%;
    }
    ```
-- max-width 100%: ancho maximo de las imagenes
-- max-height 50%: alto maximo de las imagenes
+  - max-width 100%: ancho maximo de las imagenes, para que no se deformen
+  - max-height 50%: alto maximo de las imagenes
 
 - ### **Ubicacion iframe**
    ```css
@@ -1529,36 +1622,147 @@ Estilo para cuando la ventana ocupe 1500 pixeless<br>
     justify-content: center;
    }
    ```
-- padding-top 15px: margen interno por arriba
-- justify-content center: justifica los elementos flexibles al centro
+  - padding-top 15px: margen interno por arriba
+  - justify-content center: alinea horizontalmente los elementos flexibles al centro
+
+### **1.3 CSS: Página Galeria**
+- ### **galeria (div)**
+   ```css
+   .galeria {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: #fff;  
+    }
+   ```
+  - display flex: el contenedor será flexible
+  - flex-wrap wrap: si no hay suficiente espacio para una imagen, pasará a la siguiente linea
+  - width 90%: anchura del div
+  - justify-content center: alinea horizontalmente el contenido flexible al centro
+  - margin 0 auto: centra horizontalmente el contendor, se usa para que el contenido se ajuste al ancho del contenedor
+  - background color: color del fondo
+
+- ### **imagenes (section)**
+   ```css
+   .imagenes {
+    position: relative;
+    margin: 15px;
+    max-width: 300px; 
+    max-height: 300px; 
+    overflow: hidden; 
+    } 
+   ```
+   - position relative:
+   - margin 15px: margen para seapara unas imagenes de otras
+   - max-width y max-height: altura y anchura maxima de las secciones
+   - overflow hidden: garantiza que las imágenes y el texto superpuesto no se salgan del contenedor
+
+- ### **imagenes img**
+   ```css
+   .imagenes img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    } 
+   ```
+   - display block: las imagenes se comportan como bloques, con esto nos aseguramos de que puedan ocupar todo el contenedor
+   - width y height: las imagenes ocuparán todo el ancho y alto del contenedor
+   - object-fit cover: para ocupar todo el contenedor, la imagen se recortará en vez de deformarse
+   - transition transform 0.3s ease: transicion suave para cuando ocurra cualquier cambio en la imagen (por ejemplo al pasar el raton por encima) 
+
+- ### **texto (div)**
+   ```css
+   .texto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow: auto;
+    text-align: center;
+    word-wrap: break-word;
+    line-height: 1.5;
+    } 
+   ```
+   - position absolute: el elemento se coloca con respecto a el contendor padre
+   - top 0, left 0, right 0, bottom 0: define la posicion para elementos absolutos, en este caso el texto se extiende completamente dentro de su contenedor
+   - background color: color del fondo
+   - color white: color del texto
+   - padding 20px: margen interno para separar el texto de los bordes del contenedor
+   - opacity 0: opacidad del contenedor, al ponerlo a 0 estará oculto hasta que se pase el raton por encima
+   - transition opacity 0.3s ease: transicion suave para cuando ocurra cualquier cambio, por ejemplo al cambiarse la opacidad
+   - overflow: auto: cuando el contenido se desborde del contenedor aparecerá una barra de desplazamiento para seguir leyendo el texto
+   - text-align center; el texto se alinea al centro
+   - word-wrap break word: cuando una palabra no quepa pasará a la siguiente linea
+   - line-height 1.5: altura entre lineas para que se lea bien el texto
+
+- ### **texto (div)**
+   ```css
+   .abrir-imagen img {
+    display: flex;
+    width:20px;
+    height: 20px;
+    margin: 15px auto;
+    } 
+   ```
+   - display flex: la imagen será flexible
+   - width y heigth: anchura y altura de la imgagen
+   - margin 15px auto: margen de la imagen de 15 pixeles para separarlo del texto, los margenes horizontales y verticales se estableceran automaticamente segun el navegador
+
+- ### **imagenes:hover .texto**
+    Estilo para el div texto cuando se pase el raton por encima
+   ```css
+   .imagenes:hover .texto {
+    opacity: 1;
+    } 
+   ```
+   - opacity 1: la opacidad se pondrá a 1, es decir aparecerá, ademas con la transicion de la imagen se mostrará lentamente
+
+- ### **imagenes:hover .texto**
+    Estilo para el la iamgen cuando se pase el raton por encima
+    ```css
+   .imagenes:hover img {
+    transform: scale(1.1);
+    } 
+   ```
+   - transform scale(1.1): la imagen se acercará a una escala(1.1), ademas con la transicion de la imagen, lo hará lentamente
 
 ### 3. Contenido de la web<a name="CONT"></a>
-- ### **Pagina Inicio**<br>
+- ### **Página Inicio**<br>
 [![Inicio.png](https://i.postimg.cc/Dw6dfJsS/Inicio.png)](https://postimg.cc/CRZfmKc0)
-   - Esta es la vista grafica de la pagina de inicio de la web, donde encontramos un encabezado con el logo del instituto y un navegador para moverse entre paginas.
-   Posteriormente, en la parte central se encuentra una foto con la vista del instituto desde arriba junto con un boton central que te lleva al Facebook del instituto.
-   Por ultimo, en el pie de pagina nos encontramos los datos de contacto del centro asi como su localizacion y las redes sociales que emplean
-   <br><br>
 
-- ### **Pagina Actividades**<br>
+- Encontramos un encabezado con el logo del instituto y un menu para moverse entre páginas.
+- En la parte central se encuentra una foto del instituto junto con un texto de bienvenida y un boton central que te lleva al Facebook del instituto.
+- En el pie de página nos encontramos los datos de contacto del centro asi como su localizacion y las redes sociales
+
+- ### **Página Actividades**<br>
 [![Actividades.png](https://i.postimg.cc/LsYshw7r/Actividades.png)](https://postimg.cc/SX44vTmr)
-   - Ahora la imagen que vemos es de la pagina actividades, donde se encuentran las actividades que realiza el instituto dividiendose en viajes extraescolares y clases extraescolares. A parte de esto, hay un encabezado y un pie de pagina, que son exactamente iguales que en la pagina de inicio.
+   - En esta página se encuentran las actividades que realiza el instituto dividiendose en viajes extraescolares y clases extraescolares 
+   - A parte de esto, hay un encabezado y un pie de página, que son exactamente iguales que en la página de inicio
 
-- ### **Pagina "Sobre Nosotros"**<br>
+- ### **Página "Sobre Nosotros"**<br>
 [![Sobre-Nosotros.png](https://i.postimg.cc/9F257K4v/Sobre-Nosotros.png)](https://postimg.cc/4nWSC8Q5)
-   - Tambien tenemos la pagina "Sobre Nosotros", donde ponemos información sobre el centro, ademas de las instalaciones de las que dispone el centro y un mapa con la localizacion del instituto.A parte de esto el encabezado y el pie de pagina son comunes al resto de Paginas.
-   <br><br>
+   - En esta página hay información sobre el centro, las instalaciones de las que dispone y un mapa con la localizacion del instituto
+   - Tambien cuenta con un encabezado y pie de página iguales a las anteriores páginas
 
-
-- ### **Pagina "Galeria"**<br>
+- ### **Página "Galería"**<br>
 [![Galeria.png](https://i.postimg.cc/GtzDQHvg/Galeria.png)](https://postimg.cc/fStkWW2Y)
-   - Por último, tenemos la pagina Galeria, donde aparecerán todas las imagenes de las actividades y una descripción sobre ellas, tambien tendrán un icono para poder abrirlas en una pestaña nueva y verlas con su tamaño original 
-   <br><br>
+   - En esta página aparecerán todas las imagenes de las actividades y una descripción sobre ellas, tambien tendrán un icono para poder abrirlas en una pestaña nueva y verlas con su tamaño original 
+   - Al igual que en las otras páginas cuenta con un encabezado y pie de página 
 
 ## Java<a name="JV"></a>
 ### 1. Diagrama de clases<a name="DIAG"></a>
 
-### 2. Documentacion de las clases<a name="DOCU"></a>
+### 2. Documentación de las clases<a name="DOCU"></a>
 
 ### 3. Explicación<a name="EXPL"></a>
 

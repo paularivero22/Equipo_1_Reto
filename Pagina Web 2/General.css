@@ -46,7 +46,6 @@ header {
     margin-left: 10px;
     width: 286px;
     height: 70px;
-    vertical-align:middle;
 }
 
 h1 {
@@ -77,12 +76,10 @@ h1 {
     
 #listamenu {
     display: flex;
-    margin-left: 10px;
     justify-content: center;
     padding: 0px;
     height: 100%;
     align-items: center;
-    list-style-type: none;
 }
 
 #listamenu li {
