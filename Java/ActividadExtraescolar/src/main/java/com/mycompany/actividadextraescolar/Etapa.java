@@ -9,5 +9,5 @@ package com.mycompany.actividadextraescolar;
  * @author atres
  */
 public enum Etapa {
-    ESO,Bachillerato,FPGS,FPGM,FPB,FPCE;
+    ESO,BACHILLERATO,FPGS,FPGM,FPB,FPCE;
 }

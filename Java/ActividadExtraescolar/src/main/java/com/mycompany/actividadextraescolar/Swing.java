@@ -39,6 +39,7 @@ public class Swing extends javax.swing.JFrame {
         tabla = new DefaultTableModel();
         solicitud = new SolicitudesDAO();
         metodosdepartamento = new DepartamentoDAO();
+        cursos=new CursosDAO();
     }
 
     private void cargarItemsDepartamento() {
@@ -101,6 +102,7 @@ public class Swing extends javax.swing.JFrame {
             ob[2] = curso.getDescripcion();
             ob[3] = curso.getEtapa();
             ob[4] = curso.isActivo();
+            tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
     }
@@ -200,15 +202,17 @@ public class Swing extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox<>();
         jButton24 = new javax.swing.JButton();
+        jLabel46 = new javax.swing.JLabel();
+        jComboBox10 = new javax.swing.JComboBox<>();
         EliminarCurso = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jComboBox8 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable8 = new javax.swing.JTable();
         CrearGrupo = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -629,21 +633,21 @@ public class Swing extends javax.swing.JFrame {
         jLabel16.setText("CREAR CURSO");
         CrearCurso.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
-        jLabel17.setText("Descripción:");
-        CrearCurso.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 70, -1));
+        jLabel17.setText("Descripción: ");
+        CrearCurso.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 70, -1));
 
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
             }
         });
-        CrearCurso.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 100, -1));
+        CrearCurso.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 100, -1));
 
         jLabel18.setText("Etapa:");
-        CrearCurso.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
+        CrearCurso.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO", "BACHILLERATO", "FPGS", "FPGM", "FPB", "FPCE" }));
-        CrearCurso.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
+        CrearCurso.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
         jButton24.setText("Crear");
         jButton24.addActionListener(new java.awt.event.ActionListener() {
@@ -651,7 +655,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton24ActionPerformed(evt);
             }
         });
-        CrearCurso.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
+        CrearCurso.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
+
+        jLabel46.setText("Año:");
+        CrearCurso.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º", "2º", "3º", "4º", "5º", "6º" }));
+        CrearCurso.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
 
         getContentPane().add(CrearCurso, "card7");
 
@@ -671,41 +681,13 @@ public class Swing extends javax.swing.JFrame {
         });
         EliminarCurso.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "idCurso", "codCurso", "descripcion", "etapa", "activo"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane6.setViewportView(jTable1);
-
-        EliminarCurso.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 470, 90));
-
         jButton7.setText("Eliminar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        EliminarCurso.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
+        EliminarCurso.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
         jButton8.setText("Deshabilitar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -713,10 +695,35 @@ public class Swing extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        EliminarCurso.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
+        EliminarCurso.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
 
         jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Educación Secundaria Obligatoria - 1º", "Educación Secundaria Obligatoria - 2º", "Educación Secundaria Obligatoria - 3º", "Educación Secundaria Obligatoria - 4º", "Bachillerato 1º", "Bachillerato 2º", "Fabricación y montaje - 1º", "Fabricación y montaje - 2º", "Mantenimiento de Vehículos - 1º", "Mantenimiento de Vehículos - 2º", "Carrocería - 1º", "Carrocería - 2º", "Electromecánica de Vehículos Automóviles - 1º", "Electromecánica de Vehículos Automóviles - 2º", "Sistemas Microinformáticos y Redes - 1º", "Sistemas Microinformáticos y Redes - 2º", "Administración y Finanzas - 1º", "Administración y Finanzas - 2º", "Desarrollo de Aplicaciones Multiplataforma - 1º", "Desarrollo de Aplicaciones Multiplataforma - 2º", "Desarrollo de Aplicaciones Web - 1º", "Desarrollo de Aplicaciones Web - 2º", "Diseño en Fabricación Mecánica - 1º", "Diseño en Fabricación Mecánica - 2º" }));
         EliminarCurso.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 70, 130, -1));
+
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "idCurso", "codCurso", "Descripción", "Etapa", "Activo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable8MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTable8);
+
+        EliminarCurso.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 530, 190));
 
         getContentPane().add(EliminarCurso, "card8");
 
@@ -1890,8 +1897,10 @@ public class Swing extends javax.swing.JFrame {
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         CursosDAO cursos = new CursosDAO();
         String descripcion = jTextField9.getText();
+        String anioCurso=jComboBox10.getSelectedItem().toString();
+        String codCurso=cursos.crearCodigoCurso(descripcion, anioCurso);
         Etapa etapa = (Etapa) Etapa.valueOf(jComboBox4.getSelectedItem().toString());
-        Curso curso1 = new Curso(descripcion, etapa, true);
+        Curso curso1 = new Curso(codCurso,descripcion, etapa, true);
 
         cursos.insertar(curso1);
     }//GEN-LAST:event_jButton24ActionPerformed
@@ -1899,26 +1908,22 @@ public class Swing extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         SortedSet<Curso> listaCurso = cursos.listar();
         limpiarTabla();
-        insertarTablaCursos(listaCurso, jTable1);
+        insertarTablaCursos(listaCurso, jTable8);
         //Y asigno el jTable al atributo tabla
-        jTable1.setModel(tabla);
+        jTable8.setModel(tabla);
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        String descripcion = cursoAux.getDescripcion();
-        cursos.eliminarPor(descripcion);
+         String valorABuscar=cursoAux.getCodCurso();
+        cursos.eliminarPor(valorABuscar);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         //Obtengo el índice de la fila que selecciono
-        int filaSeleccionada = jTable7.getSelectedRow();
-        //Cargo la tabla
-        DefaultTableModel tablaF = (DefaultTableModel) jTable7.getModel();
-        //Obtengo el valor del indice que utilizo para buscar una solicitud
-
-        String valor1 = tablaF.getValueAt(filaSeleccionada, 4).toString();
-        cursoAux.setActivo(Boolean.valueOf(valor1));
+       String valorABuscar=cursoAux.getCodCurso();
+       Curso c=cursos.buscarPor(valorABuscar);
+       cursos.actualizarActivo(valorABuscar, false);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
@@ -2086,16 +2091,16 @@ public class Swing extends javax.swing.JFrame {
         solicitud.actualizarEstado(titulo, "DENEGADA");
     }//GEN-LAST:event_jButton21ActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        //Obtengo el índice de la fila que selecciono
-        int filaSeleccionada = jTable1.getSelectedRow();
+    private void jTable8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable8MouseClicked
+        // TODO add your handling code here:
+          int filaSeleccionada = jTable8.getSelectedRow();
         //Cargo la tabla
-        DefaultTableModel tablaF = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel tablaF = (DefaultTableModel) jTable8.getModel();
         //Obtengo el valor del indice que utilizo para buscar una solicitud
 
         String valor1 = tablaF.getValueAt(filaSeleccionada, 1).toString();
         cursoAux = cursos.buscarPor(valor1);
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_jTable8MouseClicked
 
     private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
         // TODO add your handling code here:
@@ -2208,6 +2213,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -2257,6 +2263,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -2291,19 +2298,19 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
+    private javax.swing.JTable jTable8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
