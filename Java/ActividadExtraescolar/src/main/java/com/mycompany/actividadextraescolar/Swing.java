@@ -1858,7 +1858,7 @@ public class Swing extends javax.swing.JFrame {
         String codCurso = jTextField37.getText();
         Etapa etapa = (Etapa) Etapa.valueOf(jComboBox4.getSelectedItem().toString());
         CursosDAO cursos = new CursosDAO();
-        Curso curso1 = new Curso(codCurso, descripcion, etapa, true);
+        Curso curso1 = new Curso(descripcion, etapa, true);
 
         cursos.insertar(curso1);
     }//GEN-LAST:event_jButton24ActionPerformed
