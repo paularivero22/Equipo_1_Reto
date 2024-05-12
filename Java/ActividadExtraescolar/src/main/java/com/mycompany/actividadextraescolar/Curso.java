@@ -16,7 +16,7 @@ public class Curso {
     public boolean activo;
     
     /**
-     * CONSTRUCTOR POR PARAMETROS CON IDCURSO
+     * CONSTRUCTOR POR PARAMETROS CON IDCURSO 
      * @param idCurso
      * @param codCurso
      * @param descripcion
@@ -31,13 +31,13 @@ public class Curso {
         this.activo = activo;
     }
     /**
-     * CONSTRUCTOR POR PARÁMETROS SIN IDCURSO
-     * @param codCurso
+     * CONSTRUCTOR POR PARÁMETROS SIN IDCURSO NI CODCURSO
+     *
      * @param descripcion
      * @param etapa
      * @param activo 
      */
-    public Curso(String codCurso, String descripcion, Etapa etapa, boolean activo) {
+    public Curso(String descripcion, Etapa etapa, boolean activo) {
         this.codCurso = codCurso;
         this.descripcion = descripcion;
         this.etapa = etapa;
@@ -67,6 +67,19 @@ public class Curso {
     public boolean isActivo() {
         return activo;
     }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setEtapa(Etapa etapa) {
+        this.etapa = etapa;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+    
     
     /**
      * METODO QUE MUESTRA LOS DATOS DE CURSO

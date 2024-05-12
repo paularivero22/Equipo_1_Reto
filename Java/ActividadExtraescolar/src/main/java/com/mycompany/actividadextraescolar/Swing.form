@@ -916,7 +916,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="40" y="70" width="70" height="-1"/>
+              <AbsoluteConstraints x="30" y="150" width="70" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -926,7 +926,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="110" y="70" width="100" height="-1"/>
+              <AbsoluteConstraints x="110" y="150" width="100" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -936,7 +936,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="270" y="70" width="-1" height="-1"/>
+              <AbsoluteConstraints x="300" y="150" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -958,19 +958,10 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="320" y="70" width="-1" height="-1"/>
+              <AbsoluteConstraints x="340" y="150" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="60" y="160" width="420" height="50"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-        </Container>
         <Component class="javax.swing.JButton" name="jButton24">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear"/>
@@ -980,27 +971,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="220" y="120" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel60">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CodCurso"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="50" y="120" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField37">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField37ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="110" y="120" width="100" height="-1"/>
+              <AbsoluteConstraints x="230" y="240" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1063,14 +1034,17 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="4">
-                    <Column editable="true" title="idCurso" type="java.lang.Integer"/>
-                    <Column editable="true" title="codCurso" type="java.lang.String"/>
-                    <Column editable="true" title="descripcion" type="java.lang.String"/>
+                    <Column editable="false" title="idCurso" type="java.lang.Object"/>
+                    <Column editable="false" title="codCurso" type="java.lang.Object"/>
+                    <Column editable="true" title="descripcion" type="java.lang.Object"/>
                     <Column editable="true" title="etapa" type="java.lang.Object"/>
-                    <Column editable="true" title="activo" type="java.lang.Boolean"/>
+                    <Column editable="true" title="activo" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1103,26 +1077,31 @@
         <Component class="javax.swing.JComboBox" name="jComboBox8">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="19">
-                <StringItem index="0" value="Biolog&#xed;a y Geolog&#xed;a"/>
-                <StringItem index="1" value="Dibujo"/>
-                <StringItem index="2" value="Econom&#xed;a"/>
-                <StringItem index="3" value="Educaci&#xf3;n F&#xed;sica"/>
-                <StringItem index="4" value="Filosof&#xed;a"/>
-                <StringItem index="5" value="F&#xed;sica y Qu&#xed;mica"/>
-                <StringItem index="6" value="Franc&#xe9;s"/>
-                <StringItem index="7" value="Geograf&#xed;a e Historia"/>
-                <StringItem index="8" value="Ingl&#xe9;s"/>
-                <StringItem index="9" value="Lat&#xed;n"/>
-                <StringItem index="10" value="Lengua Castellana y Literatura"/>
-                <StringItem index="11" value="Matem&#xe1;ticas"/>
-                <StringItem index="12" value="M&#xfa;sica"/>
-                <StringItem index="13" value="Tecnolog&#xed;a"/>
-                <StringItem index="14" value="Administraci&#xf3;n y Gesti&#xf3;n"/>
-                <StringItem index="15" value="Formaci&#xf3;n y Orientaci&#xf3;n Laboral"/>
-                <StringItem index="16" value="Inform&#xe1;tica y Comunicaciones"/>
-                <StringItem index="17" value="Fabricaci&#xf3;n Mec&#xe1;nica"/>
-                <StringItem index="18" value="Transporte y Mantenimiento de Veh&#xed;culos"/>
+              <StringArray count="24">
+                <StringItem index="0" value="Educaci&#xf3;n Secundaria Obligatoria - 1&#xba;"/>
+                <StringItem index="1" value="Educaci&#xf3;n Secundaria Obligatoria - 2&#xba;"/>
+                <StringItem index="2" value="Educaci&#xf3;n Secundaria Obligatoria - 3&#xba;"/>
+                <StringItem index="3" value="Educaci&#xf3;n Secundaria Obligatoria - 4&#xba;"/>
+                <StringItem index="4" value="Bachillerato 1&#xba;"/>
+                <StringItem index="5" value="Bachillerato 2&#xba;"/>
+                <StringItem index="6" value="Fabricaci&#xf3;n y montaje - 1&#xba;"/>
+                <StringItem index="7" value="Fabricaci&#xf3;n y montaje - 2&#xba;"/>
+                <StringItem index="8" value="Mantenimiento de Veh&#xed;culos - 1&#xba;"/>
+                <StringItem index="9" value="Mantenimiento de Veh&#xed;culos - 2&#xba;"/>
+                <StringItem index="10" value="Carrocer&#xed;a - 1&#xba;"/>
+                <StringItem index="11" value="Carrocer&#xed;a - 2&#xba;"/>
+                <StringItem index="12" value="Electromec&#xe1;nica de Veh&#xed;culos Autom&#xf3;viles - 1&#xba;"/>
+                <StringItem index="13" value="Electromec&#xe1;nica de Veh&#xed;culos Autom&#xf3;viles - 2&#xba;"/>
+                <StringItem index="14" value="Sistemas Microinform&#xe1;ticos y Redes - 1&#xba;"/>
+                <StringItem index="15" value="Sistemas Microinform&#xe1;ticos y Redes - 2&#xba;"/>
+                <StringItem index="16" value="Administraci&#xf3;n y Finanzas - 1&#xba;"/>
+                <StringItem index="17" value="Administraci&#xf3;n y Finanzas - 2&#xba;"/>
+                <StringItem index="18" value="Desarrollo de Aplicaciones Multiplataforma - 1&#xba;"/>
+                <StringItem index="19" value="Desarrollo de Aplicaciones Multiplataforma - 2&#xba;"/>
+                <StringItem index="20" value="Desarrollo de Aplicaciones Web - 1&#xba;"/>
+                <StringItem index="21" value="Desarrollo de Aplicaciones Web - 2&#xba;"/>
+                <StringItem index="22" value="Dise&#xf1;o en Fabricaci&#xf3;n Mec&#xe1;nica - 1&#xba;"/>
+                <StringItem index="23" value="Dise&#xf1;o en Fabricaci&#xf3;n Mec&#xe1;nica - 2&#xba;"/>
               </StringArray>
             </Property>
           </Properties>
