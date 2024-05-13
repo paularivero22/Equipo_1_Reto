@@ -497,7 +497,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
                         <th>Personas Involucradas</th>
                         <th>Profesor responsable</th>
                         <th>Profesores participantes</th>
-                        <th>Horario y Fecha</th>
+                        <th>Fecha</th>
+                        <th>Horario</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -507,7 +508,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
                         <td>25 estudiantes, 3 profesores</td>
                         <td>Pedro Perez</td>
                         <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>9:30-13:30 09/05/2024</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
                     </tr>
                     <tr>
                         <td>Biologia</td>
@@ -515,7 +517,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
                         <td>10 estudiantes, 1 profesores</td>
                         <td>Pedro Perez</td>
                         <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>9:30-13:30 09/05/2024</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
                     </tr>
                     <tr>
                         <td>Robotica</td>
@@ -523,7 +526,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
                         <td>30 estudiantes, 4 profesores</td>
                         <td>Pedro Perez</td>
                         <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>9:30-13:30 09/05/2024</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
                     </tr>
                     <tr>
                         <td>Deportes</td>
@@ -531,7 +535,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
                         <td>15 estudiantes, 2 profesores</td>
                         <td>Pedro Perez</td>
                         <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>9:30-13:30 09/05/2024</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
                     </tr>
                     <tr>
                         <td>Historia</td>
@@ -539,7 +544,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
                         <td>10 estudiantes, 1 profesor</td>
                         <td>Pedro Perez</td>
                         <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>9:30-13:30 09/05/2024</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
                     </tr>
                     <tr>
                         <td>Economia</td>
@@ -547,7 +553,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
                         <td>22 estudiantes, 3 profesores</td>
                         <td>Pedro Perez</td>
                         <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>9:30-13:30 09/05/2024</td>
+                        <td>09/05/2024</td>
+                        <td>9:30-13:30</td>
                     </tr>
                 </tbody>
             </table> 
@@ -1738,24 +1745,23 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
 ### 3. Contenido de la web<a name="CONT"></a>
 - ### **Página Inicio**<br>
-[![Inicio.png](https://i.postimg.cc/Dw6dfJsS/Inicio.png)](https://postimg.cc/CRZfmKc0)
-
+![PaginaInicio](./Imagenes/pagina%20inicio.png)
 - Encontramos un encabezado con el logo del instituto y un menu para moverse entre páginas.
 - En la parte central se encuentra una foto del instituto junto con un texto de bienvenida y un boton central que te lleva al Facebook del instituto.
 - En el pie de página nos encontramos los datos de contacto del centro asi como su localizacion y las redes sociales
 
 - ### **Página Actividades**<br>
-[![Actividades.png](https://i.postimg.cc/LsYshw7r/Actividades.png)](https://postimg.cc/SX44vTmr)
+![PaginaActividades](./Imagenes/pagina%20actividades.png)
    - En esta página se encuentran las actividades que realiza el instituto dividiendose en viajes extraescolares y clases extraescolares 
    - A parte de esto, hay un encabezado y un pie de página, que son exactamente iguales que en la página de inicio
 
 - ### **Página "Sobre Nosotros"**<br>
-[![Sobre-Nosotros.png](https://i.postimg.cc/9F257K4v/Sobre-Nosotros.png)](https://postimg.cc/4nWSC8Q5)
+![PaginaSobreNosotros](./Imagenes/pagina%20sobrenosotros.png)
    - En esta página hay información sobre el centro, las instalaciones de las que dispone y un mapa con la localizacion del instituto
    - Tambien cuenta con un encabezado y pie de página iguales a las anteriores páginas
 
 - ### **Página "Galería"**<br>
-[![Galeria.png](https://i.postimg.cc/GtzDQHvg/Galeria.png)](https://postimg.cc/fStkWW2Y)
+![PaginaGaleria](./Imagenes/pagina%20galeria.png)
    - En esta página aparecerán todas las imagenes de las actividades y una descripción sobre ellas, tambien tendrán un icono para poder abrirlas en una pestaña nueva y verlas con su tamaño original 
    - Al igual que en las otras páginas cuenta con un encabezado y pie de página 
 

@@ -984,7 +984,7 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane13.setViewportView(jTable5);
 
-        EliminarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 500, 160));
+        EliminarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 500, 160));
 
         jButton16.setText("Eliminar");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
