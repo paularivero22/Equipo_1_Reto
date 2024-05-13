@@ -24,6 +24,7 @@ public class Swing extends javax.swing.JFrame {
     private SolicitudesDAO solicitud;
     private CursosDAO cursos;
     private Curso cursoAux;
+    private Departamento departamentoAux;
     private DepartamentoDAO metodosdepartamento;
     private Solicitud solicitudAux;
 
@@ -39,14 +40,14 @@ public class Swing extends javax.swing.JFrame {
         tabla = new DefaultTableModel();
         solicitud = new SolicitudesDAO();
         metodosdepartamento = new DepartamentoDAO();
-        cursos=new CursosDAO();
+        cursos = new CursosDAO();
     }
 
     private void cargarItemsDepartamento() {
         String solicitudes = "";
         SortedSet<Departamento> lista = metodosdepartamento.listar();
         for (Departamento d : lista) {
-            jComboBox9.addItem(d.getNombre());
+            // jComboBox9.addItem(d.getNombre());
             jComboBox8.addItem(d.getNombre());
             jComboBox11.addItem(d.getNombre());
         }
@@ -102,6 +103,21 @@ public class Swing extends javax.swing.JFrame {
             ob[2] = curso.getDescripcion();
             ob[3] = curso.getEtapa();
             ob[4] = curso.isActivo();
+            tabla.addRow(ob);
+        }
+        tabla1.setModel(tabla);
+    }
+
+    private void insertarTablaDepartamento(SortedSet<Departamento> lista, JTable tabla1) {
+        tabla = (DefaultTableModel) tabla1.getModel();
+        Object[] ob = new Object[5];
+        Iterator<Departamento> it = lista.iterator();
+        while (it.hasNext()) {
+            Departamento d = it.next();
+            ob[0] = d.getIdDepartamento();
+            ob[1] = d.getCodigoDepartamento();
+            ob[2] = d.getNombre();
+            ob[3] = d.getIdJefe();
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -206,11 +222,9 @@ public class Swing extends javax.swing.JFrame {
         jComboBox10 = new javax.swing.JComboBox<>();
         EliminarCurso = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jComboBox8 = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable8 = new javax.swing.JTable();
         CrearGrupo = new javax.swing.JPanel();
@@ -220,7 +234,8 @@ public class Swing extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         ModificarGrupo = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -246,24 +261,18 @@ public class Swing extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable9 = new javax.swing.JTable();
         ModificarDepartamento = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jComboBox5 = new javax.swing.JComboBox<>();
         jTextField19 = new javax.swing.JTextField();
         jButton14 = new javax.swing.JButton();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        jComboBox9 = new javax.swing.JComboBox<>();
-        DeshabilitarDepartamento = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        EliminarDepartamento = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
         jButton15 = new javax.swing.JButton();
         jScrollPane13 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
@@ -655,7 +664,7 @@ public class Swing extends javax.swing.JFrame {
                 jButton24ActionPerformed(evt);
             }
         });
-        CrearCurso.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
+        CrearCurso.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
 
         jLabel46.setText("Año:");
         CrearCurso.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
@@ -670,16 +679,13 @@ public class Swing extends javax.swing.JFrame {
         jLabel19.setText("ELIMINAR O DESHABILITAR CURSO");
         EliminarCurso.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
 
-        jLabel20.setText("Descripción del Curso:");
-        EliminarCurso.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
-
         jButton6.setText("Buscar");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        EliminarCurso.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
+        EliminarCurso.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
 
         jButton7.setText("Eliminar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -695,10 +701,7 @@ public class Swing extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        EliminarCurso.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Educación Secundaria Obligatoria - 1º", "Educación Secundaria Obligatoria - 2º", "Educación Secundaria Obligatoria - 3º", "Educación Secundaria Obligatoria - 4º", "Bachillerato 1º", "Bachillerato 2º", "Fabricación y montaje - 1º", "Fabricación y montaje - 2º", "Mantenimiento de Vehículos - 1º", "Mantenimiento de Vehículos - 2º", "Carrocería - 1º", "Carrocería - 2º", "Electromecánica de Vehículos Automóviles - 1º", "Electromecánica de Vehículos Automóviles - 2º", "Sistemas Microinformáticos y Redes - 1º", "Sistemas Microinformáticos y Redes - 2º", "Administración y Finanzas - 1º", "Administración y Finanzas - 2º", "Desarrollo de Aplicaciones Multiplataforma - 1º", "Desarrollo de Aplicaciones Multiplataforma - 2º", "Desarrollo de Aplicaciones Web - 1º", "Desarrollo de Aplicaciones Web - 2º", "Diseño en Fabricación Mecánica - 1º", "Diseño en Fabricación Mecánica - 2º" }));
-        EliminarCurso.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 70, 130, -1));
+        EliminarCurso.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
 
         jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -742,7 +745,21 @@ public class Swing extends javax.swing.JFrame {
 
         jButton9.setText("Crear");
         CrearGrupo.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
-        CrearGrupo.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 490, 70));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jTable1);
+
+        CrearGrupo.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 147, 600, 280));
 
         getContentPane().add(CrearGrupo, "card9");
 
@@ -852,28 +869,25 @@ public class Swing extends javax.swing.JFrame {
         });
         CrearDepartamento.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 121, -1, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable9.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "idDepartamento", "codDepartamento", "nombre", "idJefe"
+                "idDepartamento", "codDepartamento", "Nombre", "idJefe"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
             };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane10.setViewportView(jTable2);
+        jScrollPane7.setViewportView(jTable9);
 
-        CrearDepartamento.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 522, 61));
+        CrearDepartamento.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 177, 600, 250));
 
         getContentPane().add(CrearDepartamento, "card11");
 
@@ -882,40 +896,22 @@ public class Swing extends javax.swing.JFrame {
         jLabel31.setText("MODIFICAR DEPARTAMENTO");
         ModificarDepartamento.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 30, -1, -1));
 
-        jLabel32.setText("Nombre de Departamento:");
-        ModificarDepartamento.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 67, -1, -1));
-
         jButton13.setText("Buscar");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
             }
         });
-        ModificarDepartamento.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
+        ModificarDepartamento.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane11.setViewportView(jTable3);
-
-        ModificarDepartamento.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 528, 35));
-
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Codigo", "Nombre Jefe" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nombre", "codDepartamento", "idJefe" }));
         jComboBox5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox5ActionPerformed(evt);
             }
         });
-        ModificarDepartamento.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
-        ModificarDepartamento.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 123, -1));
+        ModificarDepartamento.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
+        ModificarDepartamento.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 123, -1));
 
         jButton14.setText("Cambiar");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -923,41 +919,39 @@ public class Swing extends javax.swing.JFrame {
                 jButton14ActionPerformed(evt);
             }
         });
-        ModificarDepartamento.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
+        ModificarDepartamento.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, -1, -1));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "idDepartamento", "codDepartamento", "Nombre", "idJefe"
             }
-        ));
-        jScrollPane12.setViewportView(jTable4);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false
+            };
 
-        ModificarDepartamento.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 514, 42));
-
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
-        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox9ActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        ModificarDepartamento.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 210, -1));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane10.setViewportView(jTable2);
+
+        ModificarDepartamento.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 600, 220));
 
         getContentPane().add(ModificarDepartamento, "card12");
 
-        DeshabilitarDepartamento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        EliminarDepartamento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel33.setText("DESHABILITAR DEPARTAMENTO");
-        DeshabilitarDepartamento.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
-
-        jLabel34.setText("Nombre del Departamento:");
-        DeshabilitarDepartamento.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
-        DeshabilitarDepartamento.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 140, -1));
+        jLabel33.setText("ELIMINAR DEPARTAMENTO");
+        EliminarDepartamento.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
 
         jButton15.setText("Buscar");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -965,40 +959,42 @@ public class Swing extends javax.swing.JFrame {
                 jButton15ActionPerformed(evt);
             }
         });
-        DeshabilitarDepartamento.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
+        EliminarDepartamento.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "idDepartamento", "codDepartamento", "nombre", "idJefe"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
             };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable5MouseClicked(evt);
             }
         });
         jScrollPane13.setViewportView(jTable5);
 
-        DeshabilitarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 500, 50));
+        EliminarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 500, 160));
 
-        jButton16.setText("Deshabilitar");
+        jButton16.setText("Eliminar");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton16ActionPerformed(evt);
             }
         });
-        DeshabilitarDepartamento.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
+        EliminarDepartamento.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
 
-        getContentPane().add(DeshabilitarDepartamento, "card13");
+        getContentPane().add(EliminarDepartamento, "card13");
 
         CrearSolicitud.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1447,7 +1443,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1472,7 +1468,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1496,7 +1492,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1520,7 +1516,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1542,7 +1538,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1566,7 +1562,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1590,7 +1586,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1614,7 +1610,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1638,7 +1634,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(rootPaneCheckingEnabled);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1662,7 +1658,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(rootPaneCheckingEnabled);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1686,7 +1682,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(rootPaneCheckingEnabled);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1710,7 +1706,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(rootPaneCheckingEnabled);
+        EliminarDepartamento.setVisible(rootPaneCheckingEnabled);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1734,7 +1730,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(rootPaneCheckingEnabled);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1760,7 +1756,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(rootPaneCheckingEnabled);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1784,7 +1780,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(rootPaneCheckingEnabled);
@@ -1808,7 +1804,7 @@ public class Swing extends javax.swing.JFrame {
         DeshabilitarGrupo.setVisible(false);
         CrearDepartamento.setVisible(false);
         ModificarDepartamento.setVisible(false);
-        DeshabilitarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
         CrearSolicitud.setVisible(false);
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
@@ -1897,10 +1893,10 @@ public class Swing extends javax.swing.JFrame {
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         CursosDAO cursos = new CursosDAO();
         String descripcion = jTextField9.getText();
-        String anioCurso=jComboBox10.getSelectedItem().toString();
-        String codCurso=cursos.crearCodigoCurso(descripcion, anioCurso);
+        String anioCurso = jComboBox10.getSelectedItem().toString();
+        String codCurso = cursos.crearCodigoCurso(descripcion, anioCurso);
         Etapa etapa = (Etapa) Etapa.valueOf(jComboBox4.getSelectedItem().toString());
-        Curso curso1 = new Curso(codCurso,descripcion, etapa, true);
+        Curso curso1 = new Curso(codCurso, descripcion, etapa, true);
 
         cursos.insertar(curso1);
     }//GEN-LAST:event_jButton24ActionPerformed
@@ -1915,15 +1911,15 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-         String valorABuscar=cursoAux.getCodCurso();
+        String valorABuscar = cursoAux.getCodCurso();
         cursos.eliminarPor(valorABuscar);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         //Obtengo el índice de la fila que selecciono
-       String valorABuscar=cursoAux.getCodCurso();
-       Curso c=cursos.buscarPor(valorABuscar);
-       cursos.actualizarActivo(valorABuscar, false);
+        String valorABuscar = cursoAux.getCodCurso();
+        Curso c = cursos.buscarPor(valorABuscar);
+        cursos.actualizarActivo(valorABuscar, false);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
@@ -1942,17 +1938,20 @@ public class Swing extends javax.swing.JFrame {
         Departamento departamento = new Departamento(codDepartamento, nombre, 6);
         dep.insertar(departamento);
 
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-        modelo.addRow(new Object[]{departamento.getIdDepartamento(), departamento.getNombre(), departamento.getCodigoDepartamento(), departamento.getIdJefe()});
+        SortedSet<Departamento> listaDepartamento = metodosdepartamento.listar();
+        limpiarTabla();
+        insertarTablaDepartamento(listaDepartamento, jTable9);
+        //Y asigno el jTable al atributo tabla
+        jTable6.setModel(tabla);
+
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String nombre = jComboBox8.getSelectedItem().toString();
-        Departamento departamentoEncontrado = dep.buscarPor(nombre);
-
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-        modelo.addRow(new Object[]{departamentoEncontrado.getIdDepartamento(), departamentoEncontrado.getNombre(), departamentoEncontrado.getCodigoDepartamento(), departamentoEncontrado.getIdJefe()});
+        SortedSet<Departamento> listaDepartamento = metodosdepartamento.listar();
+        limpiarTabla();
+        insertarTablaDepartamento(listaDepartamento, jTable2);
+        //Y asigno el jTable al atributo tabla
+        jTable6.setModel(tabla);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
@@ -1960,33 +1959,26 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox5ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        JTextField valorNuevo = jTextField19;
         String atributo = jComboBox5.getSelectedItem().toString();
-        String valorABuscar = jComboBox9.getSelectedItem().toString();
-        dep.actualizar(atributo, valorABuscar, valorNuevo);
+        String valorABuscar = departamentoAux.getNombre();
+        metodosdepartamento.actualizar(atributo, valorABuscar, jTextField19);
 
-        String valorNuevoSt = jTextField19.getText();
-        Departamento departamentoActualizado = dep.buscarPor(valorNuevoSt);
 
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-        modelo.addRow(new Object[]{departamentoActualizado.getIdDepartamento(), departamentoActualizado.getNombre(), departamentoActualizado.getCodigoDepartamento(), departamentoActualizado.getIdJefe()});
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String nombre = jTextField20.getText();
-        Departamento departamentoEncontrado = dep.buscarPor(nombre);
-        System.out.println(departamentoEncontrado.toString());
+        SortedSet<Departamento> listaDepartamento = metodosdepartamento.listar();
+        limpiarTabla();
+        insertarTablaDepartamento(listaDepartamento, jTable5);
+        //Y asigno el jTable al atributo tabla
+        jTable5.setModel(tabla);
 
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-        modelo.addRow(new Object[]{departamentoEncontrado.getIdDepartamento(), departamentoEncontrado.getNombre(), departamentoEncontrado.getCodigoDepartamento(), departamentoEncontrado.getIdJefe()});
+
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        DepartamentoDAO dep = new DepartamentoDAO();
-        String nombre = jTextField20.getText();
-        dep.eliminarPor(nombre);
+        String nombre=departamentoAux.getNombre();
+        metodosdepartamento.eliminarPor(nombre);
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
@@ -2093,7 +2085,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void jTable8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable8MouseClicked
         // TODO add your handling code here:
-          int filaSeleccionada = jTable8.getSelectedRow();
+        int filaSeleccionada = jTable8.getSelectedRow();
         //Cargo la tabla
         DefaultTableModel tablaF = (DefaultTableModel) jTable8.getModel();
         //Obtengo el valor del indice que utilizo para buscar una solicitud
@@ -2102,9 +2094,28 @@ public class Swing extends javax.swing.JFrame {
         cursoAux = cursos.buscarPor(valor1);
     }//GEN-LAST:event_jTable8MouseClicked
 
-    private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox9ActionPerformed
+        //Obtengo el índice de la fila que selecciono
+        int filaSeleccionada = jTable2.getSelectedRow();
+        //Cargo la tabla
+        tabla = (DefaultTableModel) jTable2.getModel();
+        //Obtengo el valor del indice que utilizo para buscar una solicitud
+
+        String valor1 = tabla.getValueAt(filaSeleccionada, 2).toString();
+        departamentoAux = metodosdepartamento.buscarPor(valor1);
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jTable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MouseClicked
+        // TODO add your handling code here:
+         int filaSeleccionada = jTable5.getSelectedRow();
+        //Cargo la tabla
+        tabla = (DefaultTableModel) jTable5.getModel();
+        //Obtengo el valor del indice que utilizo para buscar una solicitud
+
+        String valor1 = tabla.getValueAt(filaSeleccionada, 2).toString();
+        departamentoAux = metodosdepartamento.buscarPor(valor1);
+    }//GEN-LAST:event_jTable5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2156,10 +2167,10 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JPanel CrearSolicitud;
     private javax.swing.JMenu Cursos;
     private javax.swing.JMenu Departamento;
-    private javax.swing.JPanel DeshabilitarDepartamento;
     private javax.swing.JPanel DeshabilitarGrupo;
     private javax.swing.JPanel EliminarCurso;
     private javax.swing.JMenuItem EliminarCursoMenu;
+    private javax.swing.JPanel EliminarDepartamento;
     private javax.swing.JPanel EliminarDeshabilitarProfesor;
     private javax.swing.JPanel FasePreparacion;
     private javax.swing.JMenu Grupo;
@@ -2221,8 +2232,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2235,7 +2244,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -2248,9 +2256,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -2289,8 +2295,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane17;
@@ -2301,16 +2305,17 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
+    private javax.swing.JTable jTable9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -2321,7 +2326,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;

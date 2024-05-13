@@ -15,7 +15,6 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import javax.swing.JTextField;
 
-
 /**
  *
  * @author atres
@@ -25,9 +24,11 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
+
     /**
      * METODO QUE LISTA LA TABLA DEPARTAMENTO
-     * @return 
+     *
+     * @return
      */
     @Override
     public SortedSet<Departamento> listar() {
@@ -36,7 +37,7 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
             while (rs.next()) {
                 Departamento departamento = crearDepartamento(rs);
                 if (!listaDepartamento.add(departamento)) {
-                    throw new Exception("Error, no se pudo mostrar el departamento "+departamento.getCodigoDepartamento());
+                    throw new Exception("Error, no se pudo mostrar el departamento " + departamento.getCodigoDepartamento());
                 }
             }
         } catch (SQLException sql) {
@@ -49,8 +50,9 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
 
     /**
      * METODO QUE BUSCA UN DEPARTAMENTO MEDIANTE nombre
+     *
      * @param filtro
-     * @return 
+     * @return
      */
     @Override
     public Departamento buscarPor(String filtro) {
@@ -60,7 +62,7 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
             pst.setString(1, filtro);
             try (ResultSet rs = pst.executeQuery();) {
                 if (rs.next()) {
-                    departamento=crearDepartamento(rs);
+                    departamento = crearDepartamento(rs);
                 }
             }
         } catch (SQLException s) {
@@ -71,11 +73,12 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
 
     /**
      * METODO QUE ELIMINA UN DEPARTAMENTO POR codDepartamento
-     * @param filtro 
+     *
+     * @param filtro
      */
     @Override
     public void eliminarPor(String filtro) {
-        String sql = "DELETE FROM departamento WHERE codDepartamento=?";
+        String sql = "DELETE FROM departamento WHERE nombre=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setString(1, filtro);
             int salida = stmt.executeUpdate();
@@ -93,7 +96,8 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
 
     /**
      * METODO QUE INSERTA UN DEPARTAMENTO A LA TABLA DEPARTAMENTO
-     * @param d 
+     *
+     * @param d
      */
     @Override
     public void insertar(Departamento d) {
@@ -116,17 +120,32 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
 
     /**
      * METODO QUE ACTUALIZA MEDIANTE UN ATRIBUTO A UN VALOR NUEVO
+     *
      * @param atributo
      * @param valorABuscar
      * @param valorNuevo
      */
     @Override
-    public void actualizar(String atributo,String valorABuscar,JTextField valorNuevo) {
+    public void actualizar(String atributo, String valorABuscar, JTextField valorNuevo) {
         Departamento d = buscarPor(valorABuscar);
-        String sql = "UPDATE departamento SET "+atributo+"=? WHERE codDepartamento=?";
+        String nuevo=valorNuevo.getText();
+        String sql = "UPDATE departamento SET " + atributo + "=? WHERE nombre=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            stmt.setObject(1, valorNuevo.getText());
             stmt.setString(2, valorABuscar);
+            switch(atributo){
+                case "codDepartamento"->{
+                    d.setCodigoDepartamento(nuevo);
+                    stmt.setString(1,nuevo);
+                }
+                case "nombre"->{
+                    d.setNombre(nuevo);
+                    stmt.setString(1, nuevo);
+                }
+                case "idJefe"->{
+                    d.setIdJefe(Integer.parseInt(nuevo));
+                    stmt.setInt(1, Integer.parseInt(nuevo));
+                }
+            }
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha modificado el registro");
@@ -150,12 +169,13 @@ public class DepartamentoDAO implements RepositorioDAO<Departamento> {
 
     /**
      * METODO QUE CREA UN DEPARTAMENTO A PARTIR DE LOS DATOS DE MYSQL
+     *
      * @param rs
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     private Departamento crearDepartamento(final ResultSet rs) throws SQLException {
-       return new Departamento(rs.getInt("iddepartamento"),rs.getString("codDepartamento"),rs.getString("nombre"),rs.getInt("idJefe"));
+        return new Departamento(rs.getInt("iddepartamento"), rs.getString("codDepartamento"), rs.getString("nombre"), rs.getInt("idJefe"));
     }
 
 }

@@ -4,11 +4,13 @@
  */
 package com.mycompany.actividadextraescolar;
 
+import java.util.Objects;
+
 /**
  *
  * @author atres
  */
-public class Departamento {
+public class Departamento implements Comparable<Departamento> {
     public int idDepartamento;
     private String codigoDepartamento;
     private String nombre;
@@ -39,9 +41,7 @@ public class Departamento {
         this.nombre = nombre;
         this.idJefe = idJefe;
     }
-    
-    
-    
+       
  /**
   * METODOS GET Y SET
   * @return 
@@ -75,6 +75,37 @@ public class Departamento {
     public void setIdJefe(int idJefe) {
         this.idJefe = idJefe;
     }
+
+    /**
+     * METODO EQUALS Y HASHCODE
+     * @return 
+     */
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.idDepartamento;
+        hash = 97 * hash + Objects.hashCode(this.nombre);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Departamento other = (Departamento) obj;
+        if (this.idDepartamento != other.idDepartamento) {
+            return false;
+        }
+        return Objects.equals(this.nombre, other.nombre);
+    }
+    
     
     
 /**
@@ -84,6 +115,11 @@ public class Departamento {
     @Override
     public String toString() {
         return "Departamento{" + "idDepartamento=" + idDepartamento + ", codigoDepartamento=" + codigoDepartamento + ", nombre=" + nombre + ", idJefe=" + idJefe + '}';
+    }
+
+    @Override
+    public int compareTo(Departamento o) {
+        return Integer.compare(this.getIdDepartamento(), o.getIdDepartamento());
     }
     
     

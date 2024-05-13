@@ -4,11 +4,13 @@
  */
 package com.mycompany.actividadextraescolar;
 
+import java.util.Objects;
+
 /**
  *
  * @author atres
  */
-public class Grupo {
+public class Grupo implements Comparable<Grupo>{
     private int idGrupo;
     private String codGrupo;
     private int idcurso;
@@ -70,6 +72,41 @@ public class Grupo {
     public boolean isActivo() {
         return activo;
     }
+
+    /**
+     * METODOS EQUALS Y HASHCODE
+     * @return 
+     */
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + this.idGrupo;
+        hash = 41 * hash + Objects.hashCode(this.codGrupo);
+        hash = 41 * hash + this.idcurso;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Grupo other = (Grupo) obj;
+        if (this.idGrupo != other.idGrupo) {
+            return false;
+        }
+        if (this.idcurso != other.idcurso) {
+            return false;
+        }
+        return Objects.equals(this.codGrupo, other.codGrupo);
+    }
+    
     
     /**
      * METODO QUE DEVUELVE LA INFORMACIÓN DE UN GRUPO
@@ -78,6 +115,11 @@ public class Grupo {
     @Override
     public String toString() {
         return "Grupo{" + "idGrupo=" + idGrupo + ", codGrupo=" + codGrupo + ", idcurso=" + idcurso + ", numeroAlumnos=" + numeroAlumnos + ", activo=" + activo + '}';
+    }
+
+    @Override
+    public int compareTo(Grupo o) {
+        return Integer.compare(this.idGrupo, o.getIdGrupo());
     }
 
     
