@@ -151,6 +151,6 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
      * @throws SQLException 
      */
     private Grupo crearGrupo(ResultSet rs) throws SQLException {
-        return new Grupo(rs.getInt("codGrupo"), rs.getString("fk_curso"), rs.getInt("numAlumnos"), rs.getInt("idGrupo"), rs.getBoolean("activo"));
+        return new Grupo( rs.getInt("idGrupo"),rs.getString("codGrupo"), rs.getInt("fk_curso"), rs.getInt("numAlumnos"), rs.getBoolean("activo"));
     }
 }

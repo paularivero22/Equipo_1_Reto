@@ -47,6 +47,18 @@ public class Grupo implements Comparable<Grupo>{
         this.numeroAlumnos = numeroAlumnos;
         this.activo = activo;
     }
+    /**
+     * CONSTRUCTOR POR PARAMETROS QUE NO TIENE IDGRUPO NI IDCURSO
+     * @param codGrupo
+     * @param numeroAlumnos
+     * @param activo 
+     */
+    public Grupo(String codGrupo, int numeroAlumnos, boolean activo) {
+        this.codGrupo = codGrupo;
+        this.numeroAlumnos = numeroAlumnos;
+        this.activo = activo;
+    }
+    
     
     /**
      * METODOS GET Y SET

@@ -24,6 +24,7 @@ public class Swing extends javax.swing.JFrame {
     private SolicitudesDAO solicitud;
     private CursosDAO cursos;
     private Curso cursoAux;
+    private GruposDAO metodosGrupo;
     private Departamento departamentoAux;
     private DepartamentoDAO metodosdepartamento;
     private Solicitud solicitudAux;
@@ -40,6 +41,7 @@ public class Swing extends javax.swing.JFrame {
         tabla = new DefaultTableModel();
         solicitud = new SolicitudesDAO();
         metodosdepartamento = new DepartamentoDAO();
+        metodosGrupo = new GruposDAO();
         cursos = new CursosDAO();
     }
 
@@ -103,6 +105,22 @@ public class Swing extends javax.swing.JFrame {
             ob[2] = curso.getDescripcion();
             ob[3] = curso.getEtapa();
             ob[4] = curso.isActivo();
+            tabla.addRow(ob);
+        }
+        tabla1.setModel(tabla);
+    }
+    
+    private void insertarTablaGrupos(SortedSet<Grupo> lista, JTable tabla1) {
+        tabla = (DefaultTableModel) tabla1.getModel();
+        Object[] ob = new Object[5];
+        Iterator<Grupo> it = lista.iterator();
+        while (it.hasNext()) {
+            Grupo grupo = it.next();
+            ob[0] = grupo.getIdGrupo();
+            ob[1] = grupo.getCodGrupo();
+            ob[2] = grupo.getIdcurso();
+            ob[3] = grupo.getNumeroAlumnos();
+            ob[4] = grupo.isActivo();
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -236,6 +254,8 @@ public class Swing extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
         ModificarGrupo = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -744,22 +764,38 @@ public class Swing extends javax.swing.JFrame {
         CrearGrupo.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, -1));
 
         jButton9.setText("Crear");
-        CrearGrupo.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        CrearGrupo.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Grupo", "Codigo Grupo", "Curso", "Numero alumnos", "activo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane6.setViewportView(jTable1);
 
-        CrearGrupo.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 147, 600, 280));
+        CrearGrupo.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 207, 600, 220));
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO1", "ESO2", "ESO3", "ESO4", "BCH1", "BCH2", "FM1", "FM2", "MV1", "MV2", "CAR1", "CAR2", "EVA1", "EVA2", "SMR1", "SMR2", "AF1", "AF2", "DAM1", "DAM2", "DAW1", "DAW2", "DFM1", "DFM2" }));
+        CrearGrupo.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+
+        jLabel20.setText("Curso");
+        CrearGrupo.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
 
         getContentPane().add(CrearGrupo, "card9");
 
@@ -2117,6 +2153,27 @@ public class Swing extends javax.swing.JFrame {
         departamentoAux = metodosdepartamento.buscarPor(valor1);
     }//GEN-LAST:event_jTable5MouseClicked
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        GruposDAO grupos= new GruposDAO();
+        String codGrupo= jTextField11.getText();
+        int numAlumnos = Integer.parseInt(jTextField12.getText());
+        
+        
+        String curso= jComboBox8.getSelectedItem().toString();
+        Curso cursoencontrado= cursos.buscarPor(curso);
+       
+        int idCurso= cursoencontrado.getIdCurso();
+        Grupo grupo = new Grupo(codGrupo,idCurso,numAlumnos,true);
+        
+        grupos.insertar(grupo);
+        
+        SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
+        limpiarTabla();
+        insertarTablaGrupos(listaGrupo, jTable1);
+        //Y asigno el jTable al atributo tabla
+        jTable1.setModel(tabla);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2232,6 +2289,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2244,6 +2302,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
