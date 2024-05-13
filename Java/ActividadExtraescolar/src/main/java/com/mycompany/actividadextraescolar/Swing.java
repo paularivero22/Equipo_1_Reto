@@ -26,6 +26,8 @@ public class Swing extends javax.swing.JFrame {
     private Curso cursoAux;
     private GruposDAO metodosGrupo;
     private Grupo grupoAux;
+    private Profesor profesorAux;
+    private ProfesorDAO Profesor;
     private Departamento departamentoAux;
     private DepartamentoDAO metodosdepartamento;
     private Solicitud solicitudAux;
@@ -43,6 +45,8 @@ public class Swing extends javax.swing.JFrame {
         solicitud = new SolicitudesDAO();
         metodosdepartamento = new DepartamentoDAO();
         metodosGrupo = new GruposDAO();
+        profesorAux = new Profesor();
+        Profesor = new ProfesorDAO();
         cursos = new CursosDAO();
     }
 
@@ -122,6 +126,26 @@ public class Swing extends javax.swing.JFrame {
             ob[2] = grupo.getIdcurso();
             ob[3] = grupo.getNumeroAlumnos();
             ob[4] = grupo.isActivo();
+            tabla.addRow(ob);
+        }
+        tabla1.setModel(tabla);
+    }
+    
+    private void insertarTablaProfesor(SortedSet<Profesor> lista, JTable tabla1) {
+        tabla = (DefaultTableModel) tabla1.getModel();
+        Object[] ob = new Object[9];
+        Iterator<Profesor> it = lista.iterator();
+        while (it.hasNext()) {
+            Profesor profesor = it.next();
+            ob[0] = profesor.getIdProfesor();
+            ob[1] = profesor.getIdDepartamento();
+            ob[2] = profesor.getNombre();
+            ob[3] = profesor.getApellidos();
+            ob[4] = profesor.getDNI();
+            ob[5] = profesor.getCorreo();
+            ob[6] = profesor.isActivo();
+            ob[7] = profesor.getPerfil();
+            ob[8] = profesor.getContrasenia();
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -211,6 +235,7 @@ public class Swing extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jTable11 = new javax.swing.JTable();
         Crear = new javax.swing.JButton();
         ModificarProfesor = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -601,6 +626,25 @@ public class Swing extends javax.swing.JFrame {
             }
         });
         CrearProfesor.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 120, -1));
+
+        jTable11.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Profesor", "Departamento", "Nombre", "Apellidos", "DNI", "Correo", "Activo", "Perfil acceso", "contraseña"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable11);
+
         CrearProfesor.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 520, 50));
 
         Crear.setText("Crear");
@@ -1995,7 +2039,25 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        // TODO add your handling code here:
+        ProfesorDAO profesores = new ProfesorDAO();
+        String Nombre = jTextField1.getText();
+        String apellidos= jTextField3.getText();
+        String DNI= jTextField4.getText();
+        PerfilAcceso perfil = (PerfilAcceso) PerfilAcceso.valueOf(jComboBox1.getSelectedItem().toString());
+        String departamento = jComboBox2.getSelectedItem().toString();
+        Profesor profesorencontrado= profesores.buscarPor(DNI);
+        int idDepartamento = profesorencontrado.getIdDepartamento();
+        String correo = jTextField5.getText();
+        String contrasenia= profesorencontrado.getContrasenia();
+        Profesor profesor = new Profesor(idDepartamento,Nombre,apellidos,DNI,correo,true,perfil,contrasenia);
+
+        profesores.insertar(profesor);
+
+        SortedSet<Profesor> listaProfesor = Profesor.listar();
+        limpiarTabla();
+        insertarTablaProfesor(listaProfesor, jTable11);
+        //Y asigno el jTable al atributo tabla
+        jTable11.setModel(tabla);
     }//GEN-LAST:event_CrearActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2483,6 +2545,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable10;
+    private javax.swing.JTable jTable11;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
