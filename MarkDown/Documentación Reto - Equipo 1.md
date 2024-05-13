@@ -1763,7 +1763,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 - ### **Página "Galería"**<br>
 ![PaginaGaleria](./Imagenes/pagina%20galeria.png)
    - En esta página aparecerán todas las imagenes de las actividades y una descripción sobre ellas, tambien tendrán un icono para poder abrirlas en una pestaña nueva y verlas con su tamaño original 
-   - Al igual que en las otras páginas cuenta con un encabezado y pie de página 
+   - Al igual que en las otras páginas cuenta con un encabezado y pie de página <br>
 
 ## Java<a name="JV"></a>
 ### 1. Diagrama de clases<a name="DIAG"></a>
