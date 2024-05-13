@@ -203,4 +203,16 @@ public class CursosDAO implements RepositorioDAO<Curso> {
         return new Curso(rs.getInt("idcurso"), rs.getString("codcurso"), rs.getString("descripcion"), Etapa.valueOf(rs.getString("etapa")), rs.getBoolean("activo"));
     }
 
+    @Override
+    public boolean verificarCredenciales(String correo, String contrasenia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean actualizarContraenia(String DNI, String nuevaContrasenia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+   
+
 }

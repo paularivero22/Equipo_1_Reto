@@ -22,18 +22,18 @@ import javax.swing.JTextField;
 public class ProfesorDAO implements RepositorioDAO<Profesor> {
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
-    
+
     /**
      * Lista todos los profesores
-     * @return 
+     *
+     * @return
      */
-
     @Override
     public SortedSet<Profesor> listar() {
         SortedSet<Profesor> listaProfesor = new TreeSet<>();
@@ -54,10 +54,10 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
 
     /**
      * Metodo que busca un profesor mediante su DNI
+     *
      * @param filtro
-     * @return 
+     * @return
      */
-    
     @Override
     public Profesor buscarPor(String filtro) {
         Profesor profesor = null;
@@ -74,9 +74,11 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
         return profesor;
     }
+
     /**
-    * Metodo que elimina un profesor por su dni
-    * @param filtro 
+     * Metodo que elimina un profesor por su dni
+     *
+     * @param filtro
      */
     @Override
     public void eliminarPor(String filtro) {
@@ -96,11 +98,11 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
     }
 
-    /** Metodo que inserta un profesor a la bd
-     * 
+    /**
+     * Metodo que inserta un profesor a la bd
+     *
      * @param p
      */
- 
     @Override
     public void insertar(Profesor p) {
         String sql = "INSERT into profesor(idProfesor,nombre,apellidos,DNI,perfilAcceso,fk_departamento,correo,activo,contraseña)VALUES(?,?,?,?,?,?,?,?,?)";
@@ -126,18 +128,19 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
     }
 
     /**
-     *METODO QUE ACTUALIZA UN DATO ESPECIFICO A UN NUEVO VALOR
+     * METODO QUE ACTUALIZA UN DATO ESPECIFICO A UN NUEVO VALOR
+     *
      * @param atributo
      * @param dni
      * @param valorNuevo
      */
     @Override
-    public void actualizar(String atributo,String dni,JTextField valorNuevo) {
+    public void actualizar(String atributo, String dni, JTextField valorNuevo) {
         Profesor p = buscarPor(dni);
-        String sql = "UPDATE profesor SET "+atributo+"=? WHERE DNI=?";
+        String sql = "UPDATE profesor SET " + atributo + "=? WHERE DNI=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-           stmt.setObject(1, valorNuevo.getText());
-           stmt.setString(2, dni);
+            stmt.setObject(1, valorNuevo.getText());
+            stmt.setString(2, dni);
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha modificado el registro");
@@ -149,8 +152,9 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
     }
 
-    /**Metodo que recorre y muestra los datos todos los profesores;
-     * 
+    /**
+     * Metodo que recorre y muestra los datos todos los profesores;
+     *
      */
     public void mostrarTodosProfesores() {
         SortedSet<Profesor> listaProfesor = listar();
@@ -159,14 +163,60 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
     }
 
+    public boolean verificarCredenciales(String contraseña, String correo) {
+        String consulta = "SELECT COUNT(*) AS total FROM Profesor WHERE correo = ? AND contraseña = ?";
+
+        try (PreparedStatement statement = AccesoBaseDatos.getInstance().getConn().prepareStatement(consulta)) {
+            statement.setString(1, correo);
+            statement.setString(2, contraseña);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                int total = resultSet.getInt("total");
+                return total > 0; // Devuelve true si hay al menos una fila coincidente
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return false; // Si ocurre algún error o no hay coincidencias
+    }
+
     /**
      * METODO QUE CREA UN PROFESOR RECOGIENDO LOS DATOS DE MYSQL
+     *
      * @param rs
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     private Profesor crearProfesor(final ResultSet rs) throws SQLException {
         return new Profesor(rs.getInt("idProfesor"), rs.getInt("fk_departamento"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("DNI"), rs.getString("correo"), rs.getBoolean("activo"), PerfilAcceso.valueOf(rs.getString("perfilAcceso")), rs.getString("contraseña"));
+    }
+
+    @Override
+    public boolean actualizarContraenia(String DNI, String nuevaContrasenia) {
+        String consulta = "UPDATE Profesor SET contraseña = ? WHERE DNI = ?";
+
+        try (PreparedStatement statement = AccesoBaseDatos.getInstance().getConn().prepareStatement(consulta)) {
+            statement.setString(1, nuevaContrasenia);
+            statement.setString(2, DNI);
+
+            int filasActualizadas = statement.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                // La contraseña se actualizó correctamente
+                System.out.println("Contraseña actualizada para el profesor con DNI: " + DNI);
+                return true;
+            } else {
+                // No se pudo actualizar la contraseña
+                System.out.println("No se pudo actualizar la contraseña para el profesor con DNI: " + DNI);
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
 }
