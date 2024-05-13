@@ -783,7 +783,7 @@ public class Swing extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -792,7 +792,7 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jTable1);
 
-        CrearGrupo.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 207, 600, 220));
+        CrearGrupo.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 207, 650, 220));
 
         jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO1", "ESO2", "ESO3", "ESO4", "BCH1", "BCH2", "FM1", "FM2", "MV1", "MV2", "CAR1", "CAR2", "EVA1", "EVA2", "SMR1", "SMR2", "AF1", "AF2", "DAM1", "DAM2", "DAW1", "DAW2", "DFM1", "DFM2" }));
         CrearGrupo.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
@@ -2184,7 +2184,7 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable5MouseClicked
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        GruposDAO grupos = new GruposDAO();
+
         String codGrupo = jTextField11.getText();
         int numAlumnos = Integer.parseInt(jTextField12.getText());
 
@@ -2194,7 +2194,7 @@ public class Swing extends javax.swing.JFrame {
         int idCurso = cursoencontrado.getIdCurso();
         Grupo grupo = new Grupo(codGrupo, idCurso, numAlumnos, true);
 
-        grupos.insertar(grupo);
+        metodosGrupo.insertar(grupo);
 
         SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
         limpiarTabla();

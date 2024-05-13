@@ -131,7 +131,7 @@ public class Grupo implements Comparable<Grupo>{
 
     @Override
     public int compareTo(Grupo o) {
-        return Integer.compare(this.idGrupo, o.getIdGrupo());
+        return this.getCodGrupo().compareTo(o.getCodGrupo());
     }
 
     

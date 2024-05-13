@@ -77,7 +77,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`grupoAlumnos` (
   `codGrupo` VARCHAR(10) NOT NULL,
-  `fk_curso` INT(10) NOT NULL,
+  `fk_curso` INT NOT NULL,
   `numAlumnos` VARCHAR(45) NOT NULL,
   `activo` TINYINT NOT NULL,
   `idGrupo` INT NOT NULL auto_increment,
