@@ -2273,7 +2273,7 @@ public class Swing extends javax.swing.JFrame {
         MenuInicio.setVisible(true);
     } else {
         // Si las credenciales no son válidas, mostrar un mensaje de error
-        JOptionPane.showMessageDialog(this, "Correo electrónico o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Correo Electrónico o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_iniciarsesionMouseClicked
 
