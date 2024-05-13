@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class ActividadExtraescolar {
     public static void main(String[] args) {
-      
+      cargarArchivos();
     }
     /**
      * Metodo estatico para cargar los csv a bd

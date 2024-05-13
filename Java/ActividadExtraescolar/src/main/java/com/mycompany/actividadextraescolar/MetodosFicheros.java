@@ -47,7 +47,7 @@ public class MetodosFicheros {
                     int idCurso = Integer.parseInt(datoslinea[0]);
                     String codCurso = datoslinea[1];
                     String descripcion = datoslinea[2];
-                    Etapa etapa = Etapa.valueOf(datoslinea[3]);
+                    Etapa etapa = Etapa.valueOf(datoslinea[3].toUpperCase());
                     boolean activo = formateoBoolean(datoslinea[4]);
 
                     Curso c = new Curso(idCurso, codCurso, descripcion, etapa, activo);

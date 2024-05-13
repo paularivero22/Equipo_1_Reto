@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Solicitud` (
   `fechaFinal` DATE NOT NULL,
   `totalParticipantes` INT NOT NULL,
   `comenAlojamiento` VARCHAR(45) NULL,
+  `estado` ENUM('SOLICITADA','APROBADA','DENEGADA','REALIZADA') NOT NULL,
   PRIMARY KEY (`idActividad`),
   UNIQUE INDEX `profesor_UNIQUE` (`profesor` ASC) VISIBLE,
   UNIQUE INDEX `Departamento_UNIQUE` (`Departamento` ASC) VISIBLE)
