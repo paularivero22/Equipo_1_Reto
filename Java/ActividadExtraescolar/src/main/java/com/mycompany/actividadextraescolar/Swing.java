@@ -262,11 +262,13 @@ public class Swing extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jTextField13 = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
-        jScrollPane8 = new javax.swing.JScrollPane();
         jLabel26 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTable10 = new javax.swing.JTable();
         DeshabilitarGrupo = new javax.swing.JPanel();
         jLabel58 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
@@ -477,7 +479,7 @@ public class Swing extends javax.swing.JFrame {
                 .addComponent(jLabel63)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(restablecerBoton)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         getContentPane().add(Login, "card19");
@@ -812,16 +814,64 @@ public class Swing extends javax.swing.JFrame {
         ModificarGrupo.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 140, -1));
 
         jButton10.setText("Buscar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
         ModificarGrupo.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
-        ModificarGrupo.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 460, 40));
 
         jLabel26.setText("Número de Alumnos: ");
-        ModificarGrupo.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
-        ModificarGrupo.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
+        ModificarGrupo.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        ModificarGrupo.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
 
         jButton11.setText("Cambiar");
-        ModificarGrupo.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
-        ModificarGrupo.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 500, 50));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        ModificarGrupo.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Grupo", "Codigo Grupo", "Curso", "Numero Alumnos", "Activo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane9.setViewportView(jTable3);
+
+        ModificarGrupo.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 500, 50));
+
+        jTable10.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Grupo", "Codigo Grupo", "Curso", "Numero alumnos", "Activo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane12.setViewportView(jTable10);
+
+        ModificarGrupo.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 410, 70));
 
         getContentPane().add(ModificarGrupo, "card10");
 
@@ -893,7 +943,7 @@ public class Swing extends javax.swing.JFrame {
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton23)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         getContentPane().add(DeshabilitarGrupo, "card18");
@@ -2216,6 +2266,26 @@ public class Swing extends javax.swing.JFrame {
         cursos.actualizarActivo(valorABuscar, false);
     }//GEN-LAST:event_jButton23ActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
+        limpiarTabla();
+        insertarTablaGrupos(listaGrupo, jTable10);
+        //Y asigno el jTable al atributo tabla
+        jTable10.setModel(tabla);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        String atributo = jTextField14.getText();
+        String valorABuscar = String.valueOf(grupoAux.getNumeroAlumnos());
+        metodosGrupo.actualizar(atributo, valorABuscar, jTextField14);
+        
+        SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
+        limpiarTabla();
+        insertarTablaGrupos(listaGrupo, jTable3);
+        //Y asigno el jTable al atributo tabla
+        jTable3.setModel(tabla);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2398,6 +2468,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane17;
@@ -2409,10 +2480,11 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
