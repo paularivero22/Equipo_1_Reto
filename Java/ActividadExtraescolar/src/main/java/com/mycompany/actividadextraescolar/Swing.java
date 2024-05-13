@@ -25,6 +25,7 @@ public class Swing extends javax.swing.JFrame {
     private CursosDAO cursos;
     private Curso cursoAux;
     private GruposDAO metodosGrupo;
+    private Grupo grupoAux;
     private Departamento departamentoAux;
     private DepartamentoDAO metodosdepartamento;
     private Solicitud solicitudAux;
@@ -109,7 +110,7 @@ public class Swing extends javax.swing.JFrame {
         }
         tabla1.setModel(tabla);
     }
-    
+
     private void insertarTablaGrupos(SortedSet<Grupo> lista, JTable tabla1) {
         tabla = (DefaultTableModel) tabla1.getModel();
         Object[] ob = new Object[5];
@@ -270,8 +271,10 @@ public class Swing extends javax.swing.JFrame {
         jLabel58 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
         jTextField36 = new javax.swing.JTextField();
-        jScrollPane18 = new javax.swing.JScrollPane();
         jButton23 = new javax.swing.JButton();
+        jButton26 = new javax.swing.JButton();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
         CrearDepartamento = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -438,7 +441,7 @@ public class Swing extends javax.swing.JFrame {
                     .addGroup(LoginLayout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(jLabel62)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,7 +477,7 @@ public class Swing extends javax.swing.JFrame {
                 .addComponent(jLabel63)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(restablecerBoton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         getContentPane().add(Login, "card19");
@@ -827,6 +830,28 @@ public class Swing extends javax.swing.JFrame {
         jLabel59.setText("Nombre Grupo:");
 
         jButton23.setText("Deshabilitar");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+
+        jButton26.setText("Buscar");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Grupo", "Codigo Grupo", "Curso", "Numero Alumnos", "Activo"
+            }
+        ));
+        jScrollPane11.setViewportView(jTable4);
 
         javax.swing.GroupLayout DeshabilitarGrupoLayout = new javax.swing.GroupLayout(DeshabilitarGrupo);
         DeshabilitarGrupo.setLayout(DeshabilitarGrupoLayout);
@@ -835,20 +860,24 @@ public class Swing extends javax.swing.JFrame {
             .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
                 .addGroup(DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jLabel58))
+                        .addGroup(DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
+                                .addGap(227, 227, 227)
+                                .addComponent(jLabel58))
+                            .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(jLabel59)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton26))
+                    .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(jButton23))
                     .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jLabel59)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(jButton23)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         DeshabilitarGrupoLayout.setVerticalGroup(
             DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -858,12 +887,13 @@ public class Swing extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel59)
-                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton26))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton23)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         getContentPane().add(DeshabilitarGrupo, "card18");
@@ -2013,7 +2043,7 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        String nombre=departamentoAux.getNombre();
+        String nombre = departamentoAux.getNombre();
         metodosdepartamento.eliminarPor(nombre);
     }//GEN-LAST:event_jButton16ActionPerformed
 
@@ -2144,7 +2174,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void jTable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MouseClicked
         // TODO add your handling code here:
-         int filaSeleccionada = jTable5.getSelectedRow();
+        int filaSeleccionada = jTable5.getSelectedRow();
         //Cargo la tabla
         tabla = (DefaultTableModel) jTable5.getModel();
         //Obtengo el valor del indice que utilizo para buscar una solicitud
@@ -2154,25 +2184,37 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable5MouseClicked
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        GruposDAO grupos= new GruposDAO();
-        String codGrupo= jTextField11.getText();
+        GruposDAO grupos = new GruposDAO();
+        String codGrupo = jTextField11.getText();
         int numAlumnos = Integer.parseInt(jTextField12.getText());
-        
-        
-        String curso= jComboBox8.getSelectedItem().toString();
-        Curso cursoencontrado= cursos.buscarPor(curso);
-       
-        int idCurso= cursoencontrado.getIdCurso();
-        Grupo grupo = new Grupo(codGrupo,idCurso,numAlumnos,true);
-        
+
+        String curso = jComboBox8.getSelectedItem().toString();
+        Curso cursoencontrado = cursos.buscarPor(curso);
+
+        int idCurso = cursoencontrado.getIdCurso();
+        Grupo grupo = new Grupo(codGrupo, idCurso, numAlumnos, true);
+
         grupos.insertar(grupo);
-        
+
         SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
         limpiarTabla();
         insertarTablaGrupos(listaGrupo, jTable1);
         //Y asigno el jTable al atributo tabla
         jTable1.setModel(tabla);
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
+        limpiarTabla();
+        insertarTablaGrupos(listaGrupo, jTable4);
+        jTable4.setModel(tabla);
+    }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        String valorABuscar = grupoAux.getCodGrupo();
+        Curso c = cursos.buscarPor(valorABuscar);
+        cursos.actualizarActivo(valorABuscar, false);
+    }//GEN-LAST:event_jButton23ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2270,6 +2312,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2354,10 +2397,10 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane17;
-    private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
@@ -2370,6 +2413,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
