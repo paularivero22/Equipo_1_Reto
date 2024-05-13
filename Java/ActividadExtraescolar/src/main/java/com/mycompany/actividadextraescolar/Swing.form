@@ -1207,7 +1207,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="207" width="600" height="220"/>
+              <AbsoluteConstraints x="0" y="207" width="650" height="220"/>
             </Constraint>
           </Constraints>
 
@@ -1220,7 +1220,7 @@
                     <Column editable="false" title="Grupo" type="java.lang.Object"/>
                     <Column editable="false" title="Codigo Grupo" type="java.lang.Object"/>
                     <Column editable="false" title="Curso" type="java.lang.Object"/>
-                    <Column editable="true" title="Numero alumnos" type="java.lang.Object"/>
+                    <Column editable="false" title="Numero alumnos" type="java.lang.Object"/>
                     <Column editable="false" title="activo" type="java.lang.Object"/>
                   </Table>
                 </Property>
