@@ -38,12 +38,13 @@
 .ViajesMain,
 .ClasesMain {
     display: flex;
-    width: 70%;
+    width: 95%;
     margin: 20px;
     padding: 20px;
 
     background-color: #f4f4f4;
     border-radius: 10px;
+    border: solid black;
 }
 
 .ViajesMain th,
@@ -53,8 +54,38 @@
     display: flexbox;
     padding: 20px;
     text-align: left;
-    max-width: 10%;
+    width: auto;
 }
+
+.ViajesMain td:first-child,
+.ViajesMain th:first-child,
+.ClasesMain td:first-child,
+.ClasesMain th:first-child {
+    width: 250px; 
+}
+
+
+.ViajesMain td:nth-child(7),
+.ViajesMain th:nth-child(7),
+.ClasesMain td:nth-child(7),
+.ClasesMain th:nth-child(7) {
+    width: 180px; 
+}
+
+.ViajesMain td:nth-child(3),
+.ViajesMain th:nth-child(3),
+.ClasesMain td:nth-child(3),
+.ClasesMain th:nth-child(3) {
+    width: 155px; 
+}
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 1500px) {
 
