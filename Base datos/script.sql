@@ -77,14 +77,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`grupoAlumnos` (
   `codGrupo` VARCHAR(10) NOT NULL,
-  `fk_curso` VARCHAR(10) NOT NULL,
+  `fk_curso` INT(10) NOT NULL,
   `numAlumnos` VARCHAR(45) NOT NULL,
   `activo` TINYINT NOT NULL,
   `idGrupo` INT NOT NULL auto_increment,
   PRIMARY KEY (`idGrupo`),
   CONSTRAINT `fk_curso`
     FOREIGN KEY (`fk_curso`)
-    REFERENCES `mydb`.`curso` (`codcurso`)
+    REFERENCES `mydb`.`curso` (`idcurso`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

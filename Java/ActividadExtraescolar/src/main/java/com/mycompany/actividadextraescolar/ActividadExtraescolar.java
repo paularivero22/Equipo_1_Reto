@@ -5,6 +5,7 @@
 package com.mycompany.actividadextraescolar;
 
 import java.util.List;
+import java.util.SortedSet;
 
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class ActividadExtraescolar {
     public static void main(String[] args) {
-      cargarArchivos();
+     
     }
     /**
      * Metodo estatico para cargar los csv a bd
