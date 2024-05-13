@@ -48,7 +48,7 @@ public class Swing extends javax.swing.JFrame {
         SortedSet<Departamento> lista = metodosdepartamento.listar();
         for (Departamento d : lista) {
             // jComboBox9.addItem(d.getNombre());
-            jComboBox8.addItem(d.getNombre());
+            //jComboBox8.addItem(d.getNombre());
             jComboBox11.addItem(d.getNombre());
         }
     }
