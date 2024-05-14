@@ -2453,6 +2453,7 @@ public class Swing extends javax.swing.JFrame {
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(false);
+        
     }//GEN-LAST:event_EliminarCursoMenuActionPerformed
 
     private void crearGrupoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearGrupoMenuActionPerformed
