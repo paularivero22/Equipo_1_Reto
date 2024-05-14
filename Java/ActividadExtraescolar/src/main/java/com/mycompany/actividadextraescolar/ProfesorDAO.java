@@ -61,9 +61,29 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
     @Override
     public Profesor buscarPor(String filtro) {
         Profesor profesor = null;
-        String sql = "SELECT * FROM profesor WHERE DNI=?";
+        String sql = "SELECT * FROM profesor WHERE correo=?";
         try (PreparedStatement pst = getConnection().prepareStatement(sql);) {
             pst.setString(1, filtro);
+            try (ResultSet rs = pst.executeQuery();) {
+                if (rs.next()) {
+                    profesor = crearProfesor(rs);
+                }
+            }
+        } catch (SQLException s) {
+            System.out.println(s.getMessage());
+        }
+        return profesor;
+    }
+  /**
+   * METODO QUE BUSCA UN PROFESOR POR DNI
+   * @param valorAbuscar
+   * @return 
+   */  
+     public Profesor buscarPorDNI(String valorAbuscar) {
+        Profesor profesor = null;
+        String sql = "SELECT * FROM profesor WHERE DNI=?";
+        try (PreparedStatement pst = getConnection().prepareStatement(sql);) {
+            pst.setString(1, valorAbuscar);
             try (ResultSet rs = pst.executeQuery();) {
                 if (rs.next()) {
                     profesor = crearProfesor(rs);

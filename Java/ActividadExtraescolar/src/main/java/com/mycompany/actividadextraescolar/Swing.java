@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Iterator;
 import java.util.SortedSet;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +30,10 @@ public class Swing extends javax.swing.JFrame {
     private Departamento departamentoAux;
     private DepartamentoDAO metodosdepartamento;
     private Solicitud solicitudAux;
+    private ActividadProgramadaDAO metodosprogramada;
+    private ActividadProgramada prograux;
+    private String correoLogin;
+    private String contralogin;
 
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
@@ -44,6 +49,7 @@ public class Swing extends javax.swing.JFrame {
         metodosdepartamento = new DepartamentoDAO();
         metodosGrupo = new GruposDAO();
         cursos = new CursosDAO();
+        metodosprogramada = new ActividadProgramadaDAO();
     }
 
     private void cargarItemsDepartamento() {
@@ -76,14 +82,12 @@ public class Swing extends javax.swing.JFrame {
             ob[5] = soli.getIddepartamento();
             ob[6] = soli.getTitulo();
             ob[7] = soli.getTipoSolicitud();
-            ob[8] = soli.isMedioTransporte();
-            ob[9] = soli.getIdprofesor();
-            ob[10] = soli.isAlojamiento();
-            ob[11] = soli.getFechaInicio();
-            ob[12] = soli.getFechaFinal();
-            ob[13] = soli.getTotalParticipantes();
-            ob[14] = soli.getComentarioAlojamiento();
-            ob[15] = soli.getEstado();
+            ob[8] = soli.getIdprofesor();
+            ob[9] = soli.isAlojamiento();
+            ob[10] = soli.getFechaInicio();
+            ob[11] = soli.getFechaFinal();
+            ob[12] = soli.getTotalParticipantes();
+            ob[13] = soli.getEstado();
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -142,6 +146,33 @@ public class Swing extends javax.swing.JFrame {
         tabla1.setModel(tabla);
     }
 
+    private void insertarTablaProgramadas(SortedSet<ActividadProgramada> lista, JTable tabla1) {
+        tabla = (DefaultTableModel) tabla1.getModel();
+        Object[] ob = new Object[16];
+        Iterator<ActividadProgramada> it = lista.iterator();
+        while (it.hasNext()) {
+            ActividadProgramada soli = it.next();
+            ob[0] = soli.getIdSolicitud();
+            ob[1] = soli.estado;
+            ob[2] = soli.getComentario();
+            ob[3] = soli.horaInicio;
+            ob[4] = soli.horaFinal;
+            ob[5] = soli.isPrevista();
+            ob[6] = soli.getIddepartamento();
+            ob[7] = soli.getTitulo();
+            ob[8] = soli.getTipoSolicitud();
+            ob[9] = soli.isMedioTransporte();
+            ob[10] = soli.getIdprofesor();
+            ob[11] = soli.isAlojamiento();
+            ob[12] = soli.getFechaInicio();
+            ob[13] = soli.getFechaFinal();
+            ob[14] = soli.getTotalParticipantes();
+            ob[15] = soli.getComentarioFase();
+            tabla.addRow(ob);
+        }
+        tabla1.setModel(tabla);
+    }
+
     /**
      * Metodo que limpia la tabla
      */
@@ -163,7 +194,6 @@ public class Swing extends javax.swing.JFrame {
         jTextField27.setText("");
         jTextField28.setText("");
         jTextField25.setText("");
-        jCheckBox3.setSelected(false);
         jCheckBox2.setSelected(false);
         jCheckBox1.setSelected(false);
     }
@@ -324,7 +354,6 @@ public class Swing extends javax.swing.JFrame {
         jTextField27 = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
         jComboBox11 = new javax.swing.JComboBox<>();
         ConsultarSolicitudes = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
@@ -346,12 +375,9 @@ public class Swing extends javax.swing.JFrame {
         FasePreparacion = new javax.swing.JPanel();
         jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
-        jScrollPane17 = new javax.swing.JScrollPane();
         jComboBox7 = new javax.swing.JComboBox<>();
         jTextField30 = new javax.swing.JTextField();
         jButton22 = new javax.swing.JButton();
-        jLabel54 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
         MedioTransporte = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jTextField32 = new javax.swing.JTextField();
@@ -362,7 +388,10 @@ public class Swing extends javax.swing.JFrame {
         jLabel57 = new javax.swing.JLabel();
         jTextField35 = new javax.swing.JTextField();
         jButton19 = new javax.swing.JButton();
-        jScrollPane15 = new javax.swing.JScrollPane();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jButton27 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTable11 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         Contraseña = new javax.swing.JMenu();
         Profesores = new javax.swing.JMenu();
@@ -443,7 +472,7 @@ public class Swing extends javax.swing.JFrame {
                     .addGroup(LoginLayout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(jLabel62)))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -927,7 +956,7 @@ public class Swing extends javax.swing.JFrame {
                     .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         DeshabilitarGrupoLayout.setVerticalGroup(
             DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1174,9 +1203,6 @@ public class Swing extends javax.swing.JFrame {
         jCheckBox2.setText("Prevista");
         CrearSolicitud.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
 
-        jCheckBox3.setText("MedioTransporte");
-        CrearSolicitud.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
-
         jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
         CrearSolicitud.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 190, -1));
 
@@ -1201,11 +1227,11 @@ public class Swing extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "medioTransporte", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "comenAlojamiento", "Estado"
+                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, true, true, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1261,11 +1287,11 @@ public class Swing extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "medioTransporte", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "comenAlojamiento", "Estado"
+                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1303,25 +1329,18 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel53.setText("Solicitudes Aprobadas");
         FasePreparacion.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-        FasePreparacion.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 500, 40));
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HoraInicio", "HoraFinal", "FechaInicio", "FechaFinal", "Tipo", "Participantes", " " }));
-        FasePreparacion.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-        FasePreparacion.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 124, -1));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "horaInicio", "horaFin", "fechaInicio", "fechaFinal", "tipo", "totalParticipantes", "comenRealizada", " " }));
+        FasePreparacion.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
+        FasePreparacion.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 124, -1));
 
         jButton22.setText("Modificar");
-        FasePreparacion.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
-
-        jLabel54.setText("Medio Transporte");
-        FasePreparacion.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-
-        jRadioButton3.setText("Sí");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                jButton22ActionPerformed(evt);
             }
         });
-        FasePreparacion.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+        FasePreparacion.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, -1, -1));
 
         jLabel45.setText("Empresa:");
 
@@ -1376,11 +1395,54 @@ public class Swing extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        FasePreparacion.add(MedioTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 330, 80));
+        FasePreparacion.add(MedioTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 330, 80));
 
         jButton19.setText("Realizada");
-        FasePreparacion.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
-        FasePreparacion.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 430, 70));
+        FasePreparacion.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+
+        jCheckBox3.setText("MedioTransporte");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+        FasePreparacion.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+
+        jButton27.setText("Buscar");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
+        FasePreparacion.add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
+
+        jTable11.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "idSolicitud", "Estado", "comentario", "Hora de Inicio", "Hora Fin", "Prevista", "Departamento", "Titulo", "Tipo", "Medio De Transporte", "Profesor", "Alojamiento", "Fecha de Inicio", "Fecha de Fin", "Participantes", "comentarioFinal"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false, true, true, false, false, true, false, false, false, false, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable11MouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(jTable11);
+        if (jTable11.getColumnModel().getColumnCount() > 0) {
+            jTable11.getColumnModel().getColumn(11).setResizable(false);
+        }
+
+        FasePreparacion.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 400, 90));
 
         getContentPane().add(FasePreparacion, "card17");
 
@@ -1925,6 +1987,7 @@ public class Swing extends javax.swing.JFrame {
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(rootPaneCheckingEnabled);
+        MedioTransporte.setVisible(false);
     }//GEN-LAST:event_fasedepreparacionMenuActionPerformed
 
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
@@ -2111,12 +2174,11 @@ public class Swing extends javax.swing.JFrame {
         int departamento = metodosdepartamento.buscarPor(jComboBox11.getSelectedItem().toString()).getIdDepartamento();
         LocalTime horaInicio = LocalTime.parse(jTextField23.getText());
         LocalTime horaFin = LocalTime.parse(jTextField24.getText());
-        int profesor = metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
+        int profesor = metodosProfesor.buscarPorDNI(jTextField25.getText()).getIdProfesor();
         LocalDate fechaInicio = LocalDate.parse(jTextField26.getText());
         LocalDate fechaFin = LocalDate.parse(jTextField27.getText());
         int participantes = Integer.parseInt(jTextField28.getText());
         boolean prevista = false;
-        boolean medioTransporte = false;
         boolean alojamiento = false;
         if (jCheckBox2.isSelected()) {
             prevista = true;
@@ -2124,22 +2186,13 @@ public class Swing extends javax.swing.JFrame {
         if (jCheckBox1.isSelected()) {
             alojamiento = true;
         }
-        if (jCheckBox3.isSelected()) {
-            medioTransporte = true;
-        }
-
-        String comentAlojamiento = "";
         Estado estado = Estado.SOLICITADA;
 
-        Solicitud s = new Solicitud(horaInicio, horaFin, "", prevista, departamento, titulo, tipo, medioTransporte, profesor, alojamiento, fechaInicio, fechaFin, participantes, "", estado);
+        Solicitud s = new Solicitud(horaInicio, horaFin, "", prevista, departamento, titulo, tipo, profesor, alojamiento, fechaInicio, fechaFin, participantes, estado);
         metodosSolicitudes.insertar(s);
         limpiarCrearSolicitud();
 
     }//GEN-LAST:event_jButton17ActionPerformed
-
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
@@ -2191,6 +2244,8 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
         String titulo = solicitudAux.getTitulo();
         solicitud.actualizarEstado(titulo, "APROBADA");
+            ActividadProgramada ac = new ActividadProgramada(false, "", solicitudAux.idSolicitud, solicitudAux.horaInicio, solicitudAux.horaFinal, solicitudAux.comentario, solicitudAux.prevista, solicitudAux.iddepartamento, solicitudAux.titulo, solicitudAux.tipoSolicitud, solicitudAux.idprofesor, solicitudAux.Alojamiento, solicitudAux.fechaInicio, solicitudAux.fechaFinal, solicitudAux.totalParticipantes, solicitudAux.estado);
+            metodosprogramada.insertar(ac);
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
@@ -2278,13 +2333,50 @@ public class Swing extends javax.swing.JFrame {
         String atributo = jTextField14.getText();
         String valorABuscar = String.valueOf(grupoAux.getNumeroAlumnos());
         metodosGrupo.actualizar(atributo, valorABuscar, jTextField14);
-        
+
         SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
         limpiarTabla();
         insertarTablaGrupos(listaGrupo, jTable3);
         //Y asigno el jTable al atributo tabla
         jTable3.setModel(tabla);
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        // TODO add your handling code here:
+        String atributo = jComboBox7.getSelectedItem().toString();
+        String valorABuscar =prograux.titulo;
+        metodosprogramada.actualizar(atributo, valorABuscar, jTextField30);
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        // TODO add your handling code here:
+        SortedSet<ActividadProgramada> listaProgramada = metodosprogramada.listar();
+        limpiarTabla();
+        insertarTablaProgramadas(listaProgramada, jTable11);
+        //Y asigno el jTable al atributo tabla
+        jTable11.setModel(tabla);
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jTable11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable11MouseClicked
+        // TODO add your handling code here:
+        //Obtengo el índice de la fila que selecciono
+        int filaSeleccionada = jTable11.getSelectedRow();
+        //Cargo la tabla
+        DefaultTableModel tablaF = (DefaultTableModel) jTable11.getModel();
+        //Obtengo el valor del indice que utilizo para buscar una solicitud
+
+        String valor1 = tablaF.getValueAt(filaSeleccionada, 7).toString();
+        prograux = metodosprogramada.buscarPor(valor1);
+    }//GEN-LAST:event_jTable11MouseClicked
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        // TODO add your handling code here:
+        if(jCheckBox3.isSelected()){
+            MedioTransporte.setVisible(true);
+        }else{
+            MedioTransporte.setVisible(false);
+        }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2383,6 +2475,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2450,7 +2543,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
@@ -2464,14 +2556,11 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane15;
-    private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
@@ -2480,9 +2569,11 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable10;
+    private javax.swing.JTable jTable11;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
