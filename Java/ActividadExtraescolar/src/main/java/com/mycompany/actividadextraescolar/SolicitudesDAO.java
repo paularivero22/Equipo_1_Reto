@@ -16,6 +16,7 @@ import java.util.TreeSet;
 
 import javax.swing.JTextField;
 
+
 /**
  *
  * @author atres
@@ -28,8 +29,7 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
 
     /**
      * Lista las solicitudes solicitadas
-     *
-     * @return
+     * @return 
      */
     @Override
     public SortedSet<Solicitud> listar() {
@@ -51,9 +51,8 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
 
     /**
      * METODO QUE BUSCA UNA SOLICITUD POR TITULO
-     *
      * @param filtro
-     * @return
+     * @return 
      */
     @Override
     public Solicitud buscarPor(String filtro) {
@@ -74,8 +73,7 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
 
     /**
      * METODO QUE ELIMINA POR TITULO
-     *
-     * @param filtro
+     * @param filtro 
      */
     @Override
     public void eliminarPor(String filtro) {
@@ -97,12 +95,11 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
 
     /**
      * METODO QUE INSERTA UNA SOLICITUD A LA BASE DE DATOS
-     *
-     * @param t
+     * @param t 
      */
     @Override
     public void insertar(Solicitud t) {
-        String sql = "INSERT into Solicitud(idActividad,horaInicio,horaFin,comentarios,prevista,Departamento,titulo,tipo,profesor,alojamiento,fechaInicio,fechaFinal,totalParticipantes,estado)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT into Solicitud(idActividad,horaInicio,horaFin,comentarios,prevista,Departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFinal,totalParticipantes,comenAlojamiento,estado)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, t.getIdSolicitud());
             stmt.setTime(2, Time.valueOf(t.getHoraInicio()));
@@ -112,12 +109,14 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
             stmt.setInt(6, t.getIddepartamento());
             stmt.setString(7, t.getTitulo());
             stmt.setString(8, t.getTipoSolicitud().name());
-            stmt.setInt(9, t.getIdprofesor());
-            stmt.setBoolean(10, t.isAlojamiento());
-            stmt.setDate(11, Date.valueOf(t.getFechaInicio()));
-            stmt.setDate(12, Date.valueOf(t.getFechaFinal()));
-            stmt.setInt(13, t.getTotalParticipantes());
-            stmt.setString(14, t.getEstado().name());
+            stmt.setBoolean(9, t.isMedioTransporte());
+            stmt.setInt(10, t.getIdprofesor());
+            stmt.setBoolean(11, t.isAlojamiento());
+            stmt.setDate(12, Date.valueOf(t.getFechaInicio()));
+            stmt.setDate(13, Date.valueOf(t.getFechaFinal()));
+            stmt.setInt(14, t.getTotalParticipantes());
+            stmt.setString(15, t.getComentarioAlojamiento());
+            stmt.setString(16, t.getEstado().name());
 
             int salida = stmt.executeUpdate();
             if (salida != 1) {
@@ -131,8 +130,7 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
     }
 
     /**
-     * METODO QUE ACTUALIZA UN ATRIBUTO A UN VALOR NUEVO
-     *
+     *METODO QUE ACTUALIZA UN ATRIBUTO A UN VALOR NUEVO
      * @param atributo
      * @param valorABuscar
      * @param valorNuevo
@@ -166,10 +164,10 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
         Solicitud so = buscarPor(valorABuscar);
         String sql = "UPDATE solicitud SET estado=? WHERE titulo=?;";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-
-            if (estado.equalsIgnoreCase("APROBADA")) {
+            
+            if(estado.equalsIgnoreCase("APROBADA")){
                 so.setEstado(Estado.APROBADA);
-            } else if (estado.equalsIgnoreCase("DENEGADA")) {
+            }else if(estado.equalsIgnoreCase("DENEGADA")){
                 so.setEstado(Estado.DENEGADA);
             }
             stmt.setString(1, estado);
@@ -187,13 +185,25 @@ public class SolicitudesDAO implements RepositorioDAO<Solicitud> {
 
     /**
      * Metodo que crea una solicitud a partir de los datos en mysql
-     *
      * @param rs
      * @return
-     * @throws SQLException
+     * @throws SQLException 
      */
+
     private Solicitud crearSolicitud(final ResultSet rs) throws SQLException {
-        return new Solicitud(rs.getInt("idActividad"), rs.getTime("horaInicio").toLocalTime(), rs.getTime("horaFin").toLocalTime(), rs.getString("comentarios"), rs.getBoolean("prevista"), rs.getInt("Departamento"), rs.getString("titulo"), Tipo.valueOf(rs.getString("tipo")), rs.getInt("profesor"), rs.getBoolean("alojamiento"), rs.getDate("fechaInicio").toLocalDate(), rs.getDate("fechaFinal").toLocalDate(), rs.getInt("totalParticipantes"), Estado.valueOf(rs.getString("estado")));
+        return new Solicitud(rs.getInt("idActividad"), rs.getTime("horaInicio").toLocalTime(), rs.getTime("horaFin").toLocalTime(), rs.getString("comentarios"), rs.getBoolean("prevista"), rs.getInt("Departamento"), rs.getString("titulo"), Tipo.valueOf(rs.getString("tipo")), rs.getBoolean("medioTransporte"), rs.getInt("profesor"), rs.getBoolean("alojamiento"), rs.getDate("fechaInicio").toLocalDate(), rs.getDate("fechaFinal").toLocalDate(), rs.getInt("totalParticipantes"), rs.getString("comenAlojamiento"), Estado.valueOf(rs.getString("estado")));
     }
+
+    @Override
+    public boolean verificarCredenciales(String correo, String contrasenia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean actualizarContraenia(String DNI, String nuevaContrasenia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+   
 
 }

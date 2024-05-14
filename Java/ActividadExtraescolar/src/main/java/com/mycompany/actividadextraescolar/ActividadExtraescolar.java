@@ -1,12 +1,11 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.actividadextraescolar;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.SortedSet;
 
 
 /**
@@ -15,6 +14,7 @@ import java.util.SortedSet;
  */
 public class ActividadExtraescolar {
     public static void main(String[] args) {
+<<<<<<< HEAD
         SolicitudesDAO s=new SolicitudesDAO();
         ActividadProgramadaDAO metodosprogramada=new ActividadProgramadaDAO();
         SortedSet<Solicitud>lista=s.listar();
@@ -29,6 +29,9 @@ public class ActividadExtraescolar {
                 p=new ActividadProgramada(false,"",solicitudAux.idSolicitud,solicitudAux.getHoraInicio(),solicitudAux.getHoraFinal(),solicitudAux.comentario,solicitudAux.isPrevista(),solicitudAux.getIddepartamento(),solicitudAux.titulo,solicitudAux.tipoSolicitud,solicitudAux.idprofesor,solicitudAux.Alojamiento,solicitudAux.fechaInicio,solicitudAux.fechaFinal,solicitudAux.totalParticipantes,solicitudAux.estado);
                 metodosprogramada.insertar(p);   
         }*/
+=======
+      cargarArchivos();
+>>>>>>> master
     }
     /**
      * Metodo estatico para cargar los csv a bd
