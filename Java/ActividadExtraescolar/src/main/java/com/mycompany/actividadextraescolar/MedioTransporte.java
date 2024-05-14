@@ -8,32 +8,18 @@ package com.mycompany.actividadextraescolar;
  *
  * @author Usuario
  */
-public class MedioTransporte implements Comparable<MedioTransporte>{
+public class MedioTransporte {
     private int idTransporte;
-    private int idActividad;
-    private TipoTransporte tipo;
     private String comentario;
     private double importe;
-    private double kilometros;
-
-    public MedioTransporte(int idTransporte, int idActividad, TipoTransporte tipo, String comentario, double importe, double kilometros) {
-        this.idTransporte = idTransporte;
-        this.idActividad = idActividad;
-        this.tipo = tipo;
-        this.comentario = comentario;
-        this.importe = importe;
-        this.kilometros = kilometros;
-    }
-
-    public MedioTransporte(TipoTransporte tipo, String comentario, double importe, int kilometros) {
-        this.tipo = tipo;
-        this.comentario = comentario;
-        this.importe = importe;
-        this.kilometros = kilometros;
-    }
-
+    private String empresa;
     
-
+    public MedioTransporte(int idTransporte, String comentario, double importe, String empresa) {
+        this.idTransporte = idTransporte;
+        this.comentario = comentario;
+        this.importe = importe;
+        this.empresa = empresa;
+    }
 
     public int getIdTransporte() {
         return idTransporte;
@@ -59,47 +45,18 @@ public class MedioTransporte implements Comparable<MedioTransporte>{
         this.importe = importe;
     }
 
-    public int getIdActividad() {
-        return idActividad;
+    public String getEmpresa() {
+        return empresa;
     }
 
-    public void setIdActividad(int idActividad) {
-        this.idActividad = idActividad;
-    }
-
-    public TipoTransporte getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoTransporte tipo) {
-        this.tipo = tipo;
-    }
-
-    public double getKilometros() {
-        return kilometros;
-    }
-
-    public void setKilometros(int kilometros) {
-        this.kilometros = kilometros;
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 
     @Override
     public String toString() {
-        return "MedioTransporte{" + "idTransporte=" + idTransporte + ", idActividad=" + idActividad + ", tipo=" + tipo + ", comentario=" + comentario + ", importe=" + importe + ", kilometros=" + kilometros + '}';
+        return "Medio de Transporte{" + "Identificador=" + idTransporte + ", Descripción=" + comentario + ", Importe=" + importe + ", Empresa=" + empresa + '}';
     }
-
-   
-
-   
-
-    
-
-    @Override
-    public int compareTo(MedioTransporte o) {
-        return Integer.compare(this.idActividad, o.idActividad);
-    }
-
-    
      
            
 }

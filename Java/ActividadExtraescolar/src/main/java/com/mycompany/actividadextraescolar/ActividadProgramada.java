@@ -4,87 +4,41 @@
  */
 package com.mycompany.actividadextraescolar;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 /**
  *
  * @author Usuario
  */
-public class ActividadProgramada extends Solicitud{
+public class ActividadProgramada {
 
-    private boolean medioTransporte;
-    private String comentarioFase;
+    private int idActividad;
+    private String comentario;
+    
 
-    /**
-     * CONSTRUCTOR SIN IDSOLICITUD
-     * @param medioTransporte
-     * @param comentarioFase
-     * @param horaInicio
-     * @param horaFinal
-     * @param comentario
-     * @param prevista
-     * @param iddepartamento
-     * @param titulo
-     * @param tipoSolicitud
-     * @param idprofesor
-     * @param Alojamiento
-     * @param fechaInicio
-     * @param fechaFinal
-     * @param totalParticipantes
-     * @param estado 
-     */
-    public ActividadProgramada(boolean medioTransporte, String comentarioFase, LocalTime horaInicio, LocalTime horaFinal, String comentario, boolean prevista, int iddepartamento, String titulo, Tipo tipoSolicitud, int idprofesor, boolean Alojamiento, LocalDate fechaInicio, LocalDate fechaFinal, int totalParticipantes, Estado estado) {  
-        super(horaInicio, horaFinal, comentario, prevista, iddepartamento, titulo, tipoSolicitud, idprofesor, Alojamiento, fechaInicio, fechaFinal, totalParticipantes, estado);
-        this.medioTransporte = medioTransporte;
-        this.comentarioFase = comentarioFase;
+    public ActividadProgramada(int idActividad, String comentario) {
+        this.idActividad = idActividad;
+        this.comentario = comentario;
     }
 
-    /**
-     * CONSTRUCTOR CON IDSOLICITUD
-     * @param medioTransporte
-     * @param comentarioFase
-     * @param idSolicitud
-     * @param horaInicio
-     * @param horaFinal
-     * @param comentario
-     * @param prevista
-     * @param iddepartamento
-     * @param titulo
-     * @param tipoSolicitud
-     * @param idprofesor
-     * @param Alojamiento
-     * @param fechaInicio
-     * @param fechaFinal
-     * @param totalParticipantes
-     * @param estado 
-     */
-    public ActividadProgramada(boolean medioTransporte, String comentarioFase, int idSolicitud, LocalTime horaInicio, LocalTime horaFinal, String comentario, boolean prevista, int iddepartamento, String titulo, Tipo tipoSolicitud, int idprofesor, boolean Alojamiento, LocalDate fechaInicio, LocalDate fechaFinal, int totalParticipantes, Estado estado) {
-        super(idSolicitud, horaInicio, horaFinal, comentario, prevista, iddepartamento, titulo, tipoSolicitud, idprofesor, Alojamiento, fechaInicio, fechaFinal, totalParticipantes, estado);
-        this.medioTransporte = medioTransporte;
-        this.comentarioFase = comentarioFase;
+    public int getIdActividad() {
+        return idActividad;
     }
 
-    public boolean isMedioTransporte() {
-        return medioTransporte;
+    public void setIdActividad(int idActividad) {
+        this.idActividad = idActividad;
     }
 
-    public void setMedioTransporte(boolean medioTransporte) {
-        this.medioTransporte = medioTransporte;
+    public String getComentario() {
+        return comentario;
     }
 
-
-    public String getComentarioFase() {
-        return comentarioFase;
-    }
-
-    public void setComentarioFase(String comentarioFase) {
-        this.comentarioFase = comentarioFase;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     @Override
     public String toString() {
-        return "ActividadProgramada{"+super.toString() + "medioTransporte=" + medioTransporte + ", comentarioFase=" + comentarioFase + '}';
+        return "Acticvidad Programada{" + "Identificador=" + idActividad + ", Descripción=" + comentario + '}';
     }
+    
     
 }
