@@ -7,6 +7,8 @@
 
     background-color: #333333;
     border-radius: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .Viajes,
@@ -18,8 +20,8 @@
     align-items: center;
 
     background-color: #333;
-    width: 13%;
-    height: 15%;
+    width: 20%;
+    height: 20%;
     border-radius: 10px;
 
     color: #fff;
@@ -45,13 +47,14 @@
     background-color: #f4f4f4;
     border-radius: 10px;
     border: solid black;
+    overflow-x: auto;
 }
+
 
 .ViajesMain th,
 .ViajesMain td,
 .ClasesMain th,
 .ClasesMain td {
-    display: flexbox;
     padding: 20px;
     text-align: left;
     width: auto;
@@ -81,12 +84,6 @@
 
 
 
-
-
-
-
-
-
 @media screen and (max-width: 1500px) {
 
     .TextoActividades h1 {
@@ -95,8 +92,8 @@
 
     .Viajes,
     .Clases {
-        max-width: 13%;
-        max-height: 15%;
+        max-width: 30%;
+        max-height: 30%;
     }
 
     .Viajes p,
@@ -124,40 +121,106 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1100px) {
 
     .TextoActividades h1 {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     .Viajes,
     .Clases {
-        max-width: 13%;
-        max-height: 15%;
-        margin:auto;
+        width: 100%;
+        height: auto;
+        margin: 10px auto;
+        justify-content: center;
     }
 
     .Viajes p,
     .Clases p {
-        font-size: 0.9em;
-        padding: 0 10px;
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: 0.8em;
+        padding: 5px;
+        text-align: center;
     }
 
     .ViajesMain,
     .ClasesMain {
-        width: 95%;
-        margin: 5px auto;
-        padding: 5px;
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
     }
 
     .ViajesMain th,
     .ViajesMain td,
     .ClasesMain th,
     .ClasesMain td {
-        padding: 10px; 
-        font-size: 0.9em;
+        padding: 5px;
+        font-size: 0.8em;
+    }
+
+    .ViajesMain td:first-child,
+    .ViajesMain th:first-child,
+    .ClasesMain td:first-child,
+    .ClasesMain th:first-child,
+    .ViajesMain td:nth-child(7),
+    .ViajesMain th:nth-child(7),
+    .ClasesMain td:nth-child(7),
+    .ClasesMain th:nth-child(7),
+    .ViajesMain td:nth-child(3),
+    .ViajesMain th:nth-child(3),
+    .ClasesMain td:nth-child(3),
+    .ClasesMain th:nth-child(3) {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .TextoActividades h1 {
+        font-size: 1em;
+    }
+
+    .Viajes,
+    .Clases {
+        width: 90%;
+        height: auto;
+        margin: 10px auto;
+        justify-content: center;
+    }
+
+    .Viajes p,
+    .Clases p {
+        font-size: 0.8em;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .ViajesMain,
+    .ClasesMain {
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .ViajesMain th,
+    .ViajesMain td,
+    .ClasesMain th,
+    .ClasesMain td {
+        padding: 5px;
+        font-size: 0.8em;
+    }
+
+    .ViajesMain td:first-child,
+    .ViajesMain th:first-child,
+    .ClasesMain td:first-child,
+    .ClasesMain th:first-child,
+    .ViajesMain td:nth-child(7),
+    .ViajesMain th:nth-child(7),
+    .ClasesMain td:nth-child(7),
+    .ClasesMain th:nth-child(7),
+    .ViajesMain td:nth-child(3),
+    .ViajesMain th:nth-child(3),
+    .ClasesMain td:nth-child(3),
+    .ClasesMain th:nth-child(3) {
+        width: auto;
     }
 }
