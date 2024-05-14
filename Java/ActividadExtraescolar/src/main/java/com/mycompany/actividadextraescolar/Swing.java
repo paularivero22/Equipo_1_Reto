@@ -25,17 +25,9 @@ public class Swing extends javax.swing.JFrame {
     private SolicitudesDAO solicitud;
     private CursosDAO cursos;
     private Curso cursoAux;
-    private GruposDAO metodosGrupo;
-    private Grupo grupoAux;
-    private Profesor profesorAux;
-    private ProfesorDAO Profesor;
     private Departamento departamentoAux;
     private DepartamentoDAO metodosdepartamento;
     private Solicitud solicitudAux;
-    private ActividadProgramadaDAO metodosprogramada;
-    private ActividadProgramada prograux;
-    private String correoLogin;
-    private String contralogin;
 
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
@@ -49,11 +41,7 @@ public class Swing extends javax.swing.JFrame {
         tabla = new DefaultTableModel();
         solicitud = new SolicitudesDAO();
         metodosdepartamento = new DepartamentoDAO();
-        metodosGrupo = new GruposDAO();
-        profesorAux = new Profesor();
-        Profesor = new ProfesorDAO();
         cursos = new CursosDAO();
-        metodosprogramada = new ActividadProgramadaDAO();
     }
 
     private void cargarItemsDepartamento() {
@@ -86,12 +74,14 @@ public class Swing extends javax.swing.JFrame {
             ob[5] = soli.getIddepartamento();
             ob[6] = soli.getTitulo();
             ob[7] = soli.getTipoSolicitud();
-            ob[8] = soli.getIdprofesor();
-            ob[9] = soli.isAlojamiento();
-            ob[10] = soli.getFechaInicio();
-            ob[11] = soli.getFechaFinal();
-            ob[12] = soli.getTotalParticipantes();
-            ob[13] = soli.getEstado();
+            ob[8] = soli.isMedioTransporte();
+            ob[9] = soli.getIdprofesor();
+            ob[10] = soli.isAlojamiento();
+            ob[11] = soli.getFechaInicio();
+            ob[12] = soli.getFechaFinal();
+            ob[13] = soli.getTotalParticipantes();
+            ob[14] = soli.getComentarioAlojamiento();
+            ob[15] = soli.getEstado();
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -119,42 +109,6 @@ public class Swing extends javax.swing.JFrame {
         tabla1.setModel(tabla);
     }
 
-    private void insertarTablaGrupos(SortedSet<Grupo> lista, JTable tabla1) {
-        tabla = (DefaultTableModel) tabla1.getModel();
-        Object[] ob = new Object[5];
-        Iterator<Grupo> it = lista.iterator();
-        while (it.hasNext()) {
-            Grupo grupo = it.next();
-            ob[0] = grupo.getIdGrupo();
-            ob[1] = grupo.getCodGrupo();
-            ob[2] = grupo.getIdcurso();
-            ob[3] = grupo.getNumeroAlumnos();
-            ob[4] = grupo.isActivo();
-            tabla.addRow(ob);
-        }
-        tabla1.setModel(tabla);
-    }
-    
-    private void insertarTablaProfesor(SortedSet<Profesor> lista, JTable tabla1) {
-        tabla = (DefaultTableModel) tabla1.getModel();
-        Object[] ob = new Object[9];
-        Iterator<Profesor> it = lista.iterator();
-        while (it.hasNext()) {
-            Profesor profesor = it.next();
-            ob[0] = profesor.getIdProfesor();
-            ob[1] = profesor.getIdDepartamento();
-            ob[2] = profesor.getNombre();
-            ob[3] = profesor.getApellidos();
-            ob[4] = profesor.getDNI();
-            ob[5] = profesor.getCorreo();
-            ob[6] = profesor.isActivo();
-            ob[7] = profesor.getPerfil();
-            ob[8] = profesor.getContrasenia();
-            tabla.addRow(ob);
-        }
-        tabla1.setModel(tabla);
-    }
-
     private void insertarTablaDepartamento(SortedSet<Departamento> lista, JTable tabla1) {
         tabla = (DefaultTableModel) tabla1.getModel();
         Object[] ob = new Object[5];
@@ -165,33 +119,6 @@ public class Swing extends javax.swing.JFrame {
             ob[1] = d.getCodigoDepartamento();
             ob[2] = d.getNombre();
             ob[3] = d.getIdJefe();
-            tabla.addRow(ob);
-        }
-        tabla1.setModel(tabla);
-    }
-
-    private void insertarTablaProgramadas(SortedSet<ActividadProgramada> lista, JTable tabla1) {
-        tabla = (DefaultTableModel) tabla1.getModel();
-        Object[] ob = new Object[16];
-        Iterator<ActividadProgramada> it = lista.iterator();
-        while (it.hasNext()) {
-            ActividadProgramada soli = it.next();
-            ob[0] = soli.getIdSolicitud();
-            ob[1] = soli.estado;
-            ob[2] = soli.getComentario();
-            ob[3] = soli.horaInicio;
-            ob[4] = soli.horaFinal;
-            ob[5] = soli.isPrevista();
-            ob[6] = soli.getIddepartamento();
-            ob[7] = soli.getTitulo();
-            ob[8] = soli.getTipoSolicitud();
-            ob[9] = soli.isMedioTransporte();
-            ob[10] = soli.getIdprofesor();
-            ob[11] = soli.isAlojamiento();
-            ob[12] = soli.getFechaInicio();
-            ob[13] = soli.getFechaFinal();
-            ob[14] = soli.getTotalParticipantes();
-            ob[15] = soli.getComentarioFase();
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -218,6 +145,7 @@ public class Swing extends javax.swing.JFrame {
         jTextField27.setText("");
         jTextField28.setText("");
         jTextField25.setText("");
+        jCheckBox3.setSelected(false);
         jCheckBox2.setSelected(false);
         jCheckBox1.setSelected(false);
     }
@@ -236,20 +164,34 @@ public class Swing extends javax.swing.JFrame {
         txtemail = new javax.swing.JTextField();
         txtcontrasen = new javax.swing.JLabel();
         txtcontrasenia = new javax.swing.JPasswordField();
-        botonLogin = new javax.swing.JButton();
-        restablecerBoton = new javax.swing.JButton();
-        jLabel62 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        ojo_logo = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        iniciarsesion = new javax.swing.JLabel();
+        fondobotoniniciarsesion = new javax.swing.JLabel();
+        restablecercontraseña = new javax.swing.JLabel();
+        fondorestablecercontrasenia = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
         CambiarContraseña = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtDNI = new javax.swing.JTextField();
+        txtnuevaContrasenia = new javax.swing.JPasswordField();
+        jLabel64 = new javax.swing.JLabel();
+        volver = new javax.swing.JLabel();
+        fondobotonvoler = new javax.swing.JLabel();
+        fondoIngresarCorreo = new javax.swing.JLabel();
+        cambiar = new javax.swing.JLabel();
+        fondobotoncambiar = new javax.swing.JLabel();
+        candado = new javax.swing.JLabel();
+        fondonuevacontraseña = new javax.swing.JLabel();
+        fondoPrincipal = new javax.swing.JLabel();
         MenuInicio = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         CrearProfesor = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -265,7 +207,6 @@ public class Swing extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable11 = new javax.swing.JTable();
         Crear = new javax.swing.JButton();
         ModificarProfesor = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -310,26 +251,20 @@ public class Swing extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jComboBox8 = new javax.swing.JComboBox<>();
-        jLabel20 = new javax.swing.JLabel();
         ModificarGrupo = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
         jLabel26 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        jTable10 = new javax.swing.JTable();
         DeshabilitarGrupo = new javax.swing.JPanel();
         jLabel58 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
         jTextField36 = new javax.swing.JTextField();
+        jScrollPane18 = new javax.swing.JScrollPane();
         jButton23 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
         CrearDepartamento = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -377,6 +312,7 @@ public class Swing extends javax.swing.JFrame {
         jTextField27 = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
         jComboBox11 = new javax.swing.JComboBox<>();
         ConsultarSolicitudes = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
@@ -398,9 +334,12 @@ public class Swing extends javax.swing.JFrame {
         FasePreparacion = new javax.swing.JPanel();
         jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
+        jScrollPane17 = new javax.swing.JScrollPane();
         jComboBox7 = new javax.swing.JComboBox<>();
         jTextField30 = new javax.swing.JTextField();
         jButton22 = new javax.swing.JButton();
+        jLabel54 = new javax.swing.JLabel();
+        jRadioButton3 = new javax.swing.JRadioButton();
         MedioTransporte = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jTextField32 = new javax.swing.JTextField();
@@ -411,10 +350,14 @@ public class Swing extends javax.swing.JFrame {
         jLabel57 = new javax.swing.JLabel();
         jTextField35 = new javax.swing.JTextField();
         jButton19 = new javax.swing.JButton();
+
+        jScrollPane15 = new javax.swing.JScrollPane();
+
         jCheckBox3 = new javax.swing.JCheckBox();
         jButton27 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable12 = new javax.swing.JTable();
+
         jMenuBar1 = new javax.swing.JMenuBar();
         Contraseña = new javax.swing.JMenu();
         Profesores = new javax.swing.JMenu();
@@ -442,153 +385,218 @@ public class Swing extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.CardLayout());
 
         Login.setBackground(new java.awt.Color(255, 255, 255));
+        Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtEmail.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         txtEmail.setText("Email");
+        Login.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, -1));
 
+        txtemail.setBackground(new java.awt.Color(65, 174, 181));
+        txtemail.setBorder(null);
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
             }
         });
+        Login.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 350, 40));
 
-        txtcontrasen.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
+        txtcontrasen.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         txtcontrasen.setText("Contraseña");
+        Login.add(txtcontrasen, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
 
+        txtcontrasenia.setBackground(new java.awt.Color(65, 174, 181));
+        txtcontrasenia.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         txtcontrasenia.setText("jPasswordField2");
-
-        botonLogin.setBackground(new java.awt.Color(0, 0, 0));
-        botonLogin.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
-        botonLogin.setForeground(new java.awt.Color(255, 255, 255));
-        botonLogin.setText("Iniciar sesión");
-        botonLogin.addActionListener(new java.awt.event.ActionListener() {
+        txtcontrasenia.setBorder(null);
+        txtcontrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonLoginActionPerformed(evt);
+                txtcontraseniaActionPerformed(evt);
             }
         });
+        Login.add(txtcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 340, 40));
 
-        restablecerBoton.setBackground(new java.awt.Color(0, 0, 0));
-        restablecerBoton.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        restablecerBoton.setForeground(new java.awt.Color(255, 255, 255));
-        restablecerBoton.setText("Restablecer Contraseña");
-        restablecerBoton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                restablecerBotonActionPerformed(evt);
-            }
-        });
-
-        jLabel62.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
-        jLabel62.setText("INICIAR SESIÓN");
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/logo_usuario.png"))); // NOI18N
+        Login.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, 40));
 
         jLabel63.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 12)); // NOI18N
         jLabel63.setText("¿Olvidaste tu contraseña?");
+        Login.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, -1, -1));
 
-        javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
-        Login.setLayout(LoginLayout);
-        LoginLayout.setHorizontalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(325, 325, 325)
-                        .addComponent(restablecerBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(LoginLayout.createSequentialGroup()
-                        .addGap(362, 362, 362)
-                        .addComponent(jLabel62)))
-                .addContainerGap(125, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail)
-                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcontrasen)
-                            .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(319, 319, 319))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel63)
-                            .addComponent(botonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(344, 344, 344))))
-        );
-        LoginLayout.setVerticalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel62)
-                .addGap(18, 18, 18)
-                .addComponent(txtEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(txtcontrasen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonLogin)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel63)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(restablecerBoton)
-                .addContainerGap(97, Short.MAX_VALUE))
-        );
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 5.png"))); // NOI18N
+        Login.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
+
+        ojo_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/ojo.png"))); // NOI18N
+        ojo_logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ojo_logoMouseClicked(evt);
+            }
+        });
+        Login.add(ojo_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, -1, 40));
+
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 6.png"))); // NOI18N
+        Login.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
+
+        iniciarsesion.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 24)); // NOI18N
+        iniciarsesion.setForeground(new java.awt.Color(255, 255, 255));
+        iniciarsesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iniciarsesion.setText("Iniciar sesion");
+        iniciarsesion.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                iniciarsesionAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        iniciarsesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iniciarsesionMouseClicked(evt);
+            }
+        });
+        Login.add(iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, 290, 90));
+
+        fondobotoniniciarsesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        fondobotoniniciarsesion.setForeground(new java.awt.Color(255, 255, 255));
+        fondobotoniniciarsesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondobotoniniciarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 9.png"))); // NOI18N
+        fondobotoniniciarsesion.setText("Iniciar sesion");
+        fondobotoniniciarsesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fondobotoniniciarsesionMouseClicked(evt);
+            }
+        });
+        Login.add(fondobotoniniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 320, -1));
+
+        restablecercontraseña.setBackground(new java.awt.Color(0, 0, 0));
+        restablecercontraseña.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
+        restablecercontraseña.setForeground(new java.awt.Color(255, 255, 255));
+        restablecercontraseña.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restablecercontraseña.setText("Restablecer Contraseña");
+        restablecercontraseña.setToolTipText("");
+        restablecercontraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restablecercontraseñaMouseClicked(evt);
+            }
+        });
+        Login.add(restablecercontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 530, 310, 120));
+
+        fondorestablecercontrasenia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 9.png"))); // NOI18N
+        fondorestablecercontrasenia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fondorestablecercontraseniaMouseClicked(evt);
+            }
+        });
+        Login.add(fondorestablecercontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 560, -1, -1));
+
+        jLabel62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 3.png"))); // NOI18N
+        Login.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, -1));
+
+        jLabel60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/logo2_redminesionado.png"))); // NOI18N
+        Login.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(Login, "card19");
 
         CambiarContraseña.setBackground(new java.awt.Color(255, 255, 255));
         CambiarContraseña.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("REESTABLECER CONTRASEÑA");
-        CambiarContraseña.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 330, 33));
-
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        jLabel2.setText("Correo Profesor:");
-        CambiarContraseña.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 140, 20));
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
+        jLabel2.setText("DNI");
+        CambiarContraseña.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 210, 20));
 
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        jLabel3.setText("Nueva Contraseña:");
-        CambiarContraseña.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, 20));
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
+        jLabel3.setText("Nueva Contraseña");
+        CambiarContraseña.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, 20));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtDNI.setBackground(new java.awt.Color(65, 174, 181));
+        txtDNI.setBorder(null);
+        txtDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtDNIActionPerformed(evt);
             }
         });
-        CambiarContraseña.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 180, -1));
+        CambiarContraseña.add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 340, 40));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setLabel("Cambiar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtnuevaContrasenia.setBackground(new java.awt.Color(65, 174, 181));
+        txtnuevaContrasenia.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
+        txtnuevaContrasenia.setBorder(null);
+        txtnuevaContrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                txtnuevaContraseniaActionPerformed(evt);
             }
         });
-        CambiarContraseña.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
+        CambiarContraseña.add(txtnuevaContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 350, 40));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setLabel("Volver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/logo_usuario.png"))); // NOI18N
+        CambiarContraseña.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, 40));
+
+        volver.setBackground(new java.awt.Color(0, 0, 0));
+        volver.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 24)); // NOI18N
+        volver.setForeground(new java.awt.Color(255, 255, 255));
+        volver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        volver.setText("Volver");
+        volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                volverMouseClicked(evt);
             }
         });
-        CambiarContraseña.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
-        CambiarContraseña.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 180, -1));
+        CambiarContraseña.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 432, 300, 90));
+
+        fondobotonvoler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 9.png"))); // NOI18N
+        CambiarContraseña.add(fondobotonvoler, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 450, 270, -1));
+
+        fondoIngresarCorreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 5.png"))); // NOI18N
+        CambiarContraseña.add(fondoIngresarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
+
+        cambiar.setBackground(new java.awt.Color(0, 0, 0));
+        cambiar.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 24)); // NOI18N
+        cambiar.setForeground(new java.awt.Color(255, 255, 255));
+        cambiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cambiar.setText("Cambiar");
+        cambiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cambiarMouseClicked(evt);
+            }
+        });
+        CambiarContraseña.add(cambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, 270, 130));
+
+        fondobotoncambiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 9.png"))); // NOI18N
+        fondobotoncambiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fondobotoncambiarMouseClicked(evt);
+            }
+        });
+        CambiarContraseña.add(fondobotoncambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 290, -1));
+
+        candado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/candado.png"))); // NOI18N
+        candado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                candadoMouseClicked(evt);
+            }
+        });
+        CambiarContraseña.add(candado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, -1, 40));
+
+        fondonuevacontraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 6.png"))); // NOI18N
+        CambiarContraseña.add(fondonuevacontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
+
+        fondoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 3.png"))); // NOI18N
+        CambiarContraseña.add(fondoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
 
         getContentPane().add(CambiarContraseña, "card2");
 
+        MenuInicio.setBackground(new java.awt.Color(255, 255, 255));
         MenuInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("MENÚ DE INICIO");
-        MenuInicio.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 130, 50));
+        MenuInicio.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 230, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/actividadextraescolar/img/Rectangle 9.png"))); // NOI18N
+        MenuInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
         getContentPane().add(MenuInicio, "card3");
 
@@ -653,25 +661,6 @@ public class Swing extends javax.swing.JFrame {
             }
         });
         CrearProfesor.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 120, -1));
-
-        jTable11.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Profesor", "Departamento", "Nombre", "Apellidos", "DNI", "Correo", "Activo", "Perfil acceso", "contraseña"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable11);
-
         CrearProfesor.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 520, 50));
 
         Crear.setText("Crear");
@@ -887,38 +876,22 @@ public class Swing extends javax.swing.JFrame {
         CrearGrupo.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, -1));
 
         jButton9.setText("Crear");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        CrearGrupo.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
+        CrearGrupo.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Grupo", "Codigo Grupo", "Curso", "Numero alumnos", "activo"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane6.setViewportView(jTable1);
 
-        CrearGrupo.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 207, 650, 220));
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO1", "ESO2", "ESO3", "ESO4", "BCH1", "BCH2", "FM1", "FM2", "MV1", "MV2", "CAR1", "CAR2", "EVA1", "EVA2", "SMR1", "SMR2", "AF1", "AF2", "DAM1", "DAM2", "DAW1", "DAW2", "DFM1", "DFM2" }));
-        CrearGrupo.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
-
-        jLabel20.setText("Curso");
-        CrearGrupo.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
+        CrearGrupo.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 147, 600, 280));
 
         getContentPane().add(CrearGrupo, "card9");
 
@@ -928,6 +901,10 @@ public class Swing extends javax.swing.JFrame {
         ModificarGrupo.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 110, -1));
 
         jButton10.setText("Buscar");
+
+        ModificarGrupo.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
+        ModificarGrupo.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 460, 40));
+
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -935,11 +912,16 @@ public class Swing extends javax.swing.JFrame {
         });
         ModificarGrupo.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
+
         jLabel26.setText("Número de Alumnos: ");
-        ModificarGrupo.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
-        ModificarGrupo.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+        ModificarGrupo.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        ModificarGrupo.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
 
         jButton11.setText("Cambiar");
+
+        ModificarGrupo.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+        ModificarGrupo.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 500, 50));
+
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
@@ -992,6 +974,7 @@ public class Swing extends javax.swing.JFrame {
 
         ModificarGrupo.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 410, 70));
 
+
         getContentPane().add(ModificarGrupo, "card10");
 
         jLabel58.setText("DESHABILITAR GRUPO");
@@ -999,28 +982,6 @@ public class Swing extends javax.swing.JFrame {
         jLabel59.setText("Nombre Grupo:");
 
         jButton23.setText("Deshabilitar");
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
-            }
-        });
-
-        jButton26.setText("Buscar");
-        jButton26.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton26ActionPerformed(evt);
-            }
-        });
-
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Grupo", "Codigo Grupo", "Curso", "Numero Alumnos", "Activo"
-            }
-        ));
-        jScrollPane11.setViewportView(jTable4);
 
         javax.swing.GroupLayout DeshabilitarGrupoLayout = new javax.swing.GroupLayout(DeshabilitarGrupo);
         DeshabilitarGrupo.setLayout(DeshabilitarGrupoLayout);
@@ -1029,24 +990,20 @@ public class Swing extends javax.swing.JFrame {
             .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
                 .addGroup(DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                        .addGroup(DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                                .addGap(227, 227, 227)
-                                .addComponent(jLabel58))
-                            .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(jLabel59)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton26))
-                    .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(jButton23))
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel58))
                     .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addComponent(jLabel59)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jButton23)))
+                .addContainerGap(746, Short.MAX_VALUE))
         );
         DeshabilitarGrupoLayout.setVerticalGroup(
             DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1056,13 +1013,12 @@ public class Swing extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel59)
-                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton26))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(jButton23)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(464, Short.MAX_VALUE))
         );
 
         getContentPane().add(DeshabilitarGrupo, "card18");
@@ -1293,6 +1249,9 @@ public class Swing extends javax.swing.JFrame {
         jCheckBox2.setText("Prevista");
         CrearSolicitud.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
 
+        jCheckBox3.setText("MedioTransporte");
+        CrearSolicitud.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
+
         jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
         CrearSolicitud.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 190, -1));
 
@@ -1317,11 +1276,11 @@ public class Swing extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "Estado"
+                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "medioTransporte", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "comenAlojamiento", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, false, false, false, false, false, false, false, false, false
+                false, false, false, true, true, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1377,11 +1336,11 @@ public class Swing extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "Estado"
+                "idSolicitud", "horaInicio", "horaFin", "comentarios", "prevista", "Departamento", "titulo", "tipo", "medioTransporte", "Profesor", "Alojamiento", "fechaInicio", "fechaFinal", "Participantes", "comenAlojamiento", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1419,18 +1378,25 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel53.setText("Solicitudes Aprobadas");
         FasePreparacion.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        FasePreparacion.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 500, 40));
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "horaInicio", "horaFin", "fechaInicio", "fechaFinal", "tipo", "totalParticipantes", "comenRealizada", " " }));
-        FasePreparacion.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
-        FasePreparacion.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 124, -1));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HoraInicio", "HoraFinal", "FechaInicio", "FechaFinal", "Tipo", "Participantes", " " }));
+        FasePreparacion.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        FasePreparacion.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 124, -1));
 
         jButton22.setText("Modificar");
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
+        FasePreparacion.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+
+        jLabel54.setText("Medio Transporte");
+        FasePreparacion.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        jRadioButton3.setText("Sí");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
+                jRadioButton3ActionPerformed(evt);
             }
         });
-        FasePreparacion.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, -1, -1));
+        FasePreparacion.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
 
         jLabel45.setText("Empresa:");
 
@@ -1485,10 +1451,14 @@ public class Swing extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        FasePreparacion.add(MedioTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 330, 80));
+        FasePreparacion.add(MedioTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 330, 80));
 
         jButton19.setText("Realizada");
-        FasePreparacion.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+
+        FasePreparacion.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        FasePreparacion.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 430, 70));
+
+        
 
         jCheckBox3.setText("MedioTransporte");
         jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -1533,6 +1503,7 @@ public class Swing extends javax.swing.JFrame {
         }
 
         FasePreparacion.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 400, 90));
+
 
         getContentPane().add(FasePreparacion, "card17");
 
@@ -2077,7 +2048,6 @@ public class Swing extends javax.swing.JFrame {
         ConsultarSolicitudes.setVisible(false);
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(rootPaneCheckingEnabled);
-        MedioTransporte.setVisible(false);
     }//GEN-LAST:event_fasedepreparacionMenuActionPerformed
 
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
@@ -2088,44 +2058,9 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtemailActionPerformed
 
-    private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
-
-        //        String username = txtemail.getText();
-        //        String password = new String(txtcontrasenia.getPassword());
-        //
-        //        // Aquí iría la lógica para verificar el usuario y contraseña
-        //        // Por simplicidad, aquí simplemente compararemos con valores fijos
-        //        if (username.equals("usuario") && password.equals("contraseña")) {
-        //            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso!");
-        //            // Aquí puedes agregar el código para abrir la siguiente ventana o realizar otras acciones
-        //            // Por ejemplo, abrir una nueva ventana después del inicio de sesión exitoso:
-        //            Swing login = new Swing();
-        //            login.setVisible(true);
-        //            dispose(); // Cierra la ventana de inicio de sesión
-        //        } else {
-        //            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-        //        }
-    }//GEN-LAST:event_botonLoginActionPerformed
-
-    private void restablecerBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerBotonActionPerformed
+    private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
         // TODO add your handling code here:
-        Login.setVisible(false);
-        CambiarContraseña.setVisible(true);
-    }//GEN-LAST:event_restablecerBotonActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Login.setVisible(true);
-        CambiarContraseña.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_txtDNIActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -2148,25 +2083,7 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        ProfesorDAO profesores = new ProfesorDAO();
-        String Nombre = jTextField1.getText();
-        String apellidos= jTextField3.getText();
-        String DNI= jTextField4.getText();
-        PerfilAcceso perfil = (PerfilAcceso) PerfilAcceso.valueOf(jComboBox1.getSelectedItem().toString());
-        String departamento = jComboBox2.getSelectedItem().toString();
-        Profesor profesorencontrado= profesores.buscarPor(DNI);
-        int idDepartamento = profesorencontrado.getIdDepartamento();
-        String correo = jTextField5.getText();
-        String contrasenia= profesorencontrado.getContrasenia();
-        Profesor profesor = new Profesor(idDepartamento,Nombre,apellidos,DNI,correo,true,perfil,contrasenia);
-
-        profesores.insertar(profesor);
-
-        SortedSet<Profesor> listaProfesor = Profesor.listar();
-        limpiarTabla();
-        insertarTablaProfesor(listaProfesor, jTable11);
-        //Y asigno el jTable al atributo tabla
-        jTable11.setModel(tabla);
+        // TODO add your handling code here:
     }//GEN-LAST:event_CrearActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2264,7 +2181,7 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        String nombre = departamentoAux.getNombre();
+        String nombre=departamentoAux.getNombre();
         metodosdepartamento.eliminarPor(nombre);
     }//GEN-LAST:event_jButton16ActionPerformed
 
@@ -2282,11 +2199,12 @@ public class Swing extends javax.swing.JFrame {
         int departamento = metodosdepartamento.buscarPor(jComboBox11.getSelectedItem().toString()).getIdDepartamento();
         LocalTime horaInicio = LocalTime.parse(jTextField23.getText());
         LocalTime horaFin = LocalTime.parse(jTextField24.getText());
-        int profesor = metodosProfesor.buscarPorDNI(jTextField25.getText()).getIdProfesor();
+        int profesor = metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
         LocalDate fechaInicio = LocalDate.parse(jTextField26.getText());
         LocalDate fechaFin = LocalDate.parse(jTextField27.getText());
         int participantes = Integer.parseInt(jTextField28.getText());
         boolean prevista = false;
+        boolean medioTransporte = false;
         boolean alojamiento = false;
         if (jCheckBox2.isSelected()) {
             prevista = true;
@@ -2294,13 +2212,22 @@ public class Swing extends javax.swing.JFrame {
         if (jCheckBox1.isSelected()) {
             alojamiento = true;
         }
+        if (jCheckBox3.isSelected()) {
+            medioTransporte = true;
+        }
+
+        String comentAlojamiento = "";
         Estado estado = Estado.SOLICITADA;
 
-        Solicitud s = new Solicitud(horaInicio, horaFin, "", prevista, departamento, titulo, tipo, profesor, alojamiento, fechaInicio, fechaFin, participantes, estado);
+        Solicitud s = new Solicitud(horaInicio, horaFin, "", prevista, departamento, titulo, tipo, medioTransporte, profesor, alojamiento, fechaInicio, fechaFin, participantes, "", estado);
         metodosSolicitudes.insertar(s);
         limpiarCrearSolicitud();
 
     }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
@@ -2352,8 +2279,6 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
         String titulo = solicitudAux.getTitulo();
         solicitud.actualizarEstado(titulo, "APROBADA");
-            ActividadProgramada ac = new ActividadProgramada(false, "", solicitudAux.idSolicitud, solicitudAux.horaInicio, solicitudAux.horaFinal, solicitudAux.comentario, solicitudAux.prevista, solicitudAux.iddepartamento, solicitudAux.titulo, solicitudAux.tipoSolicitud, solicitudAux.idprofesor, solicitudAux.Alojamiento, solicitudAux.fechaInicio, solicitudAux.fechaFinal, solicitudAux.totalParticipantes, solicitudAux.estado);
-            metodosprogramada.insertar(ac);
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
@@ -2387,7 +2312,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void jTable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MouseClicked
         // TODO add your handling code here:
-        int filaSeleccionada = jTable5.getSelectedRow();
+         int filaSeleccionada = jTable5.getSelectedRow();
         //Cargo la tabla
         tabla = (DefaultTableModel) jTable5.getModel();
         //Obtengo el valor del indice que utilizo para buscar una solicitud
@@ -2396,46 +2321,61 @@ public class Swing extends javax.swing.JFrame {
         departamentoAux = metodosdepartamento.buscarPor(valor1);
     }//GEN-LAST:event_jTable5MouseClicked
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void txtcontraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcontraseniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcontraseniaActionPerformed
 
-        String codGrupo = jTextField11.getText();
-        int numAlumnos = Integer.parseInt(jTextField12.getText());
+    private void fondobotoniniciarsesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondobotoniniciarsesionMouseClicked
+        // TODO add your handling code here:
+           // Obtener el correo electrónico y la contraseña ingresados por el usuario
+    String correo = txtemail.getText();
+    String contrasenia = new String(txtcontrasenia.getPassword());
+    
+    // Crear una instancia de tu RepositorioDAO (por ejemplo, ProfesorDAO)
+    RepositorioDAO<Profesor> profesorDAO = new ProfesorDAO();
+    
+    // Verificar las credenciales
+    boolean credencialesValidas = profesorDAO.verificarCredenciales(contrasenia, correo);
+    
+    // Si las credenciales son válidas, mostrar un mensaje de inicio de sesión completado
+    if (credencialesValidas) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión completado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        // Aquí puedes agregar el código para abrir la nueva ventana o realizar cualquier otra acción necesaria después del inicio de sesión exitoso
+    } else {
+        // Si las credenciales no son válidas, mostrar un mensaje de error
+        JOptionPane.showMessageDialog(this, "Correo electrónico o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+        // TODO add your handling code here:   
+    }//GEN-LAST:event_fondobotoniniciarsesionMouseClicked
 
-        String curso = jComboBox8.getSelectedItem().toString();
-        Curso cursoencontrado = cursos.buscarPor(curso);
+    private void iniciarsesionAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_iniciarsesionAncestorAdded
+    // Obtener el correo electrónico y la contraseña ingresados por el usuario
+   
 
-        int idCurso = cursoencontrado.getIdCurso();
-        Grupo grupo = new Grupo(codGrupo, idCurso, numAlumnos, true);
+    }//GEN-LAST:event_iniciarsesionAncestorAdded
 
-        metodosGrupo.insertar(grupo);
+    private void fondorestablecercontraseniaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondorestablecercontraseniaMouseClicked
+        // TODO add your handling code here:
+        Login.setVisible(false);
+        CambiarContraseña.setVisible(true);
+    }//GEN-LAST:event_fondorestablecercontraseniaMouseClicked
 
-        SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
-        limpiarTabla();
-        insertarTablaGrupos(listaGrupo, jTable1);
-        //Y asigno el jTable al atributo tabla
-        jTable1.setModel(tabla);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void restablecercontraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecercontraseñaMouseClicked
+        // TODO add your handling code here:
+        Login.setVisible(false);
+        CambiarContraseña.setVisible(true);
+    }//GEN-LAST:event_restablecercontraseñaMouseClicked
 
-    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
-        limpiarTabla();
-        insertarTablaGrupos(listaGrupo, jTable4);
-        jTable4.setModel(tabla);
-    }//GEN-LAST:event_jButton26ActionPerformed
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        String valorABuscar = grupoAux.getCodGrupo();
-        Curso c = cursos.buscarPor(valorABuscar);
-        cursos.actualizarActivo(valorABuscar, false);
-    }//GEN-LAST:event_jButton23ActionPerformed
+    private void txtnuevaContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnuevaContraseniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnuevaContraseniaActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
-        limpiarTabla();
-        insertarTablaGrupos(listaGrupo, jTable10);
-        //Y asigno el jTable al atributo tabla
-        jTable10.setModel(tabla);
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void volverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseClicked
+        // TODO add your handling code here:
+        CambiarContraseña.setVisible(false);
+        Login.setVisible(true);
+    }//GEN-LAST:event_volverMouseClicked
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         String NumAlumnos="numeroAlumnos";
@@ -2449,42 +2389,76 @@ public class Swing extends javax.swing.JFrame {
         jTable3.setModel(tabla);
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        // TODO add your handling code here:
-        String atributo = jComboBox7.getSelectedItem().toString();
-        String valorABuscar =prograux.titulo;
-        metodosprogramada.actualizar(atributo, valorABuscar, jTextField30);
-    }//GEN-LAST:event_jButton22ActionPerformed
 
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+    private void cambiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiarMouseClicked
         // TODO add your handling code here:
-        SortedSet<ActividadProgramada> listaProgramada = metodosprogramada.listar();
-        limpiarTabla();
-        insertarTablaProgramadas(listaProgramada, jTable11);
-        //Y asigno el jTable al atributo tabla
-        jTable11.setModel(tabla);
-    }//GEN-LAST:event_jButton27ActionPerformed
-
-    private void jTable11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable11MouseClicked
-        // TODO add your handling code here:
-        //Obtengo el índice de la fila que selecciono
-        int filaSeleccionada = jTable11.getSelectedRow();
-        //Cargo la tabla
-        DefaultTableModel tablaF = (DefaultTableModel) jTable11.getModel();
-        //Obtengo el valor del indice que utilizo para buscar una solicitud
-
-        String valor1 = tablaF.getValueAt(filaSeleccionada, 7).toString();
-        prograux = metodosprogramada.buscarPor(valor1);
-    }//GEN-LAST:event_jTable11MouseClicked
-
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        // TODO add your handling code here:
-        if(jCheckBox3.isSelected()){
-            MedioTransporte.setVisible(true);
-        }else{
-            MedioTransporte.setVisible(false);
+        // Obtener el DNI y la nueva contraseña ingresados por el usuario
+        String dni = txtDNI.getText();
+        String nuevaContraseña = new String(txtnuevaContrasenia.getPassword());
+    
+    // Verificar si se han ingresado valores en los campos DNI y Nueva Contraseña
+    if (dni.isEmpty() || nuevaContraseña.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, introduzca el DNI y la nueva contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Salir del método si falta algún dato
+    }
+    
+    // Mostrar un mensaje de confirmación
+    int confirmacion = JOptionPane.showConfirmDialog(this, "¿Está seguro que quiere cambiar su contraseña?", "Confirmar Cambio de Contraseña", JOptionPane.YES_NO_OPTION);
+    
+    if (confirmacion == JOptionPane.YES_OPTION) {
+        // El usuario confirmó el cambio de contraseña
+        
+        // Acceder a la base de datos y actualizar la contraseña del profesor correspondiente
+        ProfesorDAO profesorDAO = new ProfesorDAO(); 
+        boolean cambioExitoso = profesorDAO.actualizarContraenia(dni, nuevaContraseña);
+        
+        if (cambioExitoso) {
+            // Mostrar un mensaje de éxito
+            JOptionPane.showMessageDialog(this, "Contraseña cambiada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Mostrar un mensaje de error si no se encontró ningún profesor con el DNI proporcionado
+            JOptionPane.showMessageDialog(this, "Ningún profesor encontrado con el DNI proporcionado", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }
+    }//GEN-LAST:event_cambiarMouseClicked
+
+    private void fondobotoncambiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondobotoncambiarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fondobotoncambiarMouseClicked
+
+    private void iniciarsesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciarsesionMouseClicked
+        // TODO add your handling code here:
+          // Obtener el correo electrónico y la contraseña ingresados por el usuario
+    String correo = txtemail.getText();
+    String contrasenia = new String(txtcontrasenia.getPassword());
+    
+    // Crear una instancia de tu RepositorioDAO (por ejemplo, ProfesorDAO)
+    RepositorioDAO<Profesor> profesorDAO = new ProfesorDAO();
+    
+    // Verificar las credenciales
+    boolean credencialesValidas = profesorDAO.verificarCredenciales(contrasenia, correo);
+    
+    // Si las credenciales son válidas, mostrar un mensaje de inicio de sesión completado
+    if (credencialesValidas) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión completado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        // Aquí puedes agregar el código para abrir la nueva ventana o realizar cualquier otra acción necesaria después del inicio de sesión exitoso
+        Login.setVisible(false);
+        MenuInicio.setVisible(true);
+    } else {
+        // Si las credenciales no son válidas, mostrar un mensaje de error
+        JOptionPane.showMessageDialog(this, "Correo electrónico o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_iniciarsesionMouseClicked
+
+    private void ojo_logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ojo_logoMouseClicked
+        // TODO add your handling code here:
+           txtcontrasenia.setEchoChar(txtcontrasenia.getEchoChar() == '*' ? '\0' : '*');
+    }//GEN-LAST:event_ojo_logoMouseClicked
+
+    private void candadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_candadoMouseClicked
+        // TODO add your handling code here:
+          txtnuevaContrasenia.setEchoChar(txtnuevaContrasenia.getEchoChar() == '*' ? '\0' : '*');
+    }//GEN-LAST:event_candadoMouseClicked
 
     private void jScrollPane4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane4MouseClicked
         //Obtengo el índice de la fila que selecciono
@@ -2600,7 +2574,8 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JMenu Profesores;
     private javax.swing.JMenu Solicitudes;
     private javax.swing.JMenuItem aprobarDenegarSolicitudMenu;
-    private javax.swing.JButton botonLogin;
+    private javax.swing.JLabel cambiar;
+    private javax.swing.JLabel candado;
     private javax.swing.JMenuItem consutarSolicitudesMenu;
     private javax.swing.JMenuItem crearDepartamentoMenu;
     private javax.swing.JMenuItem crearGrupoMenu;
@@ -2610,7 +2585,14 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JMenuItem deshabilitarEliminarProfesorMenu;
     private javax.swing.JMenuItem deshabilitarGrupoMenu;
     private javax.swing.JMenuItem fasedepreparacionMenu;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel fondoIngresarCorreo;
+    private javax.swing.JLabel fondoPrincipal;
+    private javax.swing.JLabel fondobotoncambiar;
+    private javax.swing.JLabel fondobotoniniciarsesion;
+    private javax.swing.JLabel fondobotonvoler;
+    private javax.swing.JLabel fondonuevacontraseña;
+    private javax.swing.JLabel fondorestablecercontrasenia;
+    private javax.swing.JLabel iniciarsesion;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -2621,15 +2603,12 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2649,7 +2628,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2673,7 +2651,9 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -2695,24 +2675,28 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
@@ -2724,14 +2708,15 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
+
+
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable11;
     private javax.swing.JTable jTable12;
     private javax.swing.JTable jTable13;
     private javax.swing.JTable jTable14;
+
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
@@ -2745,7 +2730,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
@@ -2769,10 +2753,14 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JMenuItem modificarDepartamentoMenu;
     private javax.swing.JMenuItem modificarGrupoMenu;
     private javax.swing.JMenuItem modificarProfesorMenu;
-    private javax.swing.JButton restablecerBoton;
+    private javax.swing.JLabel ojo_logo;
+    private javax.swing.JLabel restablecercontraseña;
+    private javax.swing.JTextField txtDNI;
     private javax.swing.JLabel txtEmail;
     private javax.swing.JLabel txtcontrasen;
     private javax.swing.JPasswordField txtcontrasenia;
     private javax.swing.JTextField txtemail;
+    private javax.swing.JPasswordField txtnuevaContrasenia;
+    private javax.swing.JLabel volver;
     // End of variables declaration//GEN-END:variables
 }

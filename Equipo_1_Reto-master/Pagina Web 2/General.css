@@ -1,0 +1,219 @@
+/* Estilo general para toda la pagina */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales para el cuerpo de la pagina */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    margin-top: 15px;
+    padding: 20px;
+
+    align-content: center;
+
+    background-color: #fff;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color:#333;
+    color: #fff;
+
+    padding: 20px;
+}
+
+.contenido-cabecera {
+    max-width: 100%;
+    justify-content: left;
+    height: 50px;
+}
+
+.LogoImagen{
+    display: flex;
+    margin-left: 10px;
+    width: 286px;
+    height: 70px;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+/* Estilos para el menu */
+#menuprincipal {
+    width: 100%;
+    height: 80px;
+    padding: 0% 2%;
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ffffff;
+}
+
+#menuprincipal > div {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+    
+#listamenu {
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+    height: 100%;
+    align-items: center;
+}
+
+#listamenu li {
+    padding: 15px 10px 0px 10px;
+    list-style: none;
+    align-items: center;
+    height: 100%;
+    width: auto;
+}
+
+#listamenu a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    color: #333333;
+    font: bold 18px Arial, sans-serif;
+    text-decoration: none;
+}
+
+.iconosMenu {
+    margin: 10px;
+    align-items: center;
+    width:35px;
+    height:35px;
+}
+
+#listamenu li:hover {
+    background-color: #dbdbdb;
+    transition: background-color 0.6s ease;
+}
+
+
+#menuprincipal li { 
+    display: flex;
+    height: 80px;
+    padding: 15px 10px 0px 10px;
+    align-items: center;
+    margin-right: 20px;
+}
+
+#menuprincipal a {
+    align-content: center;
+
+    font: bold 18px Arial, sans-serif;
+    color: #333333;
+    text-decoration: none;
+}
+
+
+/* Estilos para el pie de pagina */
+footer {
+    padding: 20px;
+
+    background-color: #333;
+    color: #fff;
+}
+
+.pielogo {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 15px;
+    margin-top:5px;
+    padding-top: 5px;
+}
+
+.seccionpie {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.seccionpie h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.enlace-contacto {
+    align-items: center;
+    
+    color: #fff;
+    text-decoration: none;
+}
+
+.enlace-contacto img {
+    max-width: 30px ;
+    max-height: 30px;
+    vertical-align: middle;
+}
+
+.enlace-contacto:hover {
+    text-decoration: underline;
+}
+
+.iconos-sociales {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.iconos-sociales li {
+    display: inline-block;
+    margin-right: 10px;
+    height: 35px;
+}
+
+.iconos-sociales li img {
+    vertical-align: middle;
+}
+
+.iconos-sociales li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.iconos-sociales li:hover {
+    text-decoration: underline;
+}
+
+
+/* Tamaños concretos para los iconos sociales */
+.Facebook {
+    width: 30px;
+    height: 30px;
+}
+
+.Instagram {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+footer p {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+}

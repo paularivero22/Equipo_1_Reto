@@ -15,20 +15,22 @@ import java.util.Objects;
  */
 public class Solicitud implements Comparable<Solicitud> {
 
-    protected int idSolicitud;
-    protected String titulo;
-    protected Tipo tipoSolicitud;
-    protected int iddepartamento;
-    protected boolean prevista;
-    protected int idprofesor;
-    protected LocalTime horaInicio;
-    protected LocalTime horaFinal;
+    private int idSolicitud;
+    private String titulo;
+    private Tipo tipoSolicitud;
+    private int iddepartamento;
+    private boolean prevista;
+    private int idprofesor;
+    private LocalTime horaInicio;
+    private LocalTime horaFinal;
     public Estado estado;
-    protected String comentario;
-    protected boolean Alojamiento;
-    protected LocalDate fechaInicio;
-    protected LocalDate fechaFinal;
-    protected int totalParticipantes;
+    private String comentario;
+    private boolean medioTransporte;
+    private boolean Alojamiento;
+    private String comentarioAlojamiento;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFinal;
+    private int totalParticipantes;
 
     /**
      * CONSTRUCTOR POR PARÁMETOS QUE NO PASA LA IDSOLICITUD
@@ -40,14 +42,16 @@ public class Solicitud implements Comparable<Solicitud> {
      * @param iddepartamento
      * @param titulo
      * @param tipoSolicitud
+     * @param medioTransporte
      * @param idprofesor
      * @param Alojamiento
      * @param fechaInicio
      * @param fechaFinal
      * @param totalParticipantes
+     * @param comentarioAlojamiento
      * @param estado
      */
-    public Solicitud(LocalTime horaInicio, LocalTime horaFinal, String comentario, boolean prevista, int iddepartamento, String titulo, Tipo tipoSolicitud,int idprofesor, boolean Alojamiento, LocalDate fechaInicio, LocalDate fechaFinal, int totalParticipantes, Estado estado) {
+    public Solicitud(LocalTime horaInicio, LocalTime horaFinal, String comentario, boolean prevista, int iddepartamento, String titulo, Tipo tipoSolicitud, boolean medioTransporte, int idprofesor, boolean Alojamiento, LocalDate fechaInicio, LocalDate fechaFinal, int totalParticipantes, String comentarioAlojamiento, Estado estado) {
         this.titulo = titulo;
         this.tipoSolicitud = tipoSolicitud;
         this.iddepartamento = iddepartamento;
@@ -57,7 +61,9 @@ public class Solicitud implements Comparable<Solicitud> {
         this.horaFinal = horaFinal;
         this.estado = estado;
         this.comentario = comentario;
+        this.medioTransporte = medioTransporte;
         this.Alojamiento = Alojamiento;
+        this.comentarioAlojamiento = comentarioAlojamiento;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
         this.totalParticipantes = totalParticipantes;
@@ -66,7 +72,6 @@ public class Solicitud implements Comparable<Solicitud> {
     /**
      * CONSTRUCTOR POR PARÁMETROS QUE PASA LA IDSOLICITUD
      *
-     * @param idSolicitud
      * @param horaInicio
      * @param horaFinal
      * @param comentario
@@ -74,14 +79,16 @@ public class Solicitud implements Comparable<Solicitud> {
      * @param iddepartamento
      * @param titulo
      * @param tipoSolicitud
+     * @param medioTransporte
      * @param idprofesor
      * @param Alojamiento
      * @param fechaInicio
      * @param fechaFinal
      * @param totalParticipantes
+     * @param comentarioAlojamiento
      * @param estado
      */
-    public Solicitud(int idSolicitud, LocalTime horaInicio, LocalTime horaFinal, String comentario, boolean prevista, int iddepartamento, String titulo, Tipo tipoSolicitud,int idprofesor, boolean Alojamiento, LocalDate fechaInicio, LocalDate fechaFinal, int totalParticipantes, Estado estado) {
+    public Solicitud(int idSolicitud, LocalTime horaInicio, LocalTime horaFinal, String comentario, boolean prevista, int iddepartamento, String titulo, Tipo tipoSolicitud, boolean medioTransporte, int idprofesor, boolean Alojamiento, LocalDate fechaInicio, LocalDate fechaFinal, int totalParticipantes, String comentarioAlojamiento, Estado estado) {
         this.idSolicitud = idSolicitud;
         this.titulo = titulo;
         this.tipoSolicitud = tipoSolicitud;
@@ -92,7 +99,9 @@ public class Solicitud implements Comparable<Solicitud> {
         this.horaFinal = horaFinal;
         this.estado = estado;
         this.comentario = comentario;
+        this.medioTransporte = medioTransporte;
         this.Alojamiento = Alojamiento;
+        this.comentarioAlojamiento = comentarioAlojamiento;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
         this.totalParticipantes = totalParticipantes;
@@ -147,8 +156,16 @@ public class Solicitud implements Comparable<Solicitud> {
         return comentario;
     }
 
+    public boolean isMedioTransporte() {
+        return medioTransporte;
+    }
+
     public boolean isAlojamiento() {
         return Alojamiento;
+    }
+
+    public String getComentarioAlojamiento() {
+        return comentarioAlojamiento;
     }
 
     public LocalDate getFechaInicio() {
@@ -200,11 +217,17 @@ public class Solicitud implements Comparable<Solicitud> {
         this.comentario = comentario;
     }
 
+    public void setMedioTransporte(boolean medioTransporte) {
+        this.medioTransporte = medioTransporte;
+    }
 
     public void setAlojamiento(boolean Alojamiento) {
         this.Alojamiento = Alojamiento;
     }
 
+    public void setComentarioAlojamiento(String comentarioAlojamiento) {
+        this.comentarioAlojamiento = comentarioAlojamiento;
+    }
 
     public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
@@ -260,10 +283,9 @@ public class Solicitud implements Comparable<Solicitud> {
      *
      * @return
      */
-    @Override   
+    @Override
     public String toString() {
-
-        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", titulo=" + titulo + ", tipoSolicitud=" + tipoSolicitud + ", iddepartamento=" + iddepartamento + ", prevista=" + prevista + ", idprofesor=" + idprofesor + ", horaInicio=" + horaInicio + ", horaFinal=" + horaFinal + ", estado=" + estado + ", comentario=" + comentario + ", Alojamiento=" + Alojamiento + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", totalParticipantes=" + totalParticipantes + '}';
+        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", titulo=" + titulo + ", tipoSolicitud=" + tipoSolicitud + ", iddepartamento=" + iddepartamento + ", prevista=" + prevista + ", idprofesor=" + idprofesor + ", horaInicio=" + horaInicio + ", horaFinal=" + horaFinal + ", estado=" + estado + ", comentario=" + comentario + ", medioTransporte=" + medioTransporte + ", Alojamiento=" + Alojamiento + ", comentarioAlojamiento=" + comentarioAlojamiento + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", totalParticipantes=" + totalParticipantes + '}';
     }
 
     /**
@@ -274,15 +296,8 @@ public class Solicitud implements Comparable<Solicitud> {
      */
     @Override
     public int compareTo(Solicitud o) {
-        int comparacion=o.getEstado().compareTo(this.getEstado());
-        if(comparacion!=0){
-            return comparacion;
-        }else{
-            return compararFecha(o);
-        }
-    }
-    public int compararFecha(Solicitud o){
-         if (this.getFechaInicio().isAfter(o.getFechaInicio())) {
+
+        if (this.getFechaInicio().isAfter(o.getFechaInicio())) {
             return -1;
         } else if (this.getFechaInicio().isBefore(o.getFechaFinal())) {
             return 1;
