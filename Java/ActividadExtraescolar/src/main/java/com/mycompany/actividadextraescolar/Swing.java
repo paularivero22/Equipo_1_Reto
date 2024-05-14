@@ -47,6 +47,7 @@ public class Swing extends javax.swing.JFrame {
      */
     public Swing() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         tabla = new DefaultTableModel();
         solicitud = new SolicitudesDAO();
         metodosdepartamento = new DepartamentoDAO();
@@ -232,6 +233,7 @@ public class Swing extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         Login = new javax.swing.JPanel();
         txtEmail = new javax.swing.JLabel();
@@ -416,8 +418,6 @@ public class Swing extends javax.swing.JFrame {
         jButton27 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable11 = new javax.swing.JTable();
-        jScrollPane14 = new javax.swing.JScrollPane();
-        jTable12 = new javax.swing.JTable();
         jButton28 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Contraseña = new javax.swing.JMenu();
@@ -443,9 +443,10 @@ public class Swing extends javax.swing.JFrame {
         fasedepreparacionMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.CardLayout());
+        getContentPane().setLayout(new java.awt.CardLayout(6, 6));
 
         Login.setBackground(new java.awt.Color(255, 255, 255));
+        Login.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         txtEmail.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 14)); // NOI18N
         txtEmail.setText("Email");
@@ -499,7 +500,7 @@ public class Swing extends javax.swing.JFrame {
                     .addGroup(LoginLayout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(jLabel62)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(581, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -535,7 +536,7 @@ public class Swing extends javax.swing.JFrame {
                 .addComponent(jLabel63)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(restablecerBoton)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
         getContentPane().add(Login, "card19");
@@ -803,26 +804,57 @@ public class Swing extends javax.swing.JFrame {
 
         getContentPane().add(EliminarDeshabilitarProfesor, "card6");
 
-        CrearCurso.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        CrearCurso.setLayout(new java.awt.GridBagLayout());
 
         jLabel16.setText("CREAR CURSO");
-        CrearCurso.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 170, 0, 0);
+        CrearCurso.add(jLabel16, gridBagConstraints);
 
         jLabel17.setText("Descripción: ");
-        CrearCurso.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 70, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(64, 290, 0, 0);
+        CrearCurso.add(jLabel17, gridBagConstraints);
 
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
             }
         });
-        CrearCurso.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 100, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 206;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(64, 20, 0, 0);
+        CrearCurso.add(jTextField9, gridBagConstraints);
 
         jLabel18.setText("Etapa:");
-        CrearCurso.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(64, 110, 0, 0);
+        CrearCurso.add(jLabel18, gridBagConstraints);
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO", "BACHILLERATO", "FPGS", "FPGM", "FPB", "FPCE" }));
-        CrearCurso.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(64, 16, 0, 194);
+        CrearCurso.add(jComboBox4, gridBagConstraints);
 
         jButton24.setText("Crear");
         jButton24.addActionListener(new java.awt.event.ActionListener() {
@@ -830,20 +862,43 @@ public class Swing extends javax.swing.JFrame {
                 jButton24ActionPerformed(evt);
             }
         });
-        CrearCurso.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(74, 180, 357, 0);
+        CrearCurso.add(jButton24, gridBagConstraints);
 
         jLabel46.setText("Año:");
-        CrearCurso.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(38, 130, 0, 0);
+        CrearCurso.add(jLabel46, gridBagConstraints);
 
         jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º", "2º", "3º", "4º", "5º", "6º" }));
-        CrearCurso.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 26, 0, 0);
+        CrearCurso.add(jComboBox10, gridBagConstraints);
 
         getContentPane().add(CrearCurso, "card7");
 
-        EliminarCurso.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        EliminarCurso.setLayout(new java.awt.GridBagLayout());
 
         jLabel19.setText("ELIMINAR O DESHABILITAR CURSO");
-        EliminarCurso.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 77, 0, 0);
+        EliminarCurso.add(jLabel19, gridBagConstraints);
 
         jButton6.setText("Buscar");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -851,7 +906,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        EliminarCurso.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(90, 237, 147, 0);
+        EliminarCurso.add(jButton6, gridBagConstraints);
 
         jButton7.setText("Eliminar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -859,7 +920,12 @@ public class Swing extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        EliminarCurso.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(90, 300, 147, 0);
+        EliminarCurso.add(jButton7, gridBagConstraints);
 
         jButton8.setText("Deshabilitar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -867,7 +933,12 @@ public class Swing extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        EliminarCurso.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(90, 188, 147, 0);
+        EliminarCurso.add(jButton8, gridBagConstraints);
 
         jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -892,22 +963,65 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable8);
 
-        EliminarCurso.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 530, 190));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1074;
+        gridBagConstraints.ipady = 260;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(44, 40, 0, 0);
+        EliminarCurso.add(jScrollPane3, gridBagConstraints);
 
         getContentPane().add(EliminarCurso, "card8");
 
-        CrearGrupo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        CrearGrupo.setLayout(new java.awt.GridBagLayout());
 
         jLabel21.setText("CREAR GRUPO DE ALUMNOS");
-        CrearGrupo.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
+        CrearGrupo.add(jLabel21, gridBagConstraints);
 
         jLabel22.setText("Descripción del Curso: ");
-        CrearGrupo.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
-        CrearGrupo.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 110, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(44, 180, 0, 0);
+        CrearGrupo.add(jLabel22, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 46;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(44, 19, 0, 0);
+        CrearGrupo.add(jTextField11, gridBagConstraints);
 
         jLabel23.setText("Número de Alumnos:");
-        CrearGrupo.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
-        CrearGrupo.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(44, 70, 0, 0);
+        CrearGrupo.add(jLabel23, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 46;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(44, 8, 0, 0);
+        CrearGrupo.add(jTextField12, gridBagConstraints);
 
         jButton9.setText("Crear");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -915,7 +1029,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        CrearGrupo.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(38, 140, 0, 0);
+        CrearGrupo.add(jButton9, gridBagConstraints);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -935,20 +1055,67 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jTable1);
 
-        CrearGrupo.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 207, 650, 220));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1114;
+        gridBagConstraints.ipady = 410;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(34, 0, 3, 0);
+        CrearGrupo.add(jScrollPane6, gridBagConstraints);
 
         jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO1", "ESO2", "ESO3", "ESO4", "BCH1", "BCH2", "FM1", "FM2", "MV1", "MV2", "CAR1", "CAR2", "EVA1", "EVA2", "SMR1", "SMR2", "AF1", "AF2", "DAM1", "DAM2", "DAW1", "DAW2", "DFM1", "DFM2" }));
-        CrearGrupo.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 19, 0, 0);
+        CrearGrupo.add(jComboBox8, gridBagConstraints);
 
         jLabel20.setText("Curso");
-        CrearGrupo.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 270, 0, 0);
+        CrearGrupo.add(jLabel20, gridBagConstraints);
 
         getContentPane().add(CrearGrupo, "card9");
 
-        ModificarGrupo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ModificarGrupo.setLayout(new java.awt.GridBagLayout());
 
         jLabel24.setText("MODIFICAR GRUPO");
-        ModificarGrupo.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 110, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 42, 0, 0);
+        ModificarGrupo.add(jLabel24, gridBagConstraints);
+
+        jLabel25.setText("Descripción del Curso:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 95, 0, 0);
+        ModificarGrupo.add(jLabel25, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 76;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 32, 0, 0);
+        ModificarGrupo.add(jTextField13, gridBagConstraints);
 
         jButton10.setText("Buscar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -956,11 +1123,30 @@ public class Swing extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 120, 0, 0);
+        ModificarGrupo.add(jButton10, gridBagConstraints);
         ModificarGrupo.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
         jLabel26.setText("Número de Alumnos: ");
-        ModificarGrupo.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
-        ModificarGrupo.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 140, 0, 0);
+        ModificarGrupo.add(jLabel26, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 126;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 15, 0, 0);
+        ModificarGrupo.add(jTextField14, gridBagConstraints);
 
         jButton11.setText("Cambiar");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -968,7 +1154,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
-        ModificarGrupo.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 22, 0, 0);
+        ModificarGrupo.add(jButton11, gridBagConstraints);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -988,7 +1180,18 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane9.setViewportView(jTable3);
 
-        ModificarGrupo.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 500, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1094;
+        gridBagConstraints.ipady = 250;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(27, 20, 20, 0);
+        ModificarGrupo.add(jScrollPane9, gridBagConstraints);
 
         jTable10.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1013,13 +1216,46 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(jTable10);
 
-        ModificarGrupo.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 410, 70));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1084;
+        gridBagConstraints.ipady = 150;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(17, 30, 0, 0);
+        ModificarGrupo.add(jScrollPane12, gridBagConstraints);
 
         getContentPane().add(ModificarGrupo, "card10");
 
+        DeshabilitarGrupo.setLayout(new java.awt.GridBagLayout());
+
         jLabel58.setText("DESHABILITAR GRUPO");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 62, 0, 0);
+        DeshabilitarGrupo.add(jLabel58, gridBagConstraints);
 
         jLabel59.setText("Nombre Grupo:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 124, 0, 0);
+        DeshabilitarGrupo.add(jLabel59, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 94;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 38, 0, 0);
+        DeshabilitarGrupo.add(jTextField36, gridBagConstraints);
 
         jButton23.setText("Deshabilitar");
         jButton23.addActionListener(new java.awt.event.ActionListener() {
@@ -1027,6 +1263,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton23ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 350, 101, 0);
+        DeshabilitarGrupo.add(jButton23, gridBagConstraints);
 
         jButton26.setText("Buscar");
         jButton26.addActionListener(new java.awt.event.ActionListener() {
@@ -1034,6 +1277,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton26ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 323, 0, 0);
+        DeshabilitarGrupo.add(jButton26, gridBagConstraints);
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1045,79 +1295,95 @@ public class Swing extends javax.swing.JFrame {
         ));
         jScrollPane11.setViewportView(jTable4);
 
-        javax.swing.GroupLayout DeshabilitarGrupoLayout = new javax.swing.GroupLayout(DeshabilitarGrupo);
-        DeshabilitarGrupo.setLayout(DeshabilitarGrupoLayout);
-        DeshabilitarGrupoLayout.setHorizontalGroup(
-            DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                .addGroup(DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                        .addGroup(DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                                .addGap(227, 227, 227)
-                                .addComponent(jLabel58))
-                            .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(jLabel59)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton26))
-                    .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(jButton23))
-                    .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        DeshabilitarGrupoLayout.setVerticalGroup(
-            DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DeshabilitarGrupoLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel58)
-                .addGap(18, 18, 18)
-                .addGroup(DeshabilitarGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel59)
-                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton26))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton23)
-                .addContainerGap(185, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1114;
+        gridBagConstraints.ipady = 371;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(27, 0, 0, 0);
+        DeshabilitarGrupo.add(jScrollPane11, gridBagConstraints);
 
         getContentPane().add(DeshabilitarGrupo, "card18");
 
-        CrearDepartamento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        CrearDepartamento.setLayout(new java.awt.GridBagLayout());
 
         jLabel27.setText("CREAR DEPARTAMENTO");
-        CrearDepartamento.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 33, 143, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(50, 81, 0, 0);
+        CrearDepartamento.add(jLabel27, gridBagConstraints);
 
         jLabel28.setText("Nombre:");
-        CrearDepartamento.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 70, 59, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 13;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 30, 0, 0);
+        CrearDepartamento.add(jLabel28, gridBagConstraints);
 
         jTextField15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField15ActionPerformed(evt);
             }
         });
-        CrearDepartamento.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 67, 84, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 11, 0, 0);
+        CrearDepartamento.add(jTextField15, gridBagConstraints);
 
         jLabel29.setText("Código de Departamento:");
-        CrearDepartamento.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 70, 149, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 46, 0, 0);
+        CrearDepartamento.add(jLabel29, gridBagConstraints);
 
         jTextField16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField16ActionPerformed(evt);
             }
         });
-        CrearDepartamento.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 67, 110, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 46;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 11, 0, 0);
+        CrearDepartamento.add(jTextField16, gridBagConstraints);
 
         jLabel30.setText("Correo de Jefe de Departamento:");
-        CrearDepartamento.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 124, -1, -1));
-        CrearDepartamento.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 121, 161, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 50, 0, 0);
+        CrearDepartamento.add(jLabel30, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 97;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 13, 0, 0);
+        CrearDepartamento.add(jTextField17, gridBagConstraints);
 
         jButton12.setText("Crear");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -1125,7 +1391,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton12ActionPerformed(evt);
             }
         });
-        CrearDepartamento.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 121, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 19, 0, 0);
+        CrearDepartamento.add(jButton12, gridBagConstraints);
 
         jTable9.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1145,14 +1417,31 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(jTable9);
 
-        CrearDepartamento.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 177, 600, 250));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1114;
+        gridBagConstraints.ipady = 330;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(34, 0, 113, 0);
+        CrearDepartamento.add(jScrollPane7, gridBagConstraints);
 
         getContentPane().add(CrearDepartamento, "card11");
 
-        ModificarDepartamento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ModificarDepartamento.setLayout(new java.awt.GridBagLayout());
 
         jLabel31.setText("MODIFICAR DEPARTAMENTO");
-        ModificarDepartamento.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 30, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 278, 0, 0);
+        ModificarDepartamento.add(jLabel31, gridBagConstraints);
 
         jButton13.setText("Buscar");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -1160,7 +1449,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton13ActionPerformed(evt);
             }
         });
-        ModificarDepartamento.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(50, 160, 157, 0);
+        ModificarDepartamento.add(jButton13, gridBagConstraints);
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nombre", "codDepartamento", "idJefe" }));
         jComboBox5.addActionListener(new java.awt.event.ActionListener() {
@@ -1168,8 +1463,20 @@ public class Swing extends javax.swing.JFrame {
                 jComboBox5ActionPerformed(evt);
             }
         });
-        ModificarDepartamento.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
-        ModificarDepartamento.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 123, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 278, 0, 0);
+        ModificarDepartamento.add(jComboBox5, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 59;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 18, 0, 0);
+        ModificarDepartamento.add(jTextField19, gridBagConstraints);
 
         jButton14.setText("Cambiar");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -1177,7 +1484,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton14ActionPerformed(evt);
             }
         });
-        ModificarDepartamento.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 17, 0, 0);
+        ModificarDepartamento.add(jButton14, gridBagConstraints);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1202,14 +1515,30 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane10.setViewportView(jTable2);
 
-        ModificarDepartamento.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 600, 220));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1114;
+        gridBagConstraints.ipady = 300;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(44, 0, 0, 0);
+        ModificarDepartamento.add(jScrollPane10, gridBagConstraints);
 
         getContentPane().add(ModificarDepartamento, "card12");
 
-        EliminarDepartamento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        EliminarDepartamento.setLayout(new java.awt.GridBagLayout());
 
         jLabel33.setText("ELIMINAR DEPARTAMENTO");
-        EliminarDepartamento.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 298, 0, 0);
+        EliminarDepartamento.add(jLabel33, gridBagConstraints);
 
         jButton15.setText("Buscar");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -1217,7 +1546,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton15ActionPerformed(evt);
             }
         });
-        EliminarDepartamento.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(100, 110, 137, 0);
+        EliminarDepartamento.add(jButton15, gridBagConstraints);
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1242,7 +1577,18 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane13.setViewportView(jTable5);
 
-        EliminarDepartamento.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 500, 160));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1064;
+        gridBagConstraints.ipady = 260;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(54, 40, 0, 0);
+        EliminarDepartamento.add(jScrollPane13, gridBagConstraints);
 
         jButton16.setText("Eliminar");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -1250,55 +1596,183 @@ public class Swing extends javax.swing.JFrame {
                 jButton16ActionPerformed(evt);
             }
         });
-        EliminarDepartamento.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(90, 322, 0, 0);
+        EliminarDepartamento.add(jButton16, gridBagConstraints);
 
         getContentPane().add(EliminarDepartamento, "card13");
 
-        CrearSolicitud.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        CrearSolicitud.setLayout(new java.awt.GridBagLayout());
 
         jLabel35.setText("CREAR SOLICITUD");
-        CrearSolicitud.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 16, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 33;
+        gridBagConstraints.ipady = 24;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
+        CrearSolicitud.add(jLabel35, gridBagConstraints);
 
         jLabel36.setText("Título:");
-        CrearSolicitud.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 43, -1));
-        CrearSolicitud.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 190, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 120, 0, 0);
+        CrearSolicitud.add(jLabel36, gridBagConstraints);
+
+        jTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 10, 0, 0);
+        CrearSolicitud.add(jTextField21, gridBagConstraints);
 
         jLabel37.setText("Tipo:");
-        CrearSolicitud.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 43, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 17;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 90, 0, 0);
+        CrearSolicitud.add(jLabel37, gridBagConstraints);
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EXTRAESCOLAR", "COMPLEMENTARIA" }));
-        CrearSolicitud.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 210, -1));
+        jComboBox6.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 103;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 13, 0, 112);
+        CrearSolicitud.add(jComboBox6, gridBagConstraints);
 
         jLabel38.setText("Departamento:");
-        CrearSolicitud.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(34, 60, 0, 0);
+        CrearSolicitud.add(jLabel38, gridBagConstraints);
 
         jLabel39.setText("Hora Inicio:");
-        CrearSolicitud.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 120, 0, 0);
+        CrearSolicitud.add(jLabel39, gridBagConstraints);
 
+        jTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField23ActionPerformed(evt);
             }
         });
-        CrearSolicitud.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 190, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 10, 0, 0);
+        CrearSolicitud.add(jTextField23, gridBagConstraints);
 
         jLabel40.setText("Hora Final:");
-        CrearSolicitud.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
-        CrearSolicitud.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 190, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 120, 0, 0);
+        CrearSolicitud.add(jLabel40, gridBagConstraints);
+
+        jTextField24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
+        CrearSolicitud.add(jTextField24, gridBagConstraints);
 
         jLabel41.setText("DNI Profesor:");
-        CrearSolicitud.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 97, -1));
-        CrearSolicitud.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 210, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 27;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(38, 50, 0, 0);
+        CrearSolicitud.add(jLabel41, gridBagConstraints);
+
+        jTextField25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 176;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(38, 13, 0, 112);
+        CrearSolicitud.add(jTextField25, gridBagConstraints);
 
         jLabel42.setText("Fecha inicio:");
-        CrearSolicitud.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipady = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(38, 120, 0, 0);
+        CrearSolicitud.add(jLabel42, gridBagConstraints);
 
         jLabel43.setText("Fecha Final:");
-        CrearSolicitud.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 120, 0, 0);
+        CrearSolicitud.add(jLabel43, gridBagConstraints);
 
         jLabel44.setText("Participantes:");
-        CrearSolicitud.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
-        CrearSolicitud.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 210, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 70, 0, 0);
+        CrearSolicitud.add(jLabel44, gridBagConstraints);
+
+        jTextField28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 176;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 13, 0, 112);
+        CrearSolicitud.add(jTextField28, gridBagConstraints);
 
         jButton17.setText("Crear");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
@@ -1306,26 +1780,82 @@ public class Swing extends javax.swing.JFrame {
                 jButton17ActionPerformed(evt);
             }
         });
-        CrearSolicitud.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
-        CrearSolicitud.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 180, -1));
-        CrearSolicitud.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 180, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 40, 137, 0);
+        CrearSolicitud.add(jButton17, gridBagConstraints);
+
+        jTextField26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(38, 10, 0, 0);
+        CrearSolicitud.add(jTextField26, gridBagConstraints);
+
+        jTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 10, 0, 0);
+        CrearSolicitud.add(jTextField27, gridBagConstraints);
 
         jCheckBox1.setText("Alojamiento");
-        CrearSolicitud.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 31;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(78, 90, 0, 0);
+        CrearSolicitud.add(jCheckBox1, gridBagConstraints);
 
         jCheckBox2.setText("Prevista");
-        CrearSolicitud.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(78, 80, 0, 0);
+        CrearSolicitud.add(jCheckBox2, gridBagConstraints);
 
         jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología y Geología", "Dibujo", "Economía", "Educación Física", "Filosofía", "Física y Química", "Francés", "Geografía e Historia", "Inglés", "Latín", "Lengua Castellana y Literatura", "Matemáticas", "Música", "Tecnología", "Administración y Gestión", "Formación y Orientación Laboral", "Informática y Comunicaciones", "Fabricación Mecánica", "Transporte y Mantenimiento de Vehículos" }));
-        CrearSolicitud.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 190, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.ipadx = -14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(34, 13, 0, 112);
+        CrearSolicitud.add(jComboBox11, gridBagConstraints);
 
         getContentPane().add(CrearSolicitud, "card14");
 
-        ConsultarSolicitudes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ConsultarSolicitudes.setLayout(new java.awt.GridBagLayout());
 
         jLabel47.setText("CONSULTAR SOLICITUDES");
-        ConsultarSolicitudes.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
-        ConsultarSolicitudes.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 65, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 318, 0, 0);
+        ConsultarSolicitudes.add(jLabel47, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        ConsultarSolicitudes.add(jLabel48, gridBagConstraints);
 
         jButton18.setText("Buscar");
         jButton18.addActionListener(new java.awt.event.ActionListener() {
@@ -1333,7 +1863,13 @@ public class Swing extends javax.swing.JFrame {
                 jButton18ActionPerformed(evt);
             }
         });
-        ConsultarSolicitudes.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 17, 0, 0);
+        ConsultarSolicitudes.add(jButton18, gridBagConstraints);
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1353,27 +1889,58 @@ public class Swing extends javax.swing.JFrame {
         });
         jTable6.setDoubleBuffered(true);
         jTable6.setDropMode(javax.swing.DropMode.ON);
+        jTable6.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         jScrollPane19.setViewportView(jTable6);
 
-        ConsultarSolicitudes.add(jScrollPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 590, 330));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1074;
+        gridBagConstraints.ipady = 520;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(17, 0, 0, 10);
+        ConsultarSolicitudes.add(jScrollPane19, gridBagConstraints);
 
         getContentPane().add(ConsultarSolicitudes, "card15");
 
-        AprobarDenegarSolicitudes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        AprobarDenegarSolicitudes.setLayout(new java.awt.GridBagLayout());
 
         jLabel49.setText("APROBAR O DENEGAR SOLICITUDES");
-        AprobarDenegarSolicitudes.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 31, 205, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(31, 28, 0, 0);
+        AprobarDenegarSolicitudes.add(jLabel49, gridBagConstraints);
 
         jLabel50.setText("Solicitudes Asignadas");
-        AprobarDenegarSolicitudes.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 40, 0, 0);
+        AprobarDenegarSolicitudes.add(jLabel50, gridBagConstraints);
 
         jButton20.setText("Aprobar");
+        jButton20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton20ActionPerformed(evt);
             }
         });
-        AprobarDenegarSolicitudes.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(87, 13, 77, 0);
+        AprobarDenegarSolicitudes.add(jButton20, gridBagConstraints);
 
         jButton21.setText("Denegar");
         jButton21.addActionListener(new java.awt.event.ActionListener() {
@@ -1381,11 +1948,31 @@ public class Swing extends javax.swing.JFrame {
                 jButton21ActionPerformed(evt);
             }
         });
-        AprobarDenegarSolicitudes.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 16;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(87, 116, 77, 0);
+        AprobarDenegarSolicitudes.add(jButton21, gridBagConstraints);
 
         jLabel51.setText("Comentario:");
-        AprobarDenegarSolicitudes.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 74, -1));
-        AprobarDenegarSolicitudes.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 207, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 90, 0, 0);
+        AprobarDenegarSolicitudes.add(jLabel51, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 143;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 5, 0, 0);
+        AprobarDenegarSolicitudes.add(jTextField31, gridBagConstraints);
 
         jButton25.setText("Buscar");
         jButton25.addActionListener(new java.awt.event.ActionListener() {
@@ -1393,7 +1980,16 @@ public class Swing extends javax.swing.JFrame {
                 jButton25ActionPerformed(evt);
             }
         });
-        AprobarDenegarSolicitudes.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 17;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 19;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 364, 0, 0);
+        AprobarDenegarSolicitudes.add(jButton25, gridBagConstraints);
+
+        jScrollPane20.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1411,6 +2007,8 @@ public class Swing extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable7.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        jTable7.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         jTable7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable7MouseClicked(evt);
@@ -1418,7 +2016,18 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane20.setViewportView(jTable7);
 
-        AprobarDenegarSolicitudes.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 590, 130));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 18;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1084;
+        gridBagConstraints.ipady = 300;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(4, 10, 0, 0);
+        AprobarDenegarSolicitudes.add(jScrollPane20, gridBagConstraints);
 
         Insertar.setText("Insertar");
         Insertar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1431,21 +2040,54 @@ public class Swing extends javax.swing.JFrame {
                 InsertarActionPerformed(evt);
             }
         });
-        AprobarDenegarSolicitudes.add(Insertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 13, 0, 0);
+        AprobarDenegarSolicitudes.add(Insertar, gridBagConstraints);
 
         getContentPane().add(AprobarDenegarSolicitudes, "card16");
 
-        FasePreparacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        FasePreparacion.setLayout(new java.awt.GridBagLayout());
 
         jLabel52.setText("FASE PREPARACIÓN");
-        FasePreparacion.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 93, 0, 0);
+        FasePreparacion.add(jLabel52, gridBagConstraints);
 
         jLabel53.setText("Solicitudes Aprobadas");
-        FasePreparacion.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 20, 0, 0);
+        FasePreparacion.add(jLabel53, gridBagConstraints);
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "horaInicio", "horaFin", "fechaInicio", "fechaFinal", "tipo", "totalParticipantes", "comenRealizada", " " }));
-        FasePreparacion.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
-        FasePreparacion.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 124, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 20, 0, 0);
+        FasePreparacion.add(jComboBox7, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 13, 0, 0);
+        FasePreparacion.add(jTextField30, gridBagConstraints);
 
         jButton22.setText("Modificar");
         jButton22.addActionListener(new java.awt.event.ActionListener() {
@@ -1453,7 +2095,14 @@ public class Swing extends javax.swing.JFrame {
                 jButton22ActionPerformed(evt);
             }
         });
-        FasePreparacion.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 16, 0, 0);
+        FasePreparacion.add(jButton22, gridBagConstraints);
 
         jLabel45.setText("Tipo:");
 
@@ -1486,9 +2135,9 @@ public class Swing extends javax.swing.JFrame {
                         .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         MedioTransporteLayout.setVerticalGroup(
             MedioTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1509,13 +2158,33 @@ public class Swing extends javax.swing.JFrame {
                     .addGroup(MedioTransporteLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel56)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        FasePreparacion.add(MedioTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 390, 80));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridheight = 6;
+        gridBagConstraints.ipadx = 39;
+        gridBagConstraints.ipady = 42;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 56, 240, 0);
+        FasePreparacion.add(MedioTransporte, gridBagConstraints);
 
         jButton19.setText("Realizada");
-        FasePreparacion.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 40, 0, 0);
+        FasePreparacion.add(jButton19, gridBagConstraints);
 
         jCheckBox3.setText("MedioTransporte");
         jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -1523,7 +2192,13 @@ public class Swing extends javax.swing.JFrame {
                 jCheckBox3ActionPerformed(evt);
             }
         });
-        FasePreparacion.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 99, 0, 0);
+        FasePreparacion.add(jCheckBox3, gridBagConstraints);
 
         jButton27.setText("Buscar");
         jButton27.addActionListener(new java.awt.event.ActionListener() {
@@ -1531,7 +2206,12 @@ public class Swing extends javax.swing.JFrame {
                 jButton27ActionPerformed(evt);
             }
         });
-        FasePreparacion.add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 0);
+        FasePreparacion.add(jButton27, gridBagConstraints);
 
         jTable11.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1559,22 +2239,18 @@ public class Swing extends javax.swing.JFrame {
             jTable11.getColumnModel().getColumn(11).setResizable(false);
         }
 
-        FasePreparacion.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 400, 90));
-
-        jTable12.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane14.setViewportView(jTable12);
-
-        FasePreparacion.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 460, 90));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1064;
+        gridBagConstraints.ipady = 130;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(14, 20, 0, 12);
+        FasePreparacion.add(jScrollPane8, gridBagConstraints);
 
         jButton28.setText("Insertar");
         jButton28.addActionListener(new java.awt.event.ActionListener() {
@@ -1582,7 +2258,12 @@ public class Swing extends javax.swing.JFrame {
                 jButton28ActionPerformed(evt);
             }
         });
-        FasePreparacion.add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 119, 0, 0);
+        FasePreparacion.add(jButton28, gridBagConstraints);
 
         getContentPane().add(FasePreparacion, "card17");
 
@@ -2518,8 +3199,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         // TODO add your handling code here:
-
-        SortedSet<ActividadProgramada> listaProgramada = metodosprogramada.listar();
+        SortedSet<ActividadProgramada> listaProgramada = metodosprogramada.listarAprobadas();
         limpiarTabla();
         insertarTablaProgramadas(listaProgramada, jTable11);
         //Y asigno el jTable al atributo tabla
@@ -2530,13 +3210,7 @@ public class Swing extends javax.swing.JFrame {
     private void jTable11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable11MouseClicked
         // TODO add your handling code here:
         //Obtengo el índice de la fila que selecciono
-        int filaSeleccionada = jTable11.getSelectedRow();
-        //Cargo la tabla
-        DefaultTableModel tablaF = (DefaultTableModel) jTable11.getModel();
-        //Obtengo el valor del indice que utilizo para buscar una solicitud
-
-        String valor1 = tablaF.getValueAt(filaSeleccionada, 7).toString();
-        prograux = metodosprogramada.buscarPor(valor1);
+       
     }//GEN-LAST:event_jTable11MouseClicked
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
@@ -2562,6 +3236,20 @@ public class Swing extends javax.swing.JFrame {
         metodotransporte.insertarMedioUtiliza(m, prograux);
     }//GEN-LAST:event_jButton28ActionPerformed
 
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+        if(prograux==null){
+        SortedSet<ActividadProgramada> listaProgramada = metodosprogramada.listarRealizadas();
+        limpiarTabla();
+        insertarTablaProgramadas(listaProgramada, jTable11);
+        //Y asigno el jTable al atributo tabla
+        jTable11.setModel(tabla);
+        }else{
+            String titulo=prograux.getTitulo();
+            metodosprogramada.actualizarEstado(titulo, "REALIZADA");
+        }
+    }//GEN-LAST:event_jButton19ActionPerformed
+  
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         SortedSet<Profesor> listaProfesor = Profesor.listar();
         limpiarTabla();
@@ -2810,6 +3498,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane19;
@@ -2824,6 +3513,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable11;
+
     private javax.swing.JTable jTable12;
     private javax.swing.JTable jTable13;
     private javax.swing.JTable jTable14;
