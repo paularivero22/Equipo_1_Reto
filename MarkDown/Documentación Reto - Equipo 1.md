@@ -1327,6 +1327,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
     background-color: #333333;
     border-radius: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
    }
    ```
   - width 100%: anchura del 100% dentro del contenedor
@@ -1335,6 +1337,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
   - font-size 1.5em: el tamaño de fuente será de 1.5 em
   - background-color: color del fondo 
   - border-radius: hace redondos los bordes del contenedor
+  - word-wrap break-word: las palabras deben saltar a la siguiente linea si no caben en el contendor
+  - overflow-wrap break-word: es lo mismo que word-wrap break-word pero en algunos navegadores no funciona
 
 - ### **Viajes y Clases (div)**
    ```css
@@ -1347,8 +1351,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
     align-items: center;
 
     background-color: #333;
-    width: 13%;
-    height: 15%;
+    width: 20%;
+    height: 20%;
     border-radius: 10px;
 
     color: #fff;
@@ -1360,13 +1364,13 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
   - justify-content left: los elementos flexibles se alinean horizontalmente a la izquierda
   - align-items center: alinea verticalmente los elementos flexibles al centro
   - background-color: color del fondo
-  - width 13%: anchura de los div
-  - height 15%: altura de los div
+  - width 20%: anchura de los div
+  - height 20%: altura de los div
   - border-radius 10px: hace redondos los bordes del contenedor
   - color: color del texto
   - font-weight bold: estilo del texto, en este caso negrita
 
-- ### **Viajes p y Clases p (texto)**
+- ### **Viajes p y Clases p**
    ```css
    .Viajes p,
    .Clases p {
@@ -1383,107 +1387,87 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
   - font-size 0.99em: tamaño de la letra, esta unidad se utiliza para que se escale segun el tamao de la ventana
   - text-align left: el texto se alinea a la izquierda
 
-- ### **Viajes main y Clases main**
+- ### **Viajes main y Clases main (div)**
    ```css
-   .ViajesMain,
-   .ClasesMain {
+    .ViajesMain,
+    .ClasesMain {
     display: flex;
-    width: 70%;
+    width: 95%;
     margin: 20px;
     padding: 20px;
 
     background-color: #f4f4f4;
     border-radius: 10px;
-   }
+    border: solid black;
+    }
    ```
-  - position relative: El elemento se mantiene en el flujo normal del documento
-  - width 70%: anchura de los main
-  - margin 20px: margen de los main
-  - padding 20px: margen interno de los main
+  - display flex: el contenedor será flexible
+  - width 95%: anchura de los main
+  - margin 20px: margen 
+  - padding 20px: margen interno
   - background-color: color del fondo
   - border-radius 10px: hace redondos los bordes de los main
+  - border solid black: borde para la tabla
+  - overflow-x auto: si el texto se desborda aparece una barra de desplazamiento
 
 - ### **ViajesMain th, ViajesMain td, ClasesMain th y ClasesMain th**<br>
     Estilo para los titulos y texto de las tablas<br>
    ```css
-   .ViajesMain th,
-   .ViajesMain td,
-   .ClasesMain th,
-   .ClasesMain td {
+    .ViajesMain th,
+    .ViajesMain td,
+    .ClasesMain th,
+    .ClasesMain td {
     display: flexbox;
     padding: 20px;
     text-align: left;
-    max-width: 10%;
-   }
+    width: auto;
+    }
    ```
   - display flexbox: los elementos de la tabla serán cajas flexibles
   - padding 20px: margen interno
   - text-align left: el texto se alinea a la izquierda
-  - max-width: anchura maxima 
+  - width auto: anchura automática
+
+- ### **ViajesMain td:nth-child,ViajesMain th:nth-child,ClasesMain td:nth-child,ClasesMain th:nth-child**<br>
+    Estilo para la primera columna, para hacer espacio a las demás columnas<br>
+   ```css
+    .ViajesMain td:nth-child,
+    .ViajesMain th:nth-child,
+    .ClasesMain td:nth-child,
+    .ClasesMain th:nth-child {
+    width: 250px;
+    }
+   ```
+   - width 250px: ancho de la columna
+
+- ### **ViajesMain td:nth-child(7),ViajesMain th:nth-child(7),ClasesMain td:nth-child(7),ClasesMain th:nth-child(7)**<br>
+    Estilo para la columna profesores participantes, para hacer espacio a las demás columnas<br>
+   ```css
+    .ViajesMain td:nth-child(7),
+    .ViajesMain th:nth-child(7),
+    .ClasesMain td:nth-child(7),
+    .ClasesMain th:nth-child(7) {
+    width: 180px; 
+    }
+   ```
+   - width 180px: ancho de la columna
+
+- ### **ViajesMain td:nth-child(7),ViajesMain th:nth-child(7),ClasesMain td:nth-child(7),ClasesMain th:nth-child(7)**<br>
+    Estilo para la columna personas involucradas, para hacer espacio a las demás columnas<br>
+   ```css
+    .ViajesMain td:nth-child(3),
+    .ViajesMain th:nth-child(3),
+    .ClasesMain td:nth-child(3),
+    .ClasesMain th:nth-child(3) {
+    width: 155px; 
+    }
+   ```
+   - width 155px: ancho de la columna
 
 - ### **@media screen and (max-width: 1500px)**<br>
     Estilo para cuando la ventana ocupe 1500 pixeles<br>
     ```css
     @media screen and (max-width: 1500px) {
-
-        .TextoActividades h1 {
-            font-size: 1.2em;
-        }
-
-        .Viajes,
-        .Clases {
-            max-width: 13%;
-            max-height: 15%;
-        }
-
-        .Viajes p,
-        .Clases p {
-            font-size: 0.9em;
-            padding: 0 10px;
-            max-width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .ViajesMain,
-        .ClasesMain {
-            width: 95%;
-            margin: 5px auto;
-            padding: 5px;
-        }
-
-        .ViajesMain th,
-        .ViajesMain td,
-        .ClasesMain th,
-        .ClasesMain td {
-            padding: 10px; 
-            font-size: 0.9em;
-        }
-    }
-    ```
-    - texto actividades h1
-      - font size 1.2em: tamaño de la fuente, se usa esta unidad para que se esclae segun el tamaño de la ventana
-    - viajes, clases
-      - max-with 13%: anchura maxima del contenedor
-      - max-height 15%: altura maxima del cotenedor
-    - viajes p, clases p
-      - font-size 0.9em: tamaño de la fuente, se usa esta unidad para que se esclae segun el tamaño de la ventana
-      - padding 0 10px: margen interno de 0px por arriba y por abajo y 10px por la izquierda y la derecha
-      - max-width 100%: anchura maxima del texto
-      - overflow hidden: el contenido que se desborda del contenedor se recorta y no se muestra
-      - text-overflow ellipsis: cuando el contenido se desborda y no se muestra, se remplaza por un caracter "(...)"
-    - ViajesMain y ClasesMain
-      - width 95%: anchura de los contenedores
-      - margin 5px auto: margen de 5px por arriba y por abajo y automatico por la derecha y por la izquierda, para que el espacio entre los elementos se pueda cambiar con el tamaño de la ventana
-      - padding 5px: margen interno 
-    - ViajesMain th, ViajesMain td, ClasesMain th, ClasesMain td
-      - padding 10px: margen interno
-      - font-size 0.9em: tamaño de la fuente, se usa esta unidad para que se esclae segun el tamaño de la ventana
-  
-- ### **@media screen and (max-width: 500px)**<br>
-    Estilo para cuando la ventana ocupe 1500 pixeless<br>
-    ```css
-    @media screen and (max-width: 500px) {
 
     .TextoActividades h1 {
         font-size: 1.2em;
@@ -1491,9 +1475,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
     .Viajes,
     .Clases {
-        max-width: 13%;
-        max-height: 15%;
-        margin:auto;
+        max-width: 30%;
+        max-height: 30%;
     }
 
     .Viajes p,
@@ -1519,7 +1502,142 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
         padding: 10px; 
         font-size: 0.9em;
       }
-    } 
+    }
+    ```
+    - texto actividades h1
+      - font size 1.2em: tamaño de la fuente, se usa esta unidad para que se esclae segun el tamaño de la ventana
+
+    - viajes, clases
+      - max-with 30%: anchura maxima del contenedor
+      - max-height 30%: altura maxima del cotenedor
+
+    - viajes p, clases p
+      - font-size 0.9em: tamaño de la fuente, se usa esta unidad para que se esclae segun el tamaño de la ventana
+      - padding 0 10px: margen interno de 0px por arriba y por abajo y 10px por la izquierda y la derecha
+      - max-width 100%: anchura maxima del texto
+      - overflow hidden: el contenido que se desborda del contenedor se recorta y no se muestra
+      - text-overflow ellipsis: cuando el contenido se desborda y no se muestra, se remplaza por un caracter "(...)"
+
+    - ViajesMain y ClasesMain
+      - width 95%: anchura de los contenedores
+      - margin 5px auto: margen de 5px por arriba y por abajo y automatico por la derecha y por la izquierda, para que el espacio entre los elementos se pueda cambiar con el tamaño de la ventana
+      - padding 5px: margen interno 
+
+    - ViajesMain th, ViajesMain td, ClasesMain th, ClasesMain td
+      - padding 10px: margen interno
+      - font-size 0.9em: tamaño de la fuente, se usa esta unidad para que se esclae segun el tamaño de la ventana
+  
+
+- ### **@media screen and (max-width: 1100px)**<br>
+    Estilo para cuando la ventana ocupe 1100 pixeles<br>
+    ```css
+    @media screen and (max-width: 1100px) {
+
+    .TextoActividades h1 {
+        font-size: 1em;
+    }
+
+    .Viajes,
+    .Clases {
+        width: 100%;
+        height: auto;
+        margin: 10px auto;
+        justify-content: center;
+    }
+
+    .Viajes p,
+    .Clases p {
+        font-size: 0.8em;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .ViajesMain,
+    .ClasesMain {
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .ViajesMain th,
+    .ViajesMain td,
+    .ClasesMain th,
+    .ClasesMain td {
+        padding: 5px;
+        font-size: 0.8em;
+    }
+
+    .ViajesMain td:first-child,
+    .ViajesMain th:first-child,
+    .ClasesMain td:first-child,
+    .ClasesMain th:first-child,
+    .ViajesMain td:nth-child(7),
+    .ViajesMain th:nth-child(7),
+    .ClasesMain td:nth-child(7),
+    .ClasesMain th:nth-child(7),
+    .ViajesMain td:nth-child(3),
+    .ViajesMain th:nth-child(3),
+    .ClasesMain td:nth-child(3),
+    .ClasesMain th:nth-child(3) {
+        width: auto;
+     }
+    }
+    ```
+
+- ### **@media screen and (max-width: 800px)**<br>
+    Estilo para cuando la ventana ocupe 800 pixeles<br>
+    ```css
+    @media screen and (max-width: 800px) {
+
+    .TextoActividades h1 {
+        font-size: 1em;
+    }
+
+    .Viajes,
+    .Clases {
+        width: 90%;
+        height: auto;
+        margin: 10px auto;
+        justify-content: center;
+    }
+
+    .Viajes p,
+    .Clases p {
+        font-size: 0.8em;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .ViajesMain,
+    .ClasesMain {
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .ViajesMain th,
+    .ViajesMain td,
+    .ClasesMain th,
+    .ClasesMain td {
+        padding: 5px;
+        font-size: 0.8em;
+    }
+
+    .ViajesMain td:first-child,
+    .ViajesMain th:first-child,
+    .ClasesMain td:first-child,
+    .ClasesMain th:first-child,
+    .ViajesMain td:nth-child(7),
+    .ViajesMain th:nth-child(7),
+    .ClasesMain td:nth-child(7),
+    .ClasesMain th:nth-child(7),
+    .ViajesMain td:nth-child(3),
+    .ViajesMain th:nth-child(3),
+    .ClasesMain td:nth-child(3),
+    .ClasesMain th:nth-child(3) {
+        width: auto;
+     }
+    }
     ```
 <br><br>
 
