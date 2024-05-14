@@ -52,7 +52,4 @@ public interface RepositorioDAO<T> {
      */
     //Metodo para actualizar datos de una tabla ;
     public void actualizar(String filtro,String valorABuscar,JTextField valornuevo);
-    
-    public boolean verificarCredenciales(String correo, String contrasenia);
-    public boolean actualizarContraenia(String DNI, String nuevaContrasenia);
 }

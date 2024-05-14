@@ -5,10 +5,12 @@
 package com.mycompany.actividadextraescolar;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import javax.swing.JTextField;
@@ -65,7 +67,37 @@ public class MedioTransporteDAO implements RepositorioDAO<MedioTransporte> {
 
     @Override
     public void insertar(MedioTransporte t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         String sql = "INSERT into mediotransporte(idTransporte,tipo)VALUES(?,?);";
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+           stmt.setInt(1, t.getIdActividad());
+           stmt.setString(2, t.getTipo().name());
+            int salida = stmt.executeUpdate();
+            if (salida != 1) {
+                throw new Exception(" No se ha insertado el registro");
+            }
+        } catch (SQLException s) {
+            System.out.println(s.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void insertarMedioUtiliza(MedioTransporte t,ActividadProgramada a){
+        String sql = "INSERT into mediotransporteutiliza(kilometros,fk_transporte,fk_actividad,importe,comentario)VALUES(?,?,?,?,?);";
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+           stmt.setDouble(1, t.getKilometros());
+           stmt.setInt(2, t.getIdTransporte());
+           stmt.setInt(3, a.getIdSolicitud());
+           stmt.setDouble(4,t.getImporte());
+           stmt.setString(5, t.getComentario());
+            int salida = stmt.executeUpdate();
+            if (salida != 1) {
+                throw new Exception(" No se ha insertado el registro");
+            }
+        } catch (SQLException s) {
+            System.out.println(s.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
