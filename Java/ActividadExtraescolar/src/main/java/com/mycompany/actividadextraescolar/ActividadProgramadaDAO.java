@@ -192,6 +192,57 @@ public class ActividadProgramadaDAO implements RepositorioDAO<ActividadProgramad
         }
     }
 
+    public SortedSet<ActividadProgramada> listarRealizadas() {
+        SortedSet<ActividadProgramada> listaRealizada = new TreeSet<>();
+        try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM actividadprogramada where estado='REALIZADA';");) {
+            while (rs.next()) {
+                ActividadProgramada ac = crearActividadProgramada(rs);
+                if (!listaRealizada.add(ac)) {
+                    throw new Exception("Error, no se pudo mostrar la solicitud " + ac.getTitulo());
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println(sql.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return listaRealizada;
+    }
+     public SortedSet<ActividadProgramada> listarAprobadas() {
+        SortedSet<ActividadProgramada> listaAprobadas = new TreeSet<>();
+        try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM actividadprogramada where estado='APROBADA';");) {
+            while (rs.next()) {
+                ActividadProgramada ac = crearActividadProgramada(rs);
+                if (!listaAprobadas.add(ac)) {
+                    throw new Exception("Error, no se pudo mostrar la solicitud " + ac.getTitulo());
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println(sql.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return listaAprobadas;
+    }
+
+    public void actualizarEstado(String valorABuscar, String estado) {
+        ActividadProgramada ac = buscarPor(valorABuscar);
+        String sql = "UPDATE actividadprogramada SET estado=? WHERE titulo=?;";
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            ac.setEstado(Estado.REALIZADA);
+            stmt.setString(1, estado);
+            stmt.setString(2, valorABuscar);
+            int salida = stmt.executeUpdate();
+            if (salida != 1) {
+                throw new Exception(" No se ha modificado el registro");
+            }
+        } catch (SQLException s) {
+            System.out.println(s.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     /**
      * METODO QUE CREA UNA ACTIVIDADPROGRAMADA A PARTIR DE LOS DATOS DE MYSQL
      *
