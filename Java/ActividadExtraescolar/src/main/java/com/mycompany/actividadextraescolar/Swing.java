@@ -32,6 +32,7 @@ public class Swing extends javax.swing.JFrame {
     private Solicitud solicitudAux;
     private ActividadProgramadaDAO metodosprogramada;
     private ActividadProgramada prograux;
+    private MedioTransporteDAO metodotransporte;
     private String correoLogin;
     private String contralogin;
 
@@ -50,6 +51,7 @@ public class Swing extends javax.swing.JFrame {
         metodosGrupo = new GruposDAO();
         cursos = new CursosDAO();
         metodosprogramada = new ActividadProgramadaDAO();
+        metodotransporte = new MedioTransporteDAO();
     }
 
     private void cargarItemsDepartamento() {
@@ -380,18 +382,21 @@ public class Swing extends javax.swing.JFrame {
         jButton22 = new javax.swing.JButton();
         MedioTransporte = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
-        jTextField32 = new javax.swing.JTextField();
         jLabel55 = new javax.swing.JLabel();
         jTextField33 = new javax.swing.JTextField();
         jLabel56 = new javax.swing.JLabel();
         jTextField34 = new javax.swing.JTextField();
         jLabel57 = new javax.swing.JLabel();
         jTextField35 = new javax.swing.JTextField();
+        jComboBox9 = new javax.swing.JComboBox<>();
         jButton19 = new javax.swing.JButton();
         jCheckBox3 = new javax.swing.JCheckBox();
         jButton27 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable11 = new javax.swing.JTable();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTable12 = new javax.swing.JTable();
+        jButton28 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Contraseña = new javax.swing.JMenu();
         Profesores = new javax.swing.JMenu();
@@ -972,7 +977,7 @@ public class Swing extends javax.swing.JFrame {
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton23)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         getContentPane().add(DeshabilitarGrupo, "card18");
@@ -1342,7 +1347,7 @@ public class Swing extends javax.swing.JFrame {
         });
         FasePreparacion.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, -1, -1));
 
-        jLabel45.setText("Empresa:");
+        jLabel45.setText("Tipo:");
 
         jLabel55.setText("Importe:");
 
@@ -1350,55 +1355,59 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel57.setText("Km:");
 
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ANDANDO", "BICI", "BUS", "TAXI", "TREN", "BARCO", "AVION" }));
+
         javax.swing.GroupLayout MedioTransporteLayout = new javax.swing.GroupLayout(MedioTransporte);
         MedioTransporte.setLayout(MedioTransporteLayout);
         MedioTransporteLayout.setHorizontalGroup(
             MedioTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MedioTransporteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(MedioTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(MedioTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MedioTransporteLayout.createSequentialGroup()
+                        .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(MedioTransporteLayout.createSequentialGroup()
                         .addComponent(jLabel56)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MedioTransporteLayout.createSequentialGroup()
-                        .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MedioTransporteLayout.setVerticalGroup(
             MedioTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MedioTransporteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(MedioTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel45)
+                    .addComponent(jLabel55)
+                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(MedioTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MedioTransporteLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(9, 9, 9)
                         .addGroup(MedioTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel45)
-                            .addComponent(jLabel55)
-                            .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(MedioTransporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel56)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel57)
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                            .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel57)
+                            .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(MedioTransporteLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel56)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        FasePreparacion.add(MedioTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 330, 80));
+        FasePreparacion.add(MedioTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 390, 80));
 
         jButton19.setText("Realizada");
-        FasePreparacion.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        FasePreparacion.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
         jCheckBox3.setText("MedioTransporte");
         jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -1442,7 +1451,30 @@ public class Swing extends javax.swing.JFrame {
             jTable11.getColumnModel().getColumn(11).setResizable(false);
         }
 
-        FasePreparacion.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 400, 90));
+        FasePreparacion.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 400, 90));
+
+        jTable12.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane14.setViewportView(jTable12);
+
+        FasePreparacion.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 460, 90));
+
+        jButton28.setText("Insertar");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
+        FasePreparacion.add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
         getContentPane().add(FasePreparacion, "card17");
 
@@ -1988,6 +2020,17 @@ public class Swing extends javax.swing.JFrame {
         AprobarDenegarSolicitudes.setVisible(false);
         FasePreparacion.setVisible(rootPaneCheckingEnabled);
         MedioTransporte.setVisible(false);
+        jButton28.setVisible(false);
+        SolicitudesDAO s = new SolicitudesDAO();
+        ActividadProgramadaDAO metodosprogramada = new ActividadProgramadaDAO();
+        SortedSet<Solicitud> lista = s.listar();
+        ActividadProgramada p = null;
+        for (Solicitud so : lista) {
+            if (so.getEstado().name().equalsIgnoreCase("APROBADA")) {
+                p = new ActividadProgramada(false, "", so.idSolicitud, so.getHoraInicio(), so.getHoraFinal(), so.comentario, so.isPrevista(), so.getIddepartamento(), so.titulo, so.tipoSolicitud, so.idprofesor, so.Alojamiento, so.fechaInicio, so.fechaFinal, so.totalParticipantes, so.estado);
+                metodosprogramada.insertar(p);
+            }
+        }
     }//GEN-LAST:event_fasedepreparacionMenuActionPerformed
 
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
@@ -2244,8 +2287,6 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
         String titulo = solicitudAux.getTitulo();
         solicitud.actualizarEstado(titulo, "APROBADA");
-            ActividadProgramada ac = new ActividadProgramada(false, "", solicitudAux.idSolicitud, solicitudAux.horaInicio, solicitudAux.horaFinal, solicitudAux.comentario, solicitudAux.prevista, solicitudAux.iddepartamento, solicitudAux.titulo, solicitudAux.tipoSolicitud, solicitudAux.idprofesor, solicitudAux.Alojamiento, solicitudAux.fechaInicio, solicitudAux.fechaFinal, solicitudAux.totalParticipantes, solicitudAux.estado);
-            metodosprogramada.insertar(ac);
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
@@ -2344,17 +2385,19 @@ public class Swing extends javax.swing.JFrame {
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
         String atributo = jComboBox7.getSelectedItem().toString();
-        String valorABuscar =prograux.titulo;
+        String valorABuscar = prograux.titulo;
         metodosprogramada.actualizar(atributo, valorABuscar, jTextField30);
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         // TODO add your handling code here:
+
         SortedSet<ActividadProgramada> listaProgramada = metodosprogramada.listar();
         limpiarTabla();
         insertarTablaProgramadas(listaProgramada, jTable11);
         //Y asigno el jTable al atributo tabla
         jTable11.setModel(tabla);
+
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jTable11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable11MouseClicked
@@ -2371,12 +2414,26 @@ public class Swing extends javax.swing.JFrame {
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
-        if(jCheckBox3.isSelected()){
+        if (jCheckBox3.isSelected()) {
             MedioTransporte.setVisible(true);
-        }else{
+            jButton28.setVisible(true);
+        } else {
             MedioTransporte.setVisible(false);
+            jButton28.setVisible(false);
         }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        // TODO add your handling code here:
+        int idSolicitud = prograux.idSolicitud;
+        TipoTransporte tipo = TipoTransporte.valueOf(jComboBox9.getSelectedItem().toString());
+        double importe = Double.parseDouble(jTextField33.getText());
+        double km = Double.parseDouble(jTextField35.getText());
+        String comentario = jTextField34.getText();
+        MedioTransporte m = new MedioTransporte(idSolicitud, tipo, comentario, importe, km);
+        metodotransporte.insertar(m);
+        metodotransporte.insertarMedioUtiliza(m, prograux);
+    }//GEN-LAST:event_jButton28ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2476,6 +2533,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2496,6 +2554,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2561,6 +2620,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
@@ -2574,6 +2634,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable11;
+    private javax.swing.JTable jTable12;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
@@ -2602,7 +2663,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
     private javax.swing.JTextField jTextField35;

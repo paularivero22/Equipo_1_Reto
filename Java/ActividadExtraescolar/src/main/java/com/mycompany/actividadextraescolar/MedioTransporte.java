@@ -25,12 +25,15 @@ public class MedioTransporte implements Comparable<MedioTransporte>{
         this.kilometros = kilometros;
     }
 
-    public MedioTransporte(TipoTransporte tipo, String comentario, double importe, int kilometros) {
+    public MedioTransporte(int idActividad, TipoTransporte tipo, String comentario, double importe, double kilometros) {
+        this.idActividad = idActividad;
         this.tipo = tipo;
         this.comentario = comentario;
         this.importe = importe;
         this.kilometros = kilometros;
     }
+
+    
 
     
 
