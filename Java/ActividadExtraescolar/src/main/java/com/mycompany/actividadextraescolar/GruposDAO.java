@@ -163,4 +163,14 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
     private Grupo crearGrupo(ResultSet rs) throws SQLException {
         return new Grupo(rs.getInt("idGrupo"), rs.getString("codGrupo"), rs.getInt("fk_curso"), rs.getInt("numAlumnos"), rs.getBoolean("activo"));
     }
+
+    @Override
+    public boolean verificarCredenciales(String correo, String contrasenia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean actualizarContraenia(String DNI, String nuevaContrasenia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

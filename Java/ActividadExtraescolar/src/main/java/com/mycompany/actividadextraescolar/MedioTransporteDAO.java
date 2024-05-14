@@ -109,4 +109,14 @@ public class MedioTransporteDAO implements RepositorioDAO<MedioTransporte> {
         return new MedioTransporte(rs.getInt("idTransporte"), rs.getInt("fk_actividad"), TipoTransporte.valueOf(rs.getString("tipo")), rs.getString("comentario"), rs.getDouble("importe"), rs.getInt("kilometros"));
     }
 
+    @Override
+    public boolean verificarCredenciales(String correo, String contrasenia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean actualizarContraenia(String DNI, String nuevaContrasenia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

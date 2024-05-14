@@ -188,5 +188,50 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
     private Profesor crearProfesor(final ResultSet rs) throws SQLException {
         return new Profesor(rs.getInt("idProfesor"), rs.getInt("fk_departamento"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("DNI"), rs.getString("correo"), rs.getBoolean("activo"), PerfilAcceso.valueOf(rs.getString("perfilAcceso")), rs.getString("contraseña"));
     }
+    
+    @Override
+  public boolean verificarCredenciales(String contraseña, String correo) {
+        String consulta = "SELECT COUNT(*) AS total FROM Profesor WHERE correo = ? AND contraseña = ?";
 
+        try (PreparedStatement statement = AccesoBaseDatos.getInstance().getConn().prepareStatement(consulta)) {
+            statement.setString(1, contraseña);
+            statement.setString(2, correo);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                int total = resultSet.getInt("total");
+                return total > 0; // Devuelve true si hay al menos una fila coincidente
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return false; // Si ocurre algún error o no hay coincidencias
+    }
+  
+    @Override
+    public boolean actualizarContraenia(String DNI, String nuevaContrasenia) {
+        String consulta = "UPDATE Profesor SET contraseña = ? WHERE DNI = ?";
+
+        try (PreparedStatement statement = AccesoBaseDatos.getInstance().getConn().prepareStatement(consulta)) {
+            statement.setString(1, nuevaContrasenia);
+            statement.setString(2, DNI);
+
+            int filasActualizadas = statement.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                // La contraseña se actualizó correctamente
+                System.out.println("Contraseña actualizada para el profesor con DNI: " + DNI);
+                return true;
+            } else {
+                // No se pudo actualizar la contraseña
+                System.out.println("No se pudo actualizar la contraseña para el profesor con DNI: " + DNI);
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
 }
