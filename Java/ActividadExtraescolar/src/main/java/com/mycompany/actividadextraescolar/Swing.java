@@ -30,6 +30,8 @@ public class Swing extends javax.swing.JFrame {
     private Departamento departamentoAux;
     private DepartamentoDAO metodosdepartamento;
     private Solicitud solicitudAux;
+    private ProfesorDAO Profesor;
+    private Profesor profesorAux;
     private ActividadProgramadaDAO metodosprogramada;
     private ActividadProgramada prograux;
     private MedioTransporteDAO metodotransporte;
@@ -49,6 +51,8 @@ public class Swing extends javax.swing.JFrame {
         solicitud = new SolicitudesDAO();
         metodosdepartamento = new DepartamentoDAO();
         metodosGrupo = new GruposDAO();
+        Profesor= new ProfesorDAO();
+        profesorAux = new Profesor();
         cursos = new CursosDAO();
         metodosprogramada = new ActividadProgramadaDAO();
         metodotransporte = new MedioTransporteDAO();
@@ -143,6 +147,26 @@ public class Swing extends javax.swing.JFrame {
             ob[1] = d.getCodigoDepartamento();
             ob[2] = d.getNombre();
             ob[3] = d.getIdJefe();
+            tabla.addRow(ob);
+        }
+        tabla1.setModel(tabla);
+    }
+    
+    private void insertarTablaProfesor(SortedSet<Profesor> lista, JTable tabla1) {
+        tabla = (DefaultTableModel) tabla1.getModel();
+        Object[] ob = new Object[9];
+        Iterator<Profesor> it = lista.iterator();
+        while (it.hasNext()) {
+            Profesor profesor = it.next();
+            ob[0] = profesor.getIdProfesor();
+            ob[1] = profesor.getIdDepartamento();
+            ob[2] = profesor.getNombre();
+            ob[3] = profesor.getApellidos();
+            ob[4] = profesor.getDNI();
+            ob[5] = profesor.getCorreo();
+            ob[6] = profesor.isActivo();
+            ob[7] = profesor.getPerfil();
+            ob[8] = profesor.getContrasenia();
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -243,15 +267,16 @@ public class Swing extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jTable15 = new javax.swing.JTable();
         Crear = new javax.swing.JButton();
         ModificarProfesor = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
+        jTable14 = new javax.swing.JTable();
         jTextField7 = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
+        jTable13 = new javax.swing.JTable();
         Buscar = new javax.swing.JButton();
         Modificar = new javax.swing.JButton();
         EliminarDeshabilitarProfesor = new javax.swing.JPanel();
@@ -291,8 +316,6 @@ public class Swing extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         ModificarGrupo = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
@@ -635,7 +658,21 @@ public class Swing extends javax.swing.JFrame {
             }
         });
         CrearProfesor.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 120, -1));
-        CrearProfesor.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 520, 50));
+
+        jTable15.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable15);
+
+        CrearProfesor.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 520, 50));
 
         Crear.setText("Crear");
         Crear.addActionListener(new java.awt.event.ActionListener() {
@@ -652,20 +689,61 @@ public class Swing extends javax.swing.JFrame {
         jLabel12.setText("MODIFICAR PROFESOR");
         ModificarProfesor.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
-        jLabel13.setText("DNI Profesor:");
-        ModificarProfesor.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
-        ModificarProfesor.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 111, -1));
-
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellidos", "Perfil", "Correo", "Departamento" }));
         ModificarProfesor.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 111, -1));
+
+        jTable14.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Profesor", "Departamento", "Nombre", "Apellidos", "DNI", "Correo", "activo", "Perfil Acceso", "Contraseña"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable14);
+
         ModificarProfesor.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 461, 53));
         ModificarProfesor.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 109, -1));
+
+        jTable13.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Profesor", "Departamento", "Nombre", "Apellidos", "DNI", "correo", "activo", "perfil Acceso", "Contraseña"
+            }
+        ));
+        jTable13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable13MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTable13);
+
         ModificarProfesor.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 460, 40));
 
         Buscar.setText("Buscar");
-        ModificarProfesor.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
+        ModificarProfesor.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         Modificar.setText("Modificar");
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarActionPerformed(evt);
+            }
+        });
         ModificarProfesor.add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
 
         getContentPane().add(ModificarProfesor, "card5");
@@ -688,6 +766,11 @@ public class Swing extends javax.swing.JFrame {
         EliminarDeshabilitarProfesor.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 204, -1, -1));
 
         jButton4.setText("Deshabilitar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         EliminarDeshabilitarProfesor.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 204, -1, -1));
         EliminarDeshabilitarProfesor.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 470, 60));
 
@@ -843,17 +926,13 @@ public class Swing extends javax.swing.JFrame {
         jLabel24.setText("MODIFICAR GRUPO");
         ModificarGrupo.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 110, -1));
 
-        jLabel25.setText("Descripción del Curso:");
-        ModificarGrupo.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
-        ModificarGrupo.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 140, -1));
-
         jButton10.setText("Buscar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
             }
         });
-        ModificarGrupo.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
+        ModificarGrupo.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
         jLabel26.setText("Número de Alumnos: ");
         ModificarGrupo.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
@@ -901,6 +980,11 @@ public class Swing extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable10MouseClicked(evt);
             }
         });
         jScrollPane12.setViewportView(jTable10);
@@ -2101,7 +2185,25 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        // TODO add your handling code here:
+        ProfesorDAO profesores = new ProfesorDAO();
+        String Nombre = jTextField1.getText();
+        String apellidos = jTextField3.getText();
+        String DNI = jTextField4.getText();
+        PerfilAcceso perfil = (PerfilAcceso) PerfilAcceso.valueOf(jComboBox1.getSelectedItem().toString());
+        String departamento = jComboBox2.getSelectedItem().toString();
+        Profesor profesorencontrado = profesores.buscarPor(DNI);
+        int idDepartamento = profesorencontrado.getIdDepartamento();
+        String correo = jTextField5.getText();
+        String contrasenia = profesorencontrado.getContrasenia();
+        Profesor profesor = new Profesor(idDepartamento, Nombre, apellidos, DNI, correo, true, perfil, contrasenia);
+
+        profesores.insertar(profesor);
+
+        SortedSet<Profesor> listaProfesor = Profesor.listar();
+        limpiarTabla();
+        insertarTablaProfesor(listaProfesor, jTable15);
+        //Y asigno el jTable al atributo tabla
+        jTable15.setModel(tabla);
     }//GEN-LAST:event_CrearActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2371,10 +2473,10 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        String atributo = jTextField14.getText();
-        String valorABuscar = String.valueOf(grupoAux.getNumeroAlumnos());
-        metodosGrupo.actualizar(atributo, valorABuscar, jTextField14);
-
+       String NumAlumnos="numeroAlumnos";
+        String CodGrupo= grupoAux.getCodGrupo();
+        Profesor.actualizar(NumAlumnos,CodGrupo , jTextField14);
+        
         SortedSet<Grupo> listaGrupo = metodosGrupo.listar();
         limpiarTabla();
         insertarTablaGrupos(listaGrupo, jTable3);
@@ -2434,6 +2536,52 @@ public class Swing extends javax.swing.JFrame {
         metodotransporte.insertar(m);
         metodotransporte.insertarMedioUtiliza(m, prograux);
     }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        SortedSet<Profesor> listaProfesor = Profesor.listar() ;
+    	limpiarTabla();
+    	insertarTablaProfesor(listaProfesor, jTable13);
+    	//Y asigno el jTable al atributo tabla
+    	jTable13.setModel(tabla);
+    }//GEN-LAST:event_BuscarActionPerformed
+
+    private void jTable13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable13MouseClicked
+        //Obtengo el índice de la fila que selecciono
+        int filaSeleccionada = jTable13.getSelectedRow();
+        //Cargo la tabla
+        tabla = (DefaultTableModel) jTable13.getModel();
+        //Obtengo el valor del indice que utilizo para buscar una solicitud
+
+        String valor1 = tabla.getValueAt(filaSeleccionada, 4).toString();
+        profesorAux = Profesor.buscarPor(valor1);
+    }//GEN-LAST:event_jTable13MouseClicked
+
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        String Cambio=jComboBox3.getSelectedItem().toString();
+        String DNI= profesorAux.getDNI();
+        Profesor.actualizar(Cambio, DNI, jTextField7);
+        
+        SortedSet<Profesor> listaProfesor = Profesor.listar() ;
+        limpiarTabla();
+        insertarTablaProfesor(listaProfesor, jTable14);
+        //Y asigno el jTable al atributo tabla
+        jTable14.setModel(tabla);
+    }//GEN-LAST:event_ModificarActionPerformed
+
+    private void jTable10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable10MouseClicked
+        //Obtengo el índice de la fila que selecciono
+        int filaSeleccionada = jTable10.getSelectedRow();
+        //Cargo la tabla
+        tabla = (DefaultTableModel) jTable10.getModel();
+        //Obtengo el valor del indice que utilizo para buscar una solicitud
+
+        String valor1 = tabla.getValueAt(filaSeleccionada, 1).toString();
+        profesorAux = Profesor.buscarPor(valor1);
+    }//GEN-LAST:event_jTable10MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2559,7 +2707,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -2572,7 +2719,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -2635,6 +2781,9 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable11;
     private javax.swing.JTable jTable12;
+    private javax.swing.JTable jTable13;
+    private javax.swing.JTable jTable14;
+    private javax.swing.JTable jTable15;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
@@ -2646,7 +2795,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
@@ -2669,7 +2817,6 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField36;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
