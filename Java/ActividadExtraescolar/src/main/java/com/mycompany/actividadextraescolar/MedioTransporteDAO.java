@@ -88,7 +88,7 @@ public class MedioTransporteDAO implements RepositorioDAO<MedioTransporte> {
            stmt.setInt(2, t.getIdTransporte());
            stmt.setInt(3, a.getIdSolicitud());
            stmt.setDouble(4,t.getImporte());
-           stmt.setString(5, t.getComentario());
+           stmt.setString(5, a.getComentario());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha insertado el registro");
