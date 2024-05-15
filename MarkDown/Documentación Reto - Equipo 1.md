@@ -1452,7 +1452,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    ```
    - width 180px: ancho de la columna
 
-- ### **ViajesMain td:nth-child(7),ViajesMain th:nth-child(7),ClasesMain td:nth-child(7),ClasesMain th:nth-child(7)**<br>
+- ### **ViajesMain td:nth-child(3),ViajesMain th:nth-child(3),ClasesMain td:nth-child(3),ClasesMain th:nth-child(3)**<br>
     Estilo para la columna personas involucradas, para hacer espacio a las demás columnas<br>
    ```css
     .ViajesMain td:nth-child(3),
@@ -1463,6 +1463,28 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
     }
    ```
    - width 155px: ancho de la columna
+
+- ### **ViajesMain th:last-child,ViajesMain td:last-child,ClasesMain th:last-child,ClasesMain td:last-child**<br>
+    Estilo para quitar el borde por la derecha de la ultima columna <br>
+   ```css
+    .ViajesMain th:last-child,
+    .ViajesMain td:last-child,
+    .ClasesMain th:last-child,
+    .ClasesMain td:last-child {
+    border-right: none;
+    }
+   ```
+   - border-right none: ningun borde por la derecha
+
+- ### **.ViajesMain th,ClasesMain th**<br>
+    Estilo para quitar el borde por la derecha de la ultima columna <br>
+   ```css
+    .ViajesMain th,
+    .ClasesMain th {
+    border-top: none;
+    }
+   ```
+   - border-top none: ningun borde por arriba
 
 - ### **@media screen and (max-width: 1500px)**<br>
     Estilo para cuando la ventana ocupe 1500 pixeles<br>
