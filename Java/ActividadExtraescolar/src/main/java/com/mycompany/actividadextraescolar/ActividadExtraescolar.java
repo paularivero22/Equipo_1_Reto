@@ -15,7 +15,7 @@ import java.util.SortedSet;
  */
 public class ActividadExtraescolar {
     public static void main(String[] args) {
-        SolicitudesDAO s=new SolicitudesDAO();
+       /** SolicitudesDAO s=new SolicitudesDAO();
         ActividadProgramadaDAO metodosprogramada=new ActividadProgramadaDAO();
         SortedSet<Solicitud>lista=s.listar();
         ActividadProgramada p=null;
@@ -29,6 +29,7 @@ public class ActividadExtraescolar {
                 p=new ActividadProgramada(false,"",solicitudAux.idSolicitud,solicitudAux.getHoraInicio(),solicitudAux.getHoraFinal(),solicitudAux.comentario,solicitudAux.isPrevista(),solicitudAux.getIddepartamento(),solicitudAux.titulo,solicitudAux.tipoSolicitud,solicitudAux.idprofesor,solicitudAux.Alojamiento,solicitudAux.fechaInicio,solicitudAux.fechaFinal,solicitudAux.totalParticipantes,solicitudAux.estado);
                 metodosprogramada.insertar(p);   
         }*/
+       cargarArchivos();
     }
     /**
      * Metodo estatico para cargar los csv a bd
