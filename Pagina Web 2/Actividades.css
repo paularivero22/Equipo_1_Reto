@@ -58,6 +58,8 @@
     padding: 20px;
     text-align: left;
     width: auto;
+    border-right: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 
 .ViajesMain td:first-child,
@@ -81,6 +83,23 @@
 .ClasesMain th:nth-child(3) {
     width: 155px; 
 }
+
+
+.ViajesMain th:last-child,
+.ViajesMain td:last-child,
+.ClasesMain th:last-child,
+.ClasesMain td:last-child {
+    border-right: none;
+}
+
+
+.ViajesMain th,
+.ClasesMain th {
+    border-top: none;
+}
+
+
+
 
 
 
