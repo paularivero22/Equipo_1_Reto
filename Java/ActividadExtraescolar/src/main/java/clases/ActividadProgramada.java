@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.actividadextraescolar;
+package clases;
 
+import Enumerados.Estado;
+import Enumerados.Tipo;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
