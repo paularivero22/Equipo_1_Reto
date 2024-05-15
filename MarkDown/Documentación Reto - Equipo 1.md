@@ -1900,7 +1900,166 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
 ## Java<a name="JV"></a>
 ### 1. Diagrama de clases<a name="DIAG"></a>
+![DiagramaDeClases](./Imagenes/diagramaDeClases.jpg)
+- Profesor
+    - Atributos:
+        - idProfesor: int
+        - nombre: String
+        - apellido: String
+        - dni: String
+        - correo: String
+        - perfilAcceso: enum (PerfilAceso)
+        - activo: boolean
+        - contrasenia: String
+    - Métodos:
+        - Profesor(): Constructor
+        - getPerfil(): Enum
+        - setPerfil(enum): Setter para el perfil
+        - getIdProfesor(): int
+        - setIdProfesor(int): Setter para ID de profesor
+        - getIdDepartamento(): int
+        - setIdDepartamento(int): Setter para ID del departamento
+        - getContrasenia(): String
+        - setContrasenia(String): Setter para la contraseña
+        - getNombre(): String
+        - setNombre(String): Setter para el nombre
+        - getApellido(): String
+        - setApellido(String): Setter para el apellido
+        - getDNI(): String
+        - setDNI(String): Setter para el DNI
+        - getCorreo(): String
+        - setCorreo(String): Setter para el correo
+        - isActivo(): void
+        - setActivo(boolean): Setter para el estado activo
+        - toString(): String
+    - Relaciones: 
+        - Relación uno a muchos con **Departamento**
+        - Relación uno a muchos con **Solicitud**
+    
+- Curso
+    - Atributos:
+        - codCurso: int
+        - descripcion: String
+        - duracion: int
+        - etapa: enum
+        - activo: boolean
+    - Métodos:
+        - Curso(): Constructor
+        - getCodCurso(): int
+        - setCodCurso(int): Setter para el código del curso
+        - getDescripcion(): String
+        - setDescripcion(String): Setter para la descripción
+        - getDuracion(): int
+        - setDuracion(int): Setter para la duración
+        - getEtapa(): enum
+        - setEtapa(enum): Setter para la etapa
+        - isActivo(): boolean
+        - setActivo(boolean): Setter para el estado activo
+        - toString(): String
+    - Relaciones:
+        - Relación uno a muchos con Grupo
 
+- Grupo: 
+    - Atributos:
+        - codGrupo: int
+        - curso: Curso
+        - numeroAlumnos: int
+        - activo: boolean
+    - Métodos:
+        - Grupo(): Constructor
+        - getCodGrupo(): int
+        - setCodGrupo(int): Setter para el código del grupo
+        - getCurso(): Curso
+        - setCurso(Curso): Setter para el curso
+        - getNumeroAlumnos(): int
+        - setNumeroAlumnos(int): Setter para el número de alumnos
+        - isActivo(): boolean
+        - setActivo(boolean): Setter para el estado activo
+        - toString(): String
+    - Relaciones:
+        - Relación muchos a uno con Curso
+
+- Solicitud
+    - Atributos:
+        - idSolicitud: int
+        - titulo: String
+        - descripcion: String
+        - fechaInicio: LocalDate
+        - fechaFin: LocalDate
+        - horaInicio: LocalTime
+        - horaFin: LocalTime
+        - estado: enum
+        - comentario: String
+        - isPrivada: boolean
+    - Métodos:
+        - Solicitud(): Constructor
+        - getIdSolicitud(): int
+        - setIdSolicitud(int): Setter para ID de la solicitud
+        - getTitulo(): String
+        - setTitulo(String): Setter para el título
+        - getDescripcion(): String
+        - setDescripcion(String): Setter para la descripción
+        - getFechaInicio(): LocalDate
+        - setFechaInicio(LocalDate): Setter para la fecha de inicio
+        - getFechaFin(): LocalDate
+        setFechaFin(LocalDate): Setter para la fecha de fin
+        - getHoraInicio(): LocalTime
+        setHoraInicio(LocalTime): Setter para la hora de inicio
+        - getHoraFin(): LocalTime
+        - setHoraFin(LocalTime): Setter para la hora de fin
+        - getEstado(): enum
+        - setEstado(enum): Setter para el estado
+        - getComentario(): String
+        - setComentario(String): Setter para el comentario
+        - isPrivada(): boolean
+        - setPrivada(boolean): Setter para el estado privado
+        - toString(): String
+    - Relaciones:
+        - Relación uno a muchos con Profesor
+        - Relación muchos a uno con Departamento
+        - Relación uno a uno con ActividadProgramada
+    
+- Actividad Programada
+    - Atributos:
+        - idActividad: int
+        - estado: enum
+        - comentario: String
+    - Métodos:
+- ActividadProgramada(): Constructor
+    - getIdActividad(): int
+    - setIdActividad(int): Setter para ID de la actividad
+    - getEstado(): enum
+    - setEstado(enum): Setter para el estado
+    - getComentario(): String
+    - setComentario(String): Setter para el comentario
+    - toString(): String
+- Relaciones: 
+    - Relación uno a uno con Solicitud
+    - Relación muchos a uno con MedioTransporte
+
+- MedioTransporte
+    - Atributos: 
+        - idTransporte: int
+        - tipo: enum
+        - comentario: String
+        - importe: double
+        - empresa: String
+    - Métodos:
+        - MedioTransporte(): Constructor
+        - getIdTransporte(): int
+        - setIdTransporte(int): Setter para ID de transporte
+        - getTipo(): enum
+        - setTipo(enum): Setter para el tipo
+        - getComentario(): String
+        - setComentario(String): Setter para el comentario
+        - getImporte(): double
+        - setImporte(double): Setter para el importe
+        - getEmpresa(): String
+        - setEmpresa(String): Setter para la empresa
+        - toString(): String
+    - Relaciones:
+        - Relación muchos a uno con ActividadProgramada
+<br><br>
 ### 2. Documentación de las clases<a name="DOCU"></a>
 
 ### 3. Explicación<a name="EXPL"></a>
