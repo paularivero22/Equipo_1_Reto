@@ -68,6 +68,10 @@ public class Profesor {
         this.perfil = perfil;
         this.contrasenia = contrasenia;
     }
+
+    public Profesor() {
+    }
+    
     
 
     /**
