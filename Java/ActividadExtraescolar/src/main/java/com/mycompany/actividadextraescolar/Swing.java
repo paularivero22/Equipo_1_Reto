@@ -4,6 +4,26 @@
  */
 package com.mycompany.actividadextraescolar;
 
+import Enumerados.TipoTransporte;
+import Enumerados.PerfilAcceso;
+import Enumerados.Tipo;
+import Enumerados.Etapa;
+import Enumerados.Estado;
+import metodosDB.SolicitudesDAO;
+import metodosDB.ProfesorDAO;
+import metodosDB.MedioTransporteDAO;
+import metodosDB.GruposDAO;
+import metodosDB.DepartamentoDAO;
+import metodosDB.CursosDAO;
+import metodosDB.ActividadProgramadaDAO;
+import metodosDB.AccesoBaseDatos;
+import clases.Solicitud;
+import clases.Profesor;
+import clases.MedioTransporte;
+import clases.Grupo;
+import clases.Departamento;
+import clases.ActividadProgramada;
+import clases.Curso;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -182,8 +202,8 @@ public class Swing extends javax.swing.JFrame {
             ob[0] = soli.getIdSolicitud();
             ob[1] = soli.estado;
             ob[2] = soli.getComentario();
-            ob[3] = soli.horaInicio;
-            ob[4] = soli.horaFinal;
+            ob[3] = soli.getHoraInicio();
+            ob[4] = soli.getHoraFinal();
             ob[5] = soli.isPrevista();
             ob[6] = soli.getIddepartamento();
             ob[7] = soli.getTitulo();
@@ -505,7 +525,7 @@ public class Swing extends javax.swing.JFrame {
                     .addGroup(LoginLayout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(jLabel62)))
-                .addContainerGap(581, Short.MAX_VALUE))
+                .addContainerGap(583, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -666,18 +686,15 @@ public class Swing extends javax.swing.JFrame {
 
         jTable15.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "Nombre", "Apellidos", "DNI", "Perfil"
             }
         ));
         jScrollPane1.setViewportView(jTable15);
 
-        CrearProfesor.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 520, 50));
+        CrearProfesor.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 1130, 200));
 
         Crear.setText("Crear");
         Crear.addActionListener(new java.awt.event.ActionListener() {
@@ -685,7 +702,7 @@ public class Swing extends javax.swing.JFrame {
                 CrearActionPerformed(evt);
             }
         });
-        CrearProfesor.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+        CrearProfesor.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 530, -1, -1));
 
         getContentPane().add(CrearProfesor, "card4");
 
@@ -2873,7 +2890,7 @@ public class Swing extends javax.swing.JFrame {
         ActividadProgramada p = null;
         for (Solicitud so : lista) {
             if (so.getEstado().name().equalsIgnoreCase("APROBADA")) {
-                p = new ActividadProgramada(false, "", so.idSolicitud, so.getHoraInicio(), so.getHoraFinal(), so.comentario, so.isPrevista(), so.getIddepartamento(), so.titulo, so.tipoSolicitud, so.idprofesor, so.Alojamiento, so.fechaInicio, so.fechaFinal, so.totalParticipantes, so.estado);
+                p = new ActividadProgramada(false, "", so.getIdSolicitud(), so.getHoraInicio(), so.getHoraFinal(), so.getComentario(), so.isPrevista(), so.getIddepartamento(), so.getTitulo(), so.getTipoSolicitud(), so.getIdprofesor(), so.isAlojamiento(), so.getFechaInicio(), so.getFechaFinal(), so.getTotalParticipantes(), so.getEstado());
                 metodosprogramada.insertar(p);
             }
         }
@@ -3250,7 +3267,7 @@ public class Swing extends javax.swing.JFrame {
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
         String atributo = jComboBox7.getSelectedItem().toString();
-        String valorABuscar = prograux.titulo;
+        String valorABuscar = prograux.getTitulo();
         metodosprogramada.actualizar(atributo, valorABuscar, jTextField30);
     }//GEN-LAST:event_jButton22ActionPerformed
 
@@ -3287,7 +3304,7 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         // TODO add your handling code here:
-        int idSolicitud = prograux.idSolicitud;
+        int idSolicitud = prograux.getIdSolicitud();
         TipoTransporte tipo = TipoTransporte.valueOf(jComboBox9.getSelectedItem().toString());
         double importe = Double.parseDouble(jTextField33.getText());
         double km = Double.parseDouble(jTextField35.getText());

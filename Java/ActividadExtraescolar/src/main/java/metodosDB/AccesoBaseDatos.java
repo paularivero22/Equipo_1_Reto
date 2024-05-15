@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.actividadextraescolar;
+package metodosDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class AccesoBaseDatos {
     // constantes a definir
     private static final String BD = "mydb";
     private static final String USUARIO = "root";
-    private static final String CLAVE = "@Verdeflor77";
+    private static final String CLAVE = "mysql";
     private static final String URL = "jdbc:mysql://localhost:3306/" + BD;
 
     AccesoBaseDatos() {

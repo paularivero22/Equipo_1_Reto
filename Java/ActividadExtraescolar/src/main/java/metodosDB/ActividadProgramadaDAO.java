@@ -2,8 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.actividadextraescolar;
+package metodosDB;
 
+import metodosDB.AccesoBaseDatos;
+import clases.Solicitud;
+import clases.ActividadProgramada;
+import Enumerados.Estado;
+import Enumerados.Tipo;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -111,20 +116,20 @@ public class ActividadProgramadaDAO implements RepositorioDAO<ActividadProgramad
         String sql = "INSERT into actividadprogramada(idActividadProgramada,estado,comentario,horaInicio,horaFin,prevista,Departamento,titulo,tipo,medioTransporte,profesor,alojamiento,fechaInicio,fechaFinal,totalParticipantes,comenRealizada)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, t.getIdSolicitud());
-            stmt.setString(2, t.estado.name());
+            stmt.setString(2, t.getEstado().name());
             stmt.setString(3, t.getComentario());
             stmt.setTime(4, Time.valueOf(t.getHoraInicio()));
             stmt.setTime(5, Time.valueOf(t.getHoraFinal()));
-            stmt.setBoolean(6, t.prevista);
-            stmt.setInt(7, t.iddepartamento);
-            stmt.setString(8, t.titulo);
-            stmt.setString(9, t.tipoSolicitud.name());
+            stmt.setBoolean(6, t.isPrevista());
+            stmt.setInt(7, t.getIddepartamento());
+            stmt.setString(8, t.getTitulo());
+            stmt.setString(9, t.getTipoSolicitud().name());
             stmt.setBoolean(10, t.isMedioTransporte());
-            stmt.setInt(11, t.idprofesor);
+            stmt.setInt(11, t.getIdprofesor());
             stmt.setBoolean(12, t.isAlojamiento());
-            stmt.setDate(13, Date.valueOf(t.fechaInicio));
-            stmt.setDate(14, Date.valueOf(t.fechaFinal));
-            stmt.setInt(15, t.totalParticipantes);
+            stmt.setDate(13, Date.valueOf(t.getFechaInicio()));
+            stmt.setDate(14, Date.valueOf(t.getFechaFinal()));
+            stmt.setInt(15, t.getTotalParticipantes());
             stmt.setString(16, t.getComentarioFase());
 
             int salida = stmt.executeUpdate();
@@ -153,23 +158,23 @@ public class ActividadProgramadaDAO implements RepositorioDAO<ActividadProgramad
             switch (atributo) {
                 case "horaInicio" -> {
                     ap.setHoraInicio(LocalTime.parse(valornuevo.getText()));
-                    stmt.setTime(1, Time.valueOf(ap.horaInicio));
+                    stmt.setTime(1, Time.valueOf(ap.getHoraInicio()));
                 }
                 case "horaFin" -> {
                     ap.setHoraFinal(LocalTime.parse(valornuevo.getText()));
-                    stmt.setTime(1, Time.valueOf(ap.horaFinal));
+                    stmt.setTime(1, Time.valueOf(ap.getHoraFinal()));
                 }
                 case "titulo" -> {
                     ap.setTitulo(valornuevo.getText());
-                    stmt.setString(1, ap.titulo);
+                    stmt.setString(1, ap.getTitulo());
                 }
                 case "fechaInicio" -> {
                     ap.setFechaInicio(LocalDate.parse(valornuevo.getText()));
-                    stmt.setDate(1, Date.valueOf(ap.fechaInicio));
+                    stmt.setDate(1, Date.valueOf(ap.getFechaInicio()));
                 }
                 case "fechaFinal" -> {
                     ap.setFechaFinal(LocalDate.parse(valornuevo.getText()));
-                    stmt.setDate(1, Date.valueOf(ap.fechaFinal));
+                    stmt.setDate(1, Date.valueOf(ap.getFechaFinal()));
                 }
                 case "totalParticipantes" -> {
                     ap.setTotalParticipantes(Integer.parseInt(valornuevo.getText()));

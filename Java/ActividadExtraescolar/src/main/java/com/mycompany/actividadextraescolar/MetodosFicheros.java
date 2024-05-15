@@ -4,6 +4,13 @@
  */
 package com.mycompany.actividadextraescolar;
 
+import Enumerados.PerfilAcceso;
+import Enumerados.Etapa;
+import metodosDB.AccesoBaseDatos;
+import clases.Profesor;
+import clases.Grupo;
+import clases.Departamento;
+import clases.Curso;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
