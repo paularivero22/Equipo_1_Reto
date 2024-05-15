@@ -280,7 +280,7 @@ public class MetodosFicheros {
     }
 
      //Metodo que genera una contraseña aleatoria para los profesores
-    private static String generarPassword(int longitud) {
+    public static String generarPassword(int longitud) {
         String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random r = new Random();
         char[] password = new char[longitud];

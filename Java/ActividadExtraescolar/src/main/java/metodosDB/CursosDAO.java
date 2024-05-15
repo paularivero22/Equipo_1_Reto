@@ -33,7 +33,7 @@ public class CursosDAO implements RepositorioDAO<Curso> {
     @Override
     public SortedSet<Curso> listar() {
         SortedSet<Curso> listaCursos = new TreeSet();
-        try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("select * from curso");) {
+        try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("select nombre,apellidos,DNI,perfilAcceso,fk_departamento,correo,activo from curso");) {
             while (rs.next()) {
                 Curso curso = crearCurso(rs);
                 if (!listaCursos.add(curso)) {

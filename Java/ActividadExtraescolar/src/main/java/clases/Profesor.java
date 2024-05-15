@@ -6,13 +6,14 @@ package clases;
 
 import Enumerados.PerfilAcceso;
 import Enumerados.PerfilAcceso;
+import java.util.Objects;
 import java.util.Random;
 
 /**
  * 
  * @author Usuario
  */
-public class Profesor {
+public class Profesor implements Comparable<Profesor> {
 
     public int idProfesor;
     private int idDepartamento;
@@ -151,6 +152,32 @@ public class Profesor {
         this.activo = activo;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + this.idProfesor;
+        hash = 89 * hash + Objects.hashCode(this.DNI);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Profesor other = (Profesor) obj;
+        if (this.idProfesor != other.idProfesor) {
+            return false;
+        }
+        return Objects.equals(this.DNI, other.DNI);
+    }
+
 
     /**
      * METODO QUE MUESTRA INFORMACIÓN DEL PROFESOR
@@ -174,6 +201,11 @@ public class Profesor {
             password[i] = caracteres.charAt(r.nextInt(caracteres.length()));
         }
         return new String(password);
+    }
+
+    @Override
+    public int compareTo(Profesor o) {
+        return Integer.compare(this.getIdProfesor(), o.getIdProfesor());
     }
 
     

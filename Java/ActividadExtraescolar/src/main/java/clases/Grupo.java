@@ -85,6 +85,27 @@ public class Grupo implements Comparable<Grupo>{
         return activo;
     }
 
+    public void setIdGrupo(int idGrupo) {
+        this.idGrupo = idGrupo;
+    }
+
+    public void setCodGrupo(String codGrupo) {
+        this.codGrupo = codGrupo;
+    }
+
+    public void setIdcurso(int idcurso) {
+        this.idcurso = idcurso;
+    }
+
+    public void setNumeroAlumnos(int numeroAlumnos) {
+        this.numeroAlumnos = numeroAlumnos;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+    
+
     /**
      * METODOS EQUALS Y HASHCODE
      * @return 
