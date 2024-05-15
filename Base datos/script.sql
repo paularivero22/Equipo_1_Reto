@@ -77,7 +77,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`grupoAlumnos` (
   `codGrupo` VARCHAR(10) NOT NULL,
-  `fk_curso` INT NOT NULL,
+  `fk_curso` INT(10) NOT NULL,
   `numAlumnos` VARCHAR(45) NOT NULL,
   `activo` TINYINT NOT NULL,
   `idGrupo` INT NOT NULL auto_increment,
@@ -102,11 +102,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Solicitud` (
   `Departamento` INT NOT NULL,
   `titulo` VARCHAR(45) NOT NULL,
   `tipo` ENUM('EXTRAESCOLAR','COMPLEMENTARIA') NOT NULL,
+  `medioTransporte` TINYINT NOT NULL,
   `profesor` INT NOT NULL,
   `alojamiento` TINYINT NOT NULL,
   `fechaInicio` DATE NOT NULL,
   `fechaFinal` DATE NOT NULL,
   `totalParticipantes` INT NOT NULL,
+  `comenAlojamiento` VARCHAR(45) NULL,
   `estado` ENUM('SOLICITADA','APROBADA','DENEGADA','REALIZADA') NOT NULL,
   PRIMARY KEY (`idActividad`),
   UNIQUE INDEX `profesor_UNIQUE` (`profesor` ASC) VISIBLE,
@@ -272,3 +274,4 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
