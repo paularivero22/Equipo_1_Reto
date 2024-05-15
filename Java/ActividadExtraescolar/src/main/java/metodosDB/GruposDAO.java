@@ -4,6 +4,7 @@
  */
 package metodosDB;
 
+import clases.Curso;
 import metodosDB.AccesoBaseDatos;
 import clases.Grupo;
 import java.sql.Connection;
@@ -33,7 +34,7 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
     @Override
     public SortedSet<Grupo> listar() {
         SortedSet<Grupo> listaGrupos = new TreeSet<>();
-        try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM grupoAlumnos;")) {
+        try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM grupoalumnos;")) {
             while (rs.next()) {
                 Grupo grupo = crearGrupo(rs);
                 listaGrupos.add(grupo);
@@ -53,7 +54,7 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
     @Override
     public Grupo buscarPor(String codGrupo) {
         Grupo grupo = null;
-        String sql = "SELECT * FROM grupoAlumnos WHERE codGrupo=?";
+        String sql = "SELECT * FROM grupoalumnos WHERE codGrupo=?";
         try (PreparedStatement pst = getConnection().prepareStatement(sql)) {
             pst.setString(1, codGrupo);
             try (ResultSet rs = pst.executeQuery()) {
@@ -74,7 +75,7 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
      */
     @Override
     public void eliminarPor(String filtro) {
-        String sql = "DELETE FROM grupoAlumnos WHERE codGrupo=?";
+        String sql = "DELETE FROM grupoalumnos WHERE codGrupo=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
             stmt.setInt(1, Integer.parseInt(filtro));
             int salida = stmt.executeUpdate();
@@ -97,7 +98,7 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
      */
     @Override
     public void insertar(Grupo g) {
-        String sql = "INSERT INTO grupoAlumnos(codGrupo,fk_curso,idGrupo, numAlumnos, activo) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO grupoalumnos(codGrupo,fk_curso,idGrupo, numAlumnos, activo) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
             stmt.setString(1, g.getCodGrupo());
             stmt.setInt(2, g.getIdcurso());
@@ -126,9 +127,18 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
         // Implementación para deshabilitar grupo
         Grupo grupo = buscarPor(valorABuscar);
         if (grupo != null) {
-            String sql = "UPDATE grupoAlumnos SET " + atributo + "=? WHERE codGrupo=?";
+            String sql = "UPDATE grupoalumnos SET " + atributo + " =? WHERE codGrupo=?;";
             try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
-                stmt.setObject(1, valorNuevo.getText());
+                switch(atributo){
+                    case "codGrupo"->{
+                        grupo.setCodGrupo(valorNuevo.getText());
+                        stmt.setString(1, grupo.getCodGrupo());
+                    }
+                    case "numAlumnos"->{
+                        grupo.setNumeroAlumnos(Integer.parseInt(valorNuevo.getText()));
+                        stmt.setInt(1, grupo.getNumeroAlumnos());
+                    }
+                }
                 stmt.setString(2, valorABuscar);
                 int salida = stmt.executeUpdate();
                 if (salida != 1) {
@@ -152,6 +162,23 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
         SortedSet<Grupo> listaGrupos = listar();
         for (Grupo c : listaGrupos) {
             System.out.println(c.toString());
+        }
+    }
+     public void actualizarActivo(String valorABuscar,boolean activo) {
+        Grupo g= buscarPor(valorABuscar);
+        String sql = "UPDATE grupoalumnos SET activo=? WHERE codGrupo=?;";
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            g.setActivo(activo);
+            stmt.setBoolean(1, activo);
+            stmt.setString(2, valorABuscar);
+            int salida = stmt.executeUpdate();
+            if (salida != 1) {
+                throw new Exception(" No se ha modificado el registro");
+            }
+        } catch (SQLException s) {
+            System.out.println(s.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 

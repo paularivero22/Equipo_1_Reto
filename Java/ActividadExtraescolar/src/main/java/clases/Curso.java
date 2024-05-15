@@ -124,13 +124,13 @@ public class Curso implements Comparable<Curso> {
     }
 
     /**
-     * 
+     * ORDENA POR CODCURSO
      * @param o
      * @return 
      */
     @Override
     public int compareTo(Curso o) {
-        return Integer.compare(this.getIdCurso(), o.getIdCurso());
+        return this.getCodCurso().compareTo(o.getCodCurso());
     }
     
 }
