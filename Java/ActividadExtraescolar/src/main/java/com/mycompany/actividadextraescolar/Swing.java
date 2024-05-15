@@ -421,6 +421,9 @@ public class Swing extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable11 = new javax.swing.JTable();
         jButton28 = new javax.swing.JButton();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTable12 = new javax.swing.JTable();
+        jButton29 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Contraseña = new javax.swing.JMenu();
         Profesores = new javax.swing.JMenu();
@@ -2056,18 +2059,18 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel52.setText("FASE PREPARACIÓN");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 93, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 38, 0, 0);
         FasePreparacion.add(jLabel52, gridBagConstraints);
 
         jLabel53.setText("Solicitudes Aprobadas");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(4, 20, 0, 0);
         FasePreparacion.add(jLabel53, gridBagConstraints);
@@ -2076,18 +2079,19 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(37, 20, 0, 0);
         FasePreparacion.add(jComboBox7, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(37, 13, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(37, 2, 0, 0);
         FasePreparacion.add(jTextField30, gridBagConstraints);
 
         jButton22.setText("Modificar");
@@ -2097,9 +2101,9 @@ public class Swing extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 16;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 8;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(37, 16, 0, 0);
@@ -2163,13 +2167,13 @@ public class Swing extends javax.swing.JFrame {
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridx = 26;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridheight = 6;
         gridBagConstraints.ipadx = 39;
         gridBagConstraints.ipady = 42;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(17, 56, 240, 0);
+        gridBagConstraints.insets = new java.awt.Insets(17, 56, 0, 0);
         FasePreparacion.add(MedioTransporte, gridBagConstraints);
 
         jButton19.setText("Realizada");
@@ -2179,12 +2183,11 @@ public class Swing extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(27, 40, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 18, 0, 0);
         FasePreparacion.add(jButton19, gridBagConstraints);
 
         jCheckBox3.setText("MedioTransporte");
@@ -2194,7 +2197,7 @@ public class Swing extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 24;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -2243,9 +2246,9 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridwidth = 28;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1064;
+        gridBagConstraints.ipadx = 1082;
         gridBagConstraints.ipady = 130;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
@@ -2260,11 +2263,64 @@ public class Swing extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 24;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 119, 0, 0);
         FasePreparacion.add(jButton28, gridBagConstraints);
+
+        jTable12.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "idSolicitud", "Estado", "comentario", "Hora de Inicio", "Hora Fin", "Prevista", "Departamento", "Titulo", "Tipo", "Medio De Transporte", "Profesor", "Alojamiento", "Fecha de Inicio", "Fecha de Fin", "Participantes", "comentarioFinal"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false, true, true, false, false, true, false, false, false, false, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable12MouseClicked(evt);
+            }
+        });
+        jScrollPane14.setViewportView(jTable12);
+        if (jTable12.getColumnModel().getColumnCount() > 0) {
+            jTable12.getColumnModel().getColumn(11).setResizable(false);
+        }
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1082;
+        gridBagConstraints.ipady = 130;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 80, 12);
+        FasePreparacion.add(jScrollPane14, gridBagConstraints);
+
+        jButton29.setText("Mostrar realizadas");
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 30, 0, 0);
+        FasePreparacion.add(jButton29, gridBagConstraints);
 
         getContentPane().add(FasePreparacion, "card17");
 
@@ -3211,7 +3267,11 @@ public class Swing extends javax.swing.JFrame {
     private void jTable11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable11MouseClicked
         // TODO add your handling code here:
         //Obtengo el índice de la fila que selecciono
-       
+        int filaSeleccionada=jTable11.rowAtPoint(evt.getPoint());
+        DefaultTableModel tablaF = (DefaultTableModel) jTable11.getModel();
+        String valor1=tablaF.getValueAt(filaSeleccionada, 7).toString();
+        prograux=metodosprogramada.buscarPor(valor1);
+        System.out.println(prograux.toString());
     }//GEN-LAST:event_jTable11MouseClicked
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
@@ -3239,16 +3299,12 @@ public class Swing extends javax.swing.JFrame {
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
-        if(prograux==null){
-        SortedSet<ActividadProgramada> listaProgramada = metodosprogramada.listarRealizadas();
+        if(prograux!=null){
+        String titulo=prograux.getTitulo();
+        metodosprogramada.actualizarEstado(titulo, "REALIZADA");
         limpiarTabla();
-        insertarTablaProgramadas(listaProgramada, jTable11);
-        //Y asigno el jTable al atributo tabla
-        jTable11.setModel(tabla);
-        }else{
-            String titulo=prograux.getTitulo();
-            metodosprogramada.actualizarEstado(titulo, "REALIZADA");
         }
+        
     }//GEN-LAST:event_jButton19ActionPerformed
   
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
@@ -3316,6 +3372,19 @@ public class Swing extends javax.swing.JFrame {
         String valor1 = tabla.getValueAt(filaSeleccionada, 4).toString();
         profesorAux = Profesor.buscarPor(valor1);
     }//GEN-LAST:event_jTable16MouseClicked
+
+    private void jTable12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable12MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable12MouseClicked
+
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        // TODO add your handling code here:
+        SortedSet<ActividadProgramada> listaProgramada = metodosprogramada.listarRealizadas();
+        limpiarTabla();
+        insertarTablaProgramadas(listaProgramada, jTable12);
+        //Y asigno el jTable al atributo tabla
+        jTable1.setModel(tabla);
+    }//GEN-LAST:event_jButton29ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3416,6 +3485,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -3500,6 +3570,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
@@ -3513,6 +3584,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable11;
+    private javax.swing.JTable jTable12;
     private javax.swing.JTable jTable13;
     private javax.swing.JTable jTable14;
     private javax.swing.JTable jTable15;
