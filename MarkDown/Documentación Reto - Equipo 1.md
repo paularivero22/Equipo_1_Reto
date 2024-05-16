@@ -1,6 +1,14 @@
-# DOCUMENTACIÓN DEL RETO - EQUIPO 1
+# **DOCUMENTACIÓN DEL RETO - EQUIPO 1**
 
-## ÍNDICE DE CONTENIDOS
+### **Integrantes:**<br>
+### - Adrian Tresgallo
+### - Rodrigo Ruiz
+### - Néstor Serna 
+### - Paula Rivero
+---
+<br>
+
+## **ÍNDICE DE CONTENIDOS**
 1. [Bases de datos](#bd)
     - [Descripcion de la base de datos](#desBD)
     - [Diagrama E/R](#ER)
@@ -14,16 +22,110 @@
 
 3. [Java](#JV)
     - [Diagrama de clases](DIAG)
+    - [Diagrama de casos de uso](USO)
     - [Documentacion de las clases](DOCU)
     - [Explicación](EXPL)
 
 4. [Implementacion y despliegue](#IMPL)
     - [Tecnologias](#TEC)
 
----
+
+<br><br>
 
 ## **BASES DE DATOS**<a name="bd"></a>
+<hr>
+
 ### **1. Descripción de la base de datos**<a name="desBD"></a>
+![Diagrama paso a tablas](./Imagenes/diagrama%20paso%20a%20tablas.png)
+**Tabla GrupoAlumnos**<br>
+- codGrupo VARCHAR(10)
+- fk_curso INT
+- numAlumnos VARCHAR(45)
+- activo TINYINT
+- idGrupo INT
+
+**Tabla GrupoParticipa**<br>
+- fk_idGrupo INT
+- fk_idActividad INT
+- Numparticipantes INT
+
+**Tabla Departamento**<br>
+- iddepartamento INT
+- codDepartamento VARCHAR(45)
+- nombre VARCHAR(45)
+- idJefe INT
+
+**Tabla Profesor**<br>
+- idProfesor INT 
+- nombre VARCHAR(33)
+- apellidos VARCHAR(45)
+- DNI VARCHAR(9)
+- perfilAcceso ENUM(...)
+- fk_departamento VARCHAR(30)
+- correo VARCHAR(45)
+- activo TINYINT
+- contraseña VARCHAR(20)
+
+**Tala Solicitud**<br>
+- idActividad INT
+- horaInicio TIME
+- horaFin TIME
+- comentario VARCHAR(50)
+- prevista TINYINT
+- departamento INT
+- titulo VARCHAR(45)
+- tipo ENUM(...)
+- profesor INT
+- alojamiento TINYINY
+- fechaInicio DATE
+- fechaFinal DATE
+- totalParticipantes INT
+- estado ENUM
+
+**Tabla profesorsolicita**<br>
+- rol enum(..)
+- fk_idProfesor INT
+- fk_idActividad INT
+
+**Tabla ActividadProgramada**<br>
+- idActividadProgramada INT
+- estado ENUM
+- comentario VARCHAR(50)
+- horaInicio TIME
+- horaFin TIME
+- prevista TINYINT
+- departamento INT
+- titulo VARCHAR(45)
+- tipo ENUM(...)
+- medioTransporte TINYINT
+- profesor INT
+- alojamiento TINYINY
+- fechaInicio DATE
+- fechaFinal DATE
+- comentAlojamiento VARCHAR(45)
+- totalParticipantes INT
+- comentRealizada VARCHAR(45)
+
+
+**Tabla MedioTransporte**<br>
+- idTransporte INT
+- tipo ENUM(...)
+
+**Tabla Utiliza**<br>
+- idActividad(Primary Key)(Foreign Key)
+- idTransporte(Primary Key)(Foreign Key)
+- kilometros
+- importe
+- empresa
+- comentario
+
+**Tabla FotoActividad**<br>
+- idFoto(PrimaryKey)
+- url
+- idActividad(Foreign Key) <span style="color:red">* </span>
+- descripción
+
+<span style="color:red">* </span>Se crea el campo idActividad con la relacion ActividadProgramada - FotoActividad
 
 ### **2. Diagrama E/R**<a name="ER"></a>
 [![Diagrama-ER-Equipo-1-1.jpg](https://i.postimg.cc/5NGZbGsW/Diagrama-ER-Equipo-1-1.jpg)](https://postimg.cc/9rdxBx3L)
@@ -242,11 +344,13 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
 <span style="color:red">* </span>Se crea el campo idActividad con la relacion ActividadProgramada - FotoActividad
 
-### 4. Script sql<a name="SQL"></a>
+### **4. Script sql**<a name="SQL"></a>
 [Enlace-al-script-sql](https://github.com/paularivero22/Equipo_1_Reto/tree/3799f667727a6506bd0801b6774985d31df1fc63/Base%20datos)
 <br><br>
 
 ## **PÁGINA WEB**<a name="PW"></a>
+<hr>
+
 ### **1. Estructura de la página**<a name="ESTRUCT"></a><br><br>
 ### **1.1 Estructura comun de todas las páginas**<br>
 - ### **Body** <br>
@@ -1876,7 +1980,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    ```
    - transform scale(1.1): la imagen se acercará a una escala(1.1), ademas con la transicion de la imagen, lo hará lentamente
 
-### 3. Contenido de la web<a name="CONT"></a>
+### **3. Contenido de la web**<a name="CONT"></a>
 - ### **Página Inicio**<br>
 ![PaginaInicio](./Imagenes/PaginaInicio.png)
 - Encontramos un encabezado con el logo del instituto y un menu para moverse entre páginas.
@@ -1897,9 +2001,12 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 ![PaginaGaleria](./Imagenes/PaginaGaleria.png)
    - En esta página aparecerán todas las imagenes de las actividades y una descripción sobre ellas, tambien tendrán un icono para poder abrirlas en una pestaña nueva y verlas con su tamaño original 
    - Al igual que en las otras páginas cuenta con un encabezado y pie de página 
+<br><br>
 
-## Java<a name="JV"></a>
-### 1. Diagrama de clases<a name="DIAG"></a>
+## **JAVA**<a name="JV"></a>
+<hr>
+
+### **1. Diagrama de clases**<a name="DIAG"></a>
 ![DiagramaDeClases](./Imagenes/diagramaDeClases.jpg)
 - Profesor
     - Atributos:
@@ -2060,11 +2167,35 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
     - Relaciones:
         - Relación muchos a uno con ActividadProgramada
 <br><br>
-### 2. Documentación de las clases<a name="DOCU"></a>
 
-### 3. Explicación<a name="EXPL"></a>
+### **2. Diagramas de caso de uso**<a name="USO"></a>
+![Diagrama Casos de Uso](./Imagenes/casosDeUso.jpg)
+- El superusuario podrá: 
+    - Modificar y consultar ficheros
+    - Cargar datos
+
+- El profesor podrá:
+    - Ver una solicitud
+    - Crear una solicitud
+    - Modificar una solicitud
+
+- El equipo directivo podrá:
+    - Aprobar o denegar solicitudes
+
+- El administrador podrá:
+    - Modificar y consultar ficheros
+    - Cargar datos 
+    - Modificar una solicitud
+    - Completar una solicitud
+    - Aprobar o denegar solicitudes
+
+### **3. Documentación de las clases**<a name="DOCU"></a>
+
+
+### **4. Explicación al registrar una actividad nueva**<a name="EXPL"></a>
+A la hora de registrar una actividad
 
 
 ## Implementacion y despliegue<a name="IMPL"></a>
-### 1. Tecnologias<a name="TEC"></a>
+### **1. Tecnologias**<a name="TEC"></a>
 
