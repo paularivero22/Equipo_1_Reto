@@ -37,6 +37,7 @@
 
 ### **1. Descripción de la base de datos**<a name="desBD"></a>
 ![Diagrama paso a tablas](./Imagenes/diagrama%20paso%20a%20tablas.png)
+<br><br>
 **Tabla GrupoAlumnos**<br>
 - codGrupo VARCHAR(10)
 - fk_curso INT
@@ -49,13 +50,25 @@
 - fk_idActividad INT
 - Numparticipantes INT
 
-**Tabla Departamento**<br>
+**Tabla Curso**<br>
+- idCurso INT
+- codCurso VARCHAR(10)
+- descripcion VARCHAR(50)
+- etapa ENUM(...)
+- activo TINYINY
+
+**Tabla cursoparticipa**<br>
+- fk_idCurso INT
+- fk_idActividad2 INT
+- Numparticipantes INT
+
+**Tabla departamento**<br>
 - iddepartamento INT
 - codDepartamento VARCHAR(45)
 - nombre VARCHAR(45)
 - idJefe INT
 
-**Tabla Profesor**<br>
+**Tabla profesor**<br>
 - idProfesor INT 
 - nombre VARCHAR(33)
 - apellidos VARCHAR(45)
@@ -66,7 +79,7 @@
 - activo TINYINT
 - contraseña VARCHAR(20)
 
-**Tala Solicitud**<br>
+**Tala solicitud**<br>
 - idActividad INT
 - horaInicio TIME
 - horaFin TIME
@@ -87,7 +100,7 @@
 - fk_idProfesor INT
 - fk_idActividad INT
 
-**Tabla ActividadProgramada**<br>
+**Tabla actividadprogramada**<br>
 - idActividadProgramada INT
 - estado ENUM
 - comentario VARCHAR(50)
@@ -107,23 +120,23 @@
 - comentRealizada VARCHAR(45)
 
 
-**Tabla MedioTransporte**<br>
+**Tabla mediotransporte**<br>
 - idTransporte INT
 - tipo ENUM(...)
 
-**Tabla Utiliza**<br>
-- idActividad(Primary Key)(Foreign Key)
-- idTransporte(Primary Key)(Foreign Key)
-- kilometros
-- importe
-- empresa
-- comentario
+**Tabla mediotransporteutiliza**<br>
+- kilometros DOUBLE
+- fk_idTransporte INT
+- fk_idActividad INT
+- importe double
+- comentario VARCHAR(45)
 
-**Tabla FotoActividad**<br>
-- idFoto(PrimaryKey)
-- url
-- idActividad(Foreign Key) <span style="color:red">* </span>
-- descripción
+**Tabla fotoactividad**<br>
+- url VARCHAR(45)
+- descripción VARCHAR(45)
+- idFoto INT
+- fk_idActividad INT
+
 
 <span style="color:red">* </span>Se crea el campo idActividad con la relacion ActividadProgramada - FotoActividad
 
