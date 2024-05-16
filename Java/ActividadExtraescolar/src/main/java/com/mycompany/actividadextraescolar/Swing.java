@@ -3456,7 +3456,62 @@ public class Swing extends javax.swing.JFrame {
 
         // Si las credenciales son válidas, mostrar un mensaje de inicio de sesión completado
         if (credencialesValidas) {
-            JOptionPane.showMessageDialog(this, "Inicio de sesión completado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            
+            Profesor aux = profesorDAO.buscarPor(correo);
+            
+            
+            if(aux.getPerfil().toString().equalsIgnoreCase("profesor")){
+                
+                JOptionPane.showConfirmDialog(null, "ingreso profesor ");
+                Login.setVisible(false);
+                MenuInicio.setVisible(true);
+                jMenuBar1.setVisible(true);
+                consutarSolicitudesMenu.setVisible(false);
+                aprobarDenegarSolicitudMenu.setVisible(false);
+                fasedepreparacionMenu.setVisible(false);
+                Profesores.setVisible(false);
+                Cursos.setVisible(false);
+                Grupo.setVisible(false);
+                Departamento.setVisible(false);
+                Contraseña.setVisible(false);
+                /**CambiarContraseña.setVisible(true);
+                CrearSolicitud.setVisible(true);**/
+                
+            }else if (aux.getPerfil().toString().equalsIgnoreCase("administrador")){
+            
+            JOptionPane.showConfirmDialog(null, "ingreso administrador ");
+            Login.setVisible(false);
+            jMenuBar1.setVisible(true);
+            MenuInicio.setVisible(true);
+        
+            
+        }else if (aux.getPerfil().toString().equalsIgnoreCase("equipo_directivo")){
+         
+            JOptionPane.showConfirmDialog(null, "Ingreso Equipo Directivo ");
+                Login.setVisible(false);
+                MenuInicio.setVisible(true);
+                jMenuBar1.setVisible(true);
+                crearSolicitudMenu.setVisible(false);
+                consutarSolicitudesMenu.setVisible(false);
+                fasedepreparacionMenu.setVisible(false);
+                Profesores.setVisible(false);
+                Cursos.setVisible(false);
+                Grupo.setVisible(false);
+                Departamento.setVisible(false);
+                Contraseña.setVisible(false);
+            
+        }else if (aux.getPerfil().toString().equalsIgnoreCase("superusuario")){
+            
+            JOptionPane.showConfirmDialog(null, "Ingreso SuperUsuario");
+            Login.setVisible(false);
+            jMenuBar1.setVisible(true);
+            MenuInicio.setVisible(true);
+            Contraseña.setVisible(false);
+        }
+            
+            
+            
+            /*JOptionPane.showMessageDialog(this, "Inicio de sesión completado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
             // Cerrar la pestaña de inicio de sesión
             Login.setVisible(false);
@@ -3464,6 +3519,7 @@ public class Swing extends javax.swing.JFrame {
             // Abrir la pestaña de MenuInicio
             MenuInicio.setVisible(true);
             jMenuBar1.setVisible(true);
+            */
         } else {
             // Si las credenciales no son válidas, mostrar un mensaje de error
             JOptionPane.showMessageDialog(this, "Correo electrónico o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
