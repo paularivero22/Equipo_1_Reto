@@ -2210,5 +2210,17 @@ A la hora de registrar una actividad
 
 
 ## Implementacion y despliegue<a name="IMPL"></a>
-### **1. Tecnologias**<a name="TEC"></a>
+### **1. Tecnologías**<a name="TEC"></a>
+Tanto para el servidor web como el de base de datos se han probado ubuntu server y windows server, estas son alguncas de las ventajas y desventajas de estas tecnologías<br><br>
 
+| Característica           | Windows Server                                                               | Ubuntu server |                                                  
+|--------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------|
+| **Facilidad de Configuración** | Facilita la configuración inicial de servidores web y bases de datos | Requiere conocimiento de la línea de comandos para configuración inicial            |
+| **Facilidad de Uso**           | Más fácil para usuarios con experiencia en Windows                   | Puede ser más difícil para novatos en Linux              |
+| **Interfaz de Usuario**        | Interfaz gráfica (GUI) robusta y fácil de usar                       | Predominantemente basado en línea de comandos            |
+| **Documentación y Tutoriales** | Abundantes tutoriales oficiales y guías para principiantes           | Documentación más técnica y difícil                      |
+| **Rendimiento**                | Bueno, especialmente en entornos de Windows                          | Excelente, especialmente en servidores web               |
+| **Compatibilidad de Software** | Software propietario y aplicaciones de Microsoft                     | Aplicaciones de código abierto y desarrollo web moderno  |
+
+<br><br>
+Al final se ha decidido usar windows server para ambos por la facilidad de la configuración inicial, la interfaz mas intuitiva para usuarios con experiencia en Windows y sobre todo el rendimiento en los ordenadores de clase
