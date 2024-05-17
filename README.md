@@ -416,34 +416,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
     - div: contendor para la los elementos del nav<br>
         - ul "listamenu": los elementos del menú seran una lista ordenada, cada elemento li es un icono y una imagen <br><br>
 
-### **1.3 Página Inicio** <br>
-- ### **Body** <br>  
-    <br>- **Main:** contenido principal de la página<br><br>
-    ```html
-    <main>
-        <div class="ImagenContenedor">
-            <img src="./Imagenes./IES_MIGUEL_HERRERO_PEREDA.jpg" alt="IES MIGUEL HERRERO" class="ImagenPrincipal">
-            <div class="texto">BIENVENIDO</div>
-            <div class="botonFacebook">
-                <ul>
-                    <li>
-                        <a href="https://www.facebook.com/profile.php?id=100087928148760" target="_blank">
-                            <img src="./Iconos./facebookIcono.png" alt="Facebook">
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=100087928148760"
-                            target="_blank"><span>Facebook</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </main>
-    ```
-    - div "ImagenContenedor": Contenedor con la imagen de la página, un texto y un recuadro<br>
-        - div "texto": texto "Bienvenido" encima de la imagen 
-        - div "botonFacebook": Un recuadro con el enlace al facecbook del insituto<br><br>
-
-    <br>- **Footer:** pie de página con enlaces de interes del instituto<br><br>
+- ### **Footer** <br>
     ```html
     <footer>
         <div class="pielogo">
@@ -494,6 +467,33 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
         Cada enlace es un elemento de una lista ordenada y contiene un icono y un enlace
         - p: Texto de compyright al final del footer
 
+### **1.3 Página Inicio** <br>
+- ### **Body** <br>  
+    <br>- **Main:** contenido principal de la página<br><br>
+    ```html
+    <main>
+        <div class="ImagenContenedor">
+            <img src="./Imagenes./IES_MIGUEL_HERRERO_PEREDA.jpg" alt="IES MIGUEL HERRERO" class="ImagenPrincipal">
+            <div class="texto">BIENVENIDO</div>
+            <div class="botonFacebook">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100087928148760" target="_blank">
+                            <img src="./Iconos./facebookIcono.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100087928148760"
+                            target="_blank"><span>Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+    ```
+    - div "ImagenContenedor": Contenedor con la imagen de la página, un texto y un recuadro<br>
+        - div "texto": texto "Bienvenido" encima de la imagen 
+        - div "botonFacebook": Un recuadro con el enlace al facecbook del insituto<br><br>
+
 ### **1.3 Página Actividades** <br>
 - ### **Body** <br>
     <br>- **Main:** contenido principal de la página<br><br>
@@ -518,73 +518,87 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
      - **ViajesMain**<br><br>
        ```html
-         <div class="ViajesMain">
-            <table>
+       <div class="ViajesMain">
+         <table>
                 <thead>
                     <tr>
-                        <th>Actividad</th>
-                        <th>Estado de Gestión</th>
+                        <th>Título</th>
+                        <th>Estado</th>
                         <th>Personas Involucradas</th>
+                        <th>Profesor solicitante</th>
+                        <th>Departamento</th>
                         <th>Profesor responsable</th>
                         <th>Profesores participantes</th>
-                        <th> Fecha </th>
-                        <th> Horario </th>
+                        <th>Fecha</th>
+                        <th>Horario</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Excursión al Museo de Historia Natural</td>
-                        <td>En proceso</td>
-                        <td>25 estudiantes,<br>3 profesores</td>
-                        <td>Pedro Perez</td>
-                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>09/05/2024</td>
-                        <td>9:30-13:30</td>
+                        <td>Excursión al Museo de Arte Moderno</td>
+                        <td>Aprobada</td>
+                        <td>17 estudiantes,<br>3 profesores</td>
+                        <td>Ana García</td>
+                        <td>Arte</td>
+                        <td>Ana Garcíaz</td>
+                        <td>Juan Martínez, María Rodríguez</td>
+                        <td>16/05/2024</td>
+                        <td>10:00-15:00</td>
                     </tr>
                     <tr>
-                        <td>Visita al Acuario</td>
-                        <td>Confirmado</td>
+                        <td>Visita al Centro de Ciencias</td>
+                        <td>Aprobada</td>
                         <td>20 estudiantes,<br>2 profesores</td>
-                        <td>Pedro Perez</td>
-                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>09/05/2024</td>
-                        <td>9:30-13:30</td>
+                        <td>Pedro García</td>
+                        <td>Fisica y Química</td>
+                        <td>Pedro García</td>
+                        <td>Laura Gómez</td>
+                        <td>25/05/2024</td>
+                        <td>09:00-14:00</td>
                     </tr>
                     <tr>
                         <td>Excursión al Parque Nacional</td>
-                        <td>Pendiente</td>
-                        <td>30 estudiantes,<br>4 profesores</td>
-                        <td>Pedro Perez</td>
-                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>09/05/2024</td>
-                        <td>9:30-13:30</td>
+                        <td>Solicitada</td>
+                        <td>25 estudiantes,<br>3 profesores</td>
+                        <td>Marta Fernández</td>
+                        <td>Biología y Geología</td>
+                        <td>Susana Gonzalez</td>
+                        <td>David Pérez,Maria Herrero</td>
+                        <td>12/06/2024</td>
+                        <td>08:30-17:00</td>
                     </tr>
                     <tr>
-                        <td>Visita a la Granja Educativa</td>
-                        <td>Confirmado</td>
+                        <td>Taller de Astronomía en el Observatorio</td>
+                        <td>Denegada</td>
+                        <td>19 estudiantes,<br>2 profesores</td>
+                        <td>Juan Martínez</td>
+                        <td>Física y Química</td>
+                        <td>Juan Martínez</td>
+                        <td>Lucía Pérez</td>
+                        <td>23/06/2024</td>
+                        <td>19:00-22:00</td>
+                    </tr>
+                    <tr>
+                        <td>Visita al Teatro Nacional</td>
+                        <td>Realizada</td>
+                        <td>24 estudiantes,<br>3 profesores</td>
+                        <td>Laura Gómez</td>
+                        <td>Lengua y Literatura</td>
+                        <td>María Silva</td>
+                        <td>Alberto Jimenez, Roberto Gonzalez</td>
+                        <td>21/02/2024</td>
+                        <td>11:00-14:00</td>
+                    </tr>
+                    <tr>
+                        <td>Excursión al Jardín Botánico</td>
+                        <td>Realizada</td>
                         <td>15 estudiantes,<br>2 profesores</td>
-                        <td>Pedro Perez</td>
-                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>09/05/2024</td>
-                        <td>9:30-13:30</td>
-                    </tr>
-                    <tr>
-                        <td>Excursión al Planetario</td>
-                        <td>Cancelado</td>
-                        <td>10 estudiantes,<br>1 profesor</td>
-                        <td>Pedro Perez</td>
-                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>09/05/2024</td>
-                        <td>9:30-13:30</td>
-                    </tr>
-                    <tr>
-                        <td>Salida al Zoológico</td>
-                        <td>En proceso</td>
-                        <td>22 estudiantes,<br>3 profesores</td>
-                        <td>Pedro Perez</td>
-                        <td>Alberto Jimenez, Roberto Gonzalez,Maria Benitez</td>
-                        <td>09/05/2024</td>
-                        <td>9:30-13:30</td>
+                        <td>David López</td>
+                        <td>Biología y Geología</td>
+                        <td>David López</td>
+                        <td>Marta Fernández</td>
+                        <td>11/03/2024</td>
+                        <td>09:30-13:30</td>
                     </tr>
                 </tbody>
             </table> 
@@ -803,7 +817,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
         <br>
         <br>
 
-### **1.3 Página Actividades** <br>
+### **1.3 Página Galeria** <br>
 - ### **Body** <br>
     <br>- **Main:** contenido principal de la página<br><br>
      - **Galería (div)**<br><br> 
@@ -2205,7 +2219,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
 
 ### **4. Explicación al registrar una actividad nueva**<a name="EXPL"></a>
-A la hora de registrar una actividad
+A la hora de registrar una actividad se piden estos campos:<br>
+[![Captura.png](https://i.postimg.cc/q7s3Yf8g/Captura.png)](https://postimg.cc/5HtyYRKM)
 
 
 ## **🟣 Implementacion y despliegue**<a name="IMPL"></a>
