@@ -127,15 +127,14 @@ public class Swing extends javax.swing.JFrame {
      */
     private void insertarTablaCursos(SortedSet<Curso> lista, JTable tabla1) {
         tabla = (DefaultTableModel) tabla1.getModel();
-        Object[] ob = new Object[5];
+        Object[] ob = new Object[4];
         Iterator<Curso> it = lista.iterator();
         while (it.hasNext()) {
             Curso curso = it.next();
-            ob[0] = curso.getIdCurso();
-            ob[1] = curso.getCodCurso();
-            ob[2] = curso.getDescripcion();
-            ob[3] = curso.getEtapa();
-            ob[4] = curso.isActivo();
+            ob[0] = curso.getCodCurso();
+            ob[1] = curso.getDescripcion();
+            ob[2] = curso.getEtapa();
+            ob[3] = curso.isActivo();
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -143,15 +142,14 @@ public class Swing extends javax.swing.JFrame {
 
     private void insertarTablaGrupos(SortedSet<Grupo> lista, JTable tabla1) {
         tabla = (DefaultTableModel) tabla1.getModel();
-        Object[] ob = new Object[5];
+        Object[] ob = new Object[4];
         Iterator<Grupo> it = lista.iterator();
         while (it.hasNext()) {
             Grupo grupo = it.next();
-            ob[0] = grupo.getIdGrupo();
-            ob[1] = grupo.getCodGrupo();
-            ob[2] = grupo.getIdcurso();
-            ob[3] = grupo.getNumeroAlumnos();
-            ob[4] = grupo.isActivo();
+            ob[0] = grupo.getCodGrupo();
+            ob[1] = grupo.getIdcurso();
+            ob[2] = grupo.getNumeroAlumnos();
+            ob[3] = grupo.isActivo();
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -336,6 +334,7 @@ public class Swing extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jComboBox8 = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
+        jButton31 = new javax.swing.JButton();
         ModificarGrupo = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jTextField13 = new javax.swing.JTextField();
@@ -399,6 +398,7 @@ public class Swing extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jComboBox11 = new javax.swing.JComboBox<>();
+        jButton30 = new javax.swing.JButton();
         ConsultarSolicitudes = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -441,7 +441,9 @@ public class Swing extends javax.swing.JFrame {
         jTable12 = new javax.swing.JTable();
         jButton29 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        Contraseña = new javax.swing.JMenu();
+        Archivo = new javax.swing.JMenu();
+        CerrarSesion = new javax.swing.JMenuItem();
+        Salir = new javax.swing.JMenuItem();
         Profesores = new javax.swing.JMenu();
         crearProfesorMenu = new javax.swing.JMenuItem();
         modificarProfesorMenu = new javax.swing.JMenuItem();
@@ -566,7 +568,7 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
-        jLabel2.setText("DNI");
+        jLabel2.setText("CORREO");
         CambiarContraseña.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 140, 20));
 
         jLabel3.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
@@ -808,14 +810,14 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 248, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(83, 248, 0, 0);
         ModificarProfesor.add(jComboBox3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 45;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 48, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(83, 48, 0, 0);
         ModificarProfesor.add(jTextField7, gridBagConstraints);
 
         Buscar.setText("Buscar");
@@ -829,7 +831,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 190, 157, 0);
+        gridBagConstraints.insets = new java.awt.Insets(83, 190, 157, 0);
         ModificarProfesor.add(Buscar, gridBagConstraints);
 
         Modificar.setText("Modificar");
@@ -843,7 +845,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 31, 157, 0);
+        gridBagConstraints.insets = new java.awt.Insets(83, 31, 157, 0);
         ModificarProfesor.add(Modificar, gridBagConstraints);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -874,8 +876,8 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1174;
-        gridBagConstraints.ipady = 290;
+        gridBagConstraints.ipadx = 1184;
+        gridBagConstraints.ipady = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -1127,11 +1129,11 @@ public class Swing extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idCurso", "codCurso", "Descripción", "Etapa", "Activo"
+                "codCurso", "Descripción", "Etapa", "Activo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1160,50 +1162,18 @@ public class Swing extends javax.swing.JFrame {
 
         getContentPane().add(EliminarCurso, "card8");
 
-        CrearGrupo.setLayout(new java.awt.GridBagLayout());
+        CrearGrupo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel21.setText("CREAR GRUPO DE ALUMNOS");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
-        CrearGrupo.add(jLabel21, gridBagConstraints);
+        CrearGrupo.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, -1, -1));
 
         jLabel22.setText("Descripción del Curso: ");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(44, 180, 0, 0);
-        CrearGrupo.add(jLabel22, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 46;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(44, 19, 0, 0);
-        CrearGrupo.add(jTextField11, gridBagConstraints);
+        CrearGrupo.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+        CrearGrupo.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 110, -1));
 
         jLabel23.setText("Número de Alumnos:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(44, 70, 0, 0);
-        CrearGrupo.add(jLabel23, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 46;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(44, 8, 0, 0);
-        CrearGrupo.add(jTextField12, gridBagConstraints);
+        CrearGrupo.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
+        CrearGrupo.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 110, -1));
 
         jButton9.setText("Crear");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -1211,24 +1181,18 @@ public class Swing extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(38, 140, 0, 0);
-        CrearGrupo.add(jButton9, gridBagConstraints);
+        CrearGrupo.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 150, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Grupo", "Codigo Grupo", "Curso", "Numero alumnos", "activo"
+                "Codigo Grupo", "Curso", "Numero alumnos", "activo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1237,35 +1201,21 @@ public class Swing extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jTable1);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1114;
-        gridBagConstraints.ipady = 410;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(34, 0, 3, 0);
-        CrearGrupo.add(jScrollPane6, gridBagConstraints);
+        CrearGrupo.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 207, 1200, 440));
 
         jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO1", "ESO2", "ESO3", "ESO4", "BCH1", "BCH2", "FM1", "FM2", "MV1", "MV2", "CAR1", "CAR2", "EVA1", "EVA2", "SMR1", "SMR2", "AF1", "AF2", "DAM1", "DAM2", "DAW1", "DAW2", "DFM1", "DFM2" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 19, 0, 0);
-        CrearGrupo.add(jComboBox8, gridBagConstraints);
+        CrearGrupo.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
 
         jLabel20.setText("Curso");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 270, 0, 0);
-        CrearGrupo.add(jLabel20, gridBagConstraints);
+        CrearGrupo.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
+
+        jButton31.setText("Limpiar");
+        jButton31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton31ActionPerformed(evt);
+            }
+        });
+        CrearGrupo.add(jButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, -1, -1));
 
         getContentPane().add(CrearGrupo, "card9");
 
@@ -1306,11 +1256,11 @@ public class Swing extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Grupo", "Codigo Grupo", "Curso", "Numero alumnos", "Activo"
+                "Codigo Grupo", "Curso", "Numero alumnos", "Activo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false
+                false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1404,11 +1354,11 @@ public class Swing extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Grupo", "Codigo Grupo", "Curso", "Numero Alumnos", "Activo"
+                "Codigo Grupo", "Curso", "Numero Alumnos", "Activo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1755,7 +1705,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 33;
         gridBagConstraints.ipady = 24;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(35, 20, 0, 0);
         CrearSolicitud.add(jLabel35, gridBagConstraints);
 
         jLabel36.setText("Título:");
@@ -1765,7 +1715,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 4;
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 120, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(40, 156, 0, 0);
         CrearSolicitud.add(jLabel36, gridBagConstraints);
 
         jTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1793,11 +1743,12 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 103;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 13, 0, 112);
+        gridBagConstraints.insets = new java.awt.Insets(20, 13, 0, 148);
         CrearSolicitud.add(jComboBox6, gridBagConstraints);
 
         jLabel38.setText("Departamento:");
@@ -1816,7 +1767,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 120, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(24, 156, 0, 0);
         CrearSolicitud.add(jLabel39, gridBagConstraints);
 
         jTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1841,7 +1792,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 120, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 156, 0, 0);
         CrearSolicitud.add(jLabel40, gridBagConstraints);
 
         jTextField24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1855,7 +1806,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
         CrearSolicitud.add(jTextField24, gridBagConstraints);
 
-        jLabel41.setText("DNI Profesor:");
+        jLabel41.setText("Correo Profesor:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 11;
@@ -1869,10 +1820,11 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 176;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(38, 13, 0, 112);
+        gridBagConstraints.insets = new java.awt.Insets(38, 13, 0, 148);
         CrearSolicitud.add(jTextField25, gridBagConstraints);
 
         jLabel42.setText("Fecha inicio:");
@@ -1883,7 +1835,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.ipady = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(38, 120, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(38, 156, 0, 0);
         CrearSolicitud.add(jLabel42, gridBagConstraints);
 
         jLabel43.setText("Fecha Final:");
@@ -1892,7 +1844,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.gridy = 14;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 120, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 156, 0, 0);
         CrearSolicitud.add(jLabel43, gridBagConstraints);
 
         jLabel44.setText("Participantes:");
@@ -1908,10 +1860,11 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 176;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 13, 0, 112);
+        gridBagConstraints.insets = new java.awt.Insets(30, 13, 0, 148);
         CrearSolicitud.add(jTextField28, gridBagConstraints);
 
         jButton17.setText("Crear");
@@ -1923,8 +1876,9 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 40, 137, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 40, 142, 0);
         CrearSolicitud.add(jButton17, gridBagConstraints);
 
         jTextField26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1957,7 +1911,7 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 31;
         gridBagConstraints.ipady = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(78, 90, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(78, 126, 0, 0);
         CrearSolicitud.add(jCheckBox1, gridBagConstraints);
 
         jCheckBox2.setText("Prevista");
@@ -1974,11 +1928,25 @@ public class Swing extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 4;
         gridBagConstraints.ipadx = -14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(34, 13, 0, 112);
+        gridBagConstraints.insets = new java.awt.Insets(34, 13, 0, 148);
         CrearSolicitud.add(jComboBox11, gridBagConstraints);
+
+        jButton30.setText("Limpiar");
+        jButton30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton30ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 11, 0, 0);
+        CrearSolicitud.add(jButton30, gridBagConstraints);
 
         getContentPane().add(CrearSolicitud, "card14");
 
@@ -2031,6 +1999,9 @@ public class Swing extends javax.swing.JFrame {
         jTable6.setDropMode(javax.swing.DropMode.ON);
         jTable6.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         jScrollPane19.setViewportView(jTable6);
+        if (jTable6.getColumnModel().getColumnCount() > 0) {
+            jTable6.getColumnModel().getColumn(0).setHeaderValue("idSolicitud");
+        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2466,13 +2437,30 @@ public class Swing extends javax.swing.JFrame {
             }
         });
 
-        Contraseña.setText("Contraseña");
-        Contraseña.addActionListener(new java.awt.event.ActionListener() {
+        Archivo.setText("Archivo");
+        Archivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContraseñaActionPerformed(evt);
+                ArchivoActionPerformed(evt);
             }
         });
-        jMenuBar1.add(Contraseña);
+
+        CerrarSesion.setText("Cerrar Sesión");
+        CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarSesionActionPerformed(evt);
+            }
+        });
+        Archivo.add(CerrarSesion);
+
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        Archivo.add(Salir);
+
+        jMenuBar1.add(Archivo);
 
         Profesores.setText("Profesores");
 
@@ -2619,29 +2607,12 @@ public class Swing extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
+    private void ArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArchivoActionPerformed
         // TODO add your handling code here:
         //Asigno que sea visible cuando clickemos encima del menu
-        Login.setVisible(false);
-        CambiarContraseña.setVisible(rootPaneCheckingEnabled);
-        MenuInicio.setVisible(false);
-        CrearProfesor.setVisible(false);
-        ModificarProfesor.setVisible(false);
-        EliminarDeshabilitarProfesor.setVisible(false);
-        CrearCurso.setVisible(false);
-        EliminarCurso.setVisible(false);
-        CrearGrupo.setVisible(false);
-        ModificarGrupo.setVisible(false);
-        DeshabilitarGrupo.setVisible(false);
-        CrearDepartamento.setVisible(false);
-        ModificarDepartamento.setVisible(false);
-        EliminarDepartamento.setVisible(false);
-        CrearSolicitud.setVisible(false);
-        ConsultarSolicitudes.setVisible(false);
-        AprobarDenegarSolicitudes.setVisible(false);
-        FasePreparacion.setVisible(false);
+      
 
-    }//GEN-LAST:event_ContraseñaActionPerformed
+    }//GEN-LAST:event_ArchivoActionPerformed
 
     private void crearProfesorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfesorMenuActionPerformed
         // TODO add your handling code here
@@ -3290,6 +3261,7 @@ public class Swing extends javax.swing.JFrame {
 
         String valor1 = tablaF.getValueAt(filaSeleccionada, 1).toString();
         cursoAux = cursos.buscarPor(valor1);
+        System.out.println(cursoAux.toString());
     }//GEN-LAST:event_jTable8MouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -3519,7 +3491,7 @@ public class Swing extends javax.swing.JFrame {
                 Cursos.setVisible(false);
                 Grupo.setVisible(false);
                 Departamento.setVisible(false);
-                Contraseña.setVisible(false);
+                Archivo.setVisible(false);
                 /**CambiarContraseña.setVisible(true);
                 CrearSolicitud.setVisible(true);**/
                 
@@ -3544,7 +3516,7 @@ public class Swing extends javax.swing.JFrame {
                 Cursos.setVisible(false);
                 Grupo.setVisible(false);
                 Departamento.setVisible(false);
-                Contraseña.setVisible(false);
+                Archivo.setVisible(false);
             
         }else if (aux.getPerfil().toString().equalsIgnoreCase("superusuario")){
             
@@ -3552,7 +3524,7 @@ public class Swing extends javax.swing.JFrame {
             Login.setVisible(false);
             jMenuBar1.setVisible(true);
             MenuInicio.setVisible(true);
-            Contraseña.setVisible(false);
+            Archivo.setVisible(false);
         }
             
             
@@ -3595,11 +3567,11 @@ public class Swing extends javax.swing.JFrame {
     private void botonCambiarContraseniaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCambiarContraseniaMouseClicked
         // TODO add your handling code here:
         // Obtener el DNI y la nueva contraseña ingresados por el usuario
-        String dni = txtDNI.getText();
+        String correo = txtDNI.getText();
         String nuevaContraseña = new String(txtnuevaContrasenia.getPassword());
 
         // Verificar si se han ingresado valores en los campos DNI y Nueva Contraseña
-        if (dni.isEmpty() || nuevaContraseña.isEmpty()) {
+        if (correo.isEmpty() || nuevaContraseña.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, introduzca el DNI y la nueva contraseña", "Error", JOptionPane.ERROR_MESSAGE);
             return; // Salir del método si falta algún dato
         }
@@ -3612,7 +3584,7 @@ public class Swing extends javax.swing.JFrame {
 
             // Acceder a la base de datos y actualizar la contraseña del profesor correspondiente
             ProfesorDAO profesorDAO = new ProfesorDAO();
-            boolean cambioExitoso = profesorDAO.actualizarContraenia(dni, nuevaContraseña);
+            boolean cambioExitoso = profesorDAO.actualizarContraenia(correo, nuevaContraseña);
 
             if (cambioExitoso) {
                 // Mostrar un mensaje de éxito
@@ -3696,6 +3668,45 @@ public class Swing extends javax.swing.JFrame {
         metodosprofesor.actualizarEstado(valorABuscar,activo);
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+        // TODO add your handling code here:
+        limpiarCrearSolicitud();
+    }//GEN-LAST:event_jButton30ActionPerformed
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+        // TODO add your handling code here:
+        jTextField11.setText("");
+        jTextField12.setText("");
+    }//GEN-LAST:event_jButton31ActionPerformed
+
+    private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
+        // TODO add your handling code here:
+        Login.setVisible(rootPaneCheckingEnabled);
+        //Asigno que sea visible cuando clickemos encima del menu
+        CambiarContraseña.setVisible(false);
+        MenuInicio.setVisible(false);
+        CrearProfesor.setVisible(false);
+        ModificarProfesor.setVisible(false);
+        EliminarDeshabilitarProfesor.setVisible(false);
+        CrearCurso.setVisible(false);
+        EliminarCurso.setVisible(false);
+        CrearGrupo.setVisible(false);
+        ModificarGrupo.setVisible(false);
+        DeshabilitarGrupo.setVisible(false);
+        CrearDepartamento.setVisible(false);
+        ModificarDepartamento.setVisible(false);
+        EliminarDepartamento.setVisible(false);
+        CrearSolicitud.setVisible(false);
+        ConsultarSolicitudes.setVisible(false);
+        AprobarDenegarSolicitudes.setVisible(false);
+        FasePreparacion.setVisible(false);
+    }//GEN-LAST:event_CerrarSesionActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_SalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3733,10 +3744,11 @@ public class Swing extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AprobarDenegarSolicitudes;
+    private javax.swing.JMenu Archivo;
     private javax.swing.JButton Buscar;
     private javax.swing.JPanel CambiarContraseña;
+    private javax.swing.JMenuItem CerrarSesion;
     private javax.swing.JPanel ConsultarSolicitudes;
-    private javax.swing.JMenu Contraseña;
     private javax.swing.JButton Crear;
     private javax.swing.JPanel CrearCurso;
     private javax.swing.JMenuItem CrearCursoMenu;
@@ -3764,6 +3776,7 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JPanel ModificarGrupo;
     private javax.swing.JPanel ModificarProfesor;
     private javax.swing.JMenu Profesores;
+    private javax.swing.JMenuItem Salir;
     private javax.swing.JMenu Solicitudes;
     private javax.swing.JMenuItem aprobarDenegarSolicitudMenu;
     private javax.swing.JLabel botonCambiarContrasenia;
@@ -3805,6 +3818,8 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
