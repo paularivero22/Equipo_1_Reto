@@ -67,6 +67,10 @@ public class ActividadProgramada extends Solicitud{
         this.comentarioFase = comentarioFase;
     }
 
+    /**
+     * METODOS GET Y SET
+     * @return 
+     */
     public boolean isMedioTransporte() {
         return medioTransporte;
     }
@@ -84,6 +88,10 @@ public class ActividadProgramada extends Solicitud{
         this.comentarioFase = comentarioFase;
     }
 
+    /**
+     * METODO QUE MUESTRA LA INFORMACIÓN DE LA ACTIVIDAD PROGRAMADA
+     * @return 
+     */
     @Override
     public String toString() {
         return "ActividadProgramada{"+super.toString() + "medioTransporte=" + medioTransporte + ", comentarioFase=" + comentarioFase + '}';

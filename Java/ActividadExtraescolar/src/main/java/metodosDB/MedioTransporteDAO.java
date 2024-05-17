@@ -28,7 +28,11 @@ public class MedioTransporteDAO implements RepositorioDAO<MedioTransporte> {
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
-
+    
+/**
+ * METODO QUE LISTA LOS MEDIODE TRANSPORTE
+ * @return 
+ */
     @Override
     public SortedSet<MedioTransporte> listar() {
         SortedSet<MedioTransporte> listaTransporte = new TreeSet<>();
@@ -47,6 +51,11 @@ public class MedioTransporteDAO implements RepositorioDAO<MedioTransporte> {
         return listaTransporte;
     }
 
+    /**
+     * METODO QUE BUSCA UN MEDIO DE TRANSPORTE POR ID
+     * @param valorABuscar
+     * @return 
+     */
     @Override
     public MedioTransporte buscarPor(String valorABuscar) {
         MedioTransporte medio = null;
@@ -63,12 +72,20 @@ public class MedioTransporteDAO implements RepositorioDAO<MedioTransporte> {
         }
         return medio;
     }
+    
+    /**
+     * METODO QUE ELIMINA UN MEDIO DE TRANSPORTW
+     * @param filtro 
+     */
 
     @Override
     public void eliminarPor(String filtro) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+/**
+ * METODO QUE INSERTA UN MEDIO DE TRANSPORTE
+ * @param t 
+ */
     @Override
     public void insertar(MedioTransporte t) {
          String sql = "INSERT into mediotransporte(idTransporte,tipo)VALUES(?,?);";
@@ -85,6 +102,12 @@ public class MedioTransporteDAO implements RepositorioDAO<MedioTransporte> {
             System.out.println(e.getMessage());
         }
     }
+    
+    /**
+     * METODO QUE INSERTA LOS MEDIOS DE TRANSPORTE A LA TABLA MEDIOUTILIZA
+     * @param t
+     * @param a 
+     */
     public void insertarMedioUtiliza(MedioTransporte t,ActividadProgramada a){
         String sql = "INSERT into mediotransporteutiliza(kilometros,fk_transporte,fk_actividad,importe,comentario)VALUES(?,?,?,?,?);";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
@@ -104,11 +127,23 @@ public class MedioTransporteDAO implements RepositorioDAO<MedioTransporte> {
         }
     }
 
+    /**
+     * METODO QUE ACTUALIZA LOS MEDIOS DE TRANSPORTE
+     * @param filtro
+     * @param valorABuscar
+     * @param valornuevo 
+     */
     @Override
     public void actualizar(String filtro, String valorABuscar, JTextField valornuevo) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     * METODO QUE CREA UN MEDIO DE TRANSPORTE
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     private MedioTransporte crearMedioTransporte(final ResultSet rs) throws SQLException {
         return new MedioTransporte(rs.getInt("idTransporte"), rs.getInt("fk_actividad"), TipoTransporte.valueOf(rs.getString("tipo")), rs.getString("comentario"), rs.getDouble("importe"), rs.getInt("kilometros"));
     }

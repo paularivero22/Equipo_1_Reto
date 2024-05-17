@@ -196,7 +196,10 @@ public class ActividadProgramadaDAO implements RepositorioDAO<ActividadProgramad
             System.out.println(e.getMessage());
         }
     }
-
+/**
+ * METODO QUE LISTA LAS ACTIVIDADES REALIZADAS
+ * @return 
+ */
     public SortedSet<ActividadProgramada> listarRealizadas() {
         SortedSet<ActividadProgramada> listaRealizada = new TreeSet<>();
         try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM actividadprogramada where estado='REALIZADA';");) {
@@ -213,6 +216,11 @@ public class ActividadProgramadaDAO implements RepositorioDAO<ActividadProgramad
         }
         return listaRealizada;
     }
+    
+    /**
+     * METODO QUE LISTA ACTIVIDADES APROBADAS
+     * @return 
+     */
      public SortedSet<ActividadProgramada> listarAprobadas() {
         SortedSet<ActividadProgramada> listaAprobadas = new TreeSet<>();
         try (Statement stm = getConnection().createStatement(); ResultSet rs = stm.executeQuery("SELECT * FROM actividadprogramada where estado='APROBADA';");) {
@@ -230,6 +238,11 @@ public class ActividadProgramadaDAO implements RepositorioDAO<ActividadProgramad
         return listaAprobadas;
     }
 
+     /**
+      * METODO QUE ACTUALIZA EL ESTADO
+      * @param valorABuscar
+      * @param estado 
+      */
     public void actualizarEstado(String valorABuscar, String estado) {
         ActividadProgramada ac = buscarPor(valorABuscar);
         String sql = "UPDATE actividadprogramada SET estado=? WHERE titulo=?;";

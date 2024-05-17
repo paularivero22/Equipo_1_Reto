@@ -17,7 +17,18 @@ public class MedioTransporte implements Comparable<MedioTransporte>{
     private String comentario;
     private double importe;
     private double kilometros;
+    
+    /**
+     * CONSTRUCTOR POR PARÁMETROS CON IDMEDIOTRANSPORTE
+     * @param idTransporte
+     * @param idActividad
+     * @param tipo
+     * @param comentario
+     * @param importe
+     * @param kilometros 
+     */
 
+  
     public MedioTransporte(int idTransporte, int idActividad, TipoTransporte tipo, String comentario, double importe, double kilometros) {
         this.idTransporte = idTransporte;
         this.idActividad = idActividad;
@@ -26,7 +37,14 @@ public class MedioTransporte implements Comparable<MedioTransporte>{
         this.importe = importe;
         this.kilometros = kilometros;
     }
-
+/**
+ * CONSTRUCTOR POR PARÁMETROS QUE NO PASA LA IDMEDIOTRANSPORTE
+ * @param idActividad
+ * @param tipo
+ * @param comentario
+ * @param importe
+ * @param kilometros 
+ */
     public MedioTransporte(int idActividad, TipoTransporte tipo, String comentario, double importe, double kilometros) {
         this.idActividad = idActividad;
         this.tipo = tipo;
@@ -35,11 +53,10 @@ public class MedioTransporte implements Comparable<MedioTransporte>{
         this.kilometros = kilometros;
     }
 
-    
-
-    
-
-
+    /**
+     * METODOS GET Y SET
+     * @return 
+     */
     public int getIdTransporte() {
         return idTransporte;
     }
@@ -88,17 +105,20 @@ public class MedioTransporte implements Comparable<MedioTransporte>{
         this.kilometros = kilometros;
     }
 
+    /**
+     * METODO QUE MUESTRA INFORMACIÓN DEL SERVIDOR
+     * @return 
+     */
     @Override
     public String toString() {
         return "MedioTransporte{" + "idTransporte=" + idTransporte + ", idActividad=" + idActividad + ", tipo=" + tipo + ", comentario=" + comentario + ", importe=" + importe + ", kilometros=" + kilometros + '}';
     }
 
-   
-
-   
-
-    
-
+   /**
+    * METODO QUE ORDENA SEGUN LA IDACTIVIDAD
+    * @param o
+    * @return 
+    */
     @Override
     public int compareTo(MedioTransporte o) {
         return Integer.compare(this.idActividad, o.idActividad);

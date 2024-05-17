@@ -71,11 +71,11 @@ public class Profesor implements Comparable<Profesor> {
         this.perfil = perfil;
         this.contrasenia = contrasenia;
     }
-
+/**
+ * CONSTRUCTOR SIN PARÁMETROS
+ */
     public Profesor() {
-    }
-    
-    
+    } 
 
     /**
      * METODOS GET Y SET
@@ -151,7 +151,10 @@ public class Profesor implements Comparable<Profesor> {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
+/**
+ * METODO EQUALS Y HASHCODE
+ * @return 
+ */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -202,7 +205,11 @@ public class Profesor implements Comparable<Profesor> {
         }
         return new String(password);
     }
-
+/**
+ * METODO ORDENA POR IDPROFESOR
+ * @param o
+ * @return 
+ */
     @Override
     public int compareTo(Profesor o) {
         return Integer.compare(this.getIdProfesor(), o.getIdProfesor());
