@@ -1,4 +1,4 @@
-# **DOCUMENTACIÓN DEL RETO - EQUIPO 1**
+# **🔺 DOCUMENTACIÓN DEL RETO - EQUIPO 1 🔻**
 
 ### **👤 Integrantes:**<br>
 ### - Adrian Tresgallo
@@ -21,10 +21,10 @@
     - [Contenido de la web](#CONT)
 
 3. [Java](#JV)
-    - [Diagrama de clases](DIAG)
-    - [Diagrama de casos de uso](USO)
-    - [Documentacion de las clases](DOCU)
-    - [Explicación](EXPL)
+    - [Diagrama de clases](#DIAG)
+    - [Diagrama de casos de uso](#USO)
+    - [Documentacion de las clases](#DOCU)
+    - [Explicación](#EXPL)
 
 4. [Implementacion y despliegue](#IMPL)
     - [Tecnologias](#TEC)
@@ -32,7 +32,7 @@
 
 <br><br>
 
-## **BASES DE DATOS**<a name="bd"></a>
+## **🔵 BASES DE DATOS**<a name="bd"></a>
 <hr>
 
 ### **1. Descripción de la base de datos**<a name="desBD"></a>
@@ -361,7 +361,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 [Enlace-al-script-sql](https://github.com/paularivero22/Equipo_1_Reto/tree/3799f667727a6506bd0801b6774985d31df1fc63/Base%20datos)
 <br><br>
 
-## **PÁGINA WEB**<a name="PW"></a>
+## **🟢 PÁGINA WEB**<a name="PW"></a>
 
 ### **1. Estructura de la página**<a name="ESTRUCT"></a><br><br>
 ### **1.1 Estructura comun de todas las páginas**<br>
@@ -2015,7 +2015,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
    - Al igual que en las otras páginas cuenta con un encabezado y pie de página 
 <br><br>
 
-## **JAVA**<a name="JV"></a>
+## **🟠 JAVA**<a name="JV"></a>
 <hr>
 
 ### **1. Diagrama de clases**<a name="DIAG"></a>
@@ -2208,7 +2208,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 A la hora de registrar una actividad
 
 
-## Implementacion y despliegue<a name="IMPL"></a>
+## **🟣 Implementacion y despliegue**<a name="IMPL"></a>
 ### **1. Tecnologías**<a name="TEC"></a>
 Tanto para el servidor web como el de base de datos se han probado ubuntu server y windows server, estas son alguncas de las ventajas y desventajas de estos sistemas operativos<br><br>
 
