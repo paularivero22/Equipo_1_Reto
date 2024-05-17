@@ -2008,7 +2008,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
 ### **3. Contenido de la web**<a name="CONT"></a>
 - ### **Página Inicio**<br>
-[![Pagina-Inicio.png](https://i.postimg.cc/K8v0Gzst/Pagina-Inicio.png)](https://postimg.cc/hf6LMSnG)
+[![Pagina-Inicio.png](https://i.postimg.cc/VNRHXs3X/Pagina-Inicio.png)](https://postimg.cc/wt1VpzxB)
 - Encontramos un encabezado con el logo del instituto y un menu para moverse entre páginas.
 - En la parte central se encuentra una foto del instituto junto con un texto de bienvenida y un boton central que te lleva al Facebook del instituto.
 - En el pie de página nos encontramos los datos de contacto del centro asi como su localizacion y las redes sociales
