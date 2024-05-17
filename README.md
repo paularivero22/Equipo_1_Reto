@@ -2066,8 +2066,8 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
         - setActivo(boolean): Setter para el estado activo
         - toString(): String
     - Relaciones: 
-        - Relación uno a muchos con **Departamento**
-        - Relación uno a muchos con **Solicitud**
+        - Relación uno a muchos con Departamento
+        - Relación uno a muchos con Solicitud
     
 - Curso
     - Atributos:
