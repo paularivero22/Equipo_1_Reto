@@ -13,7 +13,10 @@ import java.util.regex.Pattern;
  * @author Usuario
  */
 public class ValidaDatos {
-    
+    /**
+     * METODO QUE VALIDA DNI
+     * @return 
+     */
     public static String ValidaDNI() {
         String DNI = "";
         Scanner teclado = new Scanner(System.in);
@@ -26,6 +29,11 @@ public class ValidaDatos {
         return DNI;
     }
 
+    /**
+     * METODO QUE VALIDA DNI
+     * @param DNI
+     * @return 
+     */
     public static boolean ValidarDNI(String DNI) {
         boolean solucion = false;
 
@@ -50,6 +58,10 @@ public class ValidaDatos {
         return solucion;
     }
     
+    /**
+     * METODO QUE VALIDA EMAIL
+     * @return 
+     */
     public static String ValidaEmail() {
         String email = "";
         Scanner teclado = new Scanner(System.in);
@@ -62,6 +74,11 @@ public class ValidaDatos {
         return email;
     }
 
+    /**
+     * METODO VALIDA EMAIL
+     * @param email
+     * @return 
+     */
     public static boolean ValidarEmail(String email) {
         boolean solucion = false;
 

@@ -38,7 +38,10 @@ public class MetodosFicheros {
         return AccesoBaseDatos.getInstance().getConn();
     }
 
-    //Metodo que lee cursos.csv y los inserta en una lista
+    /**
+     * METODO QUE LEE CSV DE CURSOS
+     * @return 
+     */
     public static List<Curso> leerCSVCursos() {
         List<Curso> lista = new ArrayList<>();
         File fichero = new File("Ficheros\\cursos.csv");
@@ -72,7 +75,9 @@ public class MetodosFicheros {
         }
         return lista;
     }
-    //Metodo que lee departamentos.csv y los inserta en una lista
+    /**
+     * Metodo que lee departamentos.csv y los inserta en una lista
+     */
 
     public static List<Departamento> leerCSVDepartamentos() {
         List<Departamento> lista = new ArrayList<>();
@@ -108,7 +113,10 @@ public class MetodosFicheros {
         return lista;
     }
 
-    //Metodo que lee profesores.csv y los inserta en una lista
+    /**
+     * METODO QUE LEE CSV PROFESORES Y LOS INSERTA
+     * @return 
+     */
     public static List<Profesor> leerCSVProfesores() {
         List<Profesor> lista = new ArrayList<>();
         File fichero = new File("Ficheros\\profesores.csv");
@@ -145,7 +153,10 @@ public class MetodosFicheros {
         return lista;
     }
 
-    //Metodo que lee grupos.csv y los inserta en una lista
+    /**
+     * METODO QUE LLE CSV GRUPOSALUMNOS
+     * @return 
+     */
     public static List<Grupo> leerCSVGrupoAlumnos() {
         List<Grupo> lista = new ArrayList<>();
         File fichero = new File("Ficheros\\grupos.csv");
@@ -179,7 +190,10 @@ public class MetodosFicheros {
         return lista;
     }
 
-    //Metodo que inserta una lista de cursos a la bd
+    /**
+     * METODO QUE INSERTA LOS CURSOS A BD
+     * @param lista 
+     */
     public static void insertarCurso(List<Curso> lista) {
         String sql = "INSERT into curso(idcurso,codcurso,descripcion,etapa,activo) VALUES(?,?,?,?,?)";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
@@ -203,7 +217,10 @@ public class MetodosFicheros {
         }
     }
 
-    //Metodo que inserta una lista de departamentos a la bd
+    /**
+     * METODO QUE INSERTA LOS DEPARTAMENTOS A LA BD
+     * @param lista 
+     */
     public static void insertarDepartamento(List<Departamento> lista) {
         String sql = "INSERT into departamento(iddepartamento,codDepartamento,nombre,idJefe)VALUES(?,?,?,?)";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
@@ -226,7 +243,10 @@ public class MetodosFicheros {
         }
     }
 
-    //Metodo que inserta los datos de la lista de profesores a la bd
+    /**
+     * METODOS QUE INSERTA PROFESORES A LA BD
+     * @param listaProfesor 
+     */
     public static void insertarProfesores(List<Profesor> listaProfesor) {
         String sql = "INSERT into profesor(idProfesor,nombre,apellidos,DNI,perfilAcceso,fk_departamento,correo,activo,contraseña)VALUES(?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
@@ -254,7 +274,10 @@ public class MetodosFicheros {
         }
     }
     
-    //Metodo que inserta los datos de una lista de grupos de alumnos a la bd
+    /**
+     * METODOS QUE INSERTA GRUPOSALUMNOS A LA BD
+     * @param lista 
+     */
      public static void insertarGruposAlumnos(List<Grupo> lista) {
         String sql = "INSERT into grupoalumnos(codGrupo,fk_curso,numAlumnos,activo,idGrupo)VALUES(?,?,?,?,?)";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
@@ -279,7 +302,11 @@ public class MetodosFicheros {
         }
     }
 
-     //Metodo que genera una contraseña aleatoria para los profesores
+     /**
+      * METODO QUE GENRA UNA CONTRASEÑA ALEATORIA
+      * @param longitud
+      * @return 
+      */
     public static String generarPassword(int longitud) {
         String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random r = new Random();
@@ -290,7 +317,11 @@ public class MetodosFicheros {
         return new String(password);
     }
 
-    //Metodo que formatea los booleanos
+    /**
+     * METODO QUE FORMATEA LOS ENTEROS A BOLEANOS
+     * @param cad
+     * @return 
+     */
     private static boolean formateoBoolean(String cad) {
 
         return Integer.parseInt(cad) == 1 ? true : false;

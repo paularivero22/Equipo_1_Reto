@@ -4,7 +4,7 @@
  */
 package Enumerados;
 
-/**
+/**ENUMERADO QUE MUESTRA TODOS LOS TIPOS DE TRANSPORTE
  *
  * @author atres
  */

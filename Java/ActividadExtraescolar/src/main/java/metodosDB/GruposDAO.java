@@ -164,6 +164,11 @@ public class GruposDAO implements RepositorioDAO<Grupo> {
             System.out.println(c.toString());
         }
     }
+    /**
+     * METODO QUE ACTUALIZA EL ACTIVO 
+     * @param valorABuscar
+     * @param activo 
+     */
      public void actualizarActivo(String valorABuscar,boolean activo) {
         Grupo g= buscarPor(valorABuscar);
         String sql = "UPDATE grupoalumnos SET activo=? WHERE codGrupo=?;";

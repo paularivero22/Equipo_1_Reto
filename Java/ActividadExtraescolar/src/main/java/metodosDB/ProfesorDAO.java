@@ -134,7 +134,7 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
      * METODO QUE ACTUALIZA UN DATO ESPECIFICO A UN NUEVO VALOR
      *
      * @param atributo
-     * @param dni
+     * @param valorABuscar
      * @param valorNuevo
      */
     @Override
@@ -183,6 +183,12 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
     }
 
+    /**
+     * METODO QUE VALIDA LAS CREDENCIALES DEL LOGIN
+     * @param contraseña
+     * @param correo
+     * @return 
+     */
     public boolean verificarCredenciales(String contraseña, String correo) {
         String consulta = "SELECT COUNT(*) AS total FROM Profesor WHERE correo = ? AND contraseña = ?";
 
@@ -203,6 +209,12 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         return false; // Si ocurre algún error o no hay coincidencias
     }
 
+    /**
+     * ACTUALIZA LA CONTRASEÑA
+     * @param correo
+     * @param nuevaContrasenia
+     * @return 
+     */
     public boolean actualizarContraenia(String correo, String nuevaContrasenia) {
         String consulta = "UPDATE Profesor SET contraseña = ? WHERE correo = ?";
 
@@ -227,6 +239,11 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         }
     }
 
+    /**
+     * METODO QUE ACTUALIZA EL ESTADO
+     * @param valorABuscar
+     * @param activo 
+     */
     public void actualizarEstado(String valorABuscar, boolean activo) {
         Profesor p = buscarPor(valorABuscar);
         String sql = "UPDATE profesor SET activo=? WHERE correo=?";

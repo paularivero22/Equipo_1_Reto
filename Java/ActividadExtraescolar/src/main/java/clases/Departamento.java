@@ -77,7 +77,7 @@ public class Departamento implements Comparable<Departamento> {
     }
 
     /**
-     * METODO EQUALS Y HASHCODE
+     * METODO EQUALS Y HASHCODE QUE IDDEPARTAMENTO Y CODDEPARTAMENTO, VERÁ SI UN OBJETO ES IGUAL A OTRO
      * @return 
      */
     @Override
@@ -116,7 +116,11 @@ public class Departamento implements Comparable<Departamento> {
     public String toString() {
         return "Departamento{" + "idDepartamento=" + idDepartamento + ", codigoDepartamento=" + codigoDepartamento + ", nombre=" + nombre + ", idJefe=" + idJefe + '}';
     }
-
+/**
+ * METODO QUE ORDENA SEGÚN LA ID
+ * @param o
+ * @return 
+ */
     @Override
     public int compareTo(Departamento o) {
         return Integer.compare(this.getIdDepartamento(), o.getIdDepartamento());

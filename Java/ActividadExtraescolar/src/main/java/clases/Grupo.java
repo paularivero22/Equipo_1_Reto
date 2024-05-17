@@ -107,7 +107,7 @@ public class Grupo implements Comparable<Grupo>{
     
 
     /**
-     * METODOS EQUALS Y HASHCODE
+     * METODOS EQUALS Y HASHCODE MIRANDO LA IDCURSO Y IDGRUPO
      * @return 
      */
     @Override
@@ -150,6 +150,11 @@ public class Grupo implements Comparable<Grupo>{
         return "Grupo{" + "idGrupo=" + idGrupo + ", codGrupo=" + codGrupo + ", idcurso=" + idcurso + ", numeroAlumnos=" + numeroAlumnos + ", activo=" + activo + '}';
     }
 
+    /**
+     * ORDENA POR CODGRUPO
+     * @param o
+     * @return 
+     */
     @Override
     public int compareTo(Grupo o) {
         return this.getCodGrupo().compareTo(o.getCodGrupo());

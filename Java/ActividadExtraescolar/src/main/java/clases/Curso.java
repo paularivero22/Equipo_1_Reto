@@ -85,7 +85,10 @@ public class Curso implements Comparable<Curso> {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
+/**
+ * METODO EQUALS Y HASCODE HACIENDO QUE CUANDO SEA LA IDCURSO Y EL CODCURSO IGUALES
+ * @return 
+ */
     @Override
     public int hashCode() {
         int hash = 3;
