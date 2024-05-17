@@ -1,6 +1,6 @@
 # **DOCUMENTACIÓN DEL RETO - EQUIPO 1**
 
-### **Integrantes:**<br>
+### **👤 Integrantes:**<br>
 ### - Adrian Tresgallo
 ### - Rodrigo Ruiz
 ### - Néstor Serna 
@@ -8,7 +8,7 @@
 ---
 <br>
 
-## **ÍNDICE DE CONTENIDOS**
+## **📌 ÍNDICE DE CONTENIDOS**
 1. [Bases de datos](#bd)
     - [Descripcion de la base de datos](#desBD)
     - [Diagrama E/R](#ER)
@@ -36,7 +36,7 @@
 <hr>
 
 ### **1. Descripción de la base de datos**<a name="desBD"></a>
-![Diagrama paso a tablas](./Imagenes/diagrama%20paso%20a%20tablas.png)
+[![diagrama-paso-a-tablas.png](https://i.postimg.cc/GtwMdxZp/diagrama-paso-a-tablas.png)](https://postimg.cc/N9D8xmGh)
 <br><br>
 **Tabla GrupoAlumnos**<br>
 - codGrupo VARCHAR(10)
@@ -141,7 +141,7 @@
 <span style="color:red">* </span>Se crea el campo idActividad con la relacion ActividadProgramada - FotoActividad
 
 ### **2. Diagrama E/R**<a name="ER"></a>
-[![Diagrama-ER-Equipo-1-1.jpg](https://i.postimg.cc/5NGZbGsW/Diagrama-ER-Equipo-1-1.jpg)](https://postimg.cc/9rdxBx3L)
+[![Diagrama-ER.png](https://i.postimg.cc/VsnG42C0/Diagrama-ER.png)](https://postimg.cc/G93xm7zb)
 
 **Profesor** <br>
 - idProf: identificador numérico, es clave primaria
@@ -362,7 +362,6 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 <br><br>
 
 ## **PÁGINA WEB**<a name="PW"></a>
-<hr>
 
 ### **1. Estructura de la página**<a name="ESTRUCT"></a><br><br>
 ### **1.1 Estructura comun de todas las páginas**<br>
@@ -1995,23 +1994,23 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 
 ### **3. Contenido de la web**<a name="CONT"></a>
 - ### **Página Inicio**<br>
-![PaginaInicio](./Imagenes/PaginaInicio.png)
+[![Pagina-Inicio.png](https://i.postimg.cc/K8v0Gzst/Pagina-Inicio.png)](https://postimg.cc/hf6LMSnG)
 - Encontramos un encabezado con el logo del instituto y un menu para moverse entre páginas.
 - En la parte central se encuentra una foto del instituto junto con un texto de bienvenida y un boton central que te lleva al Facebook del instituto.
 - En el pie de página nos encontramos los datos de contacto del centro asi como su localizacion y las redes sociales
 
 - ### **Página Actividades**<br>
-![PaginaActividades](./Imagenes/PaginaActividades.png)
+[![Pagina-Actividades.png](https://i.postimg.cc/zGt0Vr96/Pagina-Actividades.png)](https://postimg.cc/hXm95H41)
    - En esta página se encuentran las actividades que realiza el instituto dividiendose en viajes extraescolares y clases extraescolares 
    - A parte de esto, hay un encabezado y un pie de página, que son exactamente iguales que en la página de inicio
 
 - ### **Página "Sobre Nosotros"**<br>
-![PaginaSobreNosotros](./Imagenes/PaginaSobreNosotros.png)
+[![Pagina-Sobre-Nosotros.png](https://i.postimg.cc/s2MKWLzX/Pagina-Sobre-Nosotros.png)](https://postimg.cc/v1dWF3cF)
    - En esta página hay información sobre el centro, las instalaciones de las que dispone y un mapa con la localizacion del instituto
    - Tambien cuenta con un encabezado y pie de página iguales a las anteriores páginas
 
 - ### **Página "Galería"**<br>
-![PaginaGaleria](./Imagenes/PaginaGaleria.png)
+[![Pagina-Galeria.png](https://i.postimg.cc/fLXK20JQ/Pagina-Galeria.png)](https://postimg.cc/G8LG9tFX)
    - En esta página aparecerán todas las imagenes de las actividades y una descripción sobre ellas, tambien tendrán un icono para poder abrirlas en una pestaña nueva y verlas con su tamaño original 
    - Al igual que en las otras páginas cuenta con un encabezado y pie de página 
 <br><br>
@@ -2020,7 +2019,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 <hr>
 
 ### **1. Diagrama de clases**<a name="DIAG"></a>
-![DiagramaDeClases](./Imagenes/diagramaDeClases.jpg)
+[![diagrama-De-Clases.jpg](https://i.postimg.cc/RZDLvTtz/diagrama-De-Clases.jpg)](https://postimg.cc/9Dy7pZ1x)
 - Profesor
     - Atributos:
         - idProfesor: int
@@ -2182,7 +2181,7 @@ Una actividad puede utilizar o ninguno o varios transportes, un transporte puede
 <br><br>
 
 ### **2. Diagramas de caso de uso**<a name="USO"></a>
-![Diagrama Casos de Uso](./Imagenes/casosDeUso.jpg)
+[![casos-De-Uso.jpg](https://i.postimg.cc/QMCYbtQj/casos-De-Uso.jpg)](https://postimg.cc/kVryM7YH)
 - El superusuario podrá: 
     - Modificar y consultar ficheros
     - Cargar datos
@@ -2210,9 +2209,8 @@ A la hora de registrar una actividad
 
 
 ## Implementacion y despliegue<a name="IMPL"></a>
-### **1. Tecnologias**<a name="TEC"></a>
 ### **1. Tecnologías**<a name="TEC"></a>
-Tanto para el servidor web como el de base de datos se han probado ubuntu server y windows server, estas son alguncas de las ventajas y desventajas de estas tecnologías<br><br>
+Tanto para el servidor web como el de base de datos se han probado ubuntu server y windows server, estas son alguncas de las ventajas y desventajas de estos sistemas operativos<br><br>
 
 | Característica           | Windows Server                                                               | Ubuntu server |                                                  
 |--------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------|
