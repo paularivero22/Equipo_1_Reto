@@ -3011,7 +3011,7 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        String nombre = jTextField1.getText();
+        /**String nombre = jTextField1.getText();
         String apellidos = jTextField3.getText();
         String DNI = jTextField4.getText();
         String correo = jTextField5.getText();
@@ -3023,7 +3023,35 @@ public class Swing extends javax.swing.JFrame {
         String contrasenia = MetodosFicheros.generarPassword(7);
         Profesor profesor = new Profesor(idDepartamento, nombre, apellidos, DNI, correo, true, perfil, contrasenia);
 
+        metodosprofesor.insertar(profesor);**/
+        
+        String nombre = jTextField1.getText();
+        String apellidos = jTextField3.getText();
+        String DNI = jTextField4.getText();
+        String correo = jTextField5.getText();
+        PerfilAcceso perfil = (PerfilAcceso) PerfilAcceso.valueOf(jComboBox1.getSelectedItem().toString());
+        String departamento = jComboBox2.getSelectedItem().toString();
+        Departamento dep = metodosdepartamento.buscarPor(departamento);
+        Profesor profesorencontrado = metodosprofesor.buscarPor(correo);
+        int idDepartamento = dep.getIdDepartamento();
+        String contrasenia = MetodosFicheros.generarPassword(7);
+
+        // Validar DNI
+        if (!ValidaDatos.ValidarDNI(DNI)) {
+            JOptionPane.showMessageDialog(this, "DNI no válido. Por favor, ingrese un DNI correcto.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si el DNI no es válido
+        }
+
+        // Validar correo electrónico
+        if (!ValidaDatos.ValidarEmail(correo)) {
+            JOptionPane.showMessageDialog(this, "Correo electrónico no válido. Por favor, ingrese un correo correcto.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si el correo no es válido
+        }
+
+        Profesor profesor = new Profesor(idDepartamento, nombre, apellidos, DNI, correo, true, perfil, contrasenia);
+
         metodosprofesor.insertar(profesor);
+        JOptionPane.showMessageDialog(this, "Profesor creado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
       
     }//GEN-LAST:event_CrearActionPerformed
@@ -3082,6 +3110,12 @@ public class Swing extends javax.swing.JFrame {
         String nombre = jTextField15.getText();
         String codDepartamento = jTextField16.getText();
         String correo = jTextField17.getText();
+        
+        // Validar el correo electrónico
+    if (!ValidaDatos.ValidarEmail(correo)) {
+        JOptionPane.showMessageDialog(this, "Correo electrónico no válido. Por favor, ingrese un correo correcto.", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Detiene la ejecución si el correo no es válido
+    }
         Departamento departamento = new Departamento(codDepartamento, nombre, 6);
         dep.insertar(departamento);
 
@@ -3362,9 +3396,21 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        String atributo=jComboBox3.getSelectedItem().toString();
-        String valorABuscar=profesorAux.getCorreo();
-        metodosprofesor.actualizar(atributo, valorABuscar,jTextField7);
+    String atributo = jComboBox3.getSelectedItem().toString();
+    String valorABuscar = profesorAux.getCorreo();
+    String nuevoValor = jTextField7.getText();
+
+    // Validar correo según la selección del jComboBox3
+      if (atributo.equalsIgnoreCase("correo")) {
+        if (!ValidaDatos.ValidarEmail(nuevoValor)) {
+            JOptionPane.showMessageDialog(this, "Correo electrónico no válido. Por favor, ingrese un correo correcto.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si el correo no es válido
+        }
+    }
+
+    // Proceder con la actualización si la validación es exitosa
+    metodosprofesor.actualizar(atributo, valorABuscar, jTextField7);
+    JOptionPane.showMessageDialog(this, "Profesor actualizado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void jTable10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable10MouseClicked
