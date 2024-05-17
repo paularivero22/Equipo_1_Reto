@@ -121,8 +121,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ActividadProgramada` (
   `idActividadProgramada` INT NOT NULL,
   `estado` ENUM('SOLICITADA','APROBADA','DENEGADA','REALIZADA') NOT NULL,
   `comentario` VARCHAR(45) NULL,
-  `horaInicio` DATETIME NOT NULL,
-  `horaFin` DATETIME NOT NULL,
+  `horaInicio` TIME NOT NULL,
+  `horaFin` TIME NOT NULL,
   `prevista` TINYINT NOT NULL,
   `Departamento` INT NOT NULL,
   `titulo` VARCHAR(45) NOT NULL,
@@ -137,7 +137,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ActividadProgramada` (
   `comenRealizada` VARCHAR(45) NULL,
   PRIMARY KEY (`idActividadProgramada`),
   UNIQUE INDEX `fk_Departamento_UNIQUE` (`Departamento` ASC) VISIBLE,
-  UNIQUE INDEX `profesor_UNIQUE` (`profesor` ASC) VISIBLE,
   CONSTRAINT `idActividadProgramada`
     FOREIGN KEY (`idActividadProgramada`)
     REFERENCES `mydb`.`Solicitud` (`idActividad`)

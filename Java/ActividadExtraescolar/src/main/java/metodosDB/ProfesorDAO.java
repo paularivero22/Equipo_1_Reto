@@ -203,22 +203,22 @@ public class ProfesorDAO implements RepositorioDAO<Profesor> {
         return false; // Si ocurre algún error o no hay coincidencias
     }
 
-    public boolean actualizarContraenia(String DNI, String nuevaContrasenia) {
-        String consulta = "UPDATE Profesor SET contraseña = ? WHERE DNI = ?";
+    public boolean actualizarContraenia(String correo, String nuevaContrasenia) {
+        String consulta = "UPDATE Profesor SET contraseña = ? WHERE correo = ?";
 
         try (PreparedStatement statement = AccesoBaseDatos.getInstance().getConn().prepareStatement(consulta)) {
             statement.setString(1, nuevaContrasenia);
-            statement.setString(2, DNI);
+            statement.setString(2, correo);
 
             int filasActualizadas = statement.executeUpdate();
 
             if (filasActualizadas > 0) {
                 // La contraseña se actualizó correctamente
-                System.out.println("Contraseña actualizada para el profesor con DNI: " + DNI);
+                System.out.println("Contraseña actualizada para el profesor : " + correo);
                 return true;
             } else {
                 // No se pudo actualizar la contraseña
-                System.out.println("No se pudo actualizar la contraseña para el profesor con DNI: " + DNI);
+                System.out.println("No se pudo actualizar la contraseña para el profesor : " + correo);
                 return false;
             }
         } catch (SQLException ex) {
