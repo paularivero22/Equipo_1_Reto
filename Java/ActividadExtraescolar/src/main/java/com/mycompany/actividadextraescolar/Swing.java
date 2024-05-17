@@ -183,8 +183,8 @@ public class Swing extends javax.swing.JFrame {
             ob[4] = profesor.getCorreo();
             ob[5] = profesor.isActivo();
             ob[6] = profesor.getPerfil();
-            ob[7]=profesor.getContrasenia();
-            
+            ob[7] = profesor.getContrasenia();
+
             tabla.addRow(ob);
         }
         tabla1.setModel(tabla);
@@ -2610,7 +2610,7 @@ public class Swing extends javax.swing.JFrame {
     private void ArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArchivoActionPerformed
         // TODO add your handling code here:
         //Asigno que sea visible cuando clickemos encima del menu
-      
+
 
     }//GEN-LAST:event_ArchivoActionPerformed
 
@@ -3011,20 +3011,22 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        /**String nombre = jTextField1.getText();
-        String apellidos = jTextField3.getText();
-        String DNI = jTextField4.getText();
-        String correo = jTextField5.getText();
-        PerfilAcceso perfil = (PerfilAcceso) PerfilAcceso.valueOf(jComboBox1.getSelectedItem().toString());
-        String departamento = jComboBox2.getSelectedItem().toString();
-        Departamento dep=metodosdepartamento.buscarPor(departamento);
-        Profesor profesorencontrado = metodosprofesor.buscarPor(correo);
-        int idDepartamento = dep.getIdDepartamento();
-        String contrasenia = MetodosFicheros.generarPassword(7);
-        Profesor profesor = new Profesor(idDepartamento, nombre, apellidos, DNI, correo, true, perfil, contrasenia);
+        /**
+         * String nombre = jTextField1.getText(); String apellidos =
+         * jTextField3.getText(); String DNI = jTextField4.getText(); String
+         * correo = jTextField5.getText(); PerfilAcceso perfil = (PerfilAcceso)
+         * PerfilAcceso.valueOf(jComboBox1.getSelectedItem().toString()); String
+         * departamento = jComboBox2.getSelectedItem().toString(); Departamento
+         * dep=metodosdepartamento.buscarPor(departamento); Profesor
+         * profesorencontrado = metodosprofesor.buscarPor(correo); int
+         * idDepartamento = dep.getIdDepartamento(); String contrasenia =
+         * MetodosFicheros.generarPassword(7); Profesor profesor = new
+         * Profesor(idDepartamento, nombre, apellidos, DNI, correo, true,
+         * perfil, contrasenia);
+         *
+         * metodosprofesor.insertar(profesor);*
+         */
 
-        metodosprofesor.insertar(profesor);**/
-        
         String nombre = jTextField1.getText();
         String apellidos = jTextField3.getText();
         String DNI = jTextField4.getText();
@@ -3053,7 +3055,7 @@ public class Swing extends javax.swing.JFrame {
         metodosprofesor.insertar(profesor);
         JOptionPane.showMessageDialog(this, "Profesor creado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
-      
+
     }//GEN-LAST:event_CrearActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -3110,12 +3112,12 @@ public class Swing extends javax.swing.JFrame {
         String nombre = jTextField15.getText();
         String codDepartamento = jTextField16.getText();
         String correo = jTextField17.getText();
-        
+
         // Validar el correo electrónico
-    if (!ValidaDatos.ValidarEmail(correo)) {
-        JOptionPane.showMessageDialog(this, "Correo electrónico no válido. Por favor, ingrese un correo correcto.", "Error", JOptionPane.ERROR_MESSAGE);
-        return; // Detiene la ejecución si el correo no es válido
-    }
+        if (!ValidaDatos.ValidarEmail(correo)) {
+            JOptionPane.showMessageDialog(this, "Correo electrónico no válido. Por favor, ingrese un correo correcto.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si el correo no es válido
+        }
         Departamento departamento = new Departamento(codDepartamento, nombre, 6);
         dep.insertar(departamento);
 
@@ -3174,21 +3176,22 @@ public class Swing extends javax.swing.JFrame {
         int departamento = metodosdepartamento.buscarPor(jComboBox11.getSelectedItem().toString()).getIdDepartamento();
         LocalTime horaInicio = LocalTime.parse(jTextField23.getText());
         LocalTime horaFin = LocalTime.parse(jTextField24.getText());
-        int profesor = metodosProfesor.buscarPor(jTextField25.getText()).getIdProfesor();
+        String correoProfesor = jTextField25.getText();
         LocalDate fechaInicio = LocalDate.parse(jTextField26.getText());
         LocalDate fechaFin = LocalDate.parse(jTextField27.getText());
         int participantes = Integer.parseInt(jTextField28.getText());
-        boolean prevista = false;
-        boolean alojamiento = false;
-        if (jCheckBox2.isSelected()) {
-            prevista = true;
-        }
-        if (jCheckBox1.isSelected()) {
-            alojamiento = true;
-        }
+        boolean prevista = jCheckBox2.isSelected();
+        boolean alojamiento = jCheckBox1.isSelected();
         Estado estado = Estado.SOLICITADA;
 
-        Solicitud s = new Solicitud(horaInicio, horaFin, "", prevista, departamento, titulo, tipo, profesor, alojamiento, fechaInicio, fechaFin, participantes, estado);
+        // Validar el correo electrónico del profesor
+        if (!ValidaDatos.ValidarEmail(correoProfesor)) {
+            JOptionPane.showMessageDialog(this, "Correo electrónico del profesor no válido. Por favor, ingrese un correo correcto.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si el correo no es válido
+        }
+
+        int idProfesor = metodosProfesor.buscarPor(correoProfesor).getIdProfesor();
+        Solicitud s = new Solicitud(horaInicio, horaFin, "", prevista, departamento, titulo, tipo, idProfesor, alojamiento, fechaInicio, fechaFin, participantes, estado);
         metodosSolicitudes.insertar(s);
         limpiarCrearSolicitud();
 
@@ -3396,21 +3399,21 @@ public class Swing extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-    String atributo = jComboBox3.getSelectedItem().toString();
-    String valorABuscar = profesorAux.getCorreo();
-    String nuevoValor = jTextField7.getText();
+        String atributo = jComboBox3.getSelectedItem().toString();
+        String valorABuscar = profesorAux.getCorreo();
+        String nuevoValor = jTextField7.getText();
 
-    // Validar correo según la selección del jComboBox3
-      if (atributo.equalsIgnoreCase("correo")) {
-        if (!ValidaDatos.ValidarEmail(nuevoValor)) {
-            JOptionPane.showMessageDialog(this, "Correo electrónico no válido. Por favor, ingrese un correo correcto.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; // Detiene la ejecución si el correo no es válido
+        // Validar correo según la selección del jComboBox3
+        if (atributo.equalsIgnoreCase("correo")) {
+            if (!ValidaDatos.ValidarEmail(nuevoValor)) {
+                JOptionPane.showMessageDialog(this, "Correo electrónico no válido. Por favor, ingrese un correo correcto.", "Error", JOptionPane.ERROR_MESSAGE);
+                return; // Detiene la ejecución si el correo no es válido
+            }
         }
-    }
 
-    // Proceder con la actualización si la validación es exitosa
-    metodosprofesor.actualizar(atributo, valorABuscar, jTextField7);
-    JOptionPane.showMessageDialog(this, "Profesor actualizado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        // Proceder con la actualización si la validación es exitosa
+        metodosprofesor.actualizar(atributo, valorABuscar, jTextField7);
+        JOptionPane.showMessageDialog(this, "Profesor actualizado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void jTable10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable10MouseClicked
@@ -3428,8 +3431,8 @@ public class Swing extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String valorABuscar = profesorAux.getCorreo();
         Profesor c = metodosprofesor.buscarPor(valorABuscar);
-        boolean activo=false;
-        metodosprofesor.actualizarEstado(valorABuscar,false);
+        boolean activo = false;
+        metodosprofesor.actualizarEstado(valorABuscar, false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -3474,12 +3477,11 @@ public class Swing extends javax.swing.JFrame {
 
         // Si las credenciales son válidas, mostrar un mensaje de inicio de sesión completado
         if (credencialesValidas) {
-            
+
             Profesor aux = profesorDAO.buscarPor(correo);
-            
-            
-            if(aux.getPerfil().toString().equalsIgnoreCase("profesor")){
-                
+
+            if (aux.getPerfil().toString().equalsIgnoreCase("profesor")) {
+
                 JOptionPane.showConfirmDialog(null, "ingreso profesor ");
                 Login.setVisible(false);
                 MenuInicio.setVisible(true);
@@ -3492,20 +3494,21 @@ public class Swing extends javax.swing.JFrame {
                 Grupo.setVisible(false);
                 Departamento.setVisible(false);
                 Archivo.setVisible(false);
-                /**CambiarContraseña.setVisible(true);
-                CrearSolicitud.setVisible(true);**/
-                
-            }else if (aux.getPerfil().toString().equalsIgnoreCase("administrador")){
-            
-            JOptionPane.showConfirmDialog(null, "ingreso administrador ");
-            Login.setVisible(false);
-            jMenuBar1.setVisible(true);
-            MenuInicio.setVisible(true);
-        
-            
-        }else if (aux.getPerfil().toString().equalsIgnoreCase("equipo_directivo")){
-         
-            JOptionPane.showConfirmDialog(null, "Ingreso Equipo Directivo ");
+                /**
+                 * CambiarContraseña.setVisible(true);
+                CrearSolicitud.setVisible(true);*
+                 */
+
+            } else if (aux.getPerfil().toString().equalsIgnoreCase("administrador")) {
+
+                JOptionPane.showConfirmDialog(null, "ingreso administrador ");
+                Login.setVisible(false);
+                jMenuBar1.setVisible(true);
+                MenuInicio.setVisible(true);
+
+            } else if (aux.getPerfil().toString().equalsIgnoreCase("equipo_directivo")) {
+
+                JOptionPane.showConfirmDialog(null, "Ingreso Equipo Directivo ");
                 Login.setVisible(false);
                 MenuInicio.setVisible(true);
                 jMenuBar1.setVisible(true);
@@ -3517,18 +3520,16 @@ public class Swing extends javax.swing.JFrame {
                 Grupo.setVisible(false);
                 Departamento.setVisible(false);
                 Archivo.setVisible(false);
-            
-        }else if (aux.getPerfil().toString().equalsIgnoreCase("superusuario")){
-            
-            JOptionPane.showConfirmDialog(null, "Ingreso SuperUsuario");
-            Login.setVisible(false);
-            jMenuBar1.setVisible(true);
-            MenuInicio.setVisible(true);
-            Archivo.setVisible(false);
-        }
-            
-            
-            
+
+            } else if (aux.getPerfil().toString().equalsIgnoreCase("superusuario")) {
+
+                JOptionPane.showConfirmDialog(null, "Ingreso SuperUsuario");
+                Login.setVisible(false);
+                jMenuBar1.setVisible(true);
+                MenuInicio.setVisible(true);
+                Archivo.setVisible(false);
+            }
+
             /*JOptionPane.showMessageDialog(this, "Inicio de sesión completado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
             // Cerrar la pestaña de inicio de sesión
@@ -3537,7 +3538,7 @@ public class Swing extends javax.swing.JFrame {
             // Abrir la pestaña de MenuInicio
             MenuInicio.setVisible(true);
             jMenuBar1.setVisible(true);
-            */
+             */
         } else {
             // Si las credenciales no son válidas, mostrar un mensaje de error
             JOptionPane.showMessageDialog(this, "Correo electrónico o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
@@ -3643,7 +3644,7 @@ public class Swing extends javax.swing.JFrame {
         tabla = (DefaultTableModel) jTable3.getModel();
         //Obtengo el valor del indice que utilizo para buscar una solicitud
 
-        String valor1 = tabla.getValueAt(filaSeleccionada,4).toString();
+        String valor1 = tabla.getValueAt(filaSeleccionada, 4).toString();
 
         profesorAux = metodosprofesor.buscarPor(valor1);
     }//GEN-LAST:event_jTable3MouseClicked
@@ -3655,7 +3656,7 @@ public class Swing extends javax.swing.JFrame {
         tabla = (DefaultTableModel) jTable13.getModel();
         //Obtengo el valor del indice que utilizo para buscar una solicitud
 
-        String valor1 = tabla.getValueAt(filaSeleccionada,4).toString();
+        String valor1 = tabla.getValueAt(filaSeleccionada, 4).toString();
 
         profesorAux = metodosprofesor.buscarPor(valor1);
     }//GEN-LAST:event_jTable13MouseClicked
@@ -3664,8 +3665,8 @@ public class Swing extends javax.swing.JFrame {
         // TODO add your handling code here:
         String valorABuscar = profesorAux.getCorreo();
         Profesor c = metodosprofesor.buscarPor(valorABuscar);
-        boolean activo=true;
-        metodosprofesor.actualizarEstado(valorABuscar,activo);
+        boolean activo = true;
+        metodosprofesor.actualizarEstado(valorABuscar, activo);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
